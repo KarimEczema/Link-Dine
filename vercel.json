@@ -6,5 +6,9 @@
   },
   "routes": [
     { "src": "/(.*)",  "dest": "/api" }
-  ]
+  ],
+  "builds": [
+    {"src": "acceuil.html", "use": "@now/static"}
+   
+]
 }
