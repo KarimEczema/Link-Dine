@@ -25,8 +25,9 @@ try{
         // if the user exists
    // if the user exists
     if($stmt->rowCount()){
-        echo '<meta http-equiv="refresh" content="0; url=html/Accueil.html" />';
-        //header("Location: html\Accueil.html");
+        ob_start();
+        //echo '<meta http-equiv="refresh" content="0; url=html/Accueil.html" />';
+        header("Location: html\Accueil.html");
         exit;
     }
     else{
