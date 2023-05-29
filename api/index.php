@@ -20,3 +20,26 @@
 </body>
 </html>
 
+<?php
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
+
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require;sslrootcert=/path/to/root.crt;sslcert=/path/to/server.crt;sslkey=/path/to/server.key";
+
+try{
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+    
+    // display a message if connected to the PostgreSQL successfully
+    if($conn){
+        echo "Connected to the <strong>$db</strong> database successfully!";
+    }
+}catch (PDOException $e){
+    // report error message
+    echo $e->getMessage();
+}
+
+?>
