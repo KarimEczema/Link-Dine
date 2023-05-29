@@ -27,7 +27,10 @@ $dbname = "verceldb";
 $user = "default";
 $password = "Y4vuPQm2xyTl";
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require;sslrootcert=/path/to/root.crt;sslcert=/path/to/server.crt;sslkey=/path/to/server.key";
+
+
+sslmode=require
 
 try{
     // create a PostgreSQL database connection
@@ -35,7 +38,7 @@ try{
     
     // display a message if connected to the PostgreSQL successfully
     if($conn){
-        echo "Connected to the <strong>$db</strong> database successfully!";
+        echo "Connected to the <strong></strong> database successfully!";
     }
 }catch (PDOException $e){
     // report error message
