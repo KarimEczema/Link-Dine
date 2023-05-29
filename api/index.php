@@ -41,10 +41,68 @@ try{
 }?>
 
 <html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: #444;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            background-color: #888;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
 <body>
 
-<h2 href="Acceuil.php">Login</h2>
-
+<h2>Login</h2>
+<?php
+if(isset($_POST) && isset($error_message)) {
+    echo '<div class="error">' . $error_message . '</div>';
+}
+?>
 <form method="post" action="">
   Username:<br>
   <input type="text" name="username">
@@ -57,3 +115,4 @@ try{
 
 </body>
 </html>
+
