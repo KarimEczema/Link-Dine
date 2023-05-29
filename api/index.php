@@ -25,7 +25,7 @@ try{
         // if the user exists
    // if the user exists
     if($stmt->rowCount()){
-        header("Location: Accueil.php");
+        header("Location: html\Accueil.html");
         exit;
     }
     else{
