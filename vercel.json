@@ -1,16 +1,10 @@
 {
   "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-
+    
     "api/index.php": {
       "runtime": "vercel-php@0.6.0"
     },
-    "api/users.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/books.php": {
+    "api/acceuil.php": {
       "runtime": "vercel-php@0.6.0"
     }
   }
