@@ -27,8 +27,7 @@ $dbname = "verceldb";
 $user = "default";
 $password = "Y4vuPQm2xyTl";
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require;sslrootcert=/path/to/root.crt;sslcert=/path/to/server.crt;sslkey=/path/to/server.key;options='--client_encoding=UTF8'";
-
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;";
 try{
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
