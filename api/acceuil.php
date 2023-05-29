@@ -105,14 +105,14 @@
 		</div>
 		<div id="carrousel">
 			<ul style ="list-style-type : none;">
-				<li><img src="Images/Celeste.png" width="120" height="100"></li>
-				<li><img src="Images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-				<li><img src="Images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="Images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="Images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
-				<li><img src="Images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="Images/logECE.png" width="120" height="100"></li>
-				<li><img src="Images/StreetMordred.jpg" width="120" height="100"></li>
+				<li><img src="api/Images/Celeste.png" width="120" height="100"></li>
+				<li><img src="api/Images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
+				<li><img src="api/Images/CelesteScare.png" width="120" height="100"></li>
+				<li><img src="api/Images/CelesteTheo.png" width="120" height="100"></li>
+				<li><img src="api/Images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
+				<li><img src="api/Images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+				<li><img src="api/Images/logECE.png" width="120" height="100"></li>
+				<li><img src="api/Images/StreetMordred.jpg" width="120" height="100"></li>
 				<li><img src="book9.jpg" width="120" height="100"></li>
 				<li><img src="book10.jpg" width="120" height="100"></li>
 				<li><img src="book11.jpg" width="120" height="100"></li>
