@@ -1,22 +1,3 @@
-
-<html>
-<body>
-
-<h2>Login</h2>
-
-<form method="post" action="">
-  Username:<br>
-  <input type="text" name="username">
-  <br>
-  Password:<br>
-  <input type="password" name="password">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
-
-</body>
-</html>
-
 <?php
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
@@ -57,3 +38,20 @@ try{
     echo $e->getMessage();
 }?>
 
+<html>
+<body>
+
+<h2>Login</h2>
+
+<form method="post" action="">
+  Username:<br>
+  <input type="text" name="username">
+  <br>
+  Password:<br>
+  <input type="password" name="password">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
