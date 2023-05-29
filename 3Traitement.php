@@ -7,7 +7,7 @@
 <p>Choisissez une option de traitement :</p>
 
 <ul>
-  <li><a href="3TraitementA.php">Ajouter un nouvel employé et afficher tous les employés</a></li>
+  <li><a href="3Traitement.php">Ajouter un nouvel employé et afficher tous les employés</a></li>
   <li><a href="3TraitementB.php">Supprimer un employé et afficher tous les employés</a></li>
   <li><a href="3TraitementC.php">Afficher tous les employés par ordre croissant de salaire</a></li>
   <li><a href="3TraitementD.php">Afficher tous les employés par ordre décroissant d'ID</a></li>
