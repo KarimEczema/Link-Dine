@@ -32,7 +32,7 @@ try{
     $conn = new PDO($dsn);
     
     // if form is submitted
-    if($_POST){
+    if($_POST){  
         // query to check if username and password are correct
         $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
         $stmt = $conn->prepare($sql);
@@ -43,13 +43,15 @@ try{
         $stmt->execute();
         
         // if the user exists
-        if($stmt->rowCount()){
-            echo "Logged in successfully!";
-        }
-        else{
-            echo "Invalid username or password!";
-        }
+   // if the user exists
+    if($stmt->rowCount()){
+        header("Location: ./html/Accueil.html");
+        exit;
     }
+    else{
+        echo "Invalid username or password!";
+    }
+        }
     
 }catch (PDOException $e){
     // report error message
