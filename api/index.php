@@ -27,7 +27,8 @@ $dbname = "verceldb";
 $user = "default";
 $password = "Y4vuPQm2xyTl";
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;";
+$dsn = "$user=postgres $password=123 $host=db.bmqgiyygwjnnfyrtjkno.supabase.co $port=5432 $dbname=postgres";
+
 try{
 
     // create a PostgreSQL database connection
