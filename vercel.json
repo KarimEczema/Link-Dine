@@ -1,4 +1,7 @@
 {
+    "version": 2,
+    "name": "php-api",
+    "scope": "trainit",
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"
