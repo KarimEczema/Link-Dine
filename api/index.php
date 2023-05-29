@@ -20,22 +20,26 @@
 </body>
 </html>
 
-
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tpnote2";
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
 
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
 
-
-// Créez la connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifiez la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    // Create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+    
+    // Display a message if a connection is established successfully
+    if ($conn) {
+        echo "Connected to the <strong>$dbname</strong> database successfully!";
+    }
+} catch (PDOException $e) {
+    // Report error message
+    echo $e->getMessage();
 }
-
 
 ?>
