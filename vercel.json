@@ -2,13 +2,16 @@
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"
+    },
+
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0"
+    },
+    "api/users.php": {
+      "runtime": "vercel-php@0.6.0"
+    },
+    "api/books.php": {
+      "runtime": "vercel-php@0.6.0"
     }
-  },
-  "routes": [
-    { "src": "api/(.*)", "dest": "api/" },
-    
-    { "src": "api/html/(.*)", "dest": "api/html/" },
-    { "src": "api/css/(.*)", "dest": "api/css/" }
-    
-  ]
+  }
 }
