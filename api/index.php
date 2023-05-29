@@ -29,17 +29,4 @@ $password = "Y4vuPQm2xyTl";
 
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
 
-try {
-    // Create a PostgreSQL database connection
-    $conn = new PDO($dsn);
-    
-    // Display a message if a connection is established successfully
-    if ($conn) {
-        echo "Connected to the <strong>$dbname</strong> database successfully!";
-    }
-} catch (PDOException $e) {
-    // Report error message
-    echo $e->getMessage();
-}
-
 ?>
