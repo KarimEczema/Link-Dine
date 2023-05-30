@@ -122,7 +122,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 
        <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="Projet-titre" style="margin : 5%"> </h5></div>
-       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description du projet : <textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
+       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description du projet : </h5><textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div>
 
    
 <button type="submit"  style = " margin-top : 2%;">Publier</button>
