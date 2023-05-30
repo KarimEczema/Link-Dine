@@ -5,18 +5,50 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            color: #444;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
         }
+
         #chatbox {
-            width: 500px;
+            max-width: 500px;
+            width: 100%;
             height: 400px;
-            border: 1px solid #000;
-            padding: 10px;
-            overflow-y: scroll;
-            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            margin-bottom: 20px;
         }
-        #userInput {
-            width: 400px;
-            padding: 5px;
+
+        #usernameInput, #userInput {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        #sendButton {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #sendButton:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
