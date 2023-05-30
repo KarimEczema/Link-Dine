@@ -54,7 +54,6 @@ ul > li {
     list-style: none;
     left: 0;
     margin-bottom: 0;
-    position: absolute;
 }
 
 .scroll-container {
@@ -65,6 +64,7 @@ ul > li {
     display: block;
     margin: 0 auto;
     text-align: center;
+    position: relative;
 }
 
 .scroll-page {
