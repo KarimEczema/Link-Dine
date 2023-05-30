@@ -72,13 +72,13 @@
 </script>
 </head>
 
-<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
+<link href="accueil.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
 			<div class="row">
 				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="images/LogECE.png" width="121" height="49.5"></div>
+				 <div class="col-sm" ><img src="Images/LogECE.png" width="121" height="49.5"></div>
 			</div>		
 		</div>
 	</header>
@@ -105,14 +105,14 @@
 		</div>
 		<div id="carrousel">
 			<ul style ="list-style-type : none;">
-				<li><img src="images/Celeste.png" width="120" height="100"></li>
-				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
-				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
+				<li><img src="Images/Celeste.png" width="120" height="100"></li>
+				<li><img src="Images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
+				<li><img src="Images/CelesteScare.png" width="120" height="100"></li>
+				<li><img src="Images/CelesteTheo.png" width="120" height="100"></li>
+				<li><img src="Images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
+				<li><img src="Images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+				<li><img src="Images/logECE.png" width="120" height="100"></li>
+				<li><img src="Images/StreetMordred.jpg" width="120" height="100"></li>
 				<li><img src="book9.jpg" width="120" height="100"></li>
 				<li><img src="book10.jpg" width="120" height="100"></li>
 				<li><img src="book11.jpg" width="120" height="100"></li>
@@ -134,10 +134,15 @@
 	
 	<nav class = "post">
 		<form method="post" action="traitement.php">
-			   <label for="ameliorer">Creer un post</label><br>
-			   <textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea>
-			   <input type="file" id="image" name="image" accept="image/png, image/jpeg" style = "position : relative; right : 5%; bottom : 200px;">
-			   <button type="submit" style = "position : relative; left : 8.5%; bottom : 39px;">Publier</button>
+			<label for="ameliorer">Creer un post</label><br>
+			<div class="container-fluid">
+				<div class="row">
+					 <div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea></div>
+					 <div class="col-sm-2">
+						<input type="file" id="image" name="image" accept="image/png, image/jpeg" style = "margin-left : 280% ; margin-top : 90%;">
+						<button type="submit"  style = "margin-left : 280%; margin-top : 10%;">Publier</button>
+					 </div>
+				</div>
 		</form>
 	</nav>
 	
