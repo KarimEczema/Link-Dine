@@ -48,6 +48,7 @@ header{
   div.item {
     position: absolute;
     width: 120%;
+    height: 400px;
     background-color: coral;
     --r: calc(var(--position) - var(--offset));
     --abs: max(calc(var(--r) * -1), var(--r));
