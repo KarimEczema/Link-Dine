@@ -117,29 +117,79 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
     <!--Ajout projet -->
     <nav class = "Ajout-projet">
-
-<h1 style = "margin-top : 5% ">Ajouter un projet</h1>
+    <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
 
 
        <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="Projet-titre" style="margin : 5%"> </h5></div>
-       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description du projet : </h5><textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div>
+       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%"> Description du projet : </h5><textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div>
 
    
-<button type="submit"  style = " margin-top : 2%;">Publier</button>
+    <button type="submit"  style = " margin-top : 2%;">Publier</button>
+    </nav>
 
-</nav>
+    <!-- Ajout du CV généré automatiquement -->
 
-<!--
-    Ajouter un projet
 
-    Nom et description bdd
 
--->
 
-<!--
-    Ajouter un CV (génération automatique) : boutton
+<!-- CV -->
 
--->
+    <nav class = "CV">
+        
+        <div class="row">
+            <div class="col-sm-4" style = "background-color : purple; margin : 2%">Photo</div>
+            <div class="col-sm-7" style="background-color: red"> 
+                <div style = "background-color: green; margin:2%"><h3>Nom de l'utilisateur</h3></div>
+                <div style = "background-color: blue; margin:2%"><h5>Description de l'utilisateur</h5></div>
+            </div>
+        </div>
+        <div>
+            <h4 style="margin-top:5%">Formation(s)</h4>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style = "background-color : purple; margin-left : 10%">Date Début / Date Fin</div>
+            <div class="col-sm-6" style="background-color: red"> 
+                <div style = "background-color: green; margin:2%; margin-right : 10%"><h5>Nom de la formation</h5></div>
+                <div style = "background-color: yellow; margin:2%; margin-right : 10%"><h6>Description de la formation</h6></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style = "background-color : purple; margin-left : 10%">Date Début / Date Fin</div>
+            <div class="col-sm-6" style="background-color: red"> 
+                <div style = "background-color: green; margin:2%; margin-right : 10%"><h5>Nom de la formation</h5></div>
+                <div style = "background-color: yellow; margin:2%; margin-right : 10%"><h6>Description de la formation</h6></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style = "background-color : purple; margin-left : 10%">Date Début / Date Fin</div>
+            <div class="col-sm-6" style="background-color: red"> 
+                <div style = "background-color: green; margin:2%; margin-right : 10%"><h5>Nom de la formation</h5></div>
+                <div style = "background-color: yellow; margin:2%; margin-right : 10%"><h6>Description de la formation</h6></div>
+            </div>
+        </div>
+
+        <h4 style="margin-top:5%">Projet(s)</h4>
+
+        <div class="row">
+            <div style = "background-color: green; margin-top:2%; margin-left : 10%"><h5>Intitulé du projet -</h5></div>
+            <div style = "background-color: yellow; margin-top:2%; margin-left : 2%; margin-right : 10%"><h6>Description du projet</h6></div>
+        </div>
+        <div class="row">
+            <div style = "background-color: green; margin-top:2%; margin-left : 10%"><h5>Intitulé du projet -</h5></div>
+            <div style = "background-color: yellow; margin-top:2%; margin-left : 2%; margin-right : 10%"><h6>Description du projet</h6></div>
+        </div>
+        <div class="row">
+            <div style = "background-color: green; margin-top:2%; margin-left : 10%"><h5>Intitulé du projet -</h5></div>
+            <div style = "background-color: yellow; margin-top:2%; margin-left : 2%; margin-right : 10%"><h6>Description du projet</h6></div>
+        </div>
+        <div class="row">
+            <div style = "background-color: green; margin-top:2%; margin-left : 10%"><h5>Intitulé du projet -</h5></div>
+            <div style = "background-color: yellow; margin-top:2%; margin-left : 2%; margin-right : 10%"><h6>Description du projet</h6></div>
+        </div>
+
+        <h6 style = "margin-top: 2%;">Mail</h6>
+
+    </nav>
 
 </body>
 

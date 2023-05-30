@@ -118,3 +118,10 @@ main#carousel {
     --position: 5;
   }
   
+  .CV{
+    width: 70%;
+    background-color: aquamarine;
+    margin-left:15%;
+    margin-right:15%;
+    padding-bottom: 2%;
+  }
