@@ -100,7 +100,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		<div class="container-fluid">
 				<div class="row">
 					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
+					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Réseau</a></div>
 					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
 					 <div class="col-sm-2"><a href="notifs" style = "border : solid; color: black; padding:2px">Notifications</a></div>
 					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
@@ -131,13 +131,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				<li><img src="book11.jpg" width="120" height="100"></li>
 				<li><img src="book12.jpg" width="120" height="100"></li>
 			</ul>
-			<!-- Ce serait cool de mettre une musique ^^ -->
-			<!-- <div id="audio"> -->
-				<!-- <audio controls autoplay loop> -->
-				 <!-- <source src="serenity.mp3" type="audio/ogg"> -->
-				 <!-- <source src="river.mp3" type="audio/mpeg"> -->
-				<!-- </audio> -->
-			<!-- </div> -->
 
 		</div>
 		<div id="buttons">
