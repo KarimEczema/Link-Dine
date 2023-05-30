@@ -95,12 +95,12 @@ try{
 </head>
 <body>
 
-<h2>Login</h2>
 <?php
 if(isset($_POST) && isset($error_message)) {
     echo '<div class="error">' . $error_message . '</div>';
 }
 ?>
+
 <form method="post" action="">
   Username:<br>
   <input type="text" name="NomUtilisateur">
