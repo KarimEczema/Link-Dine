@@ -24,7 +24,7 @@ try{
         
         // if the user exists
         if($stmt->rowCount()){
-            echo '<meta http-equiv="refresh" content="0; url= acceuil" />';
+            echo '<meta http-equiv="refresh" content="0; url= vous" />';
             exit;
         }
         else{
