@@ -107,14 +107,26 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
     <input type="radio" name="position" />
     <input type="radio" name="position" />
     <main id="carousel">
-    <div class="item">azerty</div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
+    <div class="item">Projet 1</div>
+    <div class="item">Projet 2</div>
+    <div class="item">Projet 3</div>
+    <div class="item">Projet 4</div>
+    <div class="item">Projet 5</div>
     <main>
 
-  
+    <!--Ajout projet -->
+    <nav class = "Ajout-projet">
+
+<h1 style = "margin-top : 5% ">Ajouter un projet</h1>
+
+
+       <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="Projet-titre" style="margin : 5%"> </h5></div>
+       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description du projet : <textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
+
+   
+<button type="submit"  style = " margin-top : 2%;">Publier</button>
+
+</nav>
 
 <!--
     Ajouter un projet
