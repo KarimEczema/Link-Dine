@@ -1,0 +1,77 @@
+body{
+    /* Style pour le corps général*/
+    margin-left : 25%;
+    margin-right : 25%;
+    text-align : center;
+}
+
+header{
+    /* Style pour le bandeau d'en-tête*/
+    color: white;
+    padding:7px;
+    background-color : #446AA9 ;
+}
+
+
+.navigation{
+    /* Style du bandeau de navigation */
+    margin-top : 10px;
+}
+
+.section{
+    /* Style du corps de section */
+    color: black;
+    margin-top: 50px;
+}
+
+
+ul > li {
+    list-style-type: none;
+    position: absolute;
+    top: 30%;
+    transition: 1s opacity;
+}
+
+#Emplois{
+    text-align : center;
+    color:red;
+    border: 3px solid black;
+    border-radius: 5%;
+    padding : 3px;
+}
+
+.scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.scroll-page {
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 50%;
+
+    margin-top: 10px;
+}
+
+#formation-1{
+    background-color: mintcream ;
+}
+
+#formation-2{
+    background-color: lightcyan ;
+}
+
+#formation-3{
+    background-color: lavenderblush ;
+}
+
+footer{
+    /* Style du footer */
+    color: white;
+}

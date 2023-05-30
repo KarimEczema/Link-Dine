@@ -1,0 +1,40 @@
+body{
+    /* Style pour le corps général*/
+    margin-left : 25%;
+    margin-right : 25%;
+    text-align : center;
+}
+
+header{
+    /* Style pour le bandeau d'en-tête*/
+    color: white;
+    padding:7px;
+    background-color : #446AA9 ;
+}
+
+
+.navigation{
+    /* Style du bandeau de navigation */
+    margin-top : 10px;
+}
+
+.section{
+    /* Style du corps de section */
+    color: black;
+    margin-top: 50px;
+}
+
+
+ul > li {
+    list-style-type: none;
+    position: absolute;
+    top: 30%;
+    transition: 1s opacity;
+}
+
+
+
+footer{
+    /* Style du footer */
+    color: white;
+}

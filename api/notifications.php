@@ -3,27 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Page Emplois</title>
+    <title>Page notifications</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
+    <link href="css/notifications.css" rel="stylesheet" type="text/css"/>
 
 
 </head>
 
 <script type="text/javascript">
-    function textecache(ntexte){
-        var span =document.getElementById(ntexte);
-        if(span.style.display === "none")
-        {
-            span.style.display="inline";
-        }
-        else
-        {
-            span.style.display="none";
-        }
-    }
+
 </script>
 
 
@@ -53,8 +43,8 @@
 
 
 <nav class = "section">
-    <div id = "Emplois">
-        <h5> Offres d'emploi</h5>
+    <div id = "Semaine">
+        <h5 style = "text-align : center; color:red; border: 3px solid black; border-radius: 5%; padding : 3px;"> Evènement de la semaine</h5>
     </div>
 
     <div class="scroll-container">
@@ -81,6 +71,9 @@
         </div>
     </div>
 
+    <div id = "Emplois">
+            <h5 style = "text-align : center; color:red; border: 3px solid black; border-radius: 5%; padding : 3px;"> Evènement de la semaine</h5>
+    </div>
 
 </nav>
 
