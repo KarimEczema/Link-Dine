@@ -66,7 +66,7 @@
     <script>
         $(document).ready(function() {
             const receiveMessages = () => {
-                $.get('/api/receive', function(data) {
+                $.get('js/receive', function(data) {
                     $('#chatbox').empty();
                     data.data.forEach(msg => {
                         $('#chatbox').prepend(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
@@ -83,7 +83,7 @@
                     return;
                 }
 
-                $.post('/api/send', {username, message}, function(data) {
+                $.post('js/send', {username, message}, function(data) {
                     if (data.error) {
                         alert('Error sending message!');
                     } else {
