@@ -52,26 +52,24 @@ ul > li {
 }
 .prev {
 	position: absolute;
-	display: block;
 	margin-left: 20%;
 	margin-top: 12%;
 	color: black;
 	width: 40px;
 	height: 20px;
-	font-weight: 800;
+	font-weight: 500;
 	background-color: #446AA9;
 	border-radius: 2px;
 	border: 2px solid black;
 }
 .next {
 	position: absolute;
-	display: block;
 	margin-left: 25%;
 	margin-top: 12%;
 	color: black;
 	width: 40px;
 	height: 20px;
-	font-weight: 800;
+	font-weight:500;
 	background-color: #446AA9;
 	border-radius: 2px;
 	border: 2px solid black;
