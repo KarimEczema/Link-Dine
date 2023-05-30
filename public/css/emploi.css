@@ -1,34 +1,69 @@
+body{
+    /* Style pour le corps général*/
+    margin-left : 25%;
+    margin-right : 25%;
+    text-align : center;
+}
 
-#Emplois {
-    margin-top: 100px;
-    border: 3px;
-    border-radius: 5%;
+header{
+    /* Style pour le bandeau d'en-tête*/
+    color: white;
+    padding:7px;
+    background-color : #446AA9 ;
 }
 
 
-nav, .scroll-container {
+.navigation{
+    /* Style du bandeau de navigation */
+    margin-top : 10px;
+}
+
+.section{
+    /* Style du corps de section */
+    color: black;
+    margin-top: 50px;
+}
+
+
+ul > li {
+    list-style-type: none;
+    position: absolute;
+    top: 30%;
+    transition: 1s opacity;
+}
+
+.scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
     display: block;
     margin: 0 auto;
     text-align: center;
 }
 
-nav {
-    width: 339px;
-    padding: 5px;
-    border: 1px solid black;
-}
-
-.scroll-container {
-    width: 350px;
-    height: 200px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-}
-
 .scroll-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    font-size: 5em;
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 50%;
+
+    margin-top: 10px;
+}
+
+#formation-1{
+    background-color: mintcream ;
+}
+
+#formation-2{
+    background-color: lightcyan ;
+}
+
+#formation-3{
+    background-color: lavenderblush ;
+}
+
+footer{
+    /* Style du footer */
+    color: white;
 }
