@@ -14,7 +14,7 @@ try{
     // if form is submitted
     if($_POST){  
         // query to check if username and password are correct
-        $sql = "SELECT * FROM Users WHERE Nomutilisateur = :NomUtilisateur AND Mdp = :Mdp";
+        $sql = "SELECT * FROM Users WHERE NomUtilisateur = :NomUtilisateur AND Mdp = :Mdp";
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
