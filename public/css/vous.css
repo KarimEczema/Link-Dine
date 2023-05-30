@@ -27,6 +27,7 @@ header{
     padding : 2%
 }
 
+/*
 body {
     height: 600px;
     margin: 0;
@@ -126,4 +127,5 @@ body {
   input:nth-of-type(5):checked ~ main#carousel {
     --position: 5;
   }
+  */
   
