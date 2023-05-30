@@ -2,7 +2,7 @@
 
 session_start();
     
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['NomUtilisateur'])) {
 	// User is not logged in, redirect to login page.
 	header('Location: index');
 	exit();
