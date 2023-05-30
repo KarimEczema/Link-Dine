@@ -29,6 +29,7 @@ try{
             if(password_verify($_POST['Mdp'], $user['password'])) {
                 session_start();
                 $_SESSION['NomUtilisateur'] = $_POST['NomUtilisateur'];
+                echo  $_POST['NomUtilisateur'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }

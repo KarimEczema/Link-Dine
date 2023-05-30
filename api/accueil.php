@@ -2,6 +2,8 @@
 
 session_start();
     
+ $_POST['NomUtilisateur'];
+ 
 if (!isset($_SESSION['NomUtilisateur'])) {
 	// User is not logged in, redirect to login page.
 	header('Location: index');
