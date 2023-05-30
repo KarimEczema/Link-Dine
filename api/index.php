@@ -14,7 +14,7 @@ try{
     // if form is submitted
     if($_POST){  
         // query to check if NomUtilisateur and Mdp are correct
-        $sql = "SELECT * FROM users WHERE users.NomUtilisateur = :users.NomUtilisateur AND users.Mdp = :users.Mdp";
+        $sql = "SELECT * FROM users WHERE users.NomUtilisateur = :NomUtilisateur AND users.Mdp = :Mdp";
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
@@ -35,7 +35,8 @@ try{
 }catch (PDOException $e){
     // report error message
     echo $e->getMessage();
-}?>
+}
+?>
 
 <html>
 <head>
@@ -102,10 +103,10 @@ if(isset($_POST) && isset($error_message)) {
 ?>
 <form method="post" action="">
   Username:<br>
-  <input type="text" name="users.NomUtilisateur">
+  <input type="text" name="NomUtilisateur">
   <br>
   Password:<br>
-  <input type="password" name="users.Mdp">
+  <input type="password" name="Mdp">
   <br><br>
   <input type="submit" value="Submit">
 </form> 
