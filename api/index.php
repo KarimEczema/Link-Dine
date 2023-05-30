@@ -13,28 +13,36 @@ try{
     
     // if form is submitted
     if($_POST){  
-        // query to check if NomUtilisateur and Mdp are correct
-        $sql = "SELECT * FROM users WHERE username = :NomUtilisateur AND password = :Mdp";
+        // query to check if username exists
+        $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
         $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
-        $stmt->bindParam(':Mdp', $_POST['Mdp']);
         $stmt->execute();
         
         // if the user exists
         if($stmt->rowCount()){
-            session_start();
-            $_SESSION['username'] = $NomUtilisateur;
-            echo '<meta http-equiv="refresh" content="0; url= accueil" />';
-            exit;
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Validate password
+            if(password_verify($_POST['Mdp'], $user['password'])) {
+                session_start();
+                $_SESSION['username'] = $_POST['NomUtilisateur'];
+                echo '<meta http-equiv="refresh" content="0; url= accueil" />';
+                exit;
+            }
+            else {
+                echo "Invalid username or password!";
+            }
         }
         else{
             echo "Invalid username or password!";
         }
     }
-    
-}catch (PDOException $e){
+}
+
+catch (PDOException $e){
     // report error message
     echo $e->getMessage();
 }
