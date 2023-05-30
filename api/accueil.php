@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>ECE-in</title>
-<meta charset="utf-8" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<?php
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
+
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
+
+echo '<html>';
+echo '<head>';
+echo '<title>Your Page Title</title>';
+
+// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">'; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> ';
+
+
+?>
+
+
 <!-- Chargement du JavaScript de Bootstrap -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $img = $('#carrousel img');
