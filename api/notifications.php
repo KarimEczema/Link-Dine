@@ -133,7 +133,7 @@
 
 <nav class="section">
     <div id = "Amis">
-            <h5> Evènement de la semaine</h5>
+            <h5> Que font mes amis ?</h5>
     </div>
 
     <div class="scroll-container">
