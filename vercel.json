@@ -6,7 +6,8 @@
   },
   "routes": [
     { "src": "/$", "dest": "/api/index.php" },
-    { "src": "/acceuil", "dest": "/api/accueil.php" },
+    { "src": "/accueil", "dest": "/api/accueil.php" },
+    { "src": "/vous", "dest": "/api/vous.php" },
     { "src": "/emplois", "dest": "/api/emplois.php" },
     { "src": "/images/(.*)", "dest": "/public/images/$1" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" }
