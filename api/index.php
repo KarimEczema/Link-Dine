@@ -18,8 +18,8 @@ try{
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
-        $stmt->bindParam(':username', $_POST['username']);
-        $stmt->bindParam(':password', $_POST['password']);
+        $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
+        $stmt->bindParam(':Mdp', $_POST['Mdp']);
         $stmt->execute();
         
         // if the user exists
