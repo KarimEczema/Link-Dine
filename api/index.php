@@ -13,7 +13,7 @@ try{
     
     // if form is submitted
     if($_POST){  
-        // query to check if username and password are correct
+        // query to check if NomUtilisateur and Mdp are correct
         $sql = "SELECT * FROM Users WHERE NomUtilisateur = :NomUtilisateur AND Mdp = :Mdp";
         $stmt = $conn->prepare($sql);
         
@@ -23,17 +23,14 @@ try{
         $stmt->execute();
         
         // if the user exists
-   // if the user exists
-    if($stmt->rowCount()){
-        
-        echo '<meta http-equiv="refresh" content="0; url= acceuil" />';
-        //header("Location: html\Accueil.html");
-        exit;
-    }
-    else{
-        echo "Invalid username or password!";
-    }
+        if($stmt->rowCount()){
+            echo '<meta http-equiv="refresh" content="0; url= acceuil" />';
+            exit;
         }
+        else{
+            echo "Invalid username or password!";
+        }
+    }
     
 }catch (PDOException $e){
     // report error message
@@ -43,57 +40,7 @@ try{
 <html>
 <head>
     <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #333;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        form {
-            background: #444;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        input[type="text"], input[type="password"] {
-            margin: 10px 0;
-            padding: 10px;
-            width: 200px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            color: #fff;
-            background-color: #888;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        .error {
-            color: #ff0000;
-            margin-bottom: 20px;
-        }
-    </style>
+    <!-- Add your CSS styles here -->
 </head>
 <body>
 
@@ -105,14 +52,13 @@ if(isset($_POST) && isset($error_message)) {
 ?>
 <form method="post" action="">
   Username:<br>
-  <input type="text" name="username">
+  <input type="text" name="NomUtilisateur">
   <br>
   Password:<br>
-  <input type="password" name="password">
+  <input type="password" name="Mdp">
   <br><br>
   <input type="submit" value="Submit">
 </form> 
 
 </body>
 </html>
-
