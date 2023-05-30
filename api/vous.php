@@ -107,7 +107,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
     <input type="radio" name="position" />
     <input type="radio" name="position" />
     <main id="carousel">
-    <div class="item"></div>
+    <div class="item">azerty</div>
     <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
