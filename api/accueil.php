@@ -98,7 +98,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "navigation">
 		<div class="container-fluid">
 				<div class="row">
-					 <div class="col-sm-2"><a href="accueil.php" style = "border : solid; color: black; padding:2px">Accueil</a></div>
+					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
 					 <div class="col-sm-2"><a href="Reseau.php" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
 					 <div class="col-sm-2"><a href="profil.php" style = "border : solid; color: black; padding:2px">Vous</a></div>
 					 <div class="col-sm-2"><a href="notifs.php" style = "border : solid; color: black; padding:2px">Notifications</a></div>
