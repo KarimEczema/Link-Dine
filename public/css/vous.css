@@ -26,12 +26,11 @@ header{
 {
     padding : 2%
 }
+/*CSS pour carroussel*/
 
+main#carousel {
 
-  main#carousel {
-    grid-row: 1 / 2;
-    grid-column: 1 / 8;
-    width: 100vw;
+    width: 100%;
     height: 500px;
     display: flex;
     align-items: center;
@@ -47,7 +46,7 @@ header{
   
   div.item {
     position: absolute;
-    width: 120%;
+    width: 300px;
     height: 400px;
     background-color: coral;
     --r: calc(var(--position) - var(--offset));
@@ -118,5 +117,4 @@ header{
   input:nth-of-type(5):checked ~ main#carousel {
     --position: 5;
   }
-
   
