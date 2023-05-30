@@ -47,6 +47,16 @@ ul > li {
     color:red;
 }
 
+#carrousel {
+    margin: 50px 25% 10px 24%;
+    width: 750px;
+    height: 150px;
+    list-style: none;
+    left: 0;
+    margin-bottom: 0;
+    position: absolute;
+}
+
 .scroll-container {
     width: 50vw;
     height: 30vh;
