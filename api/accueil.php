@@ -165,8 +165,23 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	
 	
 	<footer>
-	
-	</footer>
+		<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
+						<p>
+							Ce site est une plate-forme en ligne permettant à des utilisateurs
+							de se connecter avec son réseau dans un cadre professionnel, vous pouvez ainsi regarder des posts, des évènements ou
+							des offres d'emploi.
+							Chaque utilisateur peut aussi poster des évènements, des photos, des vidéos, son CV et le/s afficher, partager, etc...
+						</p>
+					</div>
+					<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
+						<a mailto="adrienne.vidon@edu.ece.fr">Nous contacter</a>
+						<!-- Insertion Maps? -->
+					</div>
+				</div>
+			</div>
+		</footer>
 </body>
 </html>
 
