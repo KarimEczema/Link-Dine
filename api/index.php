@@ -14,7 +14,7 @@ try{
     // if form is submitted
     if($_POST){  
         // query to check if NomUtilisateur and Mdp are correct
-        $sql = "SELECT * FROM users WHERE NomUtilisateur = :NomUtilisateur AND Mdp = :Mdp";
+        $sql = "SELECT * FROM users WHERE users.NomUtilisateur = :users.NomUtilisateur AND users.Mdp = :users.Mdp";
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
@@ -102,10 +102,10 @@ if(isset($_POST) && isset($error_message)) {
 ?>
 <form method="post" action="">
   Username:<br>
-  <input type="text" name="NomUtilisateur">
+  <input type="text" name="users.NomUtilisateur">
   <br>
   Password:<br>
-  <input type="password" name="Mdp">
+  <input type="password" name="users.Mdp">
   <br><br>
   <input type="submit" value="Submit">
 </form> 
