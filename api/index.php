@@ -1,26 +1,5 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
-
-use Cloudinary\Cloudinary;
-use Cloudinary\Transformation\Resize;
-
-$cloudinary = new Cloudinary(
-    [
-        'cloud' => [
-            'cloud_name' => 'drmm3xabl',
-            'api_key'    => '812922759761646',
-            'api_secret' => 'n53Fm8wfWcX9HFtuYmrQH34iNyY',
-        ],
-    ]
-);
-
-$cloudinary->uploadApi()->upload(
-    'https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg',
-    ['public_id' => 'olympic_flag']
-);
-
-$cloudinary->image('olympic_flag')->resize(Resize::fill(100, 150))->toUrl();
 
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
