@@ -37,6 +37,7 @@
 		</div>
 	</nav>
 
+    <!-- Profil -->
     <nav class = "profil">
             <div class="row">
                  <div class="col-sm-4" style = "background-color : purple">Photo</div>
@@ -47,6 +48,7 @@
             </div>		
     </nav>
 
+    <!-- Formations -->
     <h1 style="padding-top:10%">Formations</h1>
 
     <nav class = "formations" style="padding:5%">
@@ -64,6 +66,7 @@
         </div>	
     </nav>
 
+    <!-- Ajout formations -->
     <nav class = "Ajout-formation">
 
         <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
@@ -85,14 +88,15 @@
 
     </nav>
 
+    <!-- Projets -->
     <h1 style="padding:10% ">Projets</h1>
-
 
     <input type="radio" name="position" checked />
     <input type="radio" name="position" />
     <input type="radio" name="position" />
     <input type="radio" name="position" />
     <input type="radio" name="position" />
+
     <main id="carousel">
     <div class="item">Projet 1</div>
     <div class="item">Projet 2</div>
@@ -102,16 +106,6 @@
     <main>
         
 
-
-
-
-
-<!--
-    Projets
-
-    Affichage en carrousel des noms + Description des projets
-
--->
 
 <!--
     Ajouter un projet
