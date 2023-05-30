@@ -24,6 +24,8 @@ try{
         
         // if the user exists
         if($stmt->rowCount()){
+            session_start();
+            $_SESSION['username'] = $username;
             echo '<meta http-equiv="refresh" content="0; url= accueil" />';
             exit;
         }
