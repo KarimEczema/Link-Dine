@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>ECE-in</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="vous.css">
+<?php
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
 
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
+
+echo '<html>';
+echo '<head>';
+echo '<title>Your Page Title</title>';
+
+// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<link rel="stylesheet" type="text/css" href="vous.css">';
+
+?>
 
 </head>
 
