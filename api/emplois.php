@@ -99,52 +99,17 @@
 
 
 	<nav class = "section">
-		<div id = "Event">
-			<h5 style = "text-align : center; color:red"> Evennements</h5>
+		<div id = "Emplois">
+			<h5 style = "text-align : center; color:red"> Offres d'emploi</h5>
+        </div>
 
-		</div>
-		<div id="carrousel">
-			<ul style ="list-style-type : none;">
-				<li><img src="images/Celeste.png" width="120" height="100"></li>
-				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
-				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
-				<li><img src="book9.jpg" width="120" height="100"></li>
-				<li><img src="book10.jpg" width="120" height="100"></li>
-				<li><img src="book11.jpg" width="120" height="100"></li>
-				<li><img src="book12.jpg" width="120" height="100"></li>
-			</ul>
-			<!-- Ce serait cool de mettre une musique ^^ -->
-			<!-- <div id="audio"> -->
-				<!-- <audio controls autoplay loop> -->
-				 <!-- <source src="serenity.mp3" type="audio/ogg"> -->
-				 <!-- <source src="river.mp3" type="audio/mpeg"> -->
-				<!-- </audio> -->
-			<!-- </div> -->
+        <div class="scroll-container">
+          <div class="scroll-page" id="page-1">1</div>
+          <div class="scroll-page" id="page-2">2</div>
+          <div class="scroll-page" id="page-3">3</div>
+        </div>
 
-		</div>
-		<div id="buttons">
-			<input type="button" value="<" class="prev">
-			<input type="button" value=">" class="next">
-		</div>
-	</nav>
 
-	<nav class = "post">
-		<form method="post" action="traitement.php">
-			<label for="ameliorer">Creer un post</label><br>
-			<div class="container-fluid">
-				<div class="row">
-					 <div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea></div>
-					 <div class="col-sm-2">
-						<input type="file" id="image" name="image" accept="image/png, image/jpeg" style = "margin-left : 280% ; margin-top : 90%;">
-						<button type="submit"  style = "margin-left : 280%; margin-top : 10%;">Publier</button>
-					 </div>
-				</div>
-		</form>
 	</nav>
 
 	<nav class ="CV">

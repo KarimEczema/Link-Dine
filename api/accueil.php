@@ -86,12 +86,12 @@
 	<nav class = "navigation">
 		<div class="container-fluid">
 				<div class="row">
-					 <div class="col-sm-2"><a href="accueil.html" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="Reseau.html" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-					 <div class="col-sm-2"><a href="profil.html" style = "border : solid; color: black; padding:2px">Vous</a></div>
-					 <div class="col-sm-2"><a href="notifs.html" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-					 <div class="col-sm-2"><a href="messages.html" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-					 <div class="col-sm-2"><a href="emplois.html" style = "border : solid; color: black; padding:2px">Emplois</a></div>
+					 <div class="col-sm-2"><a href="accueil.php" style = "border : solid; color: black; padding:2px">Accueil</a></div>
+					 <div class="col-sm-2"><a href="Reseau.php" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
+					 <div class="col-sm-2"><a href="profil.php" style = "border : solid; color: black; padding:2px">Vous</a></div>
+					 <div class="col-sm-2"><a href="notifs.php" style = "border : solid; color: black; padding:2px">Notifications</a></div>
+					 <div class="col-sm-2"><a href="messages.php" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
+					 <div class="col-sm-2"><a href="emplois.php" style = "border : solid; color: black; padding:2px">Emplois</a></div>
 				</div>		
 		</div>
 	</nav>
