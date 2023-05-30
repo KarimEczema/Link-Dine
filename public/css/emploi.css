@@ -32,6 +32,14 @@ ul > li {
     transition: 1s opacity;
 }
 
+#Emplois{
+    text-align : center;
+    color:red;
+    border: 3px solid black;
+    border-radius: 5%;
+    padding : 3px;
+}
+
 .scroll-container {
     width: 50vw;
     height: 60vh;
