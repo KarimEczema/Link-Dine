@@ -72,13 +72,13 @@
 </script>
 </head>
 
-<link href="accueil.css" rel="stylesheet" type="text/css"/>
+<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
 			<div class="row">
 				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="Images/LogECE.png" width="121" height="49.5"></div>
+				 <div class="col-sm" ><img src="images/LogECE.png" width="121" height="49.5"></div>
 			</div>		
 		</div>
 	</header>
@@ -105,14 +105,14 @@
 		</div>
 		<div id="carrousel">
 			<ul style ="list-style-type : none;">
-				<li><img src="Images/Celeste.png" width="120" height="100"></li>
-				<li><img src="Images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-				<li><img src="Images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="Images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="Images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
-				<li><img src="Images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="Images/logECE.png" width="120" height="100"></li>
-				<li><img src="Images/StreetMordred.jpg" width="120" height="100"></li>
+				<li><img src="images/Celeste.png" width="120" height="100"></li>
+				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
+				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
+				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
+				<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
+				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+				<li><img src="images/logECE.png" width="120" height="100"></li>
+				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
 				<li><img src="book9.jpg" width="120" height="100"></li>
 				<li><img src="book10.jpg" width="120" height="100"></li>
 				<li><img src="book11.jpg" width="120" height="100"></li>
