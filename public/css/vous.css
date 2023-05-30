@@ -28,11 +28,10 @@ header{
 }
 
 
-/*CSS pour carroussel*/
-
   main#carousel {
-
-    width: 100%;
+    grid-row: 1 / 2;
+    grid-column: 1 / 8;
+    width: 100vw;
     height: 500px;
     display: flex;
     align-items: center;
