@@ -54,7 +54,34 @@ ul > li {
     list-style: none;
     left: 0;
     margin-bottom: 0;
-    position: absolute;
+    float : left;
+}
+
+.prev {
+    float: left;
+    display: block;
+    margin-left: 18%;
+    margin-top: 12%;
+    color: black;
+    width: 70px;
+    height: 35px;
+    font-weight: 800;
+    background-color: darkgoldenrod;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.next {
+    float: left;
+    display: block;
+    margin-left: 28%;
+    margin-top: 12%;
+    color: black;
+    width: 70px;
+    height: 35px;
+    font-weight: 800;
+    background-color: lightcoral;
+    border-radius: 5px;
+    border: 2px solid black;
 }
 
 .scroll-container {
@@ -65,7 +92,7 @@ ul > li {
     display: block;
     margin: 0 auto;
     text-align: center;
-    position: relative;
+    float: left;
 }
 
 .scroll-page {
