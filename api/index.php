@@ -14,7 +14,7 @@ try{
     // if form is submitted
     if($_POST){  
         // query to check if NomUtilisateur and Mdp are correct
-        $sql = "SELECT * FROM 'Users' WHERE NomUtilisateur = :NomUtilisateur AND Mdp = :Mdp";
+        $sql = "SELECT * FROM Users WHERE NomUtilisateur = :NomUtilisateur AND Mdp = :Mdp";
         $stmt = $conn->prepare($sql);
         
         // bind parameters and execute
@@ -40,7 +40,57 @@ try{
 <html>
 <head>
     <title>Login</title>
-    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: #444;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            background-color: #888;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
