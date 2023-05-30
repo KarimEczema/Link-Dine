@@ -25,11 +25,9 @@ try{
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            // Validate password
-            if(password_verify($_POST['Mdp'], $user['password'])) {
+            if($stmt->rowCount()){
                 session_start();
-                $_SESSION['NomUtilisateur'] = $_POST['NomUtilisateur'];
-                echo  $_POST['NomUtilisateur'];
+                $_SESSION['username'] = $NomUtilisateur;
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }
