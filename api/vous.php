@@ -101,6 +101,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
     <!-- Projets -->
     <h1 style="padding:10% ">Projets</h1>
 
+    <div> 
     <input type="radio" name="position" checked />
     <input type="radio" name="position" />
     <input type="radio" name="position" />
@@ -112,7 +113,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
     <div class="item">Projet 3</div>
     <div class="item">Projet 4</div>
     <div class="item">Projet 5</div>
-    <main>
+    <main></div>
 
     <!--Ajout projet -->
     <nav class = "Ajout-projet">
