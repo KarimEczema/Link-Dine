@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
 	<title>ECE-in</title>
 	<meta charset="utf-8" />
