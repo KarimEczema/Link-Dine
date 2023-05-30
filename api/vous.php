@@ -109,7 +109,10 @@ echo '<link rel="stylesheet" type="text/css" href="vous.css">';
 
     <main id="carousel">
     <div class="item">Projet 1</div>
-
+    <div class="item">Projet 2</div>
+    <div class="item">Projet 3</div>
+    <div class="item">Projet 4</div>
+    <div class="item">Projet 5</div>
     <main>
         
 
