@@ -10,7 +10,7 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 
 echo '<html>';
 echo '<head>';
-echo '<title>Your Page Title</title>';
+echo '<title>ECE-in</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -18,6 +18,7 @@ echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 
 ?>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $img = $('#carrousel img');
@@ -90,7 +91,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		<div class="container-fluid">
 			<div class="row">
 				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="121" height="49.5"></div>
+				 <div class="col-sm" ><img src="images/LogECE.png" width="121" height="49.5"></div>
 			</div>		
 		</div>
 	</header>
@@ -98,12 +99,12 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "navigation">
 		<div class="container-fluid">
 				<div class="row">
-					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="Reseau.php" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-					 <div class="col-sm-2"><a href="profil.php" style = "border : solid; color: black; padding:2px">Vous</a></div>
-					 <div class="col-sm-2"><a href="notifs.php" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-					 <div class="col-sm-2"><a href="messages.php" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-					 <div class="col-sm-2"><a href="emplois.php" style = "border : solid; color: black; padding:2px">Emplois</a></div>
+					 <div class="col-sm-2"><a href="accueil.html" style = "border : solid; color: black; padding:2px">Accueil</a></div>
+					 <div class="col-sm-2"><a href="Reseau.html" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
+					 <div class="col-sm-2"><a href="profil.html" style = "border : solid; color: black; padding:2px">Vous</a></div>
+					 <div class="col-sm-2"><a href="notifs.html" style = "border : solid; color: black; padding:2px">Notifications</a></div>
+					 <div class="col-sm-2"><a href="messages.html" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
+					 <div class="col-sm-2"><a href="emplois.html" style = "border : solid; color: black; padding:2px">Emplois</a></div>
 				</div>		
 		</div>
 	</nav>
@@ -121,7 +122,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
 				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="120" height="100"></li>
+				<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
 				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
 				<li><img src="images/logECE.png" width="120" height="100"></li>
 				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
@@ -168,5 +169,4 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</footer>
 </body>
 </html>
-
 
