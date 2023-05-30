@@ -72,7 +72,7 @@
 </script>
 </head>
 
-<link href="accueil.css" rel="stylesheet" type="text/css"/>
+<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
