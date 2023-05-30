@@ -108,7 +108,7 @@ echo '<link rel="stylesheet" type="text/css" href="vous.css">';
     <input type="radio" name="position" />
 
     <main id="carousel">
-    <div class="item"><div>Projet 1</div></div>
+    <div class="item">Projet 1</div>
     <div class="item">Projet 2</div>
     <div class="item">Projet 3</div>
     <div class="item">Projet 4</div>
