@@ -84,11 +84,11 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	
 	
 	<div id = "friends" style = "margin-top : 10%;">
-		<h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>	
+        <a href = "profil"><h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5></a>
 	</div>
 	<div id="carrousel">
 		<ul style ="list-style-type : none;">
-			<li><a href = "profil" title = "Test Profil User"> <img src="images/Celeste.png" width="120" height="100"></a></li>
+			<li><img src="images/Celeste.png" width="120" height="100"></li>
 			<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 			<li><img src="images/CelesteScare.png" width="120" height="100"></li>
 			<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
