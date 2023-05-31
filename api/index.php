@@ -38,7 +38,9 @@ try {
                     'username' => $user['username'],
                     'exp' => time() + 3600 // Expires in 1 hour
                 );
-                $jwt = JWT::encode($payload, $secretKey);
+                $alg = 'HS256'; // Specify the desired algorithm here
+
+                $jwt = JWT::encode($payload, $secretKey, $alg);
                 
                 // Set JWT as a cookie
                 //setcookie('jwt', $jwt, time()+3600); 
