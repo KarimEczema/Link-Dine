@@ -2,7 +2,10 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('Location: index');
+
+    echo $_SESSION['username'];
+    //header('Location: index');
     exit();
 }
+
 ?>
