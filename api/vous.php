@@ -134,7 +134,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 <!-- CV -->
 
-    <nav class = "CV">
+    <nav class = "CV" style="margin-top:2%">
         
         <div class="row">
             <div class="col-sm-4" style = "background-color : purple; margin : 2%">Photo</div>
