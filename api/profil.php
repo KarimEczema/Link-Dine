@@ -56,6 +56,31 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
     </nav>
     <nav class = "amis">
-    
+    <div id = "friends" style = "margin-top : 10%;">
+		<h5 style = "text-align : center; color:#446AA9">Amis en commun</h5>	
+	</div>
+	<div id="carrousel">
+		<ul style ="list-style-type : none;">
+			<li><a href = "profil" title = "Test Profil User"> <img src="images/Celeste.png" width="120" height="100"></a></li>
+			<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
+			<li><img src="images/CelesteScare.png" width="120" height="100"></li>
+			<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
+			<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
+			<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+			<li><img src="images/logECE.png" width="120" height="100"></li>
+			<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
+			<li><img src="book9.jpg" width="120" height="100"></li>
+			<li><img src="book10.jpg" width="120" height="100"></li>
+			<li><img src="book11.jpg" width="120" height="100"></li>
+			<li><img src="book12.jpg" width="120" height="100"></li>
+		</ul>
+
+		<!-- Recuperer les noms, les liens et statut + description en php.-->
+
+	</div>
+	<div id="buttons">
+		<input type="button" value="<" class="prev">
+		<input type="button" value=">" class="next">
+	</div>
     </nav>
 </body>
