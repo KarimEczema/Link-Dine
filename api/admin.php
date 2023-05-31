@@ -153,8 +153,7 @@ try{
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-        import { createClient } from '@supabase/supabase-js';
-        const supabase = createClient(supabaseUrl, supabaseKey);
+
 
 const getUsernames = async () => {
     try {
@@ -183,7 +182,7 @@ $(document).ready(async function() {
 
           $('#sendButton').click(async function() {
               const sentTo = $('#userSelect').val(); // Get the selected username
-              const { data, error } = await supabase
+              const { data, error } = await supabaseUrl
             .from('users') // replace 'users' with the name of your users table
             .delete()
             .match({username: sentTo});
