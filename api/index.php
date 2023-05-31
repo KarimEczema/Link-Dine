@@ -33,7 +33,7 @@ try {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // assuming that your password field is 'Mdp'
-            if($_POST['Mdp'] === $user['password']){
+            
                 // Generate JWT token
                 // Your secret key
                 $secretKey = '123';
@@ -50,10 +50,7 @@ try {
                 
                 echo '<meta http-equiv="refresh" content="0; url=accueil" />';
                 exit;
-            }
-            else {
-                echo "Invalid username or password!";
-            }
+           
         }
         else{
             echo "Invalid username or password!";
