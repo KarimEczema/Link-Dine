@@ -141,6 +141,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             echo '<script>alert("Ligne insérée avec succès !")</script>';
           }
         }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
 
        
     ?>
