@@ -2,6 +2,7 @@ body{
 	/* Style pour le corps général*/
 	margin-left : 25%;
 	margin-right : 25%;
+    text-align : center;
 }
 
 header{
@@ -26,7 +27,7 @@ header{
 	list-style: none;
 	margin-bottom: 0;
     position: relative;
-    left : 60%;
+    right : 60%;
 }
 #carrousel ul {
 	position: relative;
@@ -47,7 +48,7 @@ ul > li {
 	border-radius: 5px;
 	border: 2px solid black;
     position: relative;
-    right : 50%;
+    right : 10%;
 }
 .next {
 	display: block;
@@ -59,8 +60,7 @@ ul > li {
 	border-radius: 5px;
 	border: 2px solid black;    
     position: relative;
-    top : 30%;
-    right : 80%;
+    right : 50%;
 }
 
 
