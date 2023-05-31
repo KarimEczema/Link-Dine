@@ -138,7 +138,6 @@ try{
     // report error message
     echo $e->getMessage();
 }
-
        
     ?>
 
@@ -149,14 +148,21 @@ try{
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 
         <script>
+            const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/';
+            const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
         const getUsernames = async () => {
         try {
+
+
             const response = await fetch(${supabaseUrl}/rest/v1/users, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'apikey': supabaseAnonKey,
                 },
+
+
+                $sql = "SELECT idUsers FROM users"
             });
         if (!response.ok) {
             throw new Error('Failed to fetch usernames');
