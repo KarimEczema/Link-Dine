@@ -45,7 +45,7 @@ try {
                 // Set JWT as a cookie
                 setcookie('jwt', $jwt, time()+3600); 
                 
-                echo '<meta http-equiv="refresh" content="0; url=accueil.php" />';
+                echo '<meta http-equiv="refresh" content="0; url=accueil" />';
                 exit;
             }
             else {
