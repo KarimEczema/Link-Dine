@@ -21,7 +21,7 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin: 10px 10% 0px 0%;
+	margin-top: 10px;
 	width: 750px;
 	height: 150px;
 	list-style: none;

@@ -38,7 +38,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             $img.eq(i).css('display', 'inline'); //on affiche l'image courante
             $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
             $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
-            $img.eq(i+3).css('margin-left','600px').css('display', 'inline'); } else {
+            $img.eq(i+3).css('margin-left','600px').css('display', 'inline'); } 
+            else {
             i = 0;
             }
         });
@@ -101,7 +102,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                         <p><b>  [Nom]</b> [Statut] </p>
                         <div class="scroll-container"> 
                             <div class="scroll-page" id="formation"> 
-                                <h6>Description<button type="button" onclick="textecache('span_text1');">...</button> </h6> 
+                                <h6>Description<button type="button" onclick="textecache('span_text');">...</button> </h6> 
                                 <span id="span_text" style="display: none";>Suite de la description trop longue</span> 
                             </div> 
                         </div> 
