@@ -112,19 +112,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "Ajout-formation">
 
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <div class="row">
-            <div class="col-sm-4" style = "background-color : purple">
-                <h5 style="margin-top:15%">Date de début :</h5>
-                <input type="date" name="Formation-debut" value="2023-06-06" min="1960-01-01" max="2023-12-31" style="margin : 15%">
-                <br>
-                <h5>Date de fin :</h5>
-                <input type="date" name="Formation-fin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
-            </div>
-            <div class="col-sm-8" style="background-color: grey"> 
-               <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
-               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
-           </div>
-           
+        <div style = "background-color: grey; margin:2%"><h5>Nom d'utilisateur : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
+               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Mot de Passe : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
        </div>
        <button type="submit"  style = " margin-top : 2%;">Publier</button>
 
