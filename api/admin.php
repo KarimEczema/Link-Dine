@@ -13,7 +13,6 @@ include 'admin-check.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js"></script>
 
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $img = $('#carrousel img');
@@ -87,7 +86,7 @@ include 'admin-check.php';
 		<div class="container-fluid">
 			<div class="row">
 				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="121" height="49.5"></div>
+				 <div class="col-sm" ><img src="" width="121" height="49.5"></div>
 			</div>		
 		</div>
 	</header>
@@ -155,6 +154,8 @@ try{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
     <script>
+        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
 
 const getUsernames = async () => {
@@ -186,7 +187,7 @@ $(document).ready(async function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
 		
 
-        deleteRow(users,getUserIdFromUsername(users,sentTo));
+        //deleteRow(users,getUserIdFromUsername(users,sentTo));
     });
 });
 
