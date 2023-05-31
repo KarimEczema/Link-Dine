@@ -3,7 +3,6 @@
 include 'admin-check.php';
 
 
-
 echo '<html>';
 echo '<head>';
 echo '<title>Admin</title>';
@@ -12,7 +11,8 @@ echo '<title>Admin</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
+echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E></script>';
+echo '<script src="js/delete.js"></script>';
 ?>
 
 <script type="text/javascript">
@@ -81,6 +81,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 </script>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+
 <body>
 	<header>
 		<div class="container-fluid">
@@ -140,32 +141,60 @@ try{
     // report error message
     echo $e->getMessage();
 }
-
        
     ?>
 
+      <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+      
+<select id="userSelect" placeholder="Select user to send to">
+        <!-- User options will be dynamically inserted here -->
+    </select><br>
 
+    <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
 
-    <nav class = "Supp-compte">
-
-        <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-        <form action="#">
-            <select name="languages" id="lang">
-            <option value="javascript">JavaScript</option>
-            <option value="php">PHP</option>
-            <option value="java">Java</option>
-            <option value="golang">Golang</option>
-            <option value="python">Python</option>
-            <option value="c#">C#</option>
-            <option value="C++">C++</option>
-            <option value="erlang">Erlang</option>
-            </select>
-        </form>
-       <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
-
-    </nav>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
+    <script>
+        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+
+
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        const data = await response.json();
+        return data.map(user => user.username); // assuming each user has a 'username' field
+        } catch (error) {
+        console.error('Error:', error.message);
+        
+    }
+};
+
+
+$(document).ready(async function() {
+    // Get the list of users and populate the select dropdown
+    const usernames = await getUsernames();
+    usernames.forEach((user) => {
+        $('#userSelect').append(new Option(user, user));
+    });
+
+    $('#sendButton').click(function() {
+        const sentTo = $('#userSelect').val(); // Get the selected username
+		
+
+        deleteRow(users,getUserIdFromUsername(users,sentTo));
+    });
+});
+
+
+    </script>
+
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
