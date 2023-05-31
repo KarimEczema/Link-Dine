@@ -205,58 +205,6 @@ $(document).ready(async function() {
     });
 });
 
-function getUserIdFromUsername(username) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: `${supabaseUrl}/rest/v1/users?username=eq.${username}`,
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-            success: function(data) {
-                if (data && data.length > 0) {
-                    resolve(data[0].id);  // assuming each user has an 'id' field
-                } else {
-                    reject('No such user');
-                }
-            },
-            error: function(error) {
-                reject(error);
-            }
-        });
-    });
-}
-
-function deleteRow(userId) {
-    $.ajax({
-        url: `${supabaseUrl}/rest/v1/users?id=eq.2`,
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'apikey': supabaseAnonKey,
-        },
-        success: function(data) {
-            alert('User deleted successfully');
-            // you may want to refresh the dropdown here
-        },
-        error: function(error) {
-            console.error('Error:', error.message);
-        }
-    });
-}
-
-// modify the click event handler
-$('#sendButton').click(async function() {
-    const sentTo = $('#userSelect').val(); // Get the selected username
-    try {
-        const userId = await getUserIdFromUsername(sentTo);
-        deleteRow(userId);
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-});
-
     </script>
 
 	<footer>
