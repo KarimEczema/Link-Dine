@@ -129,6 +129,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</ul>
 
 		<!-- Recuperer les noms, les liens et statut + description en php.-->
+        <!-- Recuperer les noms, les liens et statut + description en php.-->
 
 	</div>
 	<div id="buttons">
