@@ -25,9 +25,10 @@ try{
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            if($stmt->rowCount()){
+            // assuming that you have 'password' field in your 'users' table
+            if(password_verify($_POST['password'], $user['password'])){
                 session_start();
-                $_SESSION['username'] = $NomUtilisateur;
+                $_SESSION['username'] = $user['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }
@@ -40,7 +41,6 @@ try{
         }
     }
 }
-
 catch (PDOException $e){
     // report error message
     echo $e->getMessage();
