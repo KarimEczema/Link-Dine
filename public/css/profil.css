@@ -2,7 +2,6 @@ body{
 	/* Style pour le corps général*/
 	margin-left : 25%;
 	margin-right : 25%;
-	text-align : center;
 }
 
 header{
@@ -25,13 +24,14 @@ header{
 	width: 750px;
 	height: 150px;
 	list-style: none;
-	margin-bottom: 0;
+    list-style-position: outside;
 }
 #carrousel ul {
 	position: relative;
 }
 ul > li {
 	list-style-type: none;
+    list-style-position: outside;
 	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
@@ -72,9 +72,8 @@ ul > li {
 
 .scroll-page {
     width: 100%;
-    text-align: left;
+    text-align: center;
     height: 50%;
-
     margin-top: 10px;
 }
 footer{
