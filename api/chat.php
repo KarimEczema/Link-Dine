@@ -158,30 +158,33 @@ const getUsernames = async () => {
         console.error('Error:', error.message);
     }
 };
-        $(document).ready(function() {
+$(document).ready(async function() {
+          // Get the list of users and populate the select dropdown
+          const usernames = await getUsernames();
+          usernames.forEach((user) => {
+              $('#userSelect').append(new Option(user, user));
+          });
+
           $('#sendButton').click(async function() {
-              // Instead of taking username from user input, we are taking it from the login-check.php script
               const message = $('#userInput').val().trim();
+              const sentTo = $('#userSelect').val(); // Get the selected username
 
               if (message === '') {
                   alert('Message is required!');
                   return;
               }
 
-              const usernames = await getUsernames();
-              if (usernames.length === 0) {
-                  alert('No users to send message to!');
+              if (!sentTo) {
+                  alert('Please select a user to send message to!');
                   return;
               }
 
-              const sentTo = usernames[0]; // pick the first username, or change this to suit your needs
               await sendMessage(username, message, sentTo);
               await receiveMessages();
           });
 
           setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
       });
-
 
 
     </script>
