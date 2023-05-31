@@ -1,4 +1,6 @@
 <?php
+
+
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
 $dbname = "verceldb";
@@ -109,38 +111,67 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</nav>
 	
-	<nav class = "Ajout-formation">
+	<nav class = "Ajout-compte">
 
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <div class="row">
-            <div class="col-sm-4" style = "background-color : purple">
-                <h5 style="margin-top:15%">Date de début :</h5>
-                <input type="date" name="Formation-debut" value="2023-06-06" min="1960-01-01" max="2023-12-31" style="margin : 15%">
-                <br>
-                <h5>Date de fin :</h5>
-                <input type="date" name="Formation-fin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
-            </div>
-            <div class="col-sm-8" style="background-color: grey"> 
-               <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
-               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
-           </div>
-           
-       </div>
-       <button type="submit"  style = " margin-top : 2%;">Publier</button>
+        <form method="post" action="">
+        <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
+
+       <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Creer">
+        </form>
+    </nav>
+
+    <?php
+        
+try{
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // if form is submitted
+    if($_POST){
+        if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
+            // query to add new user
+            $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':nom', $_POST['nom']);
+            $stmt->bindParam(':email', $_POST['email']);
+            $stmt->execute();
+
+            echo "Utilisateur ajouté !";
+        }
+    }
+}catch (PDOException $e){
+    // report error message
+    echo $e->getMessage();
+}
+
+       
+    ?>
+
+
+
+    <nav class = "Supp-compte">
+
+        <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+        <form action="#">
+            <select name="languages" id="lang">
+            <option value="javascript">JavaScript</option>
+            <option value="php">PHP</option>
+            <option value="java">Java</option>
+            <option value="golang">Golang</option>
+            <option value="python">Python</option>
+            <option value="c#">C#</option>
+            <option value="C++">C++</option>
+            <option value="erlang">Erlang</option>
+            </select>
+        </form>
+       <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
 
     </nav>
-	
-	<nav class = "section">
 
-		<div id = "ajout">
-			<button type="" style = "text-align : center; color:red"> Ajouter un compte</button>
-		</div>
-
-        <div id = "suppr">
-			<button type="" style = "text-align : center; color:red"> Supprimer un compte</button>
-		</div>
-		
-	</nav>
 	
 	<footer>
 		<div class="container-fluid">
