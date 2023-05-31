@@ -12,6 +12,8 @@ echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
 ?>
+<script>                import { createClient } from '@supabase/supabase-js';
+</script>
 
 
 <script type="text/javascript">
@@ -154,8 +156,7 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
                 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-                const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-        
+                const supabaseAnonKey = 'https://eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
         
         const getUsernames = async () => {
             try {
@@ -195,7 +196,7 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
+                        'apikey': supabaseAnonKey,
                     },
             })
             .then(response2 => response2.json())
