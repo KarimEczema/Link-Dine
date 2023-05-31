@@ -10,8 +10,7 @@ echo '<title>Admin</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-echo '<script const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";></script>';
-echo '<script const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw"></script>';
+echo'<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
 ?>
 
 <script type="text/javascript">
@@ -142,54 +141,54 @@ try{
        
     ?>
 
-<script>
-        
-        const getUsernames = async () => {
-    try {
-
-
-        const response = await fetch(${supabaseUrl}/rest/v1/users, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-
-        });
-    if (!response.ok) {
-        throw new Error('Failed to fetch usernames');
-    }
-    const data = await response.json();
-    console.log(data);
-    return data.map(user => user.username); // assuming each user has a 'username' field
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
-
-
-$(document).ready(async function() {
-      const usernames = await getUsernames();
-      usernames.forEach((user) => {
-          $('#ChoixUser').append(new Option(user, user));
-        });
-
-        $('#boutonSuppr').click(async function() {
-          const sentTo = $('#ChoixUser').val(); // Get the selected username
-          if (!sentTo) {
-              alert('Please select a user to send message to!');
-              return;
-          }
-      });
-  });
-
-    </script>
 
 
     <nav class = "Supp-compte">
 
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 
+        <script>
+            const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
+            const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
+        
+            const getUsernames = async () => {
+        try {
+
+
+            const response = await fetch(${supabaseUrl}/rest/v1/users, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': supabaseAnonKey,
+                },
+
+            });
+        if (!response.ok) {
+            throw new Error('Failed to fetch usernames');
+        }
+        const data = await response.json();
+        return data.map(user => user.username); // assuming each user has a 'username' field
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    };
+
+    $(document).ready(async function() {
+          const usernames = await getUsernames();
+          usernames.forEach((user) => {
+              $('#ChoixUser').append(new Option(user, user));
+            });
+
+            $('#boutonSuppr').click(async function() {
+              const sentTo = $('#ChoixUser').val(); // Get the selected username
+              if (!sentTo) {
+                  alert('Please select a user to send message to!');
+                  return;
+              }
+          });
+      });
+
+        </script>
 
         <select id="ChoixUser" placeholder="Choisissez l'utilisateur à supprimer :"></select>
         <button type="submit"  style = " margin-top : 2%;" id="boutonSuppr">Supprimer le compte</button>
