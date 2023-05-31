@@ -19,7 +19,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 <body>
 
-    <script> Console.log(idUser); </script>
+    <script> console.log($idUser); </script> 
  
     <!-- Header avec inclusions nécessaires -->
     <header> 
