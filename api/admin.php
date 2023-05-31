@@ -157,40 +157,57 @@ try{
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-
-const getUsernames = async () => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+function getUserIdFromUsername(username) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${supabaseUrl}/rest/v1/users?username=eq.${username}`,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
+            success: function(data) {
+                if (data && data.length > 0) {
+                    resolve(data[0].id);  // assuming each user has an 'id' field
+                } else {
+                    reject('No such user');
+                }
+            },
+            error: function(error) {
+                reject(error);
+            }
         });
-        const data = await response.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
-        } catch (error) {
+    });
+}
+
+function deleteRow(userId) {
+    $.ajax({
+        url: `${supabaseUrl}/rest/v1/users?id=eq.${userId}`,
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': supabaseAnonKey,
+        },
+        success: function(data) {
+            alert('User deleted successfully');
+            // you may want to refresh the dropdown here
+        },
+        error: function(error) {
+            console.error('Error:', error.message);
+        }
+    });
+}
+
+// modify the click event handler
+$('#sendButton').click(async function() {
+    const sentTo = $('#userSelect').val(); // Get the selected username
+    try {
+        const userId = await getUserIdFromUsername(sentTo);
+        deleteRow(userId);
+    } catch (error) {
         console.error('Error:', error.message);
-        
     }
-};
-
-
-$(document).ready(async function() {
-    // Get the list of users and populate the select dropdown
-    const usernames = await getUsernames();
-    usernames.forEach((user) => {
-        $('#userSelect').append(new Option(user, user));
-    });
-
-    $('#sendButton').click(function() {
-        const sentTo = $('#userSelect').val(); // Get the selected username
-		
-
-        deleteRow(users,getUserIdFromUsername(users,sentTo));
-    });
 });
-
 
     </script>
 
