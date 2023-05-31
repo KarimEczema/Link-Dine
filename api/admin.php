@@ -112,50 +112,17 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</nav>
 	
 	<nav class = "Ajout-compte">
-<!--
+
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
+        <form method="post" action="">
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;" name="ajouter" value="ajouter">Créer le compte</button> -->
-
-       <form method="post" action="">
-  New Username:<br>
-  <input type="text" name="NewNomUtilisateur">
-  <br>
-  New Password:<br>
-  <input type="password" name="NewMdp">
-  <br><br>
-  <input type="submit" name="add" value="Add User">
-</form>
-
+       <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Créer le compte">
+        </form>
     </nav>
 
-
     <?php
-    /*
-    try{
-        $conn = new PDO($dsn);
-        // Si condition
-
-        echo $_POST['ajouter'];
-        if (isset($_POST['ajouter'])) {
-
-            echo '<script>alert("POULOULOU")</script>';
-            $username = $_POST['nom'];
-            $Email = $_POST['email'];
-       
-            $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$username, $Email]);
-       
-            echo '<script>alert("Ligne insérée avec succès !")</script>';
-          }
-        }
-        catch(PDOException $e){
-            echo $e->getMessage();
-        }*/
-
         
 try{
     // create a PostgreSQL database connection
@@ -163,20 +130,19 @@ try{
 
     // if form is submitted
     if($_POST){
-        if(isset($_POST['add']) && $_POST['add'] == 'Add User') {
+        if(isset($_POST['add']) && $_POST['add'] == 'ajouter') {
             // query to add new user
-            $sql = "INSERT INTO users (username, password) VALUES (:NomUtilisateur, :Mdp)";
+            $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
-            $stmt->bindParam(':NomUtilisateur', $_POST['NewNomUtilisateur']);
-            $stmt->bindParam(':Mdp', $_POST['NewMdp']);
+            $stmt->bindParam(':nom', $_POST['nom']);
+            $stmt->bindParam(':email', $_POST['email']);
             $stmt->execute();
 
-            echo "User added successfully!";
+            echo "Utilisateur ajouté !";
         }
     }
-
 }catch (PDOException $e){
     // report error message
     echo $e->getMessage();
