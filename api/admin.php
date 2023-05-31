@@ -109,28 +109,24 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</nav>
 	
-	<nav class = "Ajout-formation">
+	<nav class = "Ajout-compte">
 
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <div style = "background-color: grey; margin:2%"><h5>Nom d'utilisateur : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
-        <div style = "background-color: grey; margin:2%"><h5>Nom d'utilisateur : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
-
-       </div>
-       <button type="submit"  style = " margin-top : 2%;">Publier</button>
+        <div style = "background-color: grey; margin-top:2%"><h5>Nom d'utilisateur : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin:2%"><h5>Mot de passe : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
+        
+       <button type="submit"  style = " margin-top : 2%;">Créer le compte</button>
 
     </nav>
-	
-	<nav class = "section">
 
-		<div id = "ajout">
-			<button type="" style = "text-align : center; color:red"> Ajouter un compte</button>
-		</div>
+    <nav class = "Supp-compte">
 
-        <div id = "suppr">
-			<button type="" style = "text-align : center; color:red"> Supprimer un compte</button>
-		</div>
-		
-	</nav>
+        <h1 style = "margin-top : 5% ">Supprimer un utilisateur</h1>
+        
+       <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
+
+    </nav>
+
 	
 	<footer>
 	
