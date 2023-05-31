@@ -142,12 +142,123 @@ try{
     ?>
 
 
+<select id="userSelect" placeholder="Select user to send to">
+        <!-- User options will be dynamically inserted here -->
+    </select><br>
 
+    <button id="sendButton">Send</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+
+const sendMessage = async (username, message, sentTo) => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
+        console.log('Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch usernames');
+        }
+
+        const data = await response.json();
+
+
+
+        return data.map(user => user.username); // assuming each user has a 'username' field
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+      const receiveMessages = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch messages');
+        }
+
+        const data = await response.json();
+
+        $('#chatbox').empty();
+        data.forEach(msg => {
+            $('#chatbox').prepend(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+$(document).ready(async function() {
+          // Get the list of users and populate the select dropdown
+          const usernames = await getUsernames();
+          usernames.forEach((user) => {
+              $('#userSelect').append(new Option(user, user));
+          });
+
+          $('#sendButton').click(async function() {
+              const message = $('#userInput').val().trim();
+              const sentTo = $('#userSelect').val(); // Get the selected username
+
+              if (message === '') {
+                  alert('Message is required!');
+                  return;
+              }
+
+              if (!sentTo) {
+                  alert('Please select a user to send message to!');
+                  return;
+              }
+
+              await sendMessage(username, message, sentTo);
+              await receiveMessages();
+          });
+
+          setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
+      });
+
+
+    </script>
     <nav class = "Supp-compte">
 
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 
-        <script>
+        <script>/*
             const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
             const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
             const supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
@@ -163,7 +274,7 @@ try{
                 console.error('Error:', error.message);
             }
         }
-        
+
     $(document).ready(async function() {
           const usernames = await getUsernames();
           usernames.forEach((user) => {
@@ -177,7 +288,7 @@ try{
                   return;
               }
           });
-      });
+      });*/
 
         </script>
 
