@@ -1,0 +1,14 @@
+{
+  "name": "link-dine",
+  "version": "1.0.0",
+  "description": "Link-Dine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.24.0"
+  }
+}

@@ -1,4 +1,7 @@
 <?php
+
+include 'login-check.php';
+
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
 $dbname = "verceldb";
@@ -107,6 +110,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				</div>		
 		</div>
 	</nav>
+
+	<a href="admin" style = "border : solid; color: black; padding:2px">Accueil</a>
 	
 	
 	
