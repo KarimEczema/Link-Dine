@@ -112,8 +112,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "Ajout-compte">
 
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <div style = "background-color: grey; margin-top:2%"><h5>Nom d'utilisateur : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
-        <div style = "background-color: grey; margin:2%"><h5>Mot de passe : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin-top:2%"><h5>Nom d'utilisateur : <input type="text" name="username" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
        <button type="submit"  style = " margin-top : 2%;">Créer le compte</button>
 
