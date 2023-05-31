@@ -109,7 +109,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	
 	
 	
-	<div id = "friends">
+	<div id = "friends" style = "margin-top : 10%;">
 		<h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>	
 	</div>
 	<div id="carrousel">
