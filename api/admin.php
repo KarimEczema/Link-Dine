@@ -85,7 +85,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 </script>
 </head>
 
-<!-- <link href="css/accueil.css" rel="stylesheet" type="text/css"/> -->
+<link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
