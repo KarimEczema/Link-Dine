@@ -187,27 +187,21 @@ $(document).ready(async function() {
 });
 
 
-function deleteUsername(username) {
-    try {
-        const response2 = await fetch(`${supabaseUrl}/rest/v1/users`, {
+function deleteUsername(usernameVar) {
+     fetch(`${supabaseUrl}/rest/v1/users`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
-        });
-        const data = await response2.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
-        } catch (error) {
-        console.error('Error:', error.message);
-        
-    }
-    .then(response2 => response2.json())
+        body: JSON.stringify({
+            username: usernameVar, // replace 'username' with your actual column name
+        })
+    })
+    .then(response => response.json())
     .then(data => console.log('User deleted successfully: ', data))
     .catch(error => console.error('Error deleting user: ', error));
 }
-
-
     </script>
 
 	<footer>
