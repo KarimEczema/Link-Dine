@@ -8,6 +8,7 @@
     { "src": "/$", "dest": "/api/index.php" },
     { "src": "/accueil", "dest": "/api/accueil.php" },
     { "src": "/vous", "dest": "/api/vous.php" },
+    { "src": "/notifications", "dest": "/api/notifications.php" },
     { "src": "/emplois", "dest": "/api/emplois.php" },
     { "src": "/reseau", "dest": "/api/reseau.php" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" },
