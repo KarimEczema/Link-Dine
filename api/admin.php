@@ -123,7 +123,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         $conn = new PDO($dsn);
         echo '<script>alert("POULOULOU")</script>';
         // Si condition
-        if(isset($_GET['bouton']))
+        if(isset($_POST['bouton']))
         {
             echo '<script>alert("Welcome to Geeks for Geeks")</script>';
             // Requête de base
