@@ -25,7 +25,7 @@ if (isset($_COOKIE['jwt'])) {
         echo '<script>';
         echo 'var username = "' . $idUser . '";';
         echo '</script>';
-        echo "Logged in as: " . $idUser;
+        
     } catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message
@@ -40,8 +40,5 @@ if (isset($_COOKIE['jwt'])) {
     header('Location: index.php');
     exit;
 }
-echo '<script>';
-echo 'var console.log(username);';
-echo '</script>';
 
 ?>

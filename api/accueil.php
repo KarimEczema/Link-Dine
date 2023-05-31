@@ -19,7 +19,7 @@ echo '<title>Your Page Title</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
+echo "Logged in as: " . $idUser;
 ?>
 
 <script type="text/javascript">
