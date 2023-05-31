@@ -28,10 +28,13 @@ if (isset($_COOKIE['jwt'])) {
         $decoded = JWT::decode($jwt, $secretKey);
         
         // Get the username from the decoded payload
-        $username = $decoded->username;
+        $idUser = $decoded->idUser;
         
+        echo '<script>';
+        echo 'var idUser = "' . $idUser . '";';
+        echo '</script>';
         // Continue processing or redirect to authenticated page
-        echo "Logged in as: " . $username;
+        echo "Logged in as: " . $idUser;
     } catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message

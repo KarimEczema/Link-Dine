@@ -13,9 +13,13 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 ?>
 
+
+
 </head>
 
 <body>
+
+    <script> Console.log(idUser); </script>
  
     <!-- Header avec inclusions nécessaires -->
     <header> 
