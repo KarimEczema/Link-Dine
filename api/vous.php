@@ -24,16 +24,14 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 	</header>
 	
 	<nav class = "navigation">
-		<div class="container-fluid">
-				<div class="row">
-					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-3"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-					 <div class="col-sm-1"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
-					 <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
-				</div>		
-		</div>
+		<ul id="liste1">
+		  <li><a href="acceuil">Acceuil</a></li>
+		  <li><a href="reseau">Mon réseau</a></li>
+		  <li><a href="vous">Vous</a></li>
+		  <li><a href="notifications">Notifications</a></li>
+		  <li><a href="messages">Messageries</a></li>
+		  <li><a href="emplois">Emplois</a></li>
+		</ul>
 	</nav>
  
     <!-- Profil --> 
@@ -121,7 +119,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 
 
-<!-- CV -->
+    <!-- CV -->
 
     <nav class = "CV" style="margin-top:2%"> 
         
@@ -198,7 +196,4 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 			</div>
 		</div>
 	</footer>
- 
 </body> 
- 
-</html> 

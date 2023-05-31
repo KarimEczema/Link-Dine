@@ -1,9 +1,8 @@
 <?php include 'login-check.php'; 
 
 ?>
-<!DOCTYPE html> 
-<html> 
 
+<?php
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 
@@ -17,7 +16,7 @@ echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 
 ?>
- 
+
 <script type="text/javascript"> 
     function textecache(ntexte){ 
         var span =document.getElementById(ntexte); 
@@ -35,64 +34,60 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
 <body> 
-<header> 
-    <div class="container-fluid"> 
-        <div class="row"> 
-            <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div> 
-            <div class="col-sm" ><img src="LogECE.png" width="121" height="49.5"></div> 
+    <header> 
+        <div class="container-fluid"> 
+            <div class="row"> 
+                <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div> 
+                <div class="col-sm" ><img src="LogECE.png" width="121" height="49.5"></div> 
+            </div> 
         </div> 
-    </div> 
-</header> 
+    </header> 
 
-<nav class = "navigation"> 
-    <div class="container-fluid"> 
-        <div class="row"> 
-            <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div> 
-            <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div> 
-            <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div> 
-            <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div> 
-            <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div> 
-            <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div> 
+    <nav class = "navigation">
+		<ul id="liste1">
+		  <li><a href="acceuil">Acceuil</a></li>
+		  <li><a href="reseau">Mon réseau</a></li>
+		  <li><a href="vous">Vous</a></li>
+		  <li><a href="notifications">Notifications</a></li>
+		  <li><a href="messages">Messageries</a></li>
+		  <li><a href="emplois">Emplois</a></li>
+		</ul>
+	</nav>
+
+
+
+    <nav class = "section"> 
+        <div id = "Emplois"> 
+            <h5> Offres d'emploi</h5> 
         </div> 
-    </div> 
-</nav> 
-
-
-
-<nav class = "section"> 
-    <div id = "Emplois"> 
-        <h5> Offres d'emploi</h5> 
-    </div> 
  
-    <div class="scroll-container"> 
-        <div class="scroll-page" id="formation-1"> 
-            <h5><B>Intitulé du poste</B>$sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";</h5> 
-            <h6>Type de contrat </h6> <br> 
-            <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
-            <span id="span_text1" style="display: none";>Suite de la description trop longue</span> 
-            <h6>Salaire</h6> 
+        <div class="scroll-container"> 
+            <div class="scroll-page" id="formation-1"> 
+                <h5><B>Intitulé du poste</B>Employeur</h5> 
+                <h6>Type de contrat </h6> <br> 
+                <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
+                <span id="span_text1" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
+            </div> 
+            <div class="scroll-page" id="formation-2"> 
+                <h5><B>Intitulé du poste</B>- Employeur </h5> 
+                <h6>Type de contrat </h6> <br> 
+                <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6> 
+                <span id="span_text2" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
+            </div> 
+            <div class="scroll-page" id="formation-3"> 
+                <h5><B>Intitulé du poste</B>- Employeur </h5> 
+                <h6>Type de contrat </h6> <br> 
+                <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6> 
+                <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
+            </div> 
         </div> 
-        <div class="scroll-page" id="formation-2"> 
-            <h5><B>Intitulé du poste</B>- Employeur </h5> 
-            <h6>Type de contrat </h6> <br> 
-            <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6> 
-            <span id="span_text2" style="display: none";>Suite de la description trop longue</span> 
-            <h6>Salaire</h6> 
-        </div> 
-        <div class="scroll-page" id="formation-3"> 
-            <h5><B>Intitulé du poste</B>- Employeur </h5> 
-            <h6>Type de contrat </h6> <br> 
-            <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-            <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
-            <h6>Salaire</h6> 
-        </div> 
-    </div> 
+    </nav> 
 
 
-</nav> 
-
-
-<footer>
+    <footer>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
@@ -110,6 +105,5 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 			</div>
 		</div>
 	</footer>
-</body> 
-</html> 
+</body>
  

@@ -62,16 +62,14 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</header>
 	
 	<nav class = "navigation">
-		<div class="container-fluid">
-				<div class="row">
-					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Réseau</a></div>
-					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
-					 <div class="col-sm-2"><a href="notifs" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
-				</div>
-		</div>
+		<ul id="liste1">
+		  <li><a href="acceuil">Acceuil</a></li>
+		  <li><a href="reseau">Mon réseau</a></li>
+		  <li><a href="vous">Vous</a></li>
+		  <li><a href="notifications">Notifications</a></li>
+		  <li><a href="messages">Messageries</a></li>
+		  <li><a href="emplois">Emplois</a></li>
+		</ul>
 	</nav>
 	
 	
@@ -81,7 +79,11 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</div>
 	<div id="carrousel">
 		<ul style ="list-style-type : none;">
-			<li><img src="images/Celeste.png" width="120" height="100"></li>
+			<li>
+				<a href="profil">
+				<img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z"" width="120" height="100">
+				</a>
+			</li>
 			<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 			<li><img src="images/CelesteScare.png" width="120" height="100"></li>
 			<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
@@ -124,5 +126,4 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</footer>
 </body>
-</html>
 
