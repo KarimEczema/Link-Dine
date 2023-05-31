@@ -27,7 +27,7 @@ try{
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // assuming that your password field is 'Mdp'
-            if(password_verify($_POST['password'], $user['Mdp'])){
+            if(password_verify($_POST['Mdp'], $user['Mdp'])){
                 session_start();
                 $_SESSION['username'] = $user['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
