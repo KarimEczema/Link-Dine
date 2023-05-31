@@ -189,7 +189,7 @@ $(document).ready(async function() {
 
 function deleteUsername(usernameVar) {
     console.log(usernameVar);
-     fetch(`${supabaseUrl}/rest/v1/users` + '/' + usernameVar, {
+     fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co` + '/' + usernameVar, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
