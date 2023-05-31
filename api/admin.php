@@ -12,8 +12,6 @@ include 'admin-check.php';
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 
-
-<script src="js/delete.js" ></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $img = $('#carrousel img');
@@ -155,6 +153,9 @@ try{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
     <script>
+
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
 
 const getUsernames = async () => {
