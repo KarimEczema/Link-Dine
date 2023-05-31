@@ -112,13 +112,23 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "Ajout-compte">
 
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <div style = "background-color: grey; margin-top:2%"><h5>Nom d'utilisateur : <input type="text" name="nom" style="margin : 5%"> </h5></div>
-        <div style = "background-color: grey; margin-top:2%"><h5>Pseudo : <input type="text" name="username" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;">Créer le compte</button>
+       <button type="submit"  style = " margin-top : 2%;" name="bouton1">Créer le compte</button>
 
     </nav>
+
+    <?php
+        $conn = new PDO($dsn);
+    
+        // if form is submitted
+        if(isset($_POST['bouton1'])){  
+            // query to check if NomUtilisateur and Mdp are correct
+            $sql = "INSERT INTO users (username, password) VALUES (nom, email)";
+        }
+        
+    ?>
 
     <nav class = "Supp-compte">
 
