@@ -113,7 +113,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	
 	<nav class = "section">
 		<div id = "Event">
-			<h5 style = "text-align : center; color:red"> Evennements</h5>
+			<h5 style = "text-align : center; color:red"> Evenements</h5>
 			
 		</div>
 		<div id="carrousel">
