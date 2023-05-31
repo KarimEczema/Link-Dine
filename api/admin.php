@@ -209,7 +209,7 @@ function getUserIdFromUsername(username) {
 
 function deleteRow(userId) {
     $.ajax({
-        url: `${supabaseUrl}/rest/v1/users?id=eq.${userId}`,
+        url: `${supabaseUrl}/rest/v1/users?id=eq.2`,
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
