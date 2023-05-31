@@ -30,7 +30,7 @@ try{
             // assuming that your password field is 'Mdp'
             if($_POST['Mdp'] === $user['password']){
                 session_start();
-                $_SESSION['username'] = $user['NomUtilisateur'];
+                $_SESSION['username'] = $user['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }
