@@ -2,12 +2,10 @@
 
 include 'login-check.php';
 
-
 echo '<html>';
 echo '<head>';
 echo '<title>Your Page Title</title>';
 
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
@@ -21,8 +19,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f3f3f3;
-            color: #444;
+            background: #222274;
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
@@ -33,38 +31,53 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         }
 
         #chatbox {
-            max-width: 500px;
+            max-width: 60%;
             width: 100%;
-            height: 400px;
+            height: 100vh;
             border-radius: 10px;
             padding: 20px;
-            background: #fff;
+            background: #4444fc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
-            margin-bottom: 20px;
         }
 
-        #usernameInput, #userInput {
-            width: 100%;
+        #userInput {
+            position: fixed;
+            bottom: 0;
+            width: 60%;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
+            border: none;
             box-sizing: border-box;
+            background: #4040a7;
+            color: #fff;
         }
 
-        #sendButton {
-            background-color: #3498db;
+        .usernameButton {
+            background-color: #4d4de0;
             color: #fff;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        #sendButton:hover {
-            background-color: #2980b9;
+        .usernameButton.active {
+            background-color: #5353bd;
+        }
+
+        #userSelect {
+            max-width: 30%;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px;
+            background: #222274;
+            position: fixed;
+            right: 0;
+            top: 0;
         }
     </style>
 </head>
@@ -72,126 +85,53 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     <div id="chatbox">
         <!-- Messages will be dynamically inserted here -->
     </div>
-
-    <select id="userSelect" placeholder="Select user to send to">
+    <div id="userSelect">
         <!-- User options will be dynamically inserted here -->
-    </select><br>
-
+    </div>
     <input type="text" id="userInput" placeholder="Type your message..." />
-
-    <button id="sendButton">Send</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
-const sendMessage = async (username, message, sentTo) => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to send message');
-        }
-
-        console.log('Message sent successfully');
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
-
-
-const getUsernames = async () => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-        });
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch usernames');
-        }
-
-        const data = await response.json();
-
-
-
-        return data.map(user => user.username); // assuming each user has a 'username' field
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
-
-
-const receiveMessages = async (sentTo) => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?sentTo=eq.${sentTo}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch messages');
-        }
-
-        let data = await response.json();
-
-        // Sort the data based on the 'time' field in descending order (newest first)
-        data.sort((a, b) => new Date(b.time) - new Date(a.time));
-
-        $('#chatbox').empty();
-        data.forEach(msg => {
-            $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
-        });
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
-
-
-$(document).ready(async function() {
-          // Get the list of users and populate the select dropdown
+      // Existing code here...
+      $(document).ready(async function() {
           const usernames = await getUsernames();
           usernames.forEach((user) => {
-              $('#userSelect').append(new Option(user, user));
+              let userButton = $(`<button class='usernameButton'>${user}</button>`);
+              userButton.click(function() {
+                  $('.usernameButton').removeClass('active');
+                  $(this).addClass('active');
+                  receiveMessages(user);
+              });
+              $('#userSelect').append(userButton);
           });
 
-          $('#sendButton').click(async function() {
-    const message = $('#userInput').val().trim();
-    const sentTo = $('#userSelect').val(); // Get the selected username
+          $('#userInput').keypress(async function(e) {
+              if(e.which == 13) { // Enter key pressed
+                  const message = $(this).val().trim();
+                  const sentTo = $('.usernameButton.active').text();
 
-    if (message === '') {
-        alert('Message is required!');
-        return;
-    }
+                  if (message === '') {
+                      alert('Message is required!');
+                      return;
+                  }
 
-    if (!sentTo) {
-        alert('Please select a user to send message to!');
-        return;
-    }
+                  if (!sentTo) {
+                      alert('Please select a user to send message to!');
+                      return;
+                  }
 
-    await sendMessage(username, message, sentTo);
-    await receiveMessages(sentTo); // Pass selected user to the function
-});
-setInterval(() => receiveMessages($('#userSelect').val()), 1000); // Poll server every 3 seconds for new messages
+                  await sendMessage(username, message, sentTo);
+                  $(this).val(''); // Clear the input field
+              }
+          });
 
-
+          setInterval(() => {
+              const activeUser = $('.usernameButton.active').text();
+              if (activeUser) {
+                  receiveMessages(activeUser);
+              }
+          }, 1000); // Poll server every 3 seconds for new messages
       });
-
-
     </script>
 </body>
 </html>
