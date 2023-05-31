@@ -139,8 +139,29 @@ try{
     // report error message
     echo $e->getMessage();
 }
-       
     ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#sendButton").click(function(){
+        var username = $("#userSelect").val();
+
+        $.ajax({
+            url: 'delete.php', // path to your PHP script
+            type: 'post',
+            data: {username: username},
+            success: function(response) {
+                alert(response);
+                // Refresh the page or do other things here
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+               console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
 
       <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
       
