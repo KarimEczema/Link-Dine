@@ -33,7 +33,7 @@ try {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // assuming that your password field is 'Mdp'
-            if($_POST['Mdp'] === $user['email']){
+            if($_POST['email'] === $user['email']){
                 // Generate JWT token
                 // Your secret key
                 $secretKey = '123';
