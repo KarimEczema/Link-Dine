@@ -92,8 +92,86 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      // Existing code here...
-      $(document).ready(async function() {
+      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+
+const sendMessage = async (username, message, sentTo) => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
+        console.log('Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch usernames');
+        }
+
+        const data = await response.json();
+
+
+
+        return data.map(user => user.username); // assuming each user has a 'username' field
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+const receiveMessages = async (sentTo) => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?sentTo=eq.${sentTo}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch messages');
+        }
+
+        let data = await response.json();
+
+        // Sort the data based on the 'time' field in descending order (newest first)
+        data.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        $('#chatbox').empty();
+        data.forEach(msg => {
+            $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+$(document).ready(async function() {
           const usernames = await getUsernames();
           usernames.forEach((user) => {
               let userButton = $(`<button class='usernameButton'>${user}</button>`);
