@@ -80,7 +80,6 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
 </script>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-	</head>
 
 <body>
 	<header>
