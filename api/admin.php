@@ -2,8 +2,6 @@
 
 include 'login-check.php';
 
-
-
 echo '<html>';
 echo '<head>';
 echo '<title>Admin</title>';
@@ -149,19 +147,46 @@ try{
     <nav class = "Supp-compte">
 
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-        <form action="#">
-            <select name="languages" id="lang">
-            <option value="javascript">JavaScript</option>
-            <option value="php">PHP</option>
-            <option value="java">Java</option>
-            <option value="golang">Golang</option>
-            <option value="python">Python</option>
-            <option value="c#">C#</option>
-            <option value="C++">C++</option>
-            <option value="erlang">Erlang</option>
-            </select>
-        </form>
-       <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
+
+        <script>
+        const getUsernames = async () => {
+        try {
+            const response = await fetch(${supabaseUrl}/rest/v1/users, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': supabaseAnonKey,
+                },
+            });
+        if (!response.ok) {
+            throw new Error('Failed to fetch usernames');
+        }
+        const data = await response.json();
+        return data.map(user => user.username); // assuming each user has a 'username' field
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    };
+
+
+    $(document).ready(async function() {
+          const usernames = await getUsernames();
+          usernames.forEach((user) => {
+              $('#ChoixUser').append(new Option(user, user));
+            });
+
+            $('#boutonSuppr').click(async function() {
+              const sentTo = $('#ChoixUser').val(); // Get the selected username
+              if (!sentTo) {
+                  alert('Please select a user to send message to!');
+                  return;
+              }
+          });
+      });
+
+        </script>
+        <select id="ChoixUser" placeholder="Choisissez l'utilisateur à supprimer :"></select>
+        <button type="submit"  style = " margin-top : 2%;" id="boutonSuppr">Supprimer le compte</button>
 
     </nav>
 
