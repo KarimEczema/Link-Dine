@@ -30,7 +30,7 @@ try{
             if(password_verify($_POST['Mdp'], $user['Mdp'])){
                 session_start();
                 $_SESSION['username'] = $user['username'];
-                echo '<meta http-equiv="refresh" content="0; url= accueil" />';
+                header('Location: accueil');
                 exit;
             }
             else {
