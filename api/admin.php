@@ -10,7 +10,7 @@ echo '<title>Admin</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-echo'<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
+echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
 ?>
 
 <script type="text/javascript">
@@ -174,27 +174,34 @@ const getUsernames = async () => {
 
 
 $(document).ready(async function() {
-          // Get the list of users and populate the select dropdown
-          const usernames = await getUsernames();
-          usernames.forEach((user) => {
-              $('#userSelect').append(new Option(user, user));
-          });
+    // Get the list of users and populate the select dropdown
+    const usernames = await getUsernames();
+    usernames.forEach((user) => {
+        $('#userSelect').append(new Option(user, user));
+    });
 
-          $('#sendButton').click(async function() {
-              const sentTo = $('#userSelect').val(); // Get the selected username
-              const { data, error } = await supabaseAnonKey
-            .from('users') // replace 'users' with the name of your users table
-            .delete()
-            .match({username: sentTo});
-            if (error) {
-            console.log('Error deleting user:', error);
-        } else {
-            console.log('Successfully deleted user:', data);
-        }
+    $('#sendButton').click(function() {
+        const sentTo = $('#userSelect').val(); // Get the selected username
+        deleteUsername(sentTo);
+    });
+});
 
-          });
-
-      });
+function deleteUsername(username) {
+    fetch('https://bmqgiyygwjnnfyrtjkno.supabase.co/rest/v1/users', { // replace with your Supabase URL and table name
+        method: 'DELETE',
+        headers: {
+            'apikey': supabaseAnonKey, // replace with your Supabase Key
+            'Content-Type': 'application/json',
+            'Prefer': 'return=representation',
+        },
+        body: JSON.stringify({
+            username: username, // replace 'username' with your actual column name
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log('User deleted successfully: ', data))
+    .catch(error => console.error('Error deleting user: ', error));
+}
 
 
     </script>
