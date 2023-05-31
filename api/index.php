@@ -76,10 +76,10 @@ if(isset($_POST) && isset($error_message)) {
 ?>
 
 <form method="post" action="">
-  Username:<br>
+  Nom d'utilisateur:<br>
   <input type="text" name="NomUtilisateur">
   <br>
-  Password:<br>
+  Adresse mail:<br>
   <input type="text" name="email">
   <br><br>
   <input type="submit" value="Submit">
