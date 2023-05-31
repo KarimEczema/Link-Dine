@@ -142,53 +142,54 @@ try{
        
     ?>
 
+<script>
+        
+        const getUsernames = async () => {
+    try {
+
+
+        const response = await fetch(${supabaseUrl}/rest/v1/users, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+
+        });
+    if (!response.ok) {
+        throw new Error('Failed to fetch usernames');
+    }
+    const data = await response.json();
+    console.log(data);
+    return data.map(user => user.username); // assuming each user has a 'username' field
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+
+$(document).ready(async function() {
+      const usernames = await getUsernames();
+      usernames.forEach((user) => {
+          $('#ChoixUser').append(new Option(user, user));
+        });
+
+        $('#boutonSuppr').click(async function() {
+          const sentTo = $('#ChoixUser').val(); // Get the selected username
+          if (!sentTo) {
+              alert('Please select a user to send message to!');
+              return;
+          }
+      });
+  });
+
+    </script>
 
 
     <nav class = "Supp-compte">
 
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 
-        <script>
-        
-            const getUsernames = async () => {
-        try {
-
-
-            const response = await fetch(${supabaseUrl}/rest/v1/users, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': supabaseAnonKey,
-                },
-
-            });
-        if (!response.ok) {
-            throw new Error('Failed to fetch usernames');
-        }
-        const data = await response.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
-        } catch (error) {
-            console.error('Error:', error.message);
-        }
-    };
-
-
-    $(document).ready(async function() {
-          const usernames = await getUsernames();
-          usernames.forEach((user) => {
-              $('#ChoixUser').append(new Option(user, user));
-            });
-
-            $('#boutonSuppr').click(async function() {
-              const sentTo = $('#ChoixUser').val(); // Get the selected username
-              if (!sentTo) {
-                  alert('Please select a user to send message to!');
-                  return;
-              }
-          });
-      });
-
-        </script>
 
         <select id="ChoixUser" placeholder="Choisissez l'utilisateur à supprimer :"></select>
         <button type="submit"  style = " margin-top : 2%;" id="boutonSuppr">Supprimer le compte</button>
