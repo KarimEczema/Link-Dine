@@ -1,7 +1,4 @@
 <?php
-
-include 'login-check.php';
-
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
 $dbname = "verceldb";
@@ -88,7 +85,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 </script>
 </head>
 
-<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
+<link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
@@ -112,55 +109,37 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</nav>
 	
-	
+	<nav class = "Ajout-formation">
+
+        <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
+        <div class="row">
+            <div class="col-sm-4" style = "background-color : purple">
+                <h5 style="margin-top:15%">Date de début :</h5>
+                <input type="date" name="Formation-debut" value="2023-06-06" min="1960-01-01" max="2023-12-31" style="margin : 15%">
+                <br>
+                <h5>Date de fin :</h5>
+                <input type="date" name="Formation-fin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
+            </div>
+            <div class="col-sm-8" style="background-color: grey"> 
+               <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div>
+               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
+           </div>
+           
+       </div>
+       <button type="submit"  style = " margin-top : 2%;">Publier</button>
+
+    </nav>
 	
 	<nav class = "section">
-		<div id = "Event">
-			<h5 style = "text-align : center; color:red"> Evennements</h5>
-			
-		</div>
-		<div id="carrousel">
-			<ul style ="list-style-type : none;">
-				<li><img src="images/Celeste.png" width="120" height="100"></li>
-				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="120" height="100"></li>
-				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
-				<li><img src="book9.jpg" width="120" height="100"></li>
-				<li><img src="book10.jpg" width="120" height="100"></li>
-				<li><img src="book11.jpg" width="120" height="100"></li>
-				<li><img src="book12.jpg" width="120" height="100"></li>
-			</ul>
-			<!-- Ce serait cool de mettre une musique ^^ -->
-			<!-- <div id="audio"> -->
-				<!-- <audio controls autoplay loop> -->
-				 <!-- <source src="serenity.mp3" type="audio/ogg"> -->
-				 <!-- <source src="river.mp3" type="audio/mpeg"> -->
-				<!-- </audio> -->
-			<!-- </div> -->
 
+		<div id = "ajout">
+			<button type="" style = "text-align : center; color:red"> Ajouter un compte</button>
 		</div>
-		<div id="buttons">
-			<input type="button" value="<" class="prev">
-			<input type="button" value=">" class="next">
+
+        <div id = "suppr">
+			<button type="" style = "text-align : center; color:red"> Supprimer un compte</button>
 		</div>
-	</nav>
-	
-	<nav class = "post">
-		<form method="post" action="traitement.php">
-			<label for="ameliorer">Creer un post</label><br>
-			<div class="container-fluid">
-				<div class="row">
-					 <div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea></div>
-					 <div class="col-sm-2">
-						<input type="file" id="image" name="image" accept="image/png, image/jpeg" style = "margin-left : 280% ; margin-top : 90%;">
-						<button type="submit"  style = "margin-left : 280%; margin-top : 10%;">Publier</button>
-					 </div>
-				</div>
-		</form>
+		
 	</nav>
 	
 	<footer>
