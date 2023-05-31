@@ -40,4 +40,8 @@ if (isset($_COOKIE['jwt'])) {
     header('Location: index.php');
     exit;
 }
+echo '<script>';
+echo 'var console.log(username);';
+echo '</script>';
+
 ?>
