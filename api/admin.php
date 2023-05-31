@@ -193,15 +193,13 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
         function deleteUsername(usernameVar) {
             console.log(usernameVar);
              const response2 = fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co/rest/v1/users` + '/' + usernameVar, {
-                    method: 'GET',
+                    method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
                         'apikey': supabaseAnonKey,
                     },
             })
-            .then(response2 => response2.json())
-            .then(data => console.log('User deleted successfully: ', data))
-            .catch(error => console.error('Error deleting user: ', error));
+
         }
         
             </script>
