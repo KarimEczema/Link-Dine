@@ -182,14 +182,14 @@ $(document).ready(async function() {
 
     $('#sendButton').click(function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
-        console.log(sentTo);
         deleteUsername(sentTo);
     });
 });
 
 
 function deleteUsername(usernameVar) {
-     fetch(`${supabaseUrl}/rest/v1/users`+'/'+usernameVar, {
+    console.log(sentTo);
+     fetch(`${supabaseUrl}/rest/v1/users` + '/' + usernameVar, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
