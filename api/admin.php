@@ -153,7 +153,7 @@ $(document).ready(function(){
             data: {username: username},
             success: function(response) {
                 alert(response);
-                // Refresh the page or do other things here
+                location.reload(); // Refresh the page
             },
             error: function(jqXHR, textStatus, errorThrown) {
                console.log(textStatus, errorThrown);
@@ -161,6 +161,7 @@ $(document).ready(function(){
         });
     });
 });
+
 </script>
 
       <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
