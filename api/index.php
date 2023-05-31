@@ -6,8 +6,13 @@ $dbname = "verceldb";
 $user = "default";
 $password = "Y4vuPQm2xyTl";
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-// index.php
-try{
+
+// Include the JWT library
+require 'vendor\firebase\php-jwt\src\JWT.php';
+
+use \Firebase\JWT\JWT;
+
+try {
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
     
@@ -27,11 +32,18 @@ try{
             
             // assuming that your password field is 'Mdp'
             if($_POST['Mdp'] === $user['password']){
-                session_start();
-                //$_SESSION['username'] = $user['username'];
-                setcookie('username', $username, time()+3600); 
-                //echo $_SESSION['username'];
-                echo '<meta http-equiv="refresh" content="0; url= accueil" />';
+                // Generate JWT token
+                $secretKey = '123';
+                $payload = array(
+                    'username' => $user['NomUtilisateur'],
+                    'exp' => time() + 3600 // Expires in 1 hour
+                );
+                $jwt = JWT::encode($payload, $secretKey);
+                
+                // Set JWT as a cookie
+                setcookie('jwt', $jwt, time()+3600); 
+                
+                echo '<meta http-equiv="refresh" content="0; url=accueil.php" />';
                 exit;
             }
             else {
@@ -69,6 +81,4 @@ if(isset($_POST) && isset($error_message)) {
 </form> 
 
 </body>
-</html>
-
 </html>
