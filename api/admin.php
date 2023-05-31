@@ -125,7 +125,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         // if form is submitted
         if(isset($_POST['bouton1'])){  
             // query to check if NomUtilisateur and Mdp are correct
-            alert("MESSAGE");
+            echo '<script>alert("MESSAGE")</script>';
             $sql = "INSERT INTO users (username, password) VALUES (nom, email)";
         }
         
