@@ -131,7 +131,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             $stmt = $conn->prepare($sql);
             $stmt->execute([$nom, $email]);
        
-            echo "Ligne insérée avec succès !";
+            echo '<script>alert("Ligne insérée avec succès !")</script>';
           }
    
     ?>
