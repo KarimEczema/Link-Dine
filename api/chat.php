@@ -64,37 +64,71 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            const receiveMessages = () => {
-                $.get('js/receive.js', function(data) {
-                    $('#chatbox').empty();
-                    data.data.forEach(msg => {
-                        $('#chatbox').prepend(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
-                    });
-                });
-            }
+      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-            $('#sendButton').click(function() {
-                const username = $('#usernameInput').val().trim();
-                const message = $('#userInput').val().trim();
-
-                if (username === '' || message === '') {
-                    alert('Both username and message are required!');
-                    return;
-                }
-
-                $.post('js/send.js', {username, message}, function(data) {
-                    if (data.error) {
-                        alert('Error sending message!');
-                    } else {
-                        $('#userInput').val('');
-                        receiveMessages();
-                    }
-                });
-            });
-
-            setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
+      const sendMessage = async (username, message) => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+            body: JSON.stringify({ username, message }),
         });
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
+        console.log('Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
+      const receiveMessages = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch messages');
+        }
+
+        const data = await response.json();
+
+        $('#chatbox').empty();
+        data.forEach(msg => {
+            $('#chatbox').prepend(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+    $(document).ready(function() {
+    $('#sendButton').click(async function() {
+        const username = $('#usernameInput').val().trim();
+        const message = $('#userInput').val().trim();
+
+        if (username === '' || message === '') {
+            alert('Both username and message are required!');
+            return;
+        }
+
+        await sendMessage(username, message);
+        await receiveMessages();
+    });
+
+    setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
+});
+
     </script>
 </body>
 </html>
