@@ -21,14 +21,13 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin-top: 10px;
+	margin-top: 60px;
 	width: 750px;
 	height: 150px;
 	list-style: none;
 	margin-bottom: 0;
     position: relative;
-    right : 4%;
-    bottom: 10%;
+    right : 3%;
 }
 #carrousel ul {
 	position: relative;
@@ -39,31 +38,33 @@ ul > li {
 	top: 30%;
 	transition: 1s opacity;
 }
+
+.buttons{
+	display:inline-block;
+	width:45%;
+	margin:10px 2.5% 10px 2.5%;
+	text-align:center;
+}
+
 .prev {
-	display: block;
 	color: black;
-	width: 70px;
-	height: 35px;
+	width: 40px;
+	height: 40px;
 	font-weight: 800;
 	background-color: #446AA9;
 	border-radius: 5px;
 	border: 2px solid black;
-    position: relative;
-    left : 35%;
-    bottom : 50%;
 }
+
 .next {
-	display: block;
 	color: black;
-	width: 70px;
-	height: 35px;
+	width: 40px;
+	height: 40px;
 	font-weight: 800;
 	background-color: #446AA9;
 	border-radius: 5px;
-	border: 2px solid black;    
-    position: relative;
-    left : 55%;
-    bottom : 10%;
+	border: 2px solid black;
+	margin-left : 60px;	
 }
 
 
@@ -83,7 +84,7 @@ ul > li {
     margin-top: 10px;
 }
 footer{
-	margin-top: 35%;
+	margin-top: 10%;
 }
 
 .profil{
