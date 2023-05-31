@@ -143,7 +143,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
-					<p>
+					<p style = "margin-top:25%;">
 					Bienvenue sur Link dine, le plus grand réseau professionnel mondial comptant plus de 2 d'utilisateurs dans plus de 0 pays et territoires du monde.
 					</p>
 				</div>
