@@ -29,7 +29,7 @@ try{
             // assuming that your password field is 'Mdp'
             if(password_verify($_POST['Mdp'], $user['password'])){
                 session_start();
-                $_SESSION['username'] = $user['username'];
+                $_SESSION['username'] = $user['NomUtilisateur'];
                 header('Location: accueil');
                 exit;
             }
