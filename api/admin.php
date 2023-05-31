@@ -173,6 +173,7 @@ try{
           });
       }); -->
 
+      <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
       
 <select id="userSelect" placeholder="Select user to send to">
         <!-- User options will be dynamically inserted here -->
@@ -219,40 +220,14 @@ $(document).ready(async function() {
           });
 
           $('#sendButton').click(async function() {
-              const message = $('#userInput').val().trim();
               const sentTo = $('#userSelect').val(); // Get the selected username
 
-              if (message === '') {
-                  alert('Message is required!');
-                  return;
-              }
-
-              if (!sentTo) {
-                  alert('Please select a user to send message to!');
-                  return;
-              }
-
-              await sendMessage(username, message, sentTo);
-              await receiveMessages();
           });
 
-          setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
       });
 
 
     </script>
-    <nav class = "Supp-compte">
-
-        <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-
-        <script>
-
-        </script>
-
-        <select id="ChoixUser" placeholder="Choisissez l'utilisateur à supprimer :"></select>
-        <button type="submit"  style = " margin-top : 2%;" id="boutonSuppr">Supprimer le compte</button>
-
-    </nav>
 
 	
 	<footer>
