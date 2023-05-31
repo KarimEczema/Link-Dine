@@ -189,20 +189,20 @@ $(document).ready(async function() {
 
 function deleteUsername(username) {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+        const response2 = await fetch(`${supabaseUrl}/rest/v1/users`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
         });
-        const data = await response.json();
+        const data = await response2.json();
         return data.map(user => user.username); // assuming each user has a 'username' field
         } catch (error) {
         console.error('Error:', error.message);
         
     }
-    .then(response => response.json())
+    .then(response2 => response2.json())
     .then(data => console.log('User deleted successfully: ', data))
     .catch(error => console.error('Error deleting user: ', error));
 }
