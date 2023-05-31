@@ -148,7 +148,7 @@ $(document).ready(function(){
         var username = $("#userSelect").val();
 
         $.ajax({
-            url: 'delete.php', // path to your PHP script
+            url: 'delete', // path to your PHP script
             type: 'post',
             data: {username: username},
             success: function(response) {
