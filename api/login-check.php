@@ -6,7 +6,7 @@ use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
 // Your secret key
-$secretKey = new Key('123');
+$secretKey = new Key('123', 'HS256');
 
 // Check if the JWT exists in the cookie
 if (isset($_COOKIE['jwt'])) {
@@ -15,7 +15,7 @@ if (isset($_COOKIE['jwt'])) {
     
     try {
         // Decode the JWT
-        $decoded = JWT::decode($jwt, $secretKey, array('HS256'));
+        $decoded = JWT::decode($jwt, $secretKey);
         
         // Get the username from the decoded payload
         $username = $decoded->username;
