@@ -82,6 +82,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     });
 </script>
 
+<link href="css/notifications.css" rel="stylesheet" type="text/css"/>
 
 <body>
     <header>
