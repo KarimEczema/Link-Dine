@@ -133,11 +133,9 @@ const getUsernames = async () => {
 };
 
 
-const receiveMessages = async () => {
+const receiveMessages = async (sentTo) => {
     try {
-        const sentTo = $('#userSelect').val(); // Get the selected username
-
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?username=eq.${username}&sentTo=eq.${sentTo}`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?sentTo=eq.${sentTo}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -149,16 +147,20 @@ const receiveMessages = async () => {
             throw new Error('Failed to fetch messages');
         }
 
-        const data = await response.json();
+        let data = await response.json();
+
+        // Sort the data based on the 'time' field in descending order (newest first)
+        data.sort((a, b) => new Date(b.time) - new Date(a.time));
 
         $('#chatbox').empty();
         data.forEach(msg => {
-            $('#chatbox').prepend(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
+            $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
         });
     } catch (error) {
         console.error('Error:', error.message);
     }
 };
+
 
 $(document).ready(async function() {
           // Get the list of users and populate the select dropdown
@@ -184,8 +186,8 @@ $(document).ready(async function() {
     await sendMessage(username, message, sentTo);
     await receiveMessages(sentTo); // Pass selected user to the function
 });
+setInterval(() => receiveMessages($('#userSelect').val()), 1000); // Poll server every 3 seconds for new messages
 
-setInterval(() => receiveMessages($('#userSelect').val()), 3000); // Update selected user in real-time
 
       });
 
