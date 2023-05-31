@@ -125,7 +125,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         // Si condition
         if(isset($_GET['bouton']))
         {
-            echo'<alert("MESSAGE")>';
+            echo '<script>alert("Welcome to Geeks for Geeks")</script>';
             // Requête de base
             $conn->query("INSERT INTO users (username, password) VALUES (nom, email)");
         }
