@@ -36,7 +36,7 @@ try {
             if($_POST['Mdp'] === $user['password']){
                 // Generate JWT token
                 // Your secret key
-                $secretKey = new Key('123');
+                $secretKey = '123';
                 $payload = array(
                     'username' => $user['username'],
                     'exp' => time() + 3600 // Expires in 1 hour
