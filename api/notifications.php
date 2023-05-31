@@ -96,7 +96,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <nav class = "navigation">
 		<ul id="liste1">
-		  <li><a href="acceuil">Acceuil</a></li>
+		  <li><a href="accueil">Accueil</a></li>
 		  <li><a href="reseau">Mon réseau</a></li>
 		  <li><a href="vous">Vous</a></li>
 		  <li><a href="notifications">Notifications</a></li>
