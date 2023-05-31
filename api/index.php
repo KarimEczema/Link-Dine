@@ -35,13 +35,13 @@ try {
                 // Generate JWT token
                 $secretKey = '123';
                 $payload = array(
-                    'username' => $user['NomUtilisateur'],
+                    'username' => $user['username'],
                     'exp' => time() + 3600 // Expires in 1 hour
                 );
                 $jwt = JWT::encode($payload, $secretKey);
                 
                 // Set JWT as a cookie
-                setcookie('jwt', $jwt, time()+3600); 
+                //setcookie('jwt', $jwt, time()+3600); 
                 
                 echo '<meta http-equiv="refresh" content="0; url=accueil.php" />';
                 exit;

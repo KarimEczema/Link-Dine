@@ -1,6 +1,7 @@
 <?php
 // Include the JWT library
-require 'vendor\firebase\php-jwt\src\JWT.php';
+
+require __DIR__ . '/vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
 
