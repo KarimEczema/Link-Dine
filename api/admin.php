@@ -117,7 +117,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;" name="ajouter">Créer le compte</button>
+       <button type="submit"  style = " margin-top : 2%;" name="ajouter" value="valeur">Créer le compte</button>
 
     </nav>
 
