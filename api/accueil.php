@@ -103,10 +103,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<nav class = "section">
 		<div id = "Event">
 			<h5 style = "text-align : center; color:red"> Evennements de la semaine</h5>
-			
 		</div>
 		<div id="carrousel">
-			<ul id = "listc" style ="list-style-type : none;">
+			<ul style ="list-style-type : none;">
 				<li><img src="images/Celeste.png" width="120" height="100"></li>
 				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
@@ -120,7 +119,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				<li><img src="book11.jpg" width="120" height="100"></li>
 				<li><img src="book12.jpg" width="120" height="100"></li>
 			</ul>
-
 		</div>
 		<div id="buttons">
 			<input type="button" value="<" class="prev">
