@@ -83,6 +83,7 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
 </script>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+
 <body>
 	<header>
 		<div class="container-fluid">
@@ -154,7 +155,7 @@ try{
     <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
+    <script scr="js/delete.js">
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
@@ -186,24 +187,12 @@ $(document).ready(async function() {
 
     $('#sendButton').click(function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
-        deleteUsername(sentTo);
+		
+        deleteRow(users,getUserIdFromUsername(users,sentTo));
     });
 });
 
 
-function deleteUsername(usernameVar) {
-    console.log(usernameVar);
-     fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co` + '/' + usernameVar, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-    })
-    .then(response => response.json())
-    .then(data => console.log('User deleted successfully: ', data))
-    .catch(error => console.error('Error deleting user: ', error));
-}
 
     </script>
 
