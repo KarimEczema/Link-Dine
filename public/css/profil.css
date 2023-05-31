@@ -27,14 +27,12 @@ header{
 	list-style: none;
 	left: 0;
 	margin-bottom: 0;
-	position: absolute;
 }
 #carrousel ul {
 	position: relative;
 }
 #carrousel ul>li {
 	list-style-type: none;
-	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
 }
