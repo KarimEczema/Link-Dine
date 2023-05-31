@@ -1,17 +1,17 @@
 <?php
 
 include 'login-check.php';
-
-echo '<html>';
-echo '<head>';
-echo '<title>Admin</title>';
-
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
 ?>
+
+<html>
+	<head>
+	<title>Admin</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="js/delete.js"></script>
+
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -79,6 +79,8 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
 </script>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+	</head>
+
 <body>
 	<header>
 		<div class="container-fluid">
@@ -150,10 +152,8 @@ try{
     <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
     <script>
-        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
 
 const getUsernames = async () => {
     try {
@@ -182,24 +182,12 @@ $(document).ready(async function() {
 
     $('#sendButton').click(function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
-        deleteUsername(sentTo);
+		
+
+        deleteRow(users,getUserIdFromUsername(users,sentTo));
     });
 });
 
-
-function deleteUsername(usernameVar) {
-    console.log(usernameVar);
-     fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co` + '/' + usernameVar, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-    })
-    .then(response => response.json())
-    .then(data => console.log('User deleted successfully: ', data))
-    .catch(error => console.error('Error deleting user: ', error));
-}
 
     </script>
 
