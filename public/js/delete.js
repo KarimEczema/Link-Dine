@@ -1,4 +1,4 @@
-const { createClient } = require("@supabase/supabase-js");
+import { createClient } from "@supabase/supabase-js";
 
 
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
@@ -46,4 +46,3 @@ async function deleteRow(table, row) {
     }
   }
 
-  
