@@ -9,7 +9,7 @@
     { "src": "/accueil", "dest": "/api/accueil.php" },
     { "src": "/vous", "dest": "/api/vous.php" },
     { "src": "/emplois", "dest": "/api/emplois.php" },
-    { "src": "", "dest": "/api/login-check.php" },
+    { "src": "/login-check", "dest": "/api/login-check.php" },
     { "src": "/chat", "dest": "/api/chat.php" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" },
     { "src": "/js/(.*)", "dest": "/public/js/$1" }

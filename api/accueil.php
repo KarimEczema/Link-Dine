@@ -1,6 +1,6 @@
 <?php
 
-require 'login-check.php';
+require 'login-check';
 
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
