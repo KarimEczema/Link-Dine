@@ -125,12 +125,14 @@ const getUsernames = async () => {
                 'apikey': supabaseAnonKey,
             },
         });
-
+        
         if (!response.ok) {
             throw new Error('Failed to fetch usernames');
         }
 
         const data = await response.json();
+
+
 
         return data.map(user => user.username); // assuming each user has a 'username' field
     } catch (error) {
