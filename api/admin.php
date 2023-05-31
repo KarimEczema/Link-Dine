@@ -112,17 +112,28 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</nav>
 	
 	<nav class = "Ajout-compte">
-
+<!--
         <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;" name="ajouter" value="ajouter">Créer le compte</button>
+       <button type="submit"  style = " margin-top : 2%;" name="ajouter" value="ajouter">Créer le compte</button> -->
+
+       <form method="post" action="">
+  New Username:<br>
+  <input type="text" name="NewNomUtilisateur">
+  <br>
+  New Password:<br>
+  <input type="password" name="NewMdp">
+  <br><br>
+  <input type="submit" name="add" value="Add User">
+</form>
 
     </nav>
 
 
     <?php
+    /*
     try{
         $conn = new PDO($dsn);
         // Si condition
@@ -143,7 +154,33 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         }
         catch(PDOException $e){
             echo $e->getMessage();
+        }*/
+
+        
+try{
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // if form is submitted
+    if($_POST){
+        if(isset($_POST['add']) && $_POST['add'] == 'Add User') {
+            // query to add new user
+            $sql = "INSERT INTO users (username, password) VALUES (:NomUtilisateur, :Mdp)";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':NomUtilisateur', $_POST['NewNomUtilisateur']);
+            $stmt->bindParam(':Mdp', $_POST['NewMdp']);
+            $stmt->execute();
+
+            echo "User added successfully!";
         }
+    }
+
+}catch (PDOException $e){
+    // report error message
+    echo $e->getMessage();
+}
 
        
     ?>
