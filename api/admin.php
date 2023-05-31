@@ -141,38 +141,51 @@ try{
        
     ?>
 
+/*
+            const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
+            const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
+            const supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
 
+            async function getUsernames() {
+            try {
+                let { data, error } = await supabase
+                    .from('users')
+                    .select('username');
+                if (error) throw error;
+                return data.map(user => user.username);
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+
+    $(document).ready(async function() {
+          const usernames = await getUsernames();
+          usernames.forEach((user) => {
+              $('#ChoixUser').append(new Option(user, user));
+            });
+
+            $('#boutonSuppr').click(async function() {
+              const sentTo = $('#ChoixUser').val(); // Get the selected username
+              if (!sentTo) {
+                  alert('Please select a user to send message to!');
+                  return;
+              }
+          });
+      });*/
+
+      
 <select id="userSelect" placeholder="Select user to send to">
         <!-- User options will be dynamically inserted here -->
     </select><br>
 
-    <button id="sendButton">Send</button>
+    <button id="sendButton">Supprimer l'utilisateur</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const sendMessage = async (username, message, sentTo) => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
-        });
 
-        if (!response.ok) {
-            throw new Error('Failed to send message');
-        }
-
-        console.log('Message sent successfully');
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
-};
 
 
 const getUsernames = async () => {
@@ -258,37 +271,7 @@ $(document).ready(async function() {
 
         <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 
-        <script>/*
-            const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
-            const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
-            const supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-            async function getUsernames() {
-            try {
-                let { data, error } = await supabase
-                    .from('users')
-                    .select('username');
-                if (error) throw error;
-                return data.map(user => user.username);
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        }
-
-    $(document).ready(async function() {
-          const usernames = await getUsernames();
-          usernames.forEach((user) => {
-              $('#ChoixUser').append(new Option(user, user));
-            });
-
-            $('#boutonSuppr').click(async function() {
-              const sentTo = $('#ChoixUser').val(); // Get the selected username
-              if (!sentTo) {
-                  alert('Please select a user to send message to!');
-                  return;
-              }
-          });
-      });*/
+        <script>
 
         </script>
 
