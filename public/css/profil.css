@@ -27,7 +27,7 @@ header{
 	list-style: none;
 	margin-bottom: 0;
     position: relative;
-    right : 2%;
+    right : 4%;
 }
 #carrousel ul {
 	position: relative;
@@ -48,7 +48,7 @@ ul > li {
 	border-radius: 5px;
 	border: 2px solid black;
     position: relative;
-    left : 45%;
+    left : 35%;
 }
 .next {
 	display: block;
@@ -60,7 +60,8 @@ ul > li {
 	border-radius: 5px;
 	border: 2px solid black;    
     position: relative;
-    left : 55%;
+    left : 60%;
+    top : 30%;
 }
 
 
