@@ -21,6 +21,10 @@ if (isset($_COOKIE['jwt'])) {
         $username = $decoded->username;
         
         // Continue processing or redirect to authenticated page
+
+        echo '<script>';
+        echo 'var username = "' . $username . '";';
+        echo '</script>';
         echo "Logged in as: " . $username;
     } catch (Exception $e) {
         // JWT validation failed
