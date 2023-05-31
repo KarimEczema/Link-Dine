@@ -24,7 +24,7 @@ if (isset($_COOKIE['jwt'])) {
     } catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message
-        echo 'no';
+        echo 'Error: ' . $e->getMessage();
         header('Location: index.php');
         exit;
     }
