@@ -63,15 +63,15 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
     <nav class = "formations" style="padding:5%">
         <div class="row">
-            <div class="col-sm-4" style = "background-color : purple">Affichage des date début/fin</div>
+            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div>
             <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div>
         </div>	
         <div class="row">
-        <div class="col-sm-4" style = "background-color : purple">Affichage des date début/fin</div>
+        <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div>
         <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div>
         </div>	
         <div class="row">
-            <div class="col-sm-4" style = "background-color : purple">Affichage des date début/fin</div>
+            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div>
             <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div>
         </div>	
     </nav>
