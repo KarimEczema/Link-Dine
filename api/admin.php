@@ -115,7 +115,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;" name="bouton">Créer le compte</button>
+       <button type="submit"  style = " margin-top : 2%;" name="ajouter">Créer le compte</button>
 
     </nav>
 
@@ -123,12 +123,16 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         $conn = new PDO($dsn);
         echo '<script>alert("POULOULOU")</script>';
         // Si condition
-        if(!empty($_GET['bouton']))
-        {
-            echo '<script>alert("Welcome to Geeks for Geeks")</script>';
-            // Requête de base
-            $conn->query("INSERT INTO users (username, password) VALUES (nom, email)");
-        }
+        if (isset($_POST['ajouter'])) {
+            $nom = $_POST['nom'];
+            $email = $_POST['email'];
+       
+            $sql = "INSERT INTO users (nom, email) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$nom, $email]);
+       
+            echo "Ligne insérée avec succès !";
+          }
    
     ?>
 
