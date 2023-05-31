@@ -87,10 +87,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             <div class="row">
                     <div class="col-sm-3"><img src="image" width="200" height="200"></div>
                     <div class="col-sm-9">
-                        <p> [Nom] </p><p style = "float : left;"> [Statut] </p>
+                        <p> [Nom] <p> [Statut] </p></p>
                         <div class="scroll-page">
-                            <h6>Description<button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-                            <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
+                            <h6>Description<button type="button" onclick="textecache('span_text');">...</button> </h6> 
+                            <span id="span_text" style="display: none";>Suite de la description trop longue</span> 
                         </div> 
                     </div>
             </div>
@@ -115,9 +115,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 			<li><img src="book11.jpg" width="120" height="100"></li>
 			<li><img src="book12.jpg" width="120" height="100"></li>
 		</ul>
-
-		<!-- Recuperer les noms, les liens et statut + description en php.-->
-
 	</div>
 	<div id="buttons">
 		<input type="button" value="<" class="prev">
