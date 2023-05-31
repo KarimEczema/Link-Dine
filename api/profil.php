@@ -87,7 +87,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             <div class="row">
                     <div class="col-sm-3"><img src="image" width="200" height="200"></div>
                     <div class="col-sm-9">
-                        <p>Nom</p><p>Statut</p>
+                        <p> [Nom] </p><p style = "float : left;"> [Statut] </p>
                         <div class="scroll-page">
                             <h6>Description<button type="button" onclick="textecache('span_text3');">...</button> </h6> 
                             <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
