@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 
+<?php
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 
@@ -16,6 +17,7 @@ echo '<title>Notifications</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">';
 
 ?>
 
