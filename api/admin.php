@@ -1,16 +1,17 @@
 <?php
 
 include 'login-check.php';
+
+echo '<html>';
+echo '<head>';
+echo '<title>Admin</title>';
+
+// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
+echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js%22%3E</script>';
 ?>
-
-<html>
-	<head>
-	<title>Admin</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-<script src="js/delete.js"></script>
-
 
 
 <script type="text/javascript">
@@ -117,79 +118,93 @@ include 'login-check.php';
 
     <?php
         
-try{
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
-
-    // if form is submitted
-    if($_POST){
-        if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
-            // query to add new user
-            $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
-            $stmt = $conn->prepare($sql);
-
-            // bind parameters and execute
-            $stmt->bindParam(':nom', $_POST['nom']);
-            $stmt->bindParam(':email', $_POST['email']);
-            $stmt->execute();
-
-            echo "Utilisateur ajouté !";
-        }
-    }
-}catch (PDOException $e){
-    // report error message
-    echo $e->getMessage();
-}
-       
-    ?>
-
-      <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-      
-<select id="userSelect" placeholder="Select user to send to">
-        <!-- User options will be dynamically inserted here -->
-    </select><br>
-
-    <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
-    <script>
-
-const getUsernames = async () => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-        });
-        const data = await response.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
-        } catch (error) {
-        console.error('Error:', error.message);
+        try{
+            // create a PostgreSQL database connection
+            $conn = new PDO($dsn);
         
-    }
-};
-
-
-$(document).ready(async function() {
-    // Get the list of users and populate the select dropdown
-    const usernames = await getUsernames();
-    usernames.forEach((user) => {
-        $('#userSelect').append(new Option(user, user));
-    });
-
-    $('#sendButton').click(function() {
-        const sentTo = $('#userSelect').val(); // Get the selected username
-		
-
-        deleteRow(users,getUserIdFromUsername(users,sentTo));
-    });
-});
-
-
-    </script>
+            // if form is submitted
+            if($_POST){
+                if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
+                    // query to add new user
+                    $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
+                    $stmt = $conn->prepare($sql);
+        
+                    // bind parameters and execute
+                    $stmt->bindParam(':nom', $_POST['nom']);
+                    $stmt->bindParam(':email', $_POST['email']);
+                    $stmt->execute();
+        
+                    echo "Utilisateur ajouté !";
+                }
+            }
+        }catch (PDOException $e){
+            // report error message
+            echo $e->getMessage();
+        }
+               
+            ?>
+        
+              <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+              
+        <select id="userSelect" placeholder="Select user to send to">
+                <!-- User options will be dynamically inserted here -->
+            </select><br>
+        
+            <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
+        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+                const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+        
+        
+        const getUsernames = async () => {
+            try {
+                const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': supabaseAnonKey,
+                    },
+                });
+                const data = await response.json();
+                return data.map(user => user.username); // assuming each user has a 'username' field
+                } catch (error) {
+                console.error('Error:', error.message);
+                
+            }
+        };
+        
+        
+        $(document).ready(async function() {
+            // Get the list of users and populate the select dropdown
+            const usernames = await getUsernames();
+            usernames.forEach((user) => {
+                $('#userSelect').append(new Option(user, user));
+            });
+        
+            $('#sendButton').click(function() {
+                const sentTo = $('#userSelect').val(); // Get the selected username
+                deleteUsername(sentTo);
+            });
+        });
+        
+        
+        function deleteUsername(usernameVar) {
+            console.log(usernameVar);
+             fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co` + '/' + usernameVar, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': supabaseAnonKey,
+                    },
+            })
+            .then(response => response.json())
+            .then(data => console.log('User deleted successfully: ', data))
+            .catch(error => console.error('Error deleting user: ', error));
+        }
+        
+            </script>
 
 	<footer>
 		<div class="container-fluid">
