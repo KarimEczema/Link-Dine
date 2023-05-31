@@ -1,14 +1,18 @@
 <?php
 
+// Include the JWT library
+require __DIR__ . '/vendor/autoload.php';
+
+
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
 $dbname = "verceldb";
 $user = "default";
 $password = "Y4vuPQm2xyTl";
+
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
-// Include the JWT library
-require __DIR__ . '/vendor/autoload.php';
+
 
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
@@ -33,7 +37,7 @@ try {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // assuming that your password field is 'Mdp'
-            if($_POST['Mdp'] === $user['password']){
+            if($_POST['email'] === $user['email']){
                 // Generate JWT token
                 // Your secret key
                 $secretKey = '123';
@@ -76,11 +80,11 @@ if(isset($_POST) && isset($error_message)) {
 ?>
 
 <form method="post" action="">
-  Username:<br>
+  Nom d'utilisateur:<br>
   <input type="text" name="NomUtilisateur">
   <br>
-  Password:<br>
-  <input type="password" name="Mdp">
+  Adresse mail:<br>
+  <input type="text" name="email">
   <br><br>
   <input type="submit" value="Submit">
 </form> 

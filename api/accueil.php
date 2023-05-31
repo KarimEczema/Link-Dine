@@ -2,18 +2,9 @@
 
 include 'login-check.php';
 
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
-$port = "5432";
-$dbname = "verceldb";
-$user = "default";
-$password = "Y4vuPQm2xyTl";
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
-
 echo '<html>';
 echo '<head>';
-echo '<title>Your Page Title</title>';
+echo '<title>Accueil</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -86,7 +77,6 @@ echo "Logged in as: " . $idUser;
 		slideImg();
 	});
 </script>
-</head>
 
 <link href="css/accueil.css" rel="stylesheet" type="text/css"/>
 <body>
@@ -103,8 +93,8 @@ echo "Logged in as: " . $idUser;
 		<div class="container-fluid">
 				<div class="row">
 					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
+					 <div class="col-sm-3"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
+					 <div class="col-sm-1"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
 					 <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div>
 					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
 					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>

@@ -1,12 +1,5 @@
 <?php
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com"; 
-$port = "5432"; 
-$dbname = "verceldb"; 
-$user = "default"; 
-$password = "Y4vuPQm2xyTl"; 
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4"; 
-
+include 'login-check.php';
 
 echo '<html>'; 
 echo '<head>'; 
@@ -20,32 +13,28 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 ?>
 
-</head>
-
 <body>
- 
-    <!-- Header avec inclusions nécessaires -->
-    <header> 
-		<div class="container-fluid"> 
-			<div class="row"> 
-				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div> 
-				 <div class="col-sm" ><img src="images/LogECE.png" width="121" height="49.5"></div> 
-			</div>		 
-		</div> 
-	</header> 
-	 
-	<nav class = "navigation"> 
-		<div class="container-fluid"> 
-				<div class="row"> 
-					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div> 
-					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div> 
-					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div> 
-					 <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div> 
-					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div> 
-					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div> 
-				</div>		 
-		</div> 
-	</nav> 
+ 	<header>
+		<div class="container-fluid">
+			<div class="row">
+				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
+				 <div class="col-sm" ><img src="image" width="121" height="49.5"></div>
+			</div>		
+		</div>
+	</header>
+	
+	<nav class = "navigation">
+		<div class="container-fluid">
+				<div class="row">
+					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
+					 <div class="col-sm-3"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
+					 <div class="col-sm-1"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
+					 <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div>
+					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
+					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
+				</div>		
+		</div>
+	</nav>
  
     <!-- Profil --> 
     <nav class = "profil"> 

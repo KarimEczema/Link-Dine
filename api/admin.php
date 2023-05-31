@@ -1,18 +1,12 @@
 <?php
 
+include 'login-check.php';
 
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
-$port = "5432";
-$dbname = "verceldb";
-$user = "default";
-$password = "Y4vuPQm2xyTl";
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 
 echo '<html>';
 echo '<head>';
-echo '<title>Your Page Title</title>';
+echo '<title>Admin</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -85,7 +79,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		slideImg();
 	});
 </script>
-</head>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <body>
