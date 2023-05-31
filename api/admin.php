@@ -182,8 +182,9 @@ $(document).ready(async function() {
     usernames.forEach((user) => {
         $('#userSelect').append(new Option(user, user));
     });
+});
 
-	function getUserIdFromUsername(username) {
+function getUserIdFromUsername(username) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${supabaseUrl}/rest/v1/users?username=eq.${username}`,
@@ -234,7 +235,6 @@ $('#sendButton').click(async function() {
         console.error('Error:', error.message);
     }
 });
-
 
     </script>
 
