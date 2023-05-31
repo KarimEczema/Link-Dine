@@ -121,9 +121,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <nav class = "Supp-compte">
 
-        <h1 style = "margin-top : 5% ">Supprimer un utilisateur</h1>
+        <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
         <form action="#">
-            <label for="lang">Language</label>
             <select name="languages" id="lang">
             <option value="javascript">JavaScript</option>
             <option value="php">PHP</option>
@@ -134,8 +133,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             <option value="C++">C++</option>
             <option value="erlang">Erlang</option>
             </select>
-      <input type="submit" value="Supprimer le compte" />
-</form>
+        </form>
        <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
 
     </nav>
