@@ -11,22 +11,7 @@ echo '<body>';
 
 include 'navbar.php';
 ?>
-<!DOCTYPE html> 
-<html> 
 
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
-
-echo '<html>';
-echo '<head>';
-echo '<title>Emploi</title>';
-
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
-?>
  
 <script type="text/javascript"> 
     function textecache(ntexte){ 
@@ -44,28 +29,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
-<body> 
-<header> 
-    <div class="container-fluid"> 
-        <div class="row"> 
-            <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div> 
-            <div class="col-sm" ><img src="LogECE.png" width="121" height="49.5"></div> 
-        </div> 
-    </div> 
-</header> 
 
-<nav class = "navigation"> 
-    <div class="container-fluid"> 
-        <div class="row"> 
-            <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div> 
-            <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div> 
-            <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div> 
-            <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div> 
-            <div class="col-sm-2"><a href="chat" style = "border : solid; color: black; padding:2px">Messagerie</a></div> 
-            <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div> 
-        </div> 
-    </div> 
-</nav> 
 
 
 
