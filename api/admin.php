@@ -1,7 +1,3 @@
-
-   
-
-
 <?php
 
 
@@ -125,8 +121,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     </nav>
 
-    <?php
 
+    <?php
+    try{
         $conn = new PDO($dsn);
         // Si condition
 
@@ -137,13 +134,15 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             $username = $_POST['nom'];
             $Email = $_POST['email'];
        
-            $sql = "INSERT INTO users (username, Email) VALUES (?, ?)";
+            $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$username, $Email]);
        
             echo '<script>alert("Ligne insérée avec succès !")</script>';
           }
-   
+        }
+
+       
     ?>
 
 
