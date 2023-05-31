@@ -1,12 +1,5 @@
 <?php
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com"; 
-$port = "5432"; 
-$dbname = "verceldb"; 
-$user = "default"; 
-$password = "Y4vuPQm2xyTl"; 
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4"; 
-
+include 'login-check.php';
 
 echo '<html>'; 
 echo '<head>'; 
