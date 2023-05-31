@@ -19,6 +19,45 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 ?>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $img = $('#carrousel img');
+        var max = $img.length;
+        var i = 0; // compteur
+        $img.css('margin-left','0').css('display', 'none'); //on cache les images
+        $img.eq(i).css('display', 'inline'); //on affiche l'image courante
+        $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
+        $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
+        $img.eq(i+3).css('margin-left','600px').css('display', 'inline');
+        //si on clique sur « next » ou « > »
+        $('.next').click(function () { // image suivante
+            i+=4; // on incrémente le compteur
+            if (i < max-4) {
+            i = i+4;
+            $img.css('margin-left','0').css('display', 'none'); //on cache
+            $img.eq(i).css('display', 'inline'); //on affiche l'image courante
+            $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
+            $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
+            $img.eq(i+3).css('margin-left','600px').css('display', 'inline'); } else {
+            i = 0;
+            }
+        });
+        //si on clique sur « prev » ou « < »
+        $('.prev').click(function () { // groupe des images précédentes
+            i-=4; // on décrémente le compteur
+            if (i >= 0) {
+            $img.css('margin-left','0').css('display', 'none'); //on cache
+            $img.eq(i).css('display', 'inline'); //on affiche l'image courante
+            $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
+            $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
+            $img.eq(i+3).css('margin-left','600px').css('display', 'inline');
+            } else {
+            i = 0;
+            }
+        });
+    });
+</script>
+
 <link href="css/profil.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
@@ -48,9 +87,11 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             <div class="row">
                     <div class="col-sm-3"><img src="image" width="200" height="200"></div>
                     <div class="col-sm-9">
-                        <h6>Nom</h6><p>Statut</p>
-                        <h6>Description<button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-                        <span id="span_text3" style="display: none";>This is Elom Nusk</span> 
+                        <p>Nom</p><p>Statut</p>
+                        <div class="scroll-page">
+                            <h6>Description<button type="button" onclick="textecache('span_text3');">...</button> </h6> 
+                            <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
+                        </div> 
                     </div>
             </div>
 		</div>
@@ -61,7 +102,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</div>
 	<div id="carrousel">
 		<ul style ="list-style-type : none;">
-			<li><a href = "profil" title = "Test Profil User"> <img src="images/Celeste.png" width="120" height="100"></a></li>
+			<li><img src="images/Celeste.png" width="120" height="100"></li>
 			<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 			<li><img src="images/CelesteScare.png" width="120" height="100"></li>
 			<li><img src="images/CelesteTheo.png" width="120" height="100"></li>

@@ -21,15 +21,19 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin: 50px 25% 10px 24%;
+	margin: 30px 25% 10px 24%;
 	width: 750px;
 	height: 150px;
 	list-style: none;
 	left: 0;
 	margin-bottom: 0;
 }
+#carrousel ul {
+	position: relative;
+}
 ul > li {
 	list-style-type: none;
+	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
 }
@@ -58,13 +62,24 @@ ul > li {
 	border: 2px solid black;
 }
 
+
+.scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 footer{
 	margin-top: 35%;
 }
 
 .profil{
 	/* Style du bandeau de navigation */
-	margin-top : 10px;
+	margin-top : 20%;
 }
 
 .amis{
