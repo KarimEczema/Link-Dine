@@ -6,7 +6,7 @@ include 'login-check.php';
 
 echo '<html>';
 echo '<head>';
-echo '<title>Your Page Title</title>';
+echo '<title>Admin</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -79,7 +79,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		slideImg();
 	});
 </script>
-</head>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 <body>
