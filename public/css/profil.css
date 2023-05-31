@@ -21,7 +21,7 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin: 10px 0% 0px 25%;
+	margin: 10px 10% 0px 0%;
 	width: 750px;
 	height: 150px;
 	list-style: none;
@@ -61,13 +61,24 @@ ul > li {
 }
 
 
-.scroll-page {
-    width: 100%;
-    text-align: left;
-    height: 50%;
-    margin-top: 10px;
+.scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
+.scroll-page {
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 50%;
+
+    margin-top: 10px;
+}
 footer{
 	margin-top: 35%;
 }
