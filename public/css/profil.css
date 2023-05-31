@@ -21,10 +21,12 @@ header{
 /* Style du carrousel */
 
 #carrousel {
+	margin: 10px 0% 0px 25%;
 	width: 750px;
 	height: 150px;
 	list-style: none;
-    margin-right : 20%;
+	left: 0;
+	margin-bottom: 0;
 }
 #carrousel ul {
 	position: relative;
