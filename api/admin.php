@@ -186,18 +186,22 @@ $(document).ready(async function() {
     });
 });
 
+
 function deleteUsername(username) {
-    fetch('https://bmqgiyygwjnnfyrtjkno.supabase.co/rest/v1/users', { // replace with your Supabase URL and table name
-        method: 'DELETE',
-        headers: {
-            'apikey': supabaseAnonKey, // replace with your Supabase Key
-            'Content-Type': 'application/json',
-            'Prefer': 'return=representation',
-        },
-        body: JSON.stringify({
-            username: username, // replace 'username' with your actual column name
-        })
-    })
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        const data = await response.json();
+        return data.map(user => user.username); // assuming each user has a 'username' field
+        } catch (error) {
+        console.error('Error:', error.message);
+        
+    }
     .then(response => response.json())
     .then(data => console.log('User deleted successfully: ', data))
     .catch(error => console.error('Error deleting user: ', error));
@@ -206,14 +210,6 @@ function deleteUsername(username) {
 
     </script>
 
-    
-
-    <?php 
-        $sql = "SELECT idUser FROM users WHERE username = ";
-    ?>
-
-
-	
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
