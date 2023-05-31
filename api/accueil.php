@@ -4,8 +4,7 @@ session_start();
 
 if (!isset($_SESSION['username'])) {
 	// User is not logged in, redirect to login page.
-	//header('Location: index');
-	echo 'bite';
+	header('Location: index');
 	exit();
 }
 
