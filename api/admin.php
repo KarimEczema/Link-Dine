@@ -182,6 +182,7 @@ $(document).ready(async function() {
 
     $('#sendButton').click(function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
+        console.log("Sent to : "sentTo);
         deleteUsername(sentTo);
     });
 });
