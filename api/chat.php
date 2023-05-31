@@ -1,3 +1,27 @@
+<?php
+
+include 'login-check.php';
+
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
+
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
+
+echo '<html>';
+echo '<head>';
+echo '<title>Your Page Title</title>';
+
+// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
+echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +81,6 @@
         <!-- Messages will be dynamically inserted here -->
     </div>
 
-    <input type="text" id="usernameInput" placeholder="Enter username" /><br>
     <input type="text" id="userInput" placeholder="Type your message..." />
 
     <button id="sendButton">Send</button>
@@ -135,28 +158,28 @@ const getUsernames = async () => {
     }
 };
 $(document).ready(function() {
-    $('#sendButton').click(async function() {
-        const username = $('#usernameInput').val().trim();
-        const message = $('#userInput').val().trim();
+          $('#sendButton').click(async function() {
+              // Instead of taking username from user input, we are taking it from the login-check.php script
+              const message = $('#userInput').val().trim();
 
-        if (username === '' || message === '') {
-            alert('Both username and message are required!');
-            return;
-        }
+              if (message === '') {
+                  alert('Message is required!');
+                  return;
+              }
 
-        const usernames = await getUsernames();
-        if (usernames.length === 0) {
-            alert('No users to send message to!');
-            return;
-        }
+              const usernames = await getUsernames();
+              if (usernames.length === 0) {
+                  alert('No users to send message to!');
+                  return;
+              }
 
-        const sentTo = usernames[0]; // pick the first username, or change this to suit your needs
-        await sendMessage(username, message, sentTo);
-        await receiveMessages();
-    });
+              const sentTo = usernames[0]; // pick the first username, or change this to suit your needs
+              await sendMessage(username, message, sentTo);
+              await receiveMessages();
+          });
 
-    setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
-});
+          setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
+      });
 
 
 
