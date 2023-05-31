@@ -82,6 +82,7 @@ include 'admin-check.php';
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 
+</head>
 <body>
 	<header>
 		<div class="container-fluid">
@@ -155,8 +156,6 @@ try{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
     <script>
-        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
 
 const getUsernames = async () => {
