@@ -11,6 +11,8 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 require __DIR__ . '/vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
+use \Firebase\JWT\Key;
+
 
 try {
     // create a PostgreSQL database connection
@@ -33,7 +35,8 @@ try {
             // assuming that your password field is 'Mdp'
             if($_POST['Mdp'] === $user['password']){
                 // Generate JWT token
-                $secretKey = '123';
+                // Your secret key
+                $secretKey = new Key('123');
                 $payload = array(
                     'username' => $user['username'],
                     'exp' => time() + 3600 // Expires in 1 hour
