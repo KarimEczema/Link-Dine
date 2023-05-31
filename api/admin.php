@@ -80,7 +80,8 @@ include 'login-check.php';
 </script>
 
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-
+	</head>
+	
 <body>
 	<header>
 		<div class="container-fluid">
