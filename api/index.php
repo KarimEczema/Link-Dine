@@ -29,6 +29,7 @@ try{
             if($_POST['Mdp'] === $user['password']){
                 session_start();
                 $_SESSION['username'] = $user['username'];
+                echo $_SESSION['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }
