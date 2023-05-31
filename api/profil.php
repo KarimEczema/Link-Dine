@@ -109,7 +109,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             </div>
 		</div>
     </nav>
-        <nav class = "amis">
+    <nav class = "amis">
         <div id = "friends">
             <h5>Amis en commun</h5>	
         </div>
