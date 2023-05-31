@@ -27,19 +27,13 @@ header{
 	list-style: none;
 	left: 0;
 	margin-bottom: 0;
-	position: absolute;
-}
-#carrousel ul {
-	position: relative;
 }
 ul > li {
 	list-style-type: none;
-	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
 }
 .prev {
-	position: absolute;
 	display: block;
 	margin-left: 18%;
 	margin-top: 12%;
@@ -52,7 +46,6 @@ ul > li {
 	border: 2px solid black;
 }
 .next {
-	position: absolute;
 	display: block;
 	margin-left: 28%;
 	margin-top: 12%;
