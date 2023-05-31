@@ -57,20 +57,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             }
         });
     });
-    function textecache(ntexte){ 
-        var span =document.getElementById(ntexte); 
-        if(span.style.display === "none") 
-        { 
-            span.style.display="inline"; 
-        } 
-        else 
-        { 
-            span.style.display="none"; 
-        } 
-    }
 </script>
 
-<link href="css/profil.css" rel="stylesheet" type="text/css"/>
+
 <body>
 	<header>
 		<div class="container-fluid">
@@ -94,19 +83,18 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</nav>
 
-    <nav class = "profil">
+    <nav class = "profil" style = "border : solid; color: black; padding:7px">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3"><img src="image" width="200" height="200"></div>
-                    <div class="col-sm-9">
-                        <p><b>  [Nom]</b> [Statut] </p>
-                        <div class="scroll-page" id="formation"> 
-                            <h6>Description<button type="button" onclick="textecache('span_text');">...</button> </h6> 
-                            <span id="span_text" style="display: none";>Suite de la description trop longue</span> 
-                        </div> 
-                    </div>
-                </div>
-            </div>
+                <div class="col-sm-3">
+					<img src="image" width="200" height="200">
+				</div>
+				<div class="col-sm-9">
+					<p><b>  [Nom]</b> [Statut] </p>
+					<h6>Description : </h6> 
+					<p>Ceci est ma description</p>  
+				</div>
+			</div>
 		</div>
     </nav>
     <nav class = "amis" style = "margin-top : 40px;">
@@ -134,7 +122,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             <input type="button" value=">" class="next">
         </div>
     </nav>
-    <footer>
+	<footer>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
