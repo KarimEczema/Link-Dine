@@ -21,7 +21,7 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin: 30px 25% 10px 24%;
+	margin: 50px 25% 10px 24%;
 	width: 750px;
 	height: 150px;
 	list-style: none;
@@ -32,7 +32,7 @@ header{
 #carrousel ul {
 	position: relative;
 }
-ul > li {
+#carrousel ul>li {
 	list-style-type: none;
 	position: absolute;
 	top: 30%;
