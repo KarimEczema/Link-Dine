@@ -201,7 +201,6 @@ function deleteUsername(usernameVar) {
     .catch(error => console.error('Error deleting user: ', error));
 }
 
-
     </script>
 
 	<footer>
