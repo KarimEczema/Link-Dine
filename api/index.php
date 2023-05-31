@@ -1,7 +1,5 @@
 <?php
 
-include 'login-check.php';
-
 // Include the JWT library
 require __DIR__ . '/vendor/autoload.php';
 
