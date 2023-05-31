@@ -44,23 +44,25 @@ header{
 #carrousel ul {
 	position: relative;
 }
+
 ul > li {
 	list-style-type: none;
 	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
 }
+
 .prev {
 	position: absolute;
 	display: block;
 	margin-left: 18%;
 	margin-top: 12%;
 	color: black;
-	width: 70px;
-	height: 35px;
+	width: 40px;
+	height: 20px;
 	font-weight: 800;
 	background-color: #446AA9;
-	border-radius: 5px;
+	border-radius: 2px;
 	border: 2px solid black;
 }
 .next {
@@ -69,11 +71,11 @@ ul > li {
 	margin-left: 28%;
 	margin-top: 12%;
 	color: black;
-	width: 70px;
-	height: 35px;
+	width: 40px;
+	height: 20px;
 	font-weight: 800;
 	background-color: #446AA9;
-	border-radius: 5px;
+	border-radius: 2px;
 	border: 2px solid black;
 }
 
