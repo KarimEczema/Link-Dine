@@ -81,7 +81,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <!-- Messages will be dynamically inserted here -->
     </div>
 
-    <input type="text" id="usernameInput" placeholder="Enter username" /><br>
+    <select id="userSelect" placeholder="Select user to send to">
+        <!-- User options will be dynamically inserted here -->
+    </select><br>
+
     <input type="text" id="userInput" placeholder="Type your message..." />
 
     <button id="sendButton">Send</button>
