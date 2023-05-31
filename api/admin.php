@@ -145,7 +145,7 @@ try{
 
       <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
       
-<select id="userSelect" placeholder="Select user to send to">
+	<select id="userSelect" placeholder="Select user to send to">
         <!-- User options will be dynamically inserted here -->
     </select><br>
 
@@ -187,7 +187,7 @@ $(document).ready(async function() {
         const sentTo = $('#userSelect').val(); // Get the selected username
 		
 
-        //deleteRow(users,getUserIdFromUsername(users,sentTo));
+        deleteRow(users,getUserIdFromUsername(users,sentTo));
     });
 });
 
