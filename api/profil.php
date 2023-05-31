@@ -97,42 +97,41 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     <nav class = "profil">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-sm-3"><img src="image" width="200" height="200"></div>
+                <div class="col-sm-3"><img src="image" width="200" height="200"></div>
                     <div class="col-sm-9">
                         <p><b>  [Nom]</b> [Statut] </p>
-                        <div class="scroll-container"> 
-                            <div class="scroll-page" id="formation"> 
-                                <h6>Description<button type="button" onclick="textecache('span_text');">...</button> </h6> 
-                                <span id="span_text" style="display: none";>Suite de la description trop longue</span> 
-                            </div> 
+                        <div class="scroll-page" id="formation"> 
+                            <h6>Description<button type="button" onclick="textecache('span_text');">...</button> </h6> 
+                            <span id="span_text" style="display: none";>Suite de la description trop longue</span> 
                         </div> 
                     </div>
+                </div>
             </div>
 		</div>
     </nav>
-    <nav class = "amis">
-    <div id = "friends" style = "margin-top : 10%;">
-		<h5 style = "text-align : center; color:#446AA9">Amis en commun</h5>	
-	</div>
-	<div id="carrousel">
-		<ul style ="list-style-type : none;">
-			<li><img src="images/Celeste.png" width="120" height="100"></li>
-			<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
-			<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-			<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-			<li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
-			<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-			<li><img src="images/logECE.png" width="120" height="100"></li>
-			<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
-			<li><img src="book9.jpg" width="120" height="100"></li>
-			<li><img src="book10.jpg" width="120" height="100"></li>
-			<li><img src="book11.jpg" width="120" height="100"></li>
-			<li><img src="book12.jpg" width="120" height="100"></li>
-		</ul>
-	</div>
-	<div id="buttons">
-		<input type="button" value="<" class="prev">
-		<input type="button" value=">" class="next">
-	</div>
+        <nav class = "amis">
+        <div id = "friends">
+            <h5>Amis en commun</h5>	
+        </div>
+        <div id="carrousel">
+            <ul style ="list-style-type : none;">
+                <li><img src="images/Celeste.png" width="120" height="100"></li>
+                <li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
+                <li><img src="images/CelesteScare.png" width="120" height="100"></li>
+                <li><img src="images/CelesteTheo.png" width="120" height="100"></li>
+                <li><img src="images/CHIBIARTFORADRIENNE.png" width="120" height="100"></li>
+                <li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+                <li><img src="images/logECE.png" width="120" height="100"></li>
+                <li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
+                <li><img src="book9.jpg" width="120" height="100"></li>
+                <li><img src="book10.jpg" width="120" height="100"></li>
+                <li><img src="book11.jpg" width="120" height="100"></li>
+                <li><img src="book12.jpg" width="120" height="100"></li>
+            </ul>
+        </div>
+        <div id="buttons">
+            <input type="button" value="<" class="prev">
+            <input type="button" value=">" class="next">
+        </div>
     </nav>
 </body>
