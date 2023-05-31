@@ -25,7 +25,6 @@ header{
 	width: 750px;
 	height: 150px;
 	list-style: none;
-	left: 0;
 	margin-bottom: 0;
 }
 #carrousel ul {
@@ -73,7 +72,6 @@ ul > li {
 
 .scroll-page {
     width: 100%;
-    float: left;
     text-align: left;
     height: 50%;
 
