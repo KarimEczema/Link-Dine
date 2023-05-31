@@ -1,8 +1,9 @@
+
+   
+
+
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
@@ -125,9 +126,13 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     </nav>
 
     <?php
+
         $conn = new PDO($dsn);
         // Si condition
+
+        echo $_POST['ajouter'];
         if (isset($_POST['ajouter'])) {
+
             echo '<script>alert("POULOULOU")</script>';
             $username = $_POST['nom'];
             $Email = $_POST['email'];
