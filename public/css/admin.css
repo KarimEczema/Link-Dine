@@ -1,0 +1,30 @@
+body{
+	/* Style pour le corps général*/
+	margin-left : 25%;
+	margin-right : 25%;
+	text-align : center;
+}
+
+header{
+	/* Style pour le bandeau d'en-tête*/
+	color: white; 
+	padding:7px; 
+	background-color : #446AA9 ; 
+}
+
+
+.navigation{
+	/* Style du bandeau de navigation */
+	margin-top : 10px;
+}
+
+.section{
+	/* Style du corps de section */
+	color: white;
+}
+
+#Event{
+	margin-top:100px;
+	border: 3px solid black;
+	padding : 3px;
+}
