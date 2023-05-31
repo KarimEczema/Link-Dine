@@ -10,6 +10,7 @@
     { "src": "/vous", "dest": "/api/vous.php" },
     { "src": "/admin", "dest": "/api/admin.php" },
     { "src": "/emplois", "dest": "/api/emplois.php" },
+    { "src": "/notifications", "dest": "/api/notifications.php" },
     { "src": "/login-check", "dest": "/api/login-check.php" },
     
     { "src": "/chat", "dest": "/api/chat.php" },
