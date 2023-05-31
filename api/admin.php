@@ -150,29 +150,20 @@ try{
         <script>
             const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
             const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
+            const supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+            async function getUsernames() {
+            try {
+                let { data, error } = await supabase
+                    .from('users')
+                    .select('username');
+                if (error) throw error;
+                return data.map(user => user.username);
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
         
-            const getUsernames = async () => {
-        try {
-
-
-            const response = await fetch(${supabaseUrl}/rest/v1/users, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': supabaseAnonKey,
-                },
-
-            });
-        if (!response.ok) {
-            throw new Error('Failed to fetch usernames');
-        }
-        const data = await response.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
-        } catch (error) {
-            console.error('Error:', error.message);
-        }
-    };
-
     $(document).ready(async function() {
           const usernames = await getUsernames();
           usernames.forEach((user) => {
