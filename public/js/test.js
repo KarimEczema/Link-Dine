@@ -25,5 +25,4 @@ const sendMessage = async (username, message) => {
       console.error('Error:', error.message);
     }
   };
-  
   sendMessage('john', 'Hello, world!');

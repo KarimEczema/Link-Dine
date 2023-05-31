@@ -67,7 +67,7 @@
       const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-      const sendMessage = async (username, message) => {
+const sendMessage = async (username, message, sentTo) => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
             method: 'POST',
@@ -75,7 +75,7 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
-            body: JSON.stringify({ username, message }),
+            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
         });
 
         if (!response.ok) {
@@ -87,6 +87,28 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
         console.error('Error:', error.message);
     }
 };
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch usernames');
+        }
+
+        const data = await response.json();
+
+        return data.map(user => user.username); // assuming each user has a 'username' field
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
+
 
       const receiveMessages = async () => {
     try {
@@ -112,7 +134,7 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
         console.error('Error:', error.message);
     }
 };
-    $(document).ready(function() {
+$(document).ready(function() {
     $('#sendButton').click(async function() {
         const username = $('#usernameInput').val().trim();
         const message = $('#userInput').val().trim();
@@ -122,12 +144,21 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
             return;
         }
 
-        await sendMessage(username, message);
+        const usernames = await getUsernames();
+        if (usernames.length === 0) {
+            alert('No users to send message to!');
+            return;
+        }
+
+        const sentTo = usernames[0]; // pick the first username, or change this to suit your needs
+        await sendMessage(username, message, sentTo);
         await receiveMessages();
     });
 
     setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
 });
+
+
 
     </script>
 </body>
