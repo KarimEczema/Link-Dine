@@ -7,6 +7,7 @@ $password = "Y4vuPQm2xyTl";
 
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
+// index.php
 try{
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
@@ -25,8 +26,8 @@ try{
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            // assuming that you have 'password' field in your 'users' table
-            if(password_verify($_POST['password'], $user['password'])){
+            // assuming that your password field is 'Mdp'
+            if(password_verify($_POST['password'], $user['Mdp'])){
                 session_start();
                 $_SESSION['username'] = $user['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
