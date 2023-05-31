@@ -115,21 +115,25 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <button type="submit"  style = " margin-top : 2%;" name="bouton1">Créer le compte</button>
+       <button type="submit"  style = " margin-top : 2%;" name="bouton">Créer le compte</button>
 
     </nav>
 
     <?php
         $conn = new PDO($dsn);
-    
-        // if form is submitted
-        if(isset($_POST['bouton1'])){  
-            // query to check if NomUtilisateur and Mdp are correct
-            echo '<script>alert("MESSAGE")</script>';
+
+        // Si condition
+        if(isset($_GET['bouton']))
+        {
+            // Requête de base
             $sql = "INSERT INTO users (username, password) VALUES (nom, email)";
         }
-        
+   
+        // Exécution
+        $conn->query($sql);
     ?>
+
+
 
     <nav class = "Supp-compte">
 
