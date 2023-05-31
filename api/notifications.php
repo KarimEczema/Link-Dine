@@ -81,7 +81,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-6" style = "border : solid; color: black; padding:2px">
-					<p style = "border : solid; color: black; padding:2px; margin-top:25%;">
+					<p style = "margin-top:25%;">
 					Bienvenue sur Link dine, le plus grand réseau professionnel mondial comptant plus de 2 d'utilisateurs dans plus de 0 pays et territoires du monde.
 					</p>
 				</div>
