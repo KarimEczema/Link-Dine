@@ -126,11 +126,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         if(isset($_GET['bouton']))
         {
             // Requête de base
-            $sql .= "INSERT INTO users (username, password) VALUES (nom, email)";
+            $conn->query("INSERT INTO users (username, password) VALUES (nom, email)");
         }
    
-        // Exécution
-        $conn->query($sql);
     ?>
 
 
