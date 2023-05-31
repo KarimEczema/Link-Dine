@@ -1,6 +1,6 @@
 <?php
 
-include 'login-check.php';
+include 'admin-check.php';
 
 
 

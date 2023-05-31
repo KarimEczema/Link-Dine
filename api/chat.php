@@ -114,6 +114,8 @@ const sendMessage = async (username, message, sentTo) => {
         console.error('Error:', error.message);
     }
 };
+
+
 const getUsernames = async () => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
