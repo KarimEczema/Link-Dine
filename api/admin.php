@@ -182,7 +182,7 @@ $(document).ready(async function() {
 
           $('#sendButton').click(async function() {
               const sentTo = $('#userSelect').val(); // Get the selected username
-              const { data, error } = await supabaseUrl
+              const { data, error } = await supabaseAnonKey
             .from('users') // replace 'users' with the name of your users table
             .delete()
             .match({username: sentTo});
