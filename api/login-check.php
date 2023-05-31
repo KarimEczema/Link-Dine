@@ -24,13 +24,15 @@ if (isset($_COOKIE['jwt'])) {
     } catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message
-        header('Location: index.php');
+        echo 'no';
+        //header('Location: index.php');
         exit;
     }
 } else {
     // JWT is not set, user is not logged in
     // Redirect to login page or show error message
-    header('Location: index.php');
+    echo 'not';
+    //header('Location: index.php');
     exit;
 }
 ?>

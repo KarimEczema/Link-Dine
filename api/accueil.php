@@ -8,7 +8,7 @@ $password = "Y4vuPQm2xyTl";
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 // Include the JWT library
-require 'path/to/firebase/php-jwt/JWT.php';
+require 'vendor\firebase\php-jwt\src\JWT.php';
 
 use \Firebase\JWT\JWT;
 
