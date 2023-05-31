@@ -33,6 +33,8 @@ header{
 }
 ul > li {
 	list-style-type: none;
+	position: absolute;
+	top: 30%;
 	transition: 1s opacity;
 }
 .prev {
