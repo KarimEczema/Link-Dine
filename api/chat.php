@@ -81,6 +81,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <!-- Messages will be dynamically inserted here -->
     </div>
 
+    <input type="text" id="usernameInput" placeholder="Enter username" /><br>
     <input type="text" id="userInput" placeholder="Type your message..." />
 
     <button id="sendButton">Send</button>
@@ -157,7 +158,7 @@ const getUsernames = async () => {
         console.error('Error:', error.message);
     }
 };
-$(document).ready(function() {
+        $(document).ready(function() {
           $('#sendButton').click(async function() {
               // Instead of taking username from user input, we are taking it from the login-check.php script
               const message = $('#userInput').val().trim();
