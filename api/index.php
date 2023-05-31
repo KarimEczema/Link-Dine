@@ -28,9 +28,9 @@ try{
             // assuming that your password field is 'Mdp'
             if($_POST['Mdp'] === $user['password']){
                 session_start();
-                $_SESSION['username'] = $user['username'];
+                //$_SESSION['username'] = $user['username'];
                 setcookie('username', $username, time()+3600); 
-                echo $_SESSION['username'];
+                //echo $_SESSION['username'];
                 echo '<meta http-equiv="refresh" content="0; url= accueil" />';
                 exit;
             }
