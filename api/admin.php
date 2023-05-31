@@ -121,15 +121,15 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <?php
         $conn = new PDO($dsn);
-        echo '<script>alert("POULOULOU")</script>';
         // Si condition
         if (isset($_POST['ajouter'])) {
-            $nom = $_POST['nom'];
-            $email = $_POST['email'];
+            echo '<script>alert("POULOULOU")</script>';
+            $username = $_POST['nom'];
+            $Email = $_POST['email'];
        
-            $sql = "INSERT INTO users (nom, email) VALUES (?, ?)";
+            $sql = "INSERT INTO users (username, Email) VALUES (?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$nom, $email]);
+            $stmt->execute([$username, $Email]);
        
             echo '<script>alert("Ligne insérée avec succès !")</script>';
           }
