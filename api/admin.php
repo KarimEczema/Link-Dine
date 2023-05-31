@@ -141,53 +141,18 @@ try{
        
     ?>
 
-<!-- */
-            const supabaseUrl = "https://bmqgiyygwjnnfyrtjkno.supabase.co/";
-            const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw";
-            const supabase = Supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-            async function getUsernames() {
-            try {
-                let { data, error } = await supabase
-                    .from('users')
-                    .select('username');
-                if (error) throw error;
-                return data.map(user => user.username);
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        }
-
-    $(document).ready(async function() {
-          const usernames = await getUsernames();
-          usernames.forEach((user) => {
-              $('#ChoixUser').append(new Option(user, user));
-            });
-
-            $('#boutonSuppr').click(async function() {
-              const sentTo = $('#ChoixUser').val(); // Get the selected username
-              if (!sentTo) {
-                  alert('Please select a user to send message to!');
-                  return;
-              }
-          });
-      }); -->
-
       <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
       
 <select id="userSelect" placeholder="Select user to send to">
         <!-- User options will be dynamically inserted here -->
     </select><br>
 
-    <button id="sendButton">Supprimer l'utilisateur</button>
+    <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
-
-
 
 const getUsernames = async () => {
     try {
@@ -198,15 +163,9 @@ const getUsernames = async () => {
                 'apikey': supabaseAnonKey,
             },
         });
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch usernames');
-        }
-
         const data = await response.json();
-
         return data.map(user => user.username); // assuming each user has a 'username' field
-    } catch (error) {
+        } catch (error) {
         console.error('Error:', error.message);
     }
 };
@@ -221,6 +180,10 @@ $(document).ready(async function() {
 
           $('#sendButton').click(async function() {
               const sentTo = $('#userSelect').val(); // Get the selected username
+              const { data, error } = await supabase
+            .from('users') // replace 'users' with the name of your users table
+            .delete()
+            .match({username: sentTo});
 
           });
 
@@ -228,6 +191,13 @@ $(document).ready(async function() {
 
 
     </script>
+
+    
+
+    <?php 
+        $sql = "SELECT idUser FROM users WHERE username = ";
+    ?>
+
 
 	
 	<footer>
