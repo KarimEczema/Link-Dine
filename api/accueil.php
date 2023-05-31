@@ -8,7 +8,7 @@ $password = "Y4vuPQm2xyTl";
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 // Include the JWT library
-require 'vendor\firebase\php-jwt\src\JWT.php';
+require '.\vendor\firebase\php-jwt\src\JWT.php';
 
 use \Firebase\JWT\JWT;
 
@@ -41,7 +41,7 @@ try {
                 $jwt = JWT::encode($payload, $secretKey);
                 
                 // Set JWT as a cookie
-                setcookie('jwt', $jwt, time()+3600); 
+                //setcookie('jwt', $jwt, time()+3600); 
                 
                 echo '<meta http-equiv="refresh" content="0; url=accueil.php" />';
                 exit;
