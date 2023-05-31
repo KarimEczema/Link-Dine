@@ -118,7 +118,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
         <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
-       <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Créer le compte">
+       <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Creer">
         </form>
     </nav>
 
@@ -130,7 +130,7 @@ try{
 
     // if form is submitted
     if($_POST){
-        if(isset($_POST['add']) && $_POST['add'] == 'ajouter') {
+        if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
             // query to add new user
             $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
             $stmt = $conn->prepare($sql);
