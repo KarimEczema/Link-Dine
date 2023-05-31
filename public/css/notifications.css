@@ -54,11 +54,11 @@ ul > li {
     list-style: none;
     left: 0;
     margin-bottom: 0;
-    float : left;
+    position: absolute;
 }
 
 .prev {
-    float: left;
+    position: absolute;
     display: block;
     margin-left: 18%;
     margin-top: 12%;
@@ -71,7 +71,7 @@ ul > li {
     border: 2px solid black;
 }
 .next {
-    float: left;
+    position: absolute;
     display: block;
     margin-left: 28%;
     margin-top: 12%;
