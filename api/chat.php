@@ -2,14 +2,6 @@
 
 include 'login-check.php';
 
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
-$port = "5432";
-$dbname = "verceldb";
-$user = "default";
-$password = "Y4vuPQm2xyTl";
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
 
 echo '<html>';
 echo '<head>';
@@ -141,9 +133,11 @@ const getUsernames = async () => {
 };
 
 
-      const receiveMessages = async () => {
+const receiveMessages = async () => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+        const sentTo = $('#userSelect').val(); // Get the selected username
+
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?username=eq.${username}&sentTo=eq.${sentTo}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,6 +159,7 @@ const getUsernames = async () => {
         console.error('Error:', error.message);
     }
 };
+
 $(document).ready(async function() {
           // Get the list of users and populate the select dropdown
           const usernames = await getUsernames();
@@ -173,24 +168,25 @@ $(document).ready(async function() {
           });
 
           $('#sendButton').click(async function() {
-              const message = $('#userInput').val().trim();
-              const sentTo = $('#userSelect').val(); // Get the selected username
+    const message = $('#userInput').val().trim();
+    const sentTo = $('#userSelect').val(); // Get the selected username
 
-              if (message === '') {
-                  alert('Message is required!');
-                  return;
-              }
+    if (message === '') {
+        alert('Message is required!');
+        return;
+    }
 
-              if (!sentTo) {
-                  alert('Please select a user to send message to!');
-                  return;
-              }
+    if (!sentTo) {
+        alert('Please select a user to send message to!');
+        return;
+    }
 
-              await sendMessage(username, message, sentTo);
-              await receiveMessages();
-          });
+    await sendMessage(username, message, sentTo);
+    await receiveMessages(sentTo); // Pass selected user to the function
+});
 
-          setInterval(receiveMessages, 3000); // Poll server every 3 seconds for new messages
+setInterval(() => receiveMessages($('#userSelect').val()), 3000); // Update selected user in real-time
+
       });
 
 
