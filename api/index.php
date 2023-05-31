@@ -43,7 +43,7 @@ try {
                 $jwt = JWT::encode($payload, $secretKey, $alg);
                 
                 // Set JWT as a cookie
-                //setcookie('jwt', $jwt, time()+3600); 
+                setcookie('jwt', $jwt, time()+3600); 
                 
                 echo '<meta http-equiv="refresh" content="0; url=accueil.php" />';
                 exit;

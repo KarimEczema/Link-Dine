@@ -1,6 +1,5 @@
 <?php
 // Include the JWT library
-
 require __DIR__ . '/vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
@@ -26,14 +25,14 @@ if (isset($_COOKIE['jwt'])) {
         // JWT validation failed
         // Redirect to login page or show error message
         echo 'no';
-        //header('Location: index.php');
+        header('Location: index.php');
         exit;
     }
 } else {
     // JWT is not set, user is not logged in
     // Redirect to login page or show error message
     echo 'not';
-    //header('Location: index.php');
+    header('Location: index.php');
     exit;
 }
 ?>
