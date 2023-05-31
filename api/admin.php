@@ -191,7 +191,7 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
         
         function deleteUsername(usernameVar) {
             console.log(usernameVar);
-             const response2 = await fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co/rest/v1/users` + '/' + usernameVar, {
+             const response2 = fetch(`https://bmqgiyygwjnnfyrtjkno.supabase.co/rest/v1/users` + '/' + usernameVar, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
