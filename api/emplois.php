@@ -84,9 +84,6 @@
 
 </nav> 
 
-<nav class ="CV"> 
-</nav> 
-
 
 <footer>
 		<div class="container-fluid">

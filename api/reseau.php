@@ -10,7 +10,7 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 
 echo '<html>';
 echo '<head>';
-echo '<title>ECE-in</title>';
+echo '<title>Réseau</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -83,7 +83,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     });
 </script>
 
-<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
+<link href="css/reseau.css" rel="stylesheet" type="text/css"/>
 <body>
 	<header>
 		<div class="container-fluid">
@@ -129,7 +129,6 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</ul>
 
 		<!-- Recuperer les noms, les liens et statut + description en php.-->
-        <!-- Recuperer les noms, les liens et statut + description en php.-->
 
 	</div>
 	<div id="buttons">
@@ -138,7 +137,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</div>
 	
     
-
+    
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
