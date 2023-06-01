@@ -169,6 +169,10 @@ echo '<body>';
 
 <?php
 
+    try{
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+
     // Si un formulaire a été récupéré et si le bouton a été pressé
     if($_POST){
         if(isset($_POST['ajouterPjt']) && $_POST['ajouterPjt'] == 'CreerPjt') {
