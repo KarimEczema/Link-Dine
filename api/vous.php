@@ -89,8 +89,8 @@ include 'navbar.php';
              <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
              <div class="scroll-page" id="notif-1">
                 <div class="row">
-                    <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
-                    <div class="col-sm-8" style="background-color: red">
+                    <div class="col-sm-4" style = "background-color:#d6a3b7"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
+                    <div class="col-sm-8" style="background-color:#a7d4d4">
                     <h3><B><?php echo htmlspecialchars($row['nom']); ?></B></h3>
                     <br>
                     <h5><?php echo htmlspecialchars($row['institution']); ?></h5>
@@ -211,9 +211,10 @@ include 'navbar.php';
     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                  <div class="item">
 
-                        <?php echo htmlspecialchars($row['nom']); ?>
+                        <B><?php echo htmlspecialchars($row['nom']); ?></B>
                         <br>
-                        <div style="padding: 2%; background-color:beige; ">
+                        <br>
+                        <div style="padding: 2%; background-color:beige; margin-left: 2%; ">
                         <?php echo htmlspecialchars($row['description']); ?>
     </div>
                   
