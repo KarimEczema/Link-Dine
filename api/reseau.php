@@ -93,68 +93,6 @@ include 'navbar.php';
 	<input type="button" value=">" class="next">
 </div>
 
-<h1 style="margin : 5% ">Supprimer un utilisateur</h1>
-<select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
-	<!-- User options will be dynamically inserted here -->
-</select>
-<button id="sendButton" style="margin-top: 3% width:6% height:2%">Supprimer l'utilisateur</button>
-
-
-
-<script>
-	$(document).ready(function () {
-		$("#sendButton").click(function () {
-			var username = $("#userSelect").val();
-
-			$.ajax({
-				url: 'requestfriend', // path to your PHP script
-				type: 'post',
-				data: { username: username },
-				success: function (response) {
-					alert(response);
-					location.reload(); // Refresh the page
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					console.log(textStatus, errorThrown);
-				}
-			});
-		});
-	});
-</script>
-
-<script>
-
-	// Récupération des infos de la base de donnée (url et clé)
-	const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-	const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
-	// Récupération de l'utilisateur 
-	const getUsernames = async () => {
-		try {
-			const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'apikey': supabaseAnonKey,
-				},
-			});
-			const data = await response.json();
-			return data.map(user => user.username);
-		} catch (error) {
-			console.error('Error:', error.message);
-
-		}
-	};
-
-	// Récupération de la liste des utilisateurs et affichage dans le menu déroulant
-	$(document).ready(async function () {
-		const usernames = await getUsernames();
-		usernames.forEach((user) => {
-			$('#userSelect').append(new Option(user, user));
-		});
-	});
-
-</script>
 
 <footer>
 	<div class="container-fluid">
