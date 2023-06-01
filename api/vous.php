@@ -1,5 +1,5 @@
 <?php
-//include 'login-check.php';
+include 'login-check.php';
 
 echo '<html>'; 
 echo '<head>'; 
@@ -147,7 +147,7 @@ echo '<body>';
     <div class="item">Projet 3</div> 
     <div class="item">Projet 4</div> 
     <div class="item">Projet 5</div> 
-    <main></div> 
+    </main></div>
 
 <!--
 ----------   Ajout    ----------
