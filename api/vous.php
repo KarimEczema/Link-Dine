@@ -205,12 +205,7 @@ echo '<body>';
                   
                   </div>
                   <?php endwhile; ?>
-
-
-    <div class="item">Projet 2</div>
-    <div class="item">Projet 3</div>
-    <div class="item">Projet 4</div>
-    <div class="item">Projet 5</div>
+        
     </main></div>
 
 <!--
