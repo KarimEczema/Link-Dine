@@ -28,13 +28,13 @@ if (isset($_COOKIE['jwt'])) {
         $decoded = JWT::decode($jwt, $secretKey);
         
         // Get the username from the decoded payload
-        $idUser = $decoded->idUser;
+        $iduser = $decoded->iduser;
         
         // Check if the user id is equal to 1
         if ($idUser == 1) {
-            echo "Logged as admin . $idUser";
+            echo "Logged as admin . $iduser";
             echo '<script>';
-            echo 'var idUser = "' . $idUser . '";';
+            echo 'var idUser = "' . $iduser . '";';
             echo '</script>';
             // Continue processing or redirect to authenticated page
         } else {

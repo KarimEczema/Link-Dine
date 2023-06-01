@@ -133,8 +133,7 @@ $(document).ready(async function() {
         if(e.which == 13) { // Enter key pressed
             const message = $(this).val().trim();
             const sentTo = $('.usernameButton.active').data('id');
-            const iduser = /* Retrieve the iduser from the session or any appropriate source */
-
+           
             if (message === '') {
                 alert('Message is required!');
                 return;
@@ -152,10 +151,8 @@ $(document).ready(async function() {
 
     setInterval(() => {
         const activeUserId = $('.usernameButton.active').data('id');
-        const iduser = iduser;
-        if (activeUserId && iduser) {
-            receiveMessages(iduser, activeUserId);
-        }
+        receiveMessages(iduser, activeUserId);
+        
     }, 1000);
 });
     </script>
