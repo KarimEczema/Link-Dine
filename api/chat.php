@@ -126,8 +126,9 @@ echo '<body>';
                 userButton.click(function () {
                     $('.usernameButton').removeClass('active');
                     $(this).addClass('active');
-                    receiveMessages($(this).data('id'));
+                    receiveMessages(iduser, $(this).data('id'));
                 });
+
                 $('#userSelect').append(userButton);
             });
 
