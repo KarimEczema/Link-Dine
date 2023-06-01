@@ -39,7 +39,7 @@ body{
     width: 100%;
     float: left;
     text-align: left;
-    height: 30%;
+    height: 50%;
     margin-top: 5px;
 }
 
@@ -53,4 +53,8 @@ body{
 
 #notif-3{
     background-color: lavenderblush ;
+}
+
+#notifs{
+	background-color: purple;
 }

@@ -9,13 +9,12 @@
 	
 <nav class = "navigation">
 	<ul id="liste1">
-		<li><a href="accueil">Accueil</a></li>
-		<li><a href="reseau">Mon réseau</a></li>
-		<li><a href="vous">Vous</a></li>
-		<li><a href="notifications">Notifications</a></li>
-		<li><a href="messages">Messageries</a></li>
-		<li><a href="emplois">Emplois</a></li>
-		<li><a href="chat">Messagerie</a></li>
-		<li style="float:right"><a href="admin">Admin</a></li>
+		<li id="accueil"><a href="accueil">Accueil</a></li>
+		<li id="reseau"><a href="reseau">Mon réseau</a></li>
+		<li id="vous"><a href="vous">Vous</a></li>
+		<li id="notifs"><a href="notifications">Notifications</a></li>
+		<li id="emplois"><a href="emplois">Emplois</a></li>
+		<li id="chat"><a href="chat">Messagerie</a></li>
+		<li id="admin" style="float:right"><a href="admin">Admin</a></li>
 	</ul>
 </nav>

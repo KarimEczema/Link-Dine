@@ -26,7 +26,7 @@ include 'caroussel.php';
 
 	<nav class = "section">
 		<div id = "Event">
-			<h5 style = "text-align : center; color:red"> Evennements de la semaine</h5>
+			<h5 style = "text-align : center; color:red"> Evènements de la semaine</h5>
 		</div>
 		<div id="carrousel">
 			<ul id = "listc" style ="list-style-type : none;">
@@ -58,6 +58,8 @@ include 'caroussel.php';
 					 <div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea></div>
 					 <div class="col-sm-2">
 						<input type="file" id="image" name="image" accept="image/png, image/jpeg" style = "margin-left : 280% ; margin-top : 90%;">
+						<img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="200" height="200">
+						</input>
 						<button type="submit"  style = "margin-left : 280%; margin-top : 10%;">Publier</button>
 					 </div>
 				</div>

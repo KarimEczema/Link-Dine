@@ -12,11 +12,15 @@ body{
 }
 
 #Event{
-	margin-top:100px;
+	margin:10% 0 2% 0;
 	border: 3px solid black;
 	padding : 3px;
 }
 
 .post{
-	margin-top: 35%;
+	margin-top: 5%;
+}
+
+#accueil{
+	background-color: purple;
 }
