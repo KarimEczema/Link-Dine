@@ -11,8 +11,7 @@ echo '<body>';
 
 include 'navbar.php';
 ?>
-<script>                import { createClient } from '@supabase/supabase-js';
-</script>
+
  
 <script type="text/javascript"> 
     function textecache(ntexte){ 
