@@ -24,15 +24,34 @@ echo '<body>';
 ======================================================
 -->
 
+<!-- récupération des donnée dans la table users -->
+
+<?php
+
+    $sql = "SELECT * FROM users WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+<!-- affichage des données de la bdd avec php -->
+
     <nav class = "profil"> 
             <div class="row"> 
                  <div class="col-sm-4" style = "background-color : purple">Photo</div> 
                  <div class="col-sm-8" style="background-color: red">  
-                    <div style = "background-color: green; margin:2%"><h1>Nom de l'utilisateur</h1></div> 
-                    <div style = "background-color: blue; margin:2%"><h3>Description de l'utilisateur</h3></div> 
+                    <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
+                    <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
                 </div> 
             </div>		 
     </nav> 
+
+
 
 <!--
 ======================================================
