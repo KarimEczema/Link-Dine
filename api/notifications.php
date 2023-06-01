@@ -44,30 +44,30 @@ include 'navbar.php';
     </nav>
 
     <nav class="section" style = "color : black;">
+        <div id = "Amis">
+            <h5> Que font mes amis</h5>
+        </div>
 
         <div class="scroll-container">
-            <div class="scroll-page" id="formation-1">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
-                <h6>Type de contrat </h6> <br>
-                <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6>
-                <span id="span_text1" style="display: none";>Suite de la description trop longue</span>
-                <h6>Salaire</h6>
+            <div class="scroll-page" id="notif-1">
+                <h5>Nom de l'amis </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
             </div>
-            <div class="scroll-page" id="formation-2">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
-                <h6>Type de contrat </h6> <br>
-                <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6>
-                <span id="span_text2" style="display: none";>Suite de la description trop longue</span>
-                <h6>Salaire</h6>
+            <div class="scroll-page" id="notif-2">
+                <h5>Nom de l'amis  </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
             </div>
-            <div class="scroll-page" id="formation-3">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
+            <div class="scroll-page" id="notif-3">
+                <h5>Nom de l'amis  </h5>
+                <h6>à : Action </h6>
                 <h6>29/05/2023</h6>
             </div>
         </div>
         
     </nav>
-
+    
     <?php include 'foot.php' ?>
     
 </body>
