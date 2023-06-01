@@ -53,3 +53,4 @@ async function downloadFile(filePath) {
 }
 
 
+downloadFile("StreetMordred.jpg")

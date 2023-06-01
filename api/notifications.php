@@ -8,13 +8,14 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 
 echo '<html>';
 echo '<head>';
-echo '<title>Notifications</title>';
+echo '<title>Admin</title>';
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
+echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">'; 
+echo '<body>';
 
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
+include 'navbar.php';
 ?>
 
 <script type="text/javascript">
@@ -85,48 +86,19 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <link href="css/notifications.css" rel="stylesheet" type="text/css"/>
 
 <body>
-    <header>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-                <div class="col-sm" ><img src="LogECE.png" width="121" height="49.5"></div>
-            </div>
-        </div>
-    </header>
 
-    <nav class = "navigation">
-		<ul id="liste1">
-		  <li><a href="accueil">Accueil</a></li>
-		  <li><a href="reseau">Mon réseau</a></li>
-		  <li><a href="vous">Vous</a></li>
-		  <li><a href="notifications">Notifications</a></li>
-		  <li><a href="messages">Messageries</a></li>
-		  <li><a href="emplois">Emplois</a></li>
-		</ul>
-	</nav>
+<nav class = "section">
+    <div id = "Semaine">
+        <h5 style = "text-align : center; color:red; border: 3px solid black; border-radius: 5%; padding : 3px;"> Evènement de la semaine</h5>
+    </div>
 
-
-
-    <nav class = "section">
-        <div id = "Semaine">
-            <h5> Evènement de la semaine</h5>
-        </div>
-        <nav style="padding-bottom: 10%">
-        <div id="carrousel">
-            <ul style ="list-style-type : none;">
-                <li><img src="images/bird3.jpg" width="120" height="100" alt="img1"></li>
-                <li><img src="images/bird4.jpg" width="120" height="100" alt="img2"></li>
-                <li><img src="images/bird5.png" width="120" height="100" alt="img3"></li>
-                <li><img src="images/CelesteTheo.png" width="120" height="100" alt="img4"></li>
-                <li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="120" height="100" alt="imgsuppabase"></li>
-                <li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100" alt="img5"></li>
-                <li><img src="images/logECE.png" width="120" height="100" alt="img6"></li>
-                <li><img src="images/StreetMordred.jpg" width="120" height="100" alt="img7"></li>
-                <li><img src="book9.jpg" width="120" height="100" alt="img8"></li>
-                <li><img src="book10.jpg" width="120" height="100" alt="img9"></li>
-                <li><img src="book11.jpg" width="120" height="100" alt="img10"></li>
-                <li><img src="book12.jpg" width="120" height="100" alt="img11"></li>
-            </ul>
+    <div class="scroll-container">
+        <div class="scroll-page" id="formation-1">
+            <h5><B>Intitulé du poste</B>- Employeur </h5>
+            <h6>Type de contrat </h6> <br>
+            <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6>
+            <span id="span_text1" style="display: none";>Suite de la description trop longue</span>
+            <h6>Salaire</h6>
         </div>
         </nav>
         <nav style="padding-top: 3%; padding-bottom: 6%">

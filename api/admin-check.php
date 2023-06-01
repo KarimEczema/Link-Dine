@@ -30,14 +30,19 @@ if (isset($_COOKIE['jwt'])) {
         // Get the username from the decoded payload
         $idUser = $decoded->idUser;
         
-        echo '<script>';
-        echo 'var idUser = "' . $idUser . '";';
-        echo '</script>';
-        // Continue processing or redirect to authenticated page
-
-        echo '<script>';
-        echo 'var username = "' . $idUser . '";';
-        echo '</script>';
+        // Check if the user id is equal to 1
+        if ($idUser == 1) {
+            echo "Logged as admin . $idUser";
+            echo '<script>';
+            echo 'var idUser = "' . $idUser . '";';
+            echo '</script>';
+            // Continue processing or redirect to authenticated page
+        } else {
+            // If user id is not equal to 1, redirect or show error message
+            echo 'Error: User id is not admin';
+            header('Location: index.php');
+            exit;
+        }
         
     } catch (Exception $e) {
         // JWT validation failed
