@@ -88,7 +88,11 @@ echo '<body>';
              <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                 <div class="row">
                     <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
-                    <div class="col-sm-8" style="background-color: red"><B><?php echo htmlspecialchars($row['nom']); ?></B><br><?php echo htmlspecialchars($row['institution']); ?></div>
+                    <div class="col-sm-8" style="background-color: red">
+                    <h1><B><?php echo htmlspecialchars($row['nom']); ?></B></h1>
+                    <br>
+                    <h3><?php echo htmlspecialchars($row['institution']); ?></h3>
+                    </div>
                 </div>
              <?php endwhile; ?>
            </tbody>
