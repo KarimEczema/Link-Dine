@@ -1,30 +1,135 @@
-body{
-    /* Style pour le corps général*/
-    margin-left : 25%;
-    margin-right : 25%;
-    text-align : center;
-}
-
-header{
-    /* Style pour le bandeau d'en-tête*/
-    color: white; 
-    padding:7px; 
-    background-color : #446AA9 ; 
-}
-
-
-.navigation{
-    /* Style du bandeau de navigation */
-    margin-top : 10px;
-}
-
 .section{
     /* Style du corps de section */
+    color: black;
+    margin-top: 8%;
+}
+
+
+
+
+#Semaine, #Amis{
+    text-align : center;
+    border: 3px solid black;
+    border-radius: 5%;
+    padding : 3px;
+}
+
+#Amis{
+    color: green;
+}
+
+#Semaine{
+    color:red;
+}
+
+#carrousel {
+    margin-left: 24%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 750px;
+    height: 150px;
+    list-style: none;
+    left: 0;
+    position: absolute;
+}
+
+#carrousel ul {
+	position: relative;
+}
+#carrousel ul>li {
+	list-style-type: none;
+	position: absolute;
+	top: 30%;
+	transition: 1s opacity;
+}
+
+.prev {
+    position: absolute;
+    display: block;
+    margin-left: 18%;
+    margin-top: 2%;
+    color: black;
+    width: 70px;
+    height: 35px;
+    font-weight: 800;
+    background-color: darkgoldenrod;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.next {
+    position: absolute;
+    display: block;
+    margin-left: 28%;
+    margin-top: 2%;
+    color: black;
+    width: 70px;
+    height: 35px;
+    font-weight: 800;
+    background-color: lightcoral;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.scroll-container {
+    width: 50vw;
+    height: 30vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.scroll-page {
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 40%;
+    margin-top: 5px;
+}
+
+#notif-1{
+    background-color: mintcream ;
+}
+
+#notif-2{
+    background-color: lightcyan ;
+}
+
+#notif-3{
+    background-color: lavenderblush ;
+}
+
+
+footer{
+    /* Style du footer */
     color: white;
 }
 
-#Event{
-    margin-top:100px;
-    border: 3px solid black;
-    padding : 3px;
+
+ul#liste1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul#liste1 li {
+    float: left;
+	border-right: 1px solid #bbb;
+}
+
+
+ul#liste1 li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul#liste1 li a:hover {
+    background-color: #111;
 }
