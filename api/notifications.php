@@ -13,6 +13,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 echo '<body>';
 
 include 'navbar.php';
+include 'caroussel.php';
 ?>
 
 
