@@ -61,8 +61,9 @@ include 'navbar.php';
             <div class="open-btn">
                 <button class="open-button" onclick="openForm()"><strong>Description du poste</strong></button>
             </div> </h6> 
+            <script></script>
             <div class="login-popup">
-                <div class="Description" id="description">
+                <div class="Description" id="form">
                     <div class="descr-container">
                         <h4>Description de la formation :</h4>
                         <?php echo htmlspecialchars($row['description']); ?>
@@ -75,11 +76,11 @@ include 'navbar.php';
 
     <script>
         function openForm() {
-            document.getElementById("description").style.display = "block";
+            document.getElementById("form").style.display = "block";
         }
 
         function closeForm() {
-            document.getElementById("description").style.display = "none";
+            document.getElementById("form").style.display = "none";
         }
     </script>
 
