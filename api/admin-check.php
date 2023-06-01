@@ -28,7 +28,7 @@ if (isset($_COOKIE['jwt'])) {
         $decoded = JWT::decode($jwt, $secretKey);
         
         // Get the username from the decoded payload
-        $iduser = $decoded->idser;
+        $iduser = $decoded->iduser;
         
         // Check if the user id is equal to 1
         if ($iduser == 1) {
