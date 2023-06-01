@@ -194,8 +194,17 @@ echo '<body>';
             <input type="radio" name="position" />
         <?php endwhile; ?>
 
-       <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser"; ?>
+       <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
+        try{
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
 
+        }catch (PDOException $e){
+        echo $e->getMessage();
+        }
+        ?>
+        
 
         <main id="carousel">
     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
