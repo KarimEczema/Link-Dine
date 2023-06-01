@@ -146,7 +146,7 @@ $(document).ready(async function() {
             setInterval(() => {
         const activeUserId = $('.usernameButton.active').data('id');
         if (activeUserId) {
-            receiveMessages(userid);
+            receiveMessages(activeUserId);
         }
     }, 1000);
         });
