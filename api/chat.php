@@ -82,9 +82,9 @@ const getUsers = async () => {
 };
 
 
-const receiveMessages = async (sentTo) => {
+const receiveMessages = async (user1, user2) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?sentTo=eq.${sentTo}`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?or=(sentTo.eq.${user1},sentTo.eq.${user2})`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -97,6 +97,9 @@ const receiveMessages = async (sentTo) => {
         }
 
         let data = await response.json();
+
+        // Filter the data to include only the conversation between user1 and user2
+        data = data.filter(msg => (msg.sentTo === user1 || msg.sentTo === user2) && (msg.iduser === user1 || msg.iduser === user2));
 
         // Sort the data based on the 'time' field in descending order (newest first)
         data.sort((a, b) => new Date(b.time) - new Date(a.time));
@@ -111,6 +114,7 @@ const receiveMessages = async (sentTo) => {
 };
 
 
+
 $(document).ready(async function() {
           const users = await getUsers();
           users.forEach((user) => {
@@ -123,33 +127,35 @@ $(document).ready(async function() {
               $('#userSelect').append(userButton);
           });
 
-          $('#userInput').keypress(async function(e) {
-              if(e.which == 13) { // Enter key pressed
-                  const message = $(this).val().trim();
-                  const sentTo = $('.usernameButton.active').data('id');
+    $('#userInput').keypress(async function(e) {
+        if(e.which == 13) { // Enter key pressed
+            const message = $(this).val().trim();
+            const sentTo = $('.usernameButton.active').data('id');
+            const iduser = /* Retrieve the iduser from the session or any appropriate source */
 
-                  if (message === '') {
-                      alert('Message is required!');
-                      return;
-                  }
+            if (message === '') {
+                alert('Message is required!');
+                return;
+            }
 
-                  if (!sentTo) {
-                      alert('Please select a user to send message to!');
-                      return;
-                  }
+            if (!sentTo) {
+                alert('Please select a user to send message to!');
+                return;
+            }
 
-                  await sendMessage(iduser, message, sentTo);
-                  $(this).val(''); // Clear the input field
-              }
-          });
+            await sendMessage(iduser, message, sentTo);
+            $(this).val(''); // Clear the input field
+        }
+    });
 
-            setInterval(() => {
+    setInterval(() => {
         const activeUserId = $('.usernameButton.active').data('id');
-        if (activeUserId) {
-            receiveMessages(activeUserId);
+        const iduser = iduser;
+        if (activeUserId && iduser) {
+            receiveMessages(iduser, activeUserId);
         }
     }, 1000);
-        });
+});
     </script>
 </body>
 </html>
