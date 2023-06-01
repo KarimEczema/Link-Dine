@@ -89,7 +89,6 @@ include 'navbar.php';
      <?php endwhile; ?>
    </tbody>
  </table>
-
         </div> 
     </nav> 
     <?php include 'foot.php';?>
