@@ -96,7 +96,6 @@ ul#liste1 li a:hover {
 }
 
 .Description {
-    display: none;
     position: fixed;
     left: 45%;
     top: 5%;
