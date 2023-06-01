@@ -111,7 +111,6 @@ ul#liste1 li a:hover {
     z-index: 9;
   }
   .descr-container {
-    max-width: 300px;
     padding: 20px;
     background-color: #791e1e;
   }      
