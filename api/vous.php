@@ -194,6 +194,9 @@ echo '<body>';
             <input type="radio" name="position" />
         <?php endwhile; ?>
 
+       <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser"; ?>
+
+
         <main id="carousel">
     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                  <div class="item">
