@@ -188,14 +188,13 @@ echo '<body>';
     <h1 style="padding:10% ">Projets</h1> 
 
     <div>  
-    <input type="radio" name="position" checked /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <main id="carousel">
 
 
+        <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+            <input type="radio" name="position" />
+        <?php endwhile; ?>
+
+        <main id="carousel">
     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                  <div class="item">
 
@@ -205,7 +204,7 @@ echo '<body>';
                   
                   </div>
                   <?php endwhile; ?>
-        
+
     </main></div>
 
 <!--
