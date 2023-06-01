@@ -82,7 +82,7 @@ echo '<body>';
 <!-- affichage des données de la bdd avec php -->
 
     <h1 style="padding-top:10%">Formations</h1>
-    <nav class = "formations" style="padding:5%">
+    <nav class = "formations">
     <div class="scroll-container">
             <table>
                <tbody>
