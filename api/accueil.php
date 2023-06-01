@@ -1,6 +1,51 @@
 <?php
+    include 'login-check.php';
 
-include 'login-check.php';
+    // Get details of the file
+    $file = $_FILES['image'];
+    $fileName = $_FILES['image']['name'];
+    $fileTmpName = $_FILES['image']['tmp_name'];
+    $fileSize = $_FILES['image']['size'];
+    $fileError = $_FILES['image']['error'];
+    $fileType = $_FILES['image']['type'];
+
+    // File extension
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    // Allowed file types
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if(in_array($fileActualExt, $allowed)){
+        if($fileError === 0){
+            if($fileSize < 5000000) { // File size is less than 5MB
+                // Supabase Logic to upload image
+                $uuid = uniqid('', true); // Generate a unique ID for the image
+                $fileDestination = 'uploads/'.$uuid.'.'.$fileActualExt; // Define where to save the image
+
+                move_uploaded_file($fileTmpName, $fileDestination); // Move the uploaded file to the destination
+
+                // Save Image details into Supabase
+                $result = $supabase
+                    ->from('images')
+                    ->insert([
+                        'id' => $uuid,
+                        'filename' => $fileName,
+                        'filetype' => $fileType,
+                        'data' => file_get_contents($fileDestination)
+                    ])
+                    ->execute();
+
+                header("Location: index.php?uploadsuccess"); // Redirect to index.php after successful upload
+            } else {
+                echo "Your file is too big!";
+            }
+        } else {
+            echo "There was an error uploading your file!";
+        }
+    } else {
+        echo "You cannot upload files of this type!";
+    }
 
 echo '<html>';
 echo '<head>';
@@ -127,19 +172,42 @@ include 'navbar.php';
 	</nav>
 
 	<nav class="post">
-		<form method="post" action="traitement.php">
-			<label for="ameliorer">Creer un post</label><br>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50"
-							style="margin-right: 35px;"></textarea></div>
-					<div class="col-sm-2">
-						<input type="file" id="image" name="image" accept="image/png, image/jpeg"
-							style="margin-left : 280% ; margin-top : 90%;">
-						<button type="submit" style="margin-left : 280%; margin-top : 10%;">Publier</button>
-					</div>
-				</div>
-		</form>
+	<form id="post-form" method="post" enctype="multipart/form-data">
+    <label for="ameliorer">Create a post</label><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 35px;"></textarea></div>
+            <div class="col-sm-2">
+                <input type="file" id="image" name="image" accept="image/png, image/jpeg" style="margin-left : 280% ; margin-top : 90%;">
+                <button type="button" id="submit-btn" style="margin-left : 280%; margin-top : 10%;">Publish</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    // Get form elements
+    var form = document.getElementById('post-form');
+    var submitButton = document.getElementById('submit-btn');
+
+    // Add event listener to the submit button
+    submitButton.addEventListener('click', function() {
+        // Create a FormData object
+        var formData = new FormData(form);
+
+        // Send a fetch request to the PHP script
+        fetch('upload.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Log the response from the PHP script
+            console.log(data);
+        });
+    });
+</script>
+
 	</nav>
 
 	<footer>

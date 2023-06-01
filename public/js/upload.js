@@ -51,6 +51,3 @@ async function downloadFile(filePath) {
         console.error('Error:', error);
     }
 }
-
-
-downloadFile("StreetMordred.jpg")
