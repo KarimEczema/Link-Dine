@@ -11,7 +11,8 @@ echo '<body>';
 
 include 'navbar.php';
 ?>
-
+<script>                import { createClient } from '@supabase/supabase-js';
+</script>
  
 <script type="text/javascript"> 
     function textecache(ntexte){ 
@@ -38,7 +39,6 @@ include 'navbar.php';
             $stmt = $conn->prepare($sql);
 
 	}catch (PDOException $e){
-    	// Message d'erreur si le formulaire n'a pas pu être récupéré
     	echo $e->getMessage();
 	}
     ?>
