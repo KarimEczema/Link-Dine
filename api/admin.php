@@ -199,7 +199,9 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dis
                         'apikey': supabaseAnonKey,
                     },
             })
-
+            .then(response2 => response2.json())
+            .then(data => console.log('User deleted successfully: ', data))
+            .catch(error => console.error('Error deleting user: ', error));
         }
         
             </script>
