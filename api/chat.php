@@ -154,9 +154,10 @@ $(document).ready(async function() {
         const activeUserId = $('.usernameButton.active').data('id');
         console.log("iduser: ", iduser);
         console.log("activeUserId: ", activeUserId);
+        if (activeUserId) {  // check if activeUserId is defined
         receiveMessages(iduser, activeUserId);
-        
-    }, 1000);
+        }
+    }, 500);
 });
     </script>
 </body>
