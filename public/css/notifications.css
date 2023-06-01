@@ -63,7 +63,7 @@ ul#listc li {
 	border: 2px solid black;
 }
 
-.scroll-container {
+#block_deroulant {
     width: 50vw;
     height: 30vh;
     overflow-y: scroll;
@@ -72,7 +72,7 @@ ul#listc li {
     margin: 0 auto;
     text-align: center;
     position: relative;
-    background-color: #446AA9 ;
+    background-color:#446AA9 ;
 }
 
 .scroll-page {
