@@ -16,6 +16,7 @@
     { "src": "/nav", "dest": "/api/navbar.php"},
     { "src": "/delete", "dest": "/api/delete.php"},
     { "src": "/chat", "dest": "/api/chat.php" },
+    { "src": "/upload", "dest": "/api/upload.php" },
     { "src": "/reseau", "dest": "/api/reseau.php" },
     { "src": "/profil", "dest": "/api/profil.php" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" },
