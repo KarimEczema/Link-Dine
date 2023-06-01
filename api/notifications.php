@@ -1,49 +1,20 @@
 <?php
     include 'login-check.php';
-?>
-
-<!DOCTYPE html>
-<html>
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
 
 echo '<html>';
 echo '<head>';
-echo '<title>Notifications</title>';
+echo '<title>Admin</title>';
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
+echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">'; 
+echo '<body>';
 
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
+include 'navbar.php';
 ?>
 
 
 <body>
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-            <div class="col-sm" ><img src="LogECE.png" width="121" height="49.5"></div>
-        </div>
-    </div>
-</header>
-
-<nav class = "navigation">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-            <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-            <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
-            <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-            <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-            <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
-        </div>
-    </div>
-</nav>
-
-
 
 <nav class = "section">
     <div id = "Semaine">

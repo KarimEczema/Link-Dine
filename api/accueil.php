@@ -10,7 +10,14 @@ echo '<title>Accueil</title>';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+echo "Logged in as: " . $idUser;
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
+echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<body>';
 
+include 'navbar.php';
 ?>
 
 <script type="text/javascript">
@@ -80,25 +87,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 <link href="css/accueil.css" rel="stylesheet" type="text/css"/>
 <body>
-	<header>
-		<div class="container-fluid">
-			<div class="row">
-				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="121" height="49.5"></div>
-			</div>		
-		</div>
-	</header>
 	
-	<nav class = "navigation">
-		<ul id="liste1">
-		  <li><a href="acceuil">Acceuil</a></li>
-		  <li><a href="reseau">Mon réseau</a></li>
-		  <li><a href="vous">Vous</a></li>
-		  <li><a href="notifications">Notifications</a></li>
-		  <li><a href="messages">Messageries</a></li>
-		  <li><a href="emplois">Emplois</a></li>
-		</ul>
-	</nav>
 	
 	<nav class = "section">
 		<div id = "Event">

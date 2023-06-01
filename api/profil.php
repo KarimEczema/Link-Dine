@@ -1,16 +1,16 @@
 <?php
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
-$port = "5432";
-$dbname = "verceldb";
-$user = "default";
-$password = "Y4vuPQm2xyTl";
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
+include 'login-check';
 
 echo '<html>';
 echo '<head>';
-echo '<title>Profil</title>';
+echo '<title>Admin</title>';
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
+echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<body>';
+
+include 'navbar.php';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
@@ -72,14 +72,16 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	</header>
 	
 	<nav class = "navigation">
-		<ul id="liste1">
-		  <li><a href="acceuil">Acceuil</a></li>
-		  <li><a href="reseau">Mon réseau</a></li>
-		  <li><a href="vous">Vous</a></li>
-		  <li><a href="notifications">Notifications</a></li>
-		  <li><a href="messages">Messageries</a></li>
-		  <li><a href="emplois">Emplois</a></li>
-		</ul>
+		<div class="container-fluid">
+				<div class="row">
+					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
+					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Réseau</a></div>
+					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
+					 <div class="col-sm-2"><a href="notifs" style = "border : solid; color: black; padding:2px">Notifications</a></div>
+					 <div class="col-sm-2"><a href="chat" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
+					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
+				</div>
+		</div>
 	</nav>
 
     <nav class = "profil" style = "border : solid; color: black; padding:7px">

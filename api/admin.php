@@ -1,108 +1,34 @@
 <?php
 
-include 'login-check.php';
-
-
+include 'admin-check.php';
 
 echo '<html>';
 echo '<head>';
 echo '<title>Admin</title>';
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
+echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<body>';
 
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-
+include 'navbar.php';
 ?>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		var $img = $('#carrousel img');
-		var max = $img.length;
-		var i = 0; // compteur
-		$img.css('margin-left','0').css('display', 'none'); //on cache les images
-		$img.eq(i).css('display', 'inline'); //on affiche l'image courante
-		$img.eq(i+1).css('margin-left','200px').css('display', 'inline');
-		$img.eq(i+2).css('margin-left','400px').css('display', 'inline');
-		$img.eq(i+3).css('margin-left','600px').css('display', 'inline');
-		//si on clique sur « next » ou « > »
-		$('.next').click(function () { // image suivante
-			 i+=4; // on incrémente le compteur
-			 if (i < max-4) {
-			 i = i+4;
-			 $img.css('margin-left','0').css('display', 'none'); //on cache
-			 $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-			 $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
-			 $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
-			 $img.eq(i+3).css('margin-left','600px').css('display', 'inline'); } else {
-			 i = 0;
-			 }
-		 });
-		//si on clique sur « prev » ou « < »
-		 $('.prev').click(function () { // groupe des images précédentes
-			 i-=4; // on décrémente le compteur
-			 if (i >= 0) {
-			 $img.css('margin-left','0').css('display', 'none'); //on cache
-			 $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-			 $img.eq(i+1).css('margin-left','200px').css('display', 'inline');
-			 $img.eq(i+2).css('margin-left','400px').css('display', 'inline');
-			 $img.eq(i+3).css('margin-left','600px').css('display', 'inline');
-			 } else {
-			 i = 0;
-			 }
-		 });
-		function slideImg() {
-			 setTimeout(function() {
-			 $img.eq(i).css('display', 'inline').css('transition-delay','0.25s');
-			 $img.eq(i + 1).css('margin-left','200px').css('display',
-			 'inline').css('transition-delay','0.5s');
-			 $img.eq(i + 2).css('margin-left','400px').css('display',
-			 'inline').css('transition-delay','0.75s');
-			 $img.eq(i + 3).css('margin-left','600px').css('display',
-			 'inline').css('transition-delay','1s');
-			 if (i < max-4) {
-			i = i+4;
-			 } else {
-			i = 0;
-			 }
-			 $img.css('margin-left','0').css('display', 'none');
-			 $img.eq(i).css('display', 'inline').css('transition-delay','1.25s');
-			 $img.eq(i + 1).css('margin-left','200px').css('display',
-			 'inline').css('transition-delay','1.5s');
-			 $img.eq(i + 2).css('margin-left','400px').css('display',
-			 'inline').css('transition-delay','1.75s');
-			 $img.eq(i + 3).css('margin-left','600px').css('display',
-			 'inline').css('transition-delay','2s');
-			slideImg();
-			}, 4000);
-		}
-		slideImg();
-	});
+<script>                import { createClient } from '@supabase/supabase-js';
 </script>
 
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+
+
 <body>
-	<header>
-		<div class="container-fluid">
-			<div class="row">
-				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="121" height="49.5"></div>
-			</div>		
-		</div>
-	</header>
-	
-	<nav class = "navigation">
-		<div class="container-fluid">
-				<div class="row">
-					 <div class="col-sm-2"><a href="accueil" style = "border : solid; color: black; padding:2px">Accueil</a></div>
-					 <div class="col-sm-2"><a href="reseau" style = "border : solid; color: black; padding:2px">Mon Réseau</a></div>
-					 <div class="col-sm-2"><a href="vous" style = "border : solid; color: black; padding:2px">Vous</a></div>
-					 <div class="col-sm-2"><a href="notifications" style = "border : solid; color: black; padding:2px">Notifications</a></div>
-					 <div class="col-sm-2"><a href="messages" style = "border : solid; color: black; padding:2px">Messagerie</a></div>
-					 <div class="col-sm-2"><a href="emplois" style = "border : solid; color: black; padding:2px">Emplois</a></div>
-				</div>		
-		</div>
-	</nav>
+
+<!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 	
 	<nav class = "Ajout-compte">
 
@@ -115,16 +41,20 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         </form>
     </nav>
 
+	<!--  La modification dans la base de donnée se fait en PHP  -->
+
     <?php
         
-try{
-    // create a PostgreSQL database connection
+	try{
+    // Création du contact avec la BDD
     $conn = new PDO($dsn);
 
-    // if form is submitted
+    // Si un formulaire a été récupéré et si le bouton a été pressé
     if($_POST){
         if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
-            // query to add new user
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
             $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
             $stmt = $conn->prepare($sql);
 
@@ -133,39 +63,88 @@ try{
             $stmt->bindParam(':email', $_POST['email']);
             $stmt->execute();
 
+			//Message de confirmation pour l'utilisateur
             echo "Utilisateur ajouté !";
         }
     }
-}catch (PDOException $e){
-    // report error message
-    echo $e->getMessage();
-}
-
-       
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
     ?>
 
 
+<!-- Suppression d'un compte -->
 
-    <nav class = "Supp-compte">
+<!-- Fonction permettant de définir la fonction à lancer lorsque le bouton est pressé, indique que l'utilisateur sélectionné est récupéré et indique le PHP à lancer -->
+<!-- + Actualisation de la page ce qui permet de supprimer de la liste l'utilisateur supprimé -->
+<script>
+$(document).ready(function(){
+    $("#sendButton").click(function(){
+        var username = $("#userSelect").val();
 
-        <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-        <form action="#">
-            <select name="languages" id="lang">
-            <option value="javascript">JavaScript</option>
-            <option value="php">PHP</option>
-            <option value="java">Java</option>
-            <option value="golang">Golang</option>
-            <option value="python">Python</option>
-            <option value="c#">C#</option>
-            <option value="C++">C++</option>
-            <option value="erlang">Erlang</option>
-            </select>
-        </form>
-       <button type="submit"  style = " margin-top : 2%;">Supprimer le compte</button>
+        $.ajax({
+            url: 'delete', // path to your PHP script
+            type: 'post',
+            data: {username: username},
+            success: function(response) {
+                alert(response);
+                location.reload(); // Refresh the page
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+               console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
 
-    </nav>
+<!-- Affichage -->
 
-	
+    <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+	<select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
+        <!-- User options will be dynamically inserted here -->
+    </select><br><br><br>
+    <button id="sendButton" style="margin-top: 3% width:6% height:2%">Supprimer l'utilisateur</button>	
+	<br>
+
+	<!-- Défini la fonction ajax comme une fonction existante et permet la suppression -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+ <script>
+
+// Récupération des infos de la base de donnée (url et clé)
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+
+// Récupération de l'utilisateur 
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        const data = await response.json();
+        return data.map(user => user.username); 
+        } catch (error) {
+        console.error('Error:', error.message);
+        
+    }
+};
+
+// Récupération de la liste des utilisateurs et affichage dans le menu déroulant
+$(document).ready(async function() {
+    const usernames = await getUsernames();
+    usernames.forEach((user) => {
+        $('#userSelect').append(new Option(user, user));
+    });
+});
+
+    </script>
+
 	<footer>
 		<div class="container-fluid">
 			<div class="row">

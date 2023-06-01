@@ -10,30 +10,11 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<body>';
 
+include 'navbar.php';
 ?>
 
-<body>
- 	<header>
-		<div class="container-fluid">
-			<div class="row">
-				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="image" width="121" height="49.5"></div>
-			</div>		
-		</div>
-	</header>
-	
-	<nav class = "navigation">
-		<ul id="liste1">
-		  <li><a href="acceuil">Acceuil</a></li>
-		  <li><a href="reseau">Mon réseau</a></li>
-		  <li><a href="vous">Vous</a></li>
-		  <li><a href="notifications">Notifications</a></li>
-		  <li><a href="messages">Messageries</a></li>
-		  <li><a href="emplois">Emplois</a></li>
-		</ul>
-	</nav>
- 
     <!-- Profil --> 
     <nav class = "profil"> 
             <div class="row"> 
