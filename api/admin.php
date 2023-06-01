@@ -8,7 +8,7 @@ echo '<title>Admin</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
-echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<link rel="stylesheet" type="text/css" href="css/admin.css">';
 echo '<body>';
 
 include 'navbar.php';
@@ -16,11 +16,6 @@ include 'navbar.php';
 <script>                import { createClient } from '@supabase/supabase-js';
 </script>
 
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-
-<link href="css/admin.css" rel="stylesheet" type="text/css"/>
 
 </head>
 

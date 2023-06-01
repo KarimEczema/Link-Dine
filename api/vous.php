@@ -15,7 +15,15 @@ echo '<body>';
 include 'navbar.php';
 ?>
 
-    <!-- Profil --> 
+<script>                import { createClient } from '@supabase/supabase-js';
+</script>
+
+<!--
+======================================================
+        Partie Profil
+======================================================
+-->
+
     <nav class = "profil"> 
             <div class="row"> 
                  <div class="col-sm-4" style = "background-color : purple">Photo</div> 
@@ -26,7 +34,15 @@ include 'navbar.php';
             </div>		 
     </nav> 
 
-    <!-- Formations --> 
+<!--
+======================================================
+        Partie Formations
+======================================================
+-->
+
+<!--
+----------   Affichage    ----------
+-->
     <h1 style="padding-top:10%">Formations</h1> 
  
     <nav class = "formations" style="padding:5%"> 
@@ -44,29 +60,81 @@ include 'navbar.php';
         </div>	 
     </nav> 
 
-    <!-- Ajout formations --> 
+<!-- php de l'affichage depuis la bdd -->
+
+
+
+<!--
+----------   Ajout    ----------
+-->
+
     <nav class = "Ajout-formation"> 
 
-        <h1 style = "margin-top : 5% ">Ajouter une formation</h1> 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple"> 
-                <h5 style="margin-top:15%">Date de début :</h5> 
-                <input type="date" name="Formation-debut" value="2023-06-06" min="1960-01-01" max="2023-12-31" style="margin : 15%"> 
-                <br> 
-                <h5>Date de fin :</h5> 
-                <input type="date" name="Formation-fin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% "> 
-            </div> 
-            <div class="col-sm-8" style="background-color: grey">  
-               <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div> 
-               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div> 
-           </div> 
-           
-       </div> 
-       <button type="submit"  style = " margin-top : 2%;">Publier</button> 
+        <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
+        <form method="post" action="">
+            <div class="row">
+                <div class="col-sm-4" style = "background-color : purple">
+                    <h5 style="margin-top:15%">Date de début :</h5>
+                    <input type="date" name="dateDebut" value="2023-01-01" min="1960-01-01" max="2023-12-31" style="margin : 15%">
+                    <br>
+                    <h5>Date de fin :</h5>
+                    <input type="date" name="dateFin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
+                </div>
+                <div class="col-sm-8" style="background-color: grey">
+                   <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%"> </h5></div>
+                   <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea name="institution" id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
+                </div>
+            </div>
+            <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
+        </form>
 
-    </nav> 
 
-    <!-- Projets --> 
+<!-- php pour ajouter dans la bdd -->
+
+<?php
+
+
+	try{
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if($_POST){
+        if(isset($_POST['ajouterForm']) && $_POST['ajouterForm'] == 'CreerForm') {
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sql = "INSERT INTO formation (idUser, dateDebut, dateFin, nom, institution) VALUES ($idUser, :dateDebut, :dateFin, :nom, :institution)";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':dateDebut', $_POST['dateDebut']);
+            $stmt->bindParam(':dateFin', $_POST['dateFin']);
+            $stmt->bindParam(':nom', $_POST['nom']);
+            $stmt->bindParam(':institution', $_POST['institution']);
+            $stmt->execute();
+
+			//Message de confirmation pour l'utilisateur
+            echo "Formation ajoutée !";
+
+        }
+    }
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
+    ?>
+
+
+<!--
+======================================================
+        Partie Projets
+======================================================
+-->
+
+<!--
+----------   Affichage    ----------
+-->
     <h1 style="padding:10% ">Projets</h1> 
 
     <div>  
@@ -83,7 +151,10 @@ include 'navbar.php';
     <div class="item">Projet 5</div> 
     <main></div> 
 
-    <!--Ajout projet -->
+<!--
+----------   Ajout    ----------
+-->
+
     <nav class = "Ajout-projet"> 
     <h1 style = "margin-top : 5% ">Ajouter un projet</h1> 
 
@@ -97,10 +168,12 @@ include 'navbar.php';
 
     <!-- Ajout du CV généré automatiquement -->
 
+<!--
+======================================================
+        Partie CV
+======================================================
+-->
 
-
-
-    <!-- CV -->
 
     <nav class = "CV" style="margin-top:2%"> 
         
