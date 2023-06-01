@@ -106,7 +106,7 @@ $(document).ready(function(){
         <!-- User options will be dynamically inserted here -->
     </select><br>
     <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>	
-   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  
  <script>
 
