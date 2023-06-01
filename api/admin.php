@@ -73,6 +73,11 @@ include 'navbar.php';
 	}
     ?>
 
+
+<!-- Suppression d'un compte -->
+
+<!-- Fonction permettant de définir la fonction à lancer lorsque le bouton est pressé, indique que l'utilisateur sélectionné est récupéré et indique le PHP à lancer -->
+<!-- + Actualisation de la page ce qui permet de supprimer de la liste l'utilisateur supprimé -->
 <script>
 $(document).ready(function(){
     $("#sendButton").click(function(){
@@ -92,25 +97,24 @@ $(document).ready(function(){
         });
     });
 });
-
 </script>
 
-      <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
-      
-	<select id="userSelect" placeholder="Select user to send to">
+<!-- Affichage -->
+
+    <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+	<select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
         <!-- User options will be dynamically inserted here -->
     </select><br>
+    <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>	
+   
+ 
+ <script>
 
-    <button id="sendButton" style="padding:5%">Supprimer l'utilisateur</button>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
-    <script>
-
+// Récupération des infos de la base de donnée (url et clé)
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-
+// Récupération de l'utilisateur 
 const getUsernames = async () => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
@@ -121,16 +125,15 @@ const getUsernames = async () => {
             },
         });
         const data = await response.json();
-        return data.map(user => user.username); // assuming each user has a 'username' field
+        return data.map(user => user.username); 
         } catch (error) {
         console.error('Error:', error.message);
         
     }
 };
 
-
+// Récupération de la liste des utilisateurs et affichage dans le menu déroulant
 $(document).ready(async function() {
-    // Get the list of users and populate the select dropdown
     const usernames = await getUsernames();
     usernames.forEach((user) => {
         $('#userSelect').append(new Option(user, user));
