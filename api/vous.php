@@ -104,7 +104,7 @@ include 'navbar.php';
 
             // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-            $sql = "INSERT INTO formation (idUser, dateDebut, dateFin, nom, institution) VALUES ($idUser, :dateDebut, :dateFin, :nom, :institution)";
+            $sql = "INSERT INTO formation ( dateDebut, dateFin, nom, institution) VALUES ( :dateDebut, :dateFin, :nom, :institution)";
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
