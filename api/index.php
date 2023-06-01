@@ -42,7 +42,7 @@ try {
                 // Your secret key
                 $secretKey = '123';
                 $payload = array(
-                    'idUser' => $user['idUser'],
+                    'iduser' => $user['iduser'],
                     'exp' => time() + 3600 // Expires in 1 hour
                 );
                 $alg = 'HS256'; // Specify the desired algorithm here
