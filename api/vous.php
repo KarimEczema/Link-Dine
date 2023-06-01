@@ -83,25 +83,26 @@ echo '<body>';
 
     <h1 style="padding-top:10%">Formations</h1>
     <nav class = "formations" style="padding:5%">
+    <div class="scroll-container">
             <table>
                <tbody>
              <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+             <div class="scroll-page" id="notif-1">
                 <div class="row">
                     <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
                     <div class="col-sm-8" style="background-color: red">
-                    <h1><B><?php echo htmlspecialchars($row['nom']); ?></B></h1>
+                    <h3><B><?php echo htmlspecialchars($row['nom']); ?></B></h3>
                     <br>
-                    <h3><?php echo htmlspecialchars($row['institution']); ?></h3>
+                    <h5><?php echo htmlspecialchars($row['institution']); ?></h5>
                     </div>
-                </div>
+
+              </div>
+              </div>
              <?php endwhile; ?>
            </tbody>
         </table>
+          </div>
     </nav>
-
-
-
-
 
 
 
