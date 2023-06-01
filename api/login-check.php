@@ -22,14 +22,14 @@ $secretKey = new Key('123', 'HS256');
 if (isset($_COOKIE['jwt'])) {
     // Get the JWT from the cookie
     $jwt = $_COOKIE['jwt'];
-    
+
     try {
         // Decode the JWT
         $decoded = JWT::decode($jwt, $secretKey);
-        
+
         // Get the username from the decoded payload
         $iduser = $decoded->iduser;
-        
+
         echo '<script>';
         echo 'var iduser = "' . $iduser . '";';
         echo '</script>';

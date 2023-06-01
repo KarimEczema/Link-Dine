@@ -21,23 +21,23 @@ use \Firebase\JWT\Key;
 try {
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
-    
+
     // if form is submitted
-    if($_POST){  
+    if ($_POST) {
         // query to check if username exists
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
-        
+
         // bind parameters and execute
         $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
         $stmt->execute();
-        
+
         // if the user exists
-        if($stmt->rowCount()){
+        if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+
             // assuming that your password field is 'Mdp'
-            if($_POST['email'] === $user['email']){
+            if ($_POST['email'] === $user['email']) {
                 // Generate JWT token
                 // Your secret key
                 $secretKey = '123';
@@ -48,46 +48,45 @@ try {
                 $alg = 'HS256'; // Specify the desired algorithm here
 
                 $jwt = JWT::encode($payload, $secretKey, $alg);
-                
+
                 // Set JWT as a cookie
-                setcookie('jwt', $jwt, time()+3600); 
-                
+                setcookie('jwt', $jwt, time() + 3600);
+
                 echo '<meta http-equiv="refresh" content="0; url=accueil" />';
                 exit;
-            }
-            else {
+            } else {
                 echo "Invalid username or password!";
             }
-        }
-        else{
+        } else {
             echo "Invalid username or password!";
         }
     }
-}
-catch (PDOException $e){
+} catch (PDOException $e) {
     // report error message
     echo $e->getMessage();
 }
 ?>
-<link href="css/index.css" rel="stylesheet" type="text/css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
 
-<?php
-if(isset($_POST) && isset($error_message)) {
-    echo '<div class="error">' . $error_message . '</div>';
-}
-?>
+    <?php
+    if (isset($_POST) && isset($error_message)) {
+        echo '<div class="error">' . $error_message . '</div>';
+    }
+    ?>
 
-<form method="post" action="">
-  Nom d'utilisateur:<br>
-  <input type="text" name="NomUtilisateur">
-  <br>
-  Adresse mail:<br>
-  <input type="text" name="email">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+    <form method="post" action="">
+        Nom d'utilisateur:<br>
+        <input type="text" name="NomUtilisateur">
+        <br>
+        Adresse mail:<br>
+        <input type="text" name="email">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
+
 </html>
