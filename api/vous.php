@@ -213,7 +213,9 @@ include 'navbar.php';
 
                         <?php echo htmlspecialchars($row['nom']); ?>
                         <br>
+                        <div style="padding: 2%; background-color:beige; ">
                         <?php echo htmlspecialchars($row['description']); ?>
+    </div>
                   
                   </div>
                   <?php endwhile; ?>
