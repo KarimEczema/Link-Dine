@@ -5,7 +5,7 @@
 				 <div class="col-sm" ><img src="image" width="121" height="49.5"></div>
 			</div>		
 		</div>
-	</header>
+</header>
 	
 	<nav class = "navigation">
 		<div class="container-fluid">
@@ -19,3 +19,4 @@
 				</div>		
 		</div>
 	</nav>
+</head>

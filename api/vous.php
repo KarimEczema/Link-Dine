@@ -154,7 +154,7 @@ echo '<body>';
 -->
 
     <nav class = "Ajout-projet"> 
-    <h1 style = "margin-top : 5% ">Ajouter un projet</h1> 
+       <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
        <form method="post" action="">
 
            <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%"> </h5></div>
