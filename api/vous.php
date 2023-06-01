@@ -94,8 +94,6 @@ echo '<body>';
                     <h3><B><?php echo htmlspecialchars($row['nom']); ?></B></h3>
                     <br>
                     <h5><?php echo htmlspecialchars($row['institution']); ?></h5>
-                    </div>
-
               </div>
               </div>
              <?php endwhile; ?>
@@ -103,7 +101,6 @@ echo '<body>';
         </table>
           </div>
     </nav>
-
 
 
 <!--

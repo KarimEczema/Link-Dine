@@ -152,3 +152,22 @@ ul#liste1 li a:hover {
     background-color: #111;
 		border-style: inset;
 }
+
+.scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.scroll-page {
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 50%;
+
+    margin-top: 10px;
+}
