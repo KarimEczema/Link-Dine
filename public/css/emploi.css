@@ -59,19 +59,63 @@ ul > li {
     margin-top: 10px;
 }
 
-#formation-1{
+#formation{
     background-color: mintcream ;
-}
-
-#formation-2{
-    background-color: lightcyan ;
-}
-
-#formation-3{
-    background-color: lavenderblush ;
 }
 
 footer{
     /* Style du footer */
     color: white;
 }
+
+ul#liste1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul#liste1 li {
+    float: left;
+	border-right: 1px solid #bbb;
+}
+
+
+ul#liste1 li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul#liste1 li a:hover {
+    background-color: #111;
+		border-style: inset;
+}
+
+.login-popup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+.Description {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid #666;
+    z-index: 9;
+  }
+  .descr-container {
+    padding: 20px;
+    background-color: #f8f5f5;
+  }      
+
+  .form-container .btn:hover,
+      .open-button:hover {
+        opacity: 1;
+      }

@@ -29,9 +29,9 @@ if (isset($_COOKIE['jwt'])) {
 
         // Get the username from the decoded payload
         $iduser = $decoded->iduser;
-
+        
         // Check if the user id is equal to 1
-        if ($idUser == 1) {
+        if ($iduser == 1) {
             echo "Logged as admin . $iduser";
             echo '<script>';
             echo 'var idUser = "' . $iduser . '";';
