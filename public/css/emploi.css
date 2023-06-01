@@ -38,17 +38,10 @@ body{
     margin-top: 10px;
 }
 
-#formation-1{
+#formation{
     background-color: mintcream ;
 }
 
-#formation-2{
-    background-color: lightcyan ;
-}
-
-#formation-3{
-    background-color: lavenderblush ;
-}
 
 ul#liste1 {
     list-style-type: none;
@@ -74,4 +67,30 @@ ul#liste1 li a {
 
 ul#liste1 li a:hover {
     background-color: #111;
+		border-style: inset;
 }
+
+.login-popup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+.Description {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid #666;
+    z-index: 9;
+  }
+  .descr-container {
+    padding: 20px;
+    background-color: #f8f5f5;
+  }      
+
+  .form-container .btn:hover,
+      .open-button:hover {
+        opacity: 1;
+      }

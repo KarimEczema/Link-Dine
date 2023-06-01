@@ -14,51 +14,13 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<body>';
 
 include 'navbar.php';
-include 'foot.php';
+include 'caroussel.php';
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 
 ?>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var $img = $('#carrousel img');
-        var max = $img.length;
-        var i = 0; // compteur
-        $img.css('margin-left','0').css('display', 'none'); //on cache les images
-        $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-        $img.eq(i+1).css('margin-left','50px').css('display', 'inline');
-        $img.eq(i+2).css('margin-left','50px').css('display', 'inline');
-        $img.eq(i+3).css('margin-left','50px').css('display', 'inline');
-        //si on clique sur « next » ou « > »
-        $('.next').click(function () { // image suivante
-            i+=4; // on incrémente le compteur
-            if (i < max-4) {
-            i = i+4;
-            $img.css('margin-left','0').css('display', 'none'); //on cache
-            $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-            $img.eq(i+1).css('margin-left','50px').css('display', 'inline');
-            $img.eq(i+2).css('margin-left','50px').css('display', 'inline');
-            $img.eq(i+3).css('margin-left','50px').css('display', 'inline'); } else {
-            i = 0;
-            }
-        });
-        //si on clique sur « prev » ou « < »
-        $('.prev').click(function () { // groupe des images précédentes
-            i-=4; // on décrémente le compteur
-            if (i >= 0) {
-            $img.css('margin-left','0').css('display', 'none'); //on cache
-            $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-            $img.eq(i+1).css('margin-left','50px').css('display', 'inline');
-            $img.eq(i+2).css('margin-left','50px').css('display', 'inline');
-            $img.eq(i+3).css('margin-left','50px').css('display', 'inline');
-            } else {
-            i = 0;
-            }
-        });
-    });
-</script>
 
 <link href="css/reseau.css" rel="stylesheet" type="text/css"/>
 <body>	

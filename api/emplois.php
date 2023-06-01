@@ -13,7 +13,7 @@ echo '<body>';
 include 'navbar.php';
 
 ?>
-
+ 
 <script type="text/javascript"> 
     function textecache(ntexte){ 
         var span =document.getElementById(ntexte); 
@@ -30,34 +30,66 @@ include 'navbar.php';
 
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
-<body> 
-    <nav class = "section"> 
-        <div id = "Emplois"> 
-            <h5> Offres d'emploi</h5> 
-        </div> 
- 
+<!-- Récupère dans la base de données les informations relatives à Emplois-->
+<?php
+    
+    $sql = "SELECT * FROM Emplois";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+<nav>
+
+<!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
+<nav class = "section"> 
+    <div id = "Emplois"> 
+        <h5> Offres d'emploi</h5> 
+    </div> 
         <div class="scroll-container"> 
-            <div class="scroll-page" id="formation-1"> 
-                <h5><B>Intitulé du poste</B>Employeur</h5> 
-                <h6>Type de contrat </h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
-                <span id="span_text1" style="display: none";>Suite de la description trop longue</span> 
-                <h6>Salaire</h6> 
-            </div> 
-            <div class="scroll-page" id="formation-2"> 
-                <h5><B>Intitulé du poste</B>- Employeur </h5> 
-                <h6>Type de contrat </h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6> 
-                <span id="span_text2" style="display: none";>Suite de la description trop longue</span> 
-                <h6>Salaire</h6> 
-            </div> 
-            <div class="scroll-page" id="formation-3"> 
-                <h5><B>Intitulé du poste</B>- Employeur </h5> 
-                <h6>Type de contrat </h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-                <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
-                <h6>Salaire</h6> 
-            </div> 
+        <table>
+   <tbody>
+     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+
+        <div class="scroll-page" id="formation"> 
+                <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['employeur']); ?></h5> 
+                <h6>Type de contrat : <?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
+                <h6>
+            <div class="open-btn">
+                <button class="open-button" onclick="openForm(<?php echo $row['idemploi']?>)"><strong>Description du poste</strong></button>
+            </div> </h6> 
+            <script></script>
+            <div class="login-popup">
+                <div class="Description" id="form-<?php echo $row['idemploi'];?>">
+                    <div class="descr-container">
+                        <h4>Description de la formation :</h4>
+                        <?php echo htmlspecialchars($row['description']); ?>
+                        <button type="button" class="btn cancel" onclick="closeForm(<?php echo $row['idemploi']?>)" style="background-color: antiquewhite">Fermer</button>
+                    </div>
+                </div>
+            </div>
+            <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
+        </div> 
+
+    <script>
+        function openForm(id) {
+            document.getElementById("form-"+id).style.display = "block";
+        }
+
+        function closeForm(id) {
+            document.getElementById("form-"+id).style.display = "none";
+        }
+    </script>
+
+     <?php endwhile; ?>
+   </tbody>
+ </table>
+
         </div> 
     </nav> 
     <?php include 'foot.php';?>
