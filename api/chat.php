@@ -95,7 +95,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
 const sendMessage = async (username, message, sentTo) => {
@@ -145,15 +145,17 @@ const getUsernames = async () => {
 };
 
 
-const receiveMessages = async (sentTo) => {
+    const receiveMessages = async (username, sentTo) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?sentTo=eq.${sentTo}`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?and=(sentTo.eq.${sentTo},username.eq.${username})`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
         });
+    // rest of your code...
+
 
         if (!response.ok) {
             throw new Error('Failed to fetch messages');
@@ -168,10 +170,13 @@ const receiveMessages = async (sentTo) => {
         data.forEach(msg => {
             $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
         });
+        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight); // Auto-scroll to the latest message
+
     } catch (error) {
         console.error('Error:', error.message);
     }
 };
+
 
 
 $(document).ready(async function() {

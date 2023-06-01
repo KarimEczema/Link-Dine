@@ -49,8 +49,8 @@ if (isset($_COOKIE['jwt'])) {
 } else {
     // JWT is not set, user is not logged in
     // Redirect to login page or show error message
-    echo 'not';
-    header('Location: index.php');
+    echo "Vous n'etes pas connecté";
+    echo '<meta http-equiv="refresh" content="0; url=index" />';
     exit;
 }
 
