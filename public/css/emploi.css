@@ -94,3 +94,18 @@ ul#liste1 li a:hover {
     background-color: #111;
 		border-style: inset;
 }
+
+.Description {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid #666;
+    z-index: 9;
+  }
+  .descr-container {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+  }      
