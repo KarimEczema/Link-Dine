@@ -104,6 +104,40 @@ $(document).ready(function(){
 });
 </script>
 
+<script>
+
+// Récupération des infos de la base de donnée (url et clé)
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+
+// Récupération de l'utilisateur 
+const getUsernames = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        const data = await response.json();
+        return data.map(user => user.username); 
+        } catch (error) {
+        console.error('Error:', error.message);
+        
+    }
+};
+
+// Récupération de la liste des utilisateurs et affichage dans le menu déroulant
+$(document).ready(async function() {
+    const usernames = await getUsernames();
+    usernames.forEach((user) => {
+        $('#userSelect').append(new Option(user, user));
+    });
+});
+
+	</script>
+
 <footer>
 	<div class="container-fluid">
 		<div class="row">
