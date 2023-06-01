@@ -159,7 +159,6 @@ ul#liste1 li a:hover {
     overflow-y: scroll;
     scroll-behavior: smooth;
     display: block;
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -168,6 +167,5 @@ ul#liste1 li a:hover {
     float: left;
     text-align: left;
     height: 50%;
-
     margin-top: 10px;
 }
