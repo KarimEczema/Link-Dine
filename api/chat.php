@@ -206,13 +206,13 @@ $(document).ready(async function() {
               }
           });
 
-          setInterval(() => {
-              const activeUser = $('.usernameButton.active').text();
-              if (activeUser) {
-                  receiveMessages(activeUser);
-              }
-          }, 1000); // Poll server every 3 seconds for new messages
-      });
+            setInterval(() => {
+        const activeUserId = $('.usernameButton.active').data('id');
+        if (activeUserId) {
+            receiveMessages(userId);
+        }
+    }, 1000);
+        });
     </script>
 </body>
 </html>
