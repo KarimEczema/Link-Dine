@@ -60,11 +60,11 @@ include 'navbar.php';
      <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
 
         <div class="scroll-page" id="formation-1"> 
-                <h5><B><?php echo htmlspecialchars($row['nom']); ?></B><?php echo htmlspecialchars($row['employeur']); ?></h5> 
-                <h6><?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
+                <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['employeur']); ?></h5> 
+                <h6>Type de contrat : <?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
                 <span id="span_text1" style="display: none";><?php echo htmlspecialchars($row['description']); ?></span> 
-                <h6><?php echo htmlspecialchars($row['salaire']); ?></h6> 
+                <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
             </div> 
      <?php endwhile; ?>
    </tbody>
