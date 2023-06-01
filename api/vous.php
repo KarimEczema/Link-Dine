@@ -95,11 +95,10 @@ echo '<body>';
                     <h5><?php echo htmlspecialchars($row['institution']); ?></h5>
               </div>
               </div>
-             <?php endwhile; ?>
+              <?php endwhile; ?>
            </tbody>
         </table>
-          </div>
-
+    </div>
 
 <!--
 ----------   Ajout    ----------
@@ -180,11 +179,19 @@ echo '<body>';
     <input type="radio" name="position" /> 
     <input type="radio" name="position" /> 
     <main id="carousel"> 
-    <div class="item">Projet 1</div> 
-    <div class="item">Projet 2</div> 
-    <div class="item">Projet 3</div> 
-    <div class="item">Projet 4</div> 
-    <div class="item">Projet 5</div> 
+
+    <table>
+              <tbody>
+                 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                 <div class="item">
+                    <div class="row">
+                        <div class="col-sm-4" style = "background-color : purple"><h3><?php echo htmlspecialchars($row['nom']); ?>/</h3></div>
+                        <div class="col-sm-8" style="background-color: red">/<h5><B><?php echo htmlspecialchars($row['description']); ?></B></h5>
+                  </div>
+                  </div>
+                  <?php endwhile; ?>
+               </tbody>
+    </table>
     </main></div>
 
 <!--
