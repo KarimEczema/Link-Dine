@@ -8,7 +8,7 @@ echo '<title>Admin</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
-echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<link rel="stylesheet" type="text/css" href="css/chat.css">'; 
 echo '<body>';
 
 include 'navbar.php';
@@ -19,70 +19,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 ?>
 
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #222274;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            transition: background-color 0.3s ease;
-        }
 
-        #chatbox {
-            max-width: 60%;
-            width: 100%;
-            height: 100vh;
-            border-radius: 10px;
-            padding: 20px;
-            background: #4444fc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-        }
-
-        #userInput {
-            position: fixed;
-            bottom: 0;
-            width: 60%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            box-sizing: border-box;
-            background: #4040a7;
-            color: #fff;
-        }
-
-        .usernameButton {
-            background-color: #4d4de0;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .usernameButton.active {
-            background-color: #5353bd;
-        }
-
-        #userSelect {
-            max-width: 30%;
-            height: 100vh;
-            overflow-y: auto;
-            padding: 20px;
-            background: #222274;
-            position: fixed;
-            right: 0;
-            top: 0;
-        }
-    </style>
 </head>
 <body>
     <div id="chatbox">
@@ -209,7 +146,7 @@ $(document).ready(async function() {
             setInterval(() => {
         const activeUserId = $('.usernameButton.active').data('id');
         if (activeUserId) {
-            receiveMessages(userId);
+            receiveMessages(userid);
         }
     }, 1000);
         });
