@@ -4,7 +4,7 @@
 			<div class="col-sm-8">
 				<h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3>
 			</div>
-			<div class="col-sm"><img src="image" width="121" height="49.5"></div>
+			<div class="col-sm"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Image/LogECE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvSW1hZ2UvTG9nRUNFLnBuZyIsImlhdCI6MTY4NTYzMDExOSwiZXhwIjoxNjg2MjM0OTE5fQ.PYIcZK66Ti8-UdIm87Re6VbjvIRu8Mh_kFZVxMvlmjY&t=2023-06-01T14%3A35%3A16.493Z" width="121" height="49.5"></div>
 		</div>
 	</div>
 </header>

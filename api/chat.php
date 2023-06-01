@@ -12,10 +12,6 @@ echo '<link rel="stylesheet" type="text/css" href="css/chat.css">';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
-echo '</head>';
-
-echo '<body>';
-
 
 
 ?>
@@ -102,7 +98,7 @@ echo '<body>';
                 let data = await response.json();
                 console.log('Received messages:', data);
 
-                data = data.filter(msg => ((msg.sentTo === user2 && msg.iduser === user1) || (msg.sentTo === user1 && msg.iduser === user2)));
+                data = data.filter(msg => ((msg.sentTo === user2 && msg.iduser === user1) ));
 
                 // Filter the data to include only the conversation between user1 and user2
                 //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
