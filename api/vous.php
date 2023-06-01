@@ -80,13 +80,11 @@ echo '<body>';
     ?>
 
 <!-- affichage des données de la bdd avec php -->
-<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
 
-    <h1 style="padding-top:10%">Formations</h1> 
- 
+    <h1 style="padding-top:10%">Formations</h1>
     <nav class = "formations" style="padding:5%">
-        <table>
-           <tbody>
+            <table>
+               <tbody>
              <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                 <div class="row">
                     <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
@@ -96,7 +94,10 @@ echo '<body>';
              <?php endwhile; ?>
            </tbody>
         </table>
-    </nav> 
+    </nav>
+
+
+
 
 
 
