@@ -28,10 +28,10 @@ if (isset($_COOKIE['jwt'])) {
         $decoded = JWT::decode($jwt, $secretKey);
         
         // Get the username from the decoded payload
-        $idUser = $decoded->idUser;
+        $iduser = $decoded->iduser;
         
         echo '<script>';
-        echo 'var idUser = "' . $idUser . '";';
+        echo 'var iduser = "' . $iduser . '";';
         echo '</script>';
         // Continue processing or redirect to authenticated page
     } catch (Exception $e) {
