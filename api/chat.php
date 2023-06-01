@@ -9,6 +9,7 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<body>';
 
 include 'navbar.php';
@@ -81,6 +82,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             position: fixed;
             right: 0;
             top: 0;
+        }
+        #chat{
+	        background-color: purple;
         }
     </style>
 </head>

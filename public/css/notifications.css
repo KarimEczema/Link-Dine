@@ -5,36 +5,56 @@ body{
     text-align : center;
 }
 
-header{
-    /* Style pour le bandeau d'en-tête*/
-    color: white;
-    padding:7px;
-    background-color : #446AA9 ;
-}
-
-
-.navigation{
-    /* Style du bandeau de navigation */
-    margin-top : 10px;
-}
-
 .section{
     /* Style du corps de section */
     color: black;
     margin-top: 50px;
 }
 
-
-ul > li {
-    list-style-type: none;
-    position: absolute;
-    top: 30%;
-    transition: 1s opacity;
+#Semaine, #Amis{
+    text-align : center;
+    border: 3px solid black;
+    border-radius: 5%;
+    padding : 3px;
 }
 
+#Amis{
+    color: green;
+}
 
+#Semaine{
+    color:red;
+}
+.scroll-container {
+    width: 50vw;
+    height: 30vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
 
-footer{
-    /* Style du footer */
-    color: white;
+.scroll-page {
+    width: 100%;
+    float: left;
+    text-align: left;
+    height: 50%;
+    margin-top: 5px;
+}
+
+#notif-1{
+    background-color: mintcream ;
+}
+
+#notif-2{
+    background-color: lightcyan ;
+}
+
+#notif-3{
+    background-color: lavenderblush ;
+}
+
+#notifs{
+	background-color: purple;
 }
