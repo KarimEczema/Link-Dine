@@ -46,9 +46,9 @@ include 'navbar.php';
     <nav class = "profil"> 
             <div class="row"> 
                  <div class="col-sm-4" style = "background-color : purple">Photo</div> 
-                 <div class="col-sm-8" style="background-color: red">  
-                    <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
-                    <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
+                 <div class="col-sm-8" style="background-color: grey">  
+                    <div style = "background-color: #d6a3b7; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
+                    <div style = "background-color: #a7d4d4; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
                 </div> 
             </div>		 
     </nav> 
@@ -214,7 +214,7 @@ include 'navbar.php';
                         <B><?php echo htmlspecialchars($row['nom']); ?></B>
                         <br>
                         <br>
-                        <div style="padding: 2%; background-color:beige; margin-left: 2%; ">
+                        <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
                         <?php echo htmlspecialchars($row['description']); ?>
     </div>
                   
