@@ -58,10 +58,12 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				<li><img src="book12.jpg" width="120" height="100"></li>
 			</ul>
 		</div>
-        <div id="buttons">
-            <input type="button" value="<" class="prev">
-            <input type="button" value=">" class="next">
-        </div>
-    </nav>
-    <?php include 'foot.php';?>
+		<div id="buttons">
+			<input type="button" value="<" class="prev">
+			<input type="button" value=">" class="next">
+		</div>
+	</nav>
+	
+	<?php include 'foot.php';?>
 </body>
+</html>

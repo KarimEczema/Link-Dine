@@ -139,3 +139,4 @@ $(document).ready(async function() {
     </script>
     <?php include 'foot.php';?>
 </body>
+</html>
