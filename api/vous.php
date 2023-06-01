@@ -168,20 +168,20 @@ echo '<body>';
 <!-- php pour ajouter le projet à la bdd -->
 
 <?php
-/*
+
     // Si un formulaire a été récupéré et si le bouton a été pressé
     if($_POST){
         if(isset($_POST['ajouterPjt']) && $_POST['ajouterPjt'] == 'CreerPjt') {
 
             // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-            $sql = "INSERT INTO projet ( iduser, nom, description) VALUES ($iduser, :nompjt, :description)";
-            $stmt = $conn->prepare($sql);
+            $sqlp = "INSERT INTO projet ( iduser, nom, description) VALUES ($iduser, :nompjt, :description)";
+            $stmtp = $conn->prepare($sqlp);
 
             // bind parameters and execute
-            $stmt->bindParam(':nompjt', $_POST['nompjt']);
-            $stmt->bindParam(':description', $_POST['description']);
-            $stmt->execute();
+            $stmtp->bindParam(':nompjt', $_POST['nompjt']);
+            $stmtp->bindParam(':description', $_POST['description']);
+            $stmtp->execute();
 
 			//Message de confirmation pour l'utilisateur
             echo "Projet ajoutée !";
@@ -192,7 +192,7 @@ echo '<body>';
     	// Message d'erreur si le formulaire n'a pas pu être récupéré
     	echo $e->getMessage();
 	}
-  */  ?>
+   ?>
 
 
 
