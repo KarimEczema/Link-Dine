@@ -151,6 +151,8 @@ $(document).ready(async function() {
 
     setInterval(() => {
         const activeUserId = $('.usernameButton.active').data('id');
+        console.log("iduser: ", iduser);
+        console.log("activeUserId: ", activeUserId);
         receiveMessages(iduser, activeUserId);
         
     }, 1000);
