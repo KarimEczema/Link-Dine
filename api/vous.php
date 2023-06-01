@@ -86,7 +86,7 @@ echo '<body>';
             </div>
             <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
         </form>
-    </nav>
+
 <!-- php pour ajouter dans la bdd -->
 
 <?php
