@@ -44,22 +44,17 @@ include 'navbar.php';
 
 <nav>
 
-
-
-
-
+<!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
 <nav class = "section"> 
     <div id = "Emplois"> 
         <h5> Offres d'emploi</h5> 
     </div> 
         <div class="scroll-container"> 
-
-
         <table>
    <tbody>
      <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
 
-        <div class="scroll-page" id="formation-1"> 
+        <div class="scroll-page" id="formation"> 
                 <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['employeur']); ?></h5> 
                 <h6>Type de contrat : <?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
@@ -70,10 +65,8 @@ include 'navbar.php';
    </tbody>
  </table>
 
-           
         </div> 
     </nav> 
-
 
     <footer>
 		<div class="container-fluid">

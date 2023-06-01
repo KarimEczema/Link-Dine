@@ -41,7 +41,7 @@ ul > li {
 }
 
 .scroll-container {
-    width: 50vw;
+    width: 20vw;
     height: 60vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -59,16 +59,8 @@ ul > li {
     margin-top: 10px;
 }
 
-#formation-1{
+#formation{
     background-color: mintcream ;
-}
-
-#formation-2{
-    background-color: lightcyan ;
-}
-
-#formation-3{
-    background-color: lavenderblush ;
 }
 
 footer{
