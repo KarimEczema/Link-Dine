@@ -63,11 +63,11 @@ include 'navbar.php';
             </div> </h6> 
             <div class="login-popup">
                 <div class="Description" id="description">
-                    <form action="/action_page.php" class="descr-container">
+                    <div class="descr-container">
                         <h4>Description de la formation :</h4>
                         <?php echo htmlspecialchars($row['description']); ?>
                         <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
-                    </form>
+                    </div>
                 </div>
             </div>
             <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
