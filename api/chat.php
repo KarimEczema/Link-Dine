@@ -98,7 +98,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const sendMessage = async (username, message, sentTo) => {
+const sendMessage = async (idUser, message, sentToId) => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
             method: 'POST',
@@ -106,7 +106,7 @@ const sendMessage = async (username, message, sentTo) => {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
-            body: JSON.stringify({ username, message, sentTo }), // include sentTo field
+            body: JSON.stringify({ idUser, message, sentToId }), 
         });
 
         if (!response.ok) {
@@ -120,7 +120,7 @@ const sendMessage = async (username, message, sentTo) => {
 };
 
 
-const getUsernames = async () => {
+const getUserIds = async () => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
             method: 'GET',
@@ -131,93 +131,86 @@ const getUsernames = async () => {
         });
         
         if (!response.ok) {
-            throw new Error('Failed to fetch usernames');
+            throw new Error('Failed to fetch user ids');
         }
 
         const data = await response.json();
 
-
-
-        return data.map(user => user.username); // assuming each user has a 'username' field
+        return data.map(user => user.idUser); 
     } catch (error) {
         console.error('Error:', error.message);
     }
 };
 
 
-    const receiveMessages = async (username, sentTo) => {
+const receiveMessages = async (idUser, sentToId) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?and=(sentTo.eq.${sentTo},username.eq.${username})`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?and=(sentToId.eq.${sentToId},idUser.eq.${idUser})`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
         });
-    // rest of your code...
-
 
         if (!response.ok) {
             throw new Error('Failed to fetch messages');
         }
 
         let data = await response.json();
-
-        // Sort the data based on the 'time' field in descending order (newest first)
         data.sort((a, b) => new Date(b.time) - new Date(a.time));
 
         $('#chatbox').empty();
         data.forEach(msg => {
-            $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
+            $('#chatbox').append(`<p><b>${msg.idUser}:</b> ${msg.message}</p>`);
         });
-        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight); // Auto-scroll to the latest message
+        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight); 
 
     } catch (error) {
         console.error('Error:', error.message);
     }
 };
 
-
-
 $(document).ready(async function() {
-          const usernames = await getUsernames();
-          usernames.forEach((user) => {
-              let userButton = $(`<button class='usernameButton'>${user}</button>`);
-              userButton.click(function() {
-                  $('.usernameButton').removeClass('active');
-                  $(this).addClass('active');
-                  receiveMessages(user);
-              });
-              $('#userSelect').append(userButton);
-          });
+    const userIds = await getUserIds();
+    userIds.forEach((id) => {
+        let userButton = $(`<button class='usernameButton'>${id}</button>`);
+        userButton.click(function() {
+            $('.usernameButton').removeClass('active');
+            $(this).addClass('active');
+            receiveMessages(id);
+        });
+        $('#userSelect').append(userButton);
+    });
 
-          $('#userInput').keypress(async function(e) {
-              if(e.which == 13) { // Enter key pressed
-                  const message = $(this).val().trim();
-                  const sentTo = $('.usernameButton.active').text();
+    $('#userInput').keypress(async function(e) {
+        if(e.which == 13) { 
+            const message = $(this).val().trim();
+            const sentToId = $('.usernameButton.active').text();
 
-                  if (message === '') {
-                      alert('Message is required!');
-                      return;
-                  }
+            if (message === '') {
+                alert('Message is required!');
+                return;
+            }
 
-                  if (!sentTo) {
-                      alert('Please select a user to send message to!');
-                      return;
-                  }
+            if (!sentToId) {
+                alert('Please select a user to send message to!');
+                return;
+            }
 
-                  await sendMessage(username, message, sentTo);
-                  $(this).val(''); // Clear the input field
-              }
-          });
+            await sendMessage(idUser, message, sentToId);
+            $(this).val(''); 
+        }
+    });
 
-          setInterval(() => {
-              const activeUser = $('.usernameButton.active').text();
-              if (activeUser) {
-                  receiveMessages(activeUser);
-              }
-          }, 1000); // Poll server every 3 seconds for new messages
-      });
+    setInterval(() => {
+        const activeUserId = $('.usernameButton.active').text();
+        if (activeUserId) {
+            receiveMessages(activeUserId);
+        }
+    }, 1000); 
+});
+
     </script>
 </body>
 </html>
