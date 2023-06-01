@@ -28,6 +28,7 @@ include 'navbar.php';
 
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
+<!-- Récupère dans la base de données les informations relatives à Emplois-->
 <?php
     
     $sql = "SELECT nom,employeur FROM Emplois";
@@ -43,22 +44,7 @@ include 'navbar.php';
 
 <nav>
 
-<table>
-   <thead>
-     <tr>
-       <th>Nom</th>
-       <th>Employeur</th>
-     </tr>
-   </thead>
-   <tbody>
-     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-     <tr>
-       <td><?php echo htmlspecialchars($row['nom']); ?></td>
-       <td><?php echo htmlspecialchars($row['employeur']); ?></td>
-     </tr>
-     <?php endwhile; ?>
-   </tbody>
- </table>
+
 
 
 
@@ -66,29 +52,28 @@ include 'navbar.php';
     <div id = "Emplois"> 
         <h5> Offres d'emploi</h5> 
     </div> 
- 
         <div class="scroll-container"> 
-            <div class="scroll-page" id="formation-1"> 
-                <h5><B>Intitulé du poste</B>Employeur</h5> 
+
+
+        <table>
+   <tbody>
+     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+
+        <div class="scroll-page" id="formation-1"> 
+                <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>Employeur</h5> 
                 <h6>Type de contrat </h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
                 <span id="span_text1" style="display: none";>Suite de la description trop longue</span> 
                 <h6>Salaire</h6> 
             </div> 
-            <div class="scroll-page" id="formation-2"> 
-                <h5><B>Intitulé du poste</B>- Employeur </h5> 
-                <h6>Type de contrat </h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6> 
-                <span id="span_text2" style="display: none";>Suite de la description trop longue</span> 
-                <h6>Salaire</h6> 
-            </div> 
-            <div class="scroll-page" id="formation-3"> 
-                <h5><B>Intitulé du poste</B>- Employeur </h5> 
-                <h6>Type de contrat </h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-                <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
-                <h6>Salaire</h6> 
-            </div> 
+        
+       
+     
+     <?php endwhile; ?>
+   </tbody>
+ </table>
+
+           
         </div> 
     </nav> 
 
