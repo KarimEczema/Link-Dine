@@ -391,6 +391,7 @@ try {
 
     <h6 style="margin-top: 2%;"><?php echo htmlspecialchars($row['email']); ?></h6>
 }
+</script>
 
     <button onclick="generer()"> Générer un CV </button>
 
