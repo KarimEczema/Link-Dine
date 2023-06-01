@@ -29,6 +29,20 @@ include 'navbar.php';
 
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
+<?php
+    
+    $sql = "SELECT nom FROM Emplois";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->prepare($sql);
+
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
+    ?>
+
 <nav class = "section"> 
     <div id = "Emplois"> 
         <h5> Offres d'emploi</h5> 
