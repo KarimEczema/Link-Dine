@@ -13,96 +13,272 @@ echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">'; 
 echo '<body>';
 
+echo'</head>';
 include 'navbar.php';
+
 ?>
 
-<body>
-    <!-- Profil --> 
+
+<!--
+======================================================
+        Partie Profil
+======================================================
+-->
+
+<!-- récupération des donnée dans la table users -->
+
+<?php
+
+    $sql = "SELECT * FROM users WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
+
     <nav class = "profil"> 
             <div class="row"> 
                  <div class="col-sm-4" style = "background-color : purple">Photo</div> 
                  <div class="col-sm-8" style="background-color: red">  
-                    <div style = "background-color: green; margin:2%"><h1>Nom de l'utilisateur</h1></div> 
-                    <div style = "background-color: blue; margin:2%"><h3>Description de l'utilisateur</h3></div> 
+                    <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
+                    <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
                 </div> 
             </div>		 
     </nav> 
 
-    <!-- Formations --> 
-    <h1 style="padding-top:10%">Formations</h1> 
- 
-    <nav class = "formations" style="padding:5%"> 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-            <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
-        <div class="row"> 
-        <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-        <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-            <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
-    </nav> 
 
-    <!-- Ajout formations --> 
-    <nav class = "Ajout-formation"> 
 
-        <h1 style = "margin-top : 5% ">Ajouter une formation</h1> 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple"> 
-                <h5 style="margin-top:15%">Date de début :</h5> 
-                <input type="date" name="Formation-debut" value="2023-06-06" min="1960-01-01" max="2023-12-31" style="margin : 15%"> 
-                <br> 
-                <h5>Date de fin :</h5> 
-                <input type="date" name="Formation-fin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% "> 
-            </div> 
-            <div class="col-sm-8" style="background-color: grey">  
-               <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div> 
-               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div> 
-           </div> 
-           
-       </div> 
-       <button type="submit"  style = " margin-top : 2%;">Publier</button> 
+<!--
+======================================================
+        Partie Formations
+======================================================
+-->
 
-    </nav> 
+<!--
+----------   Affichage    ----------
+-->
 
-    <!-- Projets --> 
+<!-- récupération des donnée dans la table formation -->
+
+<?php
+
+    $sql = "SELECT * FROM formation WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+<!-- affichage des données de la bdd avec php -->
+
+    <h1 style="padding-top:10%">Formations</h1>
+    <div class="scroll-container">
+            <table>
+               <tbody>
+             <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+             <div class="scroll-page" id="notif-1">
+                <div class="row">
+                    <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
+                    <div class="col-sm-8" style="background-color: red">
+                    <h3><B><?php echo htmlspecialchars($row['nom']); ?></B></h3>
+                    <br>
+                    <h5><?php echo htmlspecialchars($row['institution']); ?></h5>
+              </div>
+              </div>
+              <?php endwhile; ?>
+           </tbody>
+        </table>
+    </div>
+
+<!--
+----------   Ajout    ----------
+-->
+
+    <nav class = "Ajout-formation">
+        <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
+        <form method="post" action="">
+            <div class="row">
+                <div class="col-sm-4" style = "background-color : purple">
+                    <h5 style="margin-top:15%">Date de début :</h5>
+                    <input type="date" name="datedebut" value="2023-01-01" min="1960-01-01" max="2023-12-31" style="margin : 15%">
+                    <br>
+                    <h5>Date de fin :</h5>
+                    <input type="date" name="datefin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
+                </div>
+                <div class="col-sm-8" style="background-color: grey">
+                   <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%"> </h5></div>
+                   <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea name="institution" id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div>
+                </div>
+            </div>
+            <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
+        </form>
+    </nav>
+
+<!-- php pour ajouter dans la bdd -->
+
+<?php
+
+
+	try{
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if($_POST){
+        if(isset($_POST['ajouterForm']) && $_POST['ajouterForm'] == 'CreerForm') {
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sql = "INSERT INTO formation ( iduser, datedebut, datefin, nom, institution) VALUES ($iduser, :datedebut, :datefin, :nom, :institution)";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':datedebut', $_POST['datedebut']);
+            $stmt->bindParam(':datefin', $_POST['datefin']);
+            $stmt->bindParam(':nom', $_POST['nom']);
+            $stmt->bindParam(':institution', $_POST['institution']);
+            $stmt->execute();
+
+			//Message de confirmation pour l'utilisateur
+            echo "Formation ajoutée !";
+
+        }
+    }
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
+    ?>
+
+
+<!--
+======================================================
+        Partie Projets
+======================================================
+-->
+
+<!--
+----------   Affichage    ----------
+-->
+
+<?php
+
+    $sql = "SELECT * FROM projet WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+
     <h1 style="padding:10% ">Projets</h1> 
 
     <div>  
-    <input type="radio" name="position" checked /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <input type="radio" name="position" /> 
-    <main id="carousel"> 
-    <div class="item">Projet 1</div> 
-    <div class="item">Projet 2</div> 
-    <div class="item">Projet 3</div> 
-    <div class="item">Projet 4</div> 
-    <div class="item">Projet 5</div> 
-    <main></div> 
 
-    <!--Ajout projet -->
+
+        <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+            <input type="radio" name="position" />
+        <?php endwhile; ?>
+
+       <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
+        try{
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
+
+        }catch (PDOException $e){
+        echo $e->getMessage();
+        }
+        ?>
+        
+
+        <main id="carousel">
+    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                 <div class="item">
+
+                        <?php echo htmlspecialchars($row['nom']); ?>
+                        <br>
+                        <?php echo htmlspecialchars($row['description']); ?>
+                  
+                  </div>
+                  <?php endwhile; ?>
+
+    </main></div>
+
+<!--
+----------   Ajout    ----------
+-->
+
     <nav class = "Ajout-projet"> 
-    <h1 style = "margin-top : 5% ">Ajouter un projet</h1> 
+       <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
+       <form method="post" action="">
 
+           <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%"> </h5></div>
+           <div style = "background-color: grey; margin:2%"><h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div>
 
-       <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="Projet-titre" style="margin : 5%"> </h5></div> 
-       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%"> Description du projet : </h5><textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div> 
-
-   
-    <button type="submit"  style = " margin-top : 2%;">Publier</button> 
+           <button type="submit" name="ajouterPjt" value="CreerPjt" style = " margin-top : 2%;">Publier</button>
+       </form>
     </nav> 
+
+<!-- php pour ajouter le projet à la bdd -->
+
+<?php
+
+    try{
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if($_POST){
+        if(isset($_POST['ajouterPjt']) && $_POST['ajouterPjt'] == 'CreerPjt') {
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sqlp = "INSERT INTO projet ( iduser, nom, description) VALUES ($iduser, :nompjt, :description)";
+            $stmtp = $conn->prepare($sqlp);
+
+            // bind parameters and execute
+            $stmtp->bindParam(':nompjt', $_POST['nompjt']);
+            $stmtp->bindParam(':description', $_POST['description']);
+            $stmtp->execute();
+
+			//Message de confirmation pour l'utilisateur
+            echo "Projet ajoutée !";
+
+        }
+    }
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
+   ?>
+
+
+
 
     <!-- Ajout du CV généré automatiquement -->
 
+<!--
+======================================================
+        Partie CV
+======================================================
+-->
 
-
-
-    <!-- CV -->
 
     <nav class = "CV" style="margin-top:2%"> 
         
