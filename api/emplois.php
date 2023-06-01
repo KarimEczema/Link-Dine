@@ -64,7 +64,7 @@ include 'navbar.php';
                 <h6><?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
                 <span id="span_text1" style="display: none";><?php echo htmlspecialchars($row['description']); ?></span> 
-                <h6><?php echo htmlspecialchars($row['salaire']); ?></h6> 
+                <h6><?php echo htmlentities($row['salaire']); ?></h6> 
             </div> 
      <?php endwhile; ?>
    </tbody>
