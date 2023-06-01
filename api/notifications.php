@@ -41,10 +41,6 @@ include 'caroussel.php';
 				<li><img src="book12.jpg" width="120" height="100"></li>
 			</ul>
 		</div>
-		<div id="buttons">
-			<input type="button" value="<" class="prev">
-			<input type="button" value=">" class="next">
-		</div>
         </nav>
         <nav style="padding-top: 3%; padding-bottom: 6%">
             <div id="buttons" >
@@ -55,7 +51,7 @@ include 'caroussel.php';
 
     </nav>
 
-    <nav class="section">
+    <nav class="section" style = "color : black;">
         <div id = "Amis">
             <h5> Que font mes amis</h5>
         </div>
