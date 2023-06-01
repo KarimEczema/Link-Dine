@@ -30,7 +30,7 @@ include 'navbar.php';
 
 <?php
     
-    $sql = "SELECT nom FROM Emplois";
+    $sql = "SELECT nom,employeur FROM Emplois";
 	try{
     // Création du contact avec la BDD
             $conn = new PDO($dsn);
@@ -42,17 +42,25 @@ include 'navbar.php';
     ?>
 
 <nav>
-    <table>
-    <tbody>
-<?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+
+<table>
+   <thead>
      <tr>
-       <td><?php echo ($row['nom']); ?></td>
-       <td><?php echo ($row['employeur']); ?></td>
+       <th>Nom</th>
+       <th>Employeur</th>
+     </tr>
+   </thead>
+   <tbody>
+     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+     <tr>
+       <td><?php echo htmlspecialchars($row['nom']); ?></td>
+       <td><?php echo htmlspecialchars($row['employeur']); ?></td>
      </tr>
      <?php endwhile; ?>
-</nav>
-</tbody>
-</table>
+   </tbody>
+ </table>
+
+
 
 <nav class = "section"> 
     <div id = "Emplois"> 
