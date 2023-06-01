@@ -66,7 +66,7 @@ include 'navbar.php';
                     <div class="descr-container">
                         <h4>Description de la formation :</h4>
                         <?php echo htmlspecialchars($row['description']); ?>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()" style="background-color: antiquewhite">Fermer</button>
                     </div>
                 </div>
             </div>
