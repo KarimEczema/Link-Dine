@@ -100,7 +100,7 @@ include 'navbar.php';
 
 
 
-<!-- CV -->
+    <!-- CV -->
 
     <nav class = "CV" style="margin-top:2%"> 
         
@@ -177,7 +177,4 @@ include 'navbar.php';
 			</div>
 		</div>
 	</footer>
- 
 </body> 
- 
-</html> 

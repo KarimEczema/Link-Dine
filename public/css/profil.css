@@ -21,31 +21,23 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin-top: 60px;
+	margin: 50px 25% 10px 24%;
 	width: 750px;
 	height: 150px;
 	list-style: none;
+	left: 0;
 	margin-bottom: 0;
-    position: relative;
-    right : 3%;
+	position: absolute;
 }
 #carrousel ul {
 	position: relative;
 }
-ul > li {
+#carrousel ul>li {
 	list-style-type: none;
 	position: absolute;
 	top: 30%;
 	transition: 1s opacity;
 }
-
-.buttons{
-	display:inline-block;
-	width:45%;
-	margin:10px 2.5% 10px 2.5%;
-	text-align:center;
-}
-
 .prev {
 	color: black;
 	width: 40px;
@@ -94,4 +86,31 @@ footer{
 
 .amis{
     background-color: #89afec;
+}
+
+ul#liste1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul#liste1 li {
+    float: left;
+	border-right: 1px solid #bbb;
+}
+
+
+ul#liste1 li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul#liste1 li a:hover {
+    background-color: #111;
+		border-style: inset;
 }

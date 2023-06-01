@@ -91,31 +91,24 @@ include 'navbar.php';
 	
 	<nav class = "section">
 		<div id = "Event">
-			<h5 style = "text-align : center; color:red"> Evennements</h5>
+			<h5 style = "text-align : center; color:red"> Evennements de la semaine</h5>
 			
 		</div>
 		<div id="carrousel">
-			<ul style ="list-style-type : none;">
+			<ul id = "listc" style ="list-style-type : none;">
 				<li><img src="images/Celeste.png" width="120" height="100"></li>
 				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>
 				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
 				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/CHIBIART%20FOR%20ADRIENNE.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvQ0hJQklBUlQgRk9SIEFEUklFTk5FLnBuZyIsImlhdCI6MTY4NTQ1MzYwOSwiZXhwIjoxNjg4MDQ1NjA5fQ.WPg1DleVb23PFe2EfTDyFgRNIIDuuhwx6LO7DDheIKU&t=2023-05-30T13%3A33%3A29.160Z" width="120" height="100"></li>
+				<li><img src="chibiartforadrienne" width="120" height="100"></li>
 				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
 				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="images/StreetMordred.jpg" width="120" height="100"></li>
+				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="120" height="100"></li>
 				<li><img src="book9.jpg" width="120" height="100"></li>
 				<li><img src="book10.jpg" width="120" height="100"></li>
 				<li><img src="book11.jpg" width="120" height="100"></li>
 				<li><img src="book12.jpg" width="120" height="100"></li>
 			</ul>
-			<!-- Ce serait cool de mettre une musique ^^ -->
-			<!-- <div id="audio"> -->
-				<!-- <audio controls autoplay loop> -->
-				 <!-- <source src="serenity.mp3" type="audio/ogg"> -->
-				 <!-- <source src="river.mp3" type="audio/mpeg"> -->
-				<!-- </audio> -->
-			<!-- </div> -->
 
 		</div>
 		<div id="buttons">
@@ -158,5 +151,3 @@ include 'navbar.php';
 	</footer>
 </body>
 </html>
-
-
