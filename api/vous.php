@@ -10,13 +10,13 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
+
+echo'</head>';
 include 'navbar.php';
 
 echo '<body>';
 ?>
 
-<script>                import { createClient } from '@supabase/supabase-js';
-</script>
 
 <!--
 ======================================================
@@ -86,7 +86,7 @@ echo '<body>';
             </div>
             <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
         </form>
-
+    </nav>
 <!-- php pour ajouter dans la bdd -->
 
 <?php
