@@ -1,3 +1,10 @@
+body{
+    /* Style pour le corps général*/
+    margin-left : 25%;
+    margin-right : 25%;
+    text-align : center;
+}
+
 .section{
     /* Style du corps de section */
     color: black;
@@ -71,15 +78,13 @@ ul#listc li {
     display: block;
     margin: 0 auto;
     text-align: center;
-    position: relative;
-    background-color:#446AA9 ;
 }
 
 .scroll-page {
     width: 100%;
     float: left;
     text-align: left;
-    height: 70%;
+    height: 30%;
     margin-top: 5px;
 }
 

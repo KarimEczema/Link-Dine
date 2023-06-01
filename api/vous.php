@@ -160,4 +160,5 @@ include 'navbar.php';
         <h6 style = "margin-top: 2%;">Mail</h6> 
     </nav>
     <?php include 'foot.php';?>
-</body> 
+</body>
+</html>
