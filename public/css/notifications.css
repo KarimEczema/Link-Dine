@@ -26,27 +26,6 @@ body{
     color:red;
 }
 
-#carrousel {
-    margin-left: 24%;
-    margin-top: 1%;
-    margin-bottom: 2%;
-    width: 750px;
-    height: 150px;
-    list-style: none;
-    left: 0;
-    position: absolute;
-}
-
-#carrousel ul {
-	position: relative;
-}
-#carrousel ul>li {
-	list-style-type: none;
-	position: absolute;
-	top: 30%;
-	transition: 1s opacity;
-}
-
 .prev {
     position: absolute;
     display: block;
