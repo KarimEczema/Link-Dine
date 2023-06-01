@@ -95,10 +95,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+        const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const sendMessage = async (idUser, message, sentTo) => {
+const sendMessage = async (iduser, message, sentTo) => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
             method: 'POST',
@@ -106,7 +106,7 @@ const sendMessage = async (idUser, message, sentTo) => {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
-            body: JSON.stringify({ idUser, message, sentTo }), // include sentTo field
+            body: JSON.stringify({ iduser, message, sentTo }), // include sentTo field
         });
 
         if (!response.ok) {
@@ -138,7 +138,7 @@ const getUsers = async () => {
 
 
 
-        return data.map(user => ({idUser: user.idUser, username: user.username})); // assuming each user has a 'username' field
+        return data.map(user => ({iduser: user.iduser, username: user.username})); // assuming each user has a 'username' field
     } catch (error) {
         console.error('Error:', error.message);
     }
@@ -177,7 +177,7 @@ const receiveMessages = async (sentTo) => {
 $(document).ready(async function() {
           const users = await getUsers();
           users.forEach((user) => {
-              let userButton = $(`<button class='usernameButton' data-id='${user.idUser}'>${user.username}</button>`);
+              let userButton = $(`<button class='usernameButton' data-id='${user.iduser}'>${user.username}</button>`);
               userButton.click(function() {
                   $('.usernameButton').removeClass('active');
                   $(this).addClass('active');
@@ -201,7 +201,7 @@ $(document).ready(async function() {
                       return;
                   }
 
-                  await sendMessage(idUser, message, sentTo);
+                  await sendMessage(iduser, message, sentTo);
                   $(this).val(''); // Clear the input field
               }
           });
