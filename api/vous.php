@@ -66,7 +66,7 @@ echo '<body>';
 
 <!--
 ----------   Ajout    ----------
-
+-->
 
     <nav class = "Ajout-formation">
         <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
@@ -87,12 +87,12 @@ echo '<body>';
             <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
         </form>
     </nav>
-    -->
+
 <!-- php pour ajouter dans la bdd -->
 
 <?php
 
-/*
+
 	try{
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -122,7 +122,7 @@ echo '<body>';
     	// Message d'erreur si le formulaire n'a pas pu être récupéré
     	echo $e->getMessage();
 	}
-   */ ?>
+    ?>
 
 
 <!--
@@ -152,7 +152,7 @@ echo '<body>';
 
 <!--
 ----------   Ajout    ----------
--->
+
 
     <nav class = "Ajout-projet"> 
        <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
@@ -164,11 +164,11 @@ echo '<body>';
            <button type="submit" name="ajouterPjt" value="CreerPjt" style = " margin-top : 2%;">Publier</button>
        </form>
     </nav> 
-
+-->
 <!-- php pour ajouter le projet à la bdd -->
 
 <?php
-
+/*
     // Si un formulaire a été récupéré et si le bouton a été pressé
     if($_POST){
         if(isset($_POST['ajouterPjt']) && $_POST['ajouterPjt'] == 'CreerPjt') {
@@ -192,7 +192,7 @@ echo '<body>';
     	// Message d'erreur si le formulaire n'a pas pu être récupéré
     	echo $e->getMessage();
 	}
-    ?>
+  */  ?>
 
 
 
