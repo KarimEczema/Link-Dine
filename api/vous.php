@@ -184,10 +184,8 @@ echo '<body>';
               <tbody>
                  <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                  <div class="item">
-                    <div class="row">
-                        <div class="col-sm-4" style = "background-color : purple"><h3><?php echo htmlspecialchars($row['nom']); ?>/</h3></div>
-                        <div class="col-sm-8" style="background-color: red">/<h5><B><?php echo htmlspecialchars($row['description']); ?></B></h5>
-                  </div>
+                 houlalalalal
+                    
                   </div>
                   <?php endwhile; ?>
                </tbody>
