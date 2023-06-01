@@ -95,10 +95,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 let data = await response.json();
                 //console.log('Received messages:', data);
 
-                //data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
+                data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
 
                 // Filter the data to include only the conversation between user1 and user2
-                data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
+                //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
 
                 // Sort the data based on the 'time' field in descending order (newest first)
                 data.sort((a, b) => new Date(b.time) - new Date(a.time));
