@@ -159,4 +159,3 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 		</div>
 	</footer>
 </body>
-</html>
