@@ -17,20 +17,7 @@ echo '</head>';
 include 'navbar.php';
 
 ?>
-
-<script type="text/javascript"> 
-    function textecache(ntexte){ 
-        var span =document.getElementById(ntexte); 
-        if(span.style.display === "none") 
-        { 
-            span.style.display="inline"; 
-        } 
-        else 
-        { 
-            span.style.display="none"; 
-        } 
-    }
-</script> 
+<script type="text/javascript">
 
 
 <!--
@@ -329,7 +316,6 @@ try {
 ======================================================
 -->
 
-<button onclick="generer()"> Générer un CV </button>
 
 
 <script>
@@ -408,6 +394,7 @@ try {
     </h6>
     }
 </script>
+<button onclick="generer()"> Générer un CV </button>
 
 
 <?php include 'foot.php'; ?>
