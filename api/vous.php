@@ -87,8 +87,7 @@ include 'navbar.php';
             </div>
             <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
         </form>
-
-
+    </nav>
 <!-- php pour ajouter dans la bdd -->
 
 <?php
@@ -157,14 +156,46 @@ include 'navbar.php';
 
     <nav class = "Ajout-projet"> 
     <h1 style = "margin-top : 5% ">Ajouter un projet</h1> 
+       <form method="post" action="">
 
+           <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%"> </h5></div>
+           <div style = "background-color: grey; margin:2%"><h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div>
 
-       <div style = "background-color: grey; margin:2%"><h5>Nom du projet : <input type="text" name="Projet-titre" style="margin : 5%"> </h5></div> 
-       <div style = "background-color: grey; margin:2%"><h5 style="margin:2%"> Description du projet : </h5><textarea id="Projet-text" rows="10" cols="50" style="margin: 3%;"></textarea> </div> 
-
-   
-    <button type="submit"  style = " margin-top : 2%;">Publier</button> 
+           <button type="submit" name="ajouterPjt" value="CreerPjt" style = " margin-top : 2%;">Publier</button>
+       </form>
     </nav> 
+
+<!-- php pour ajouter le projet à la bdd -->
+
+<?php
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if($_POST){
+        if(isset($_POST['ajouterPjt']) && $_POST['ajouterPjt'] == 'CreerPjt') {
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sql = "INSERT INTO projet ( iduser, nom, description) VALUES ($iduser, :nompjt, :description)";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':nompjt', $_POST['nompjt']);
+            $stmt->bindParam(':description', $_POST['description']);
+            $stmt->execute();
+
+			//Message de confirmation pour l'utilisateur
+            echo "Projet ajoutée !";
+
+        }
+    }
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
+    ?>
+
+
+
 
     <!-- Ajout du CV généré automatiquement -->
 
