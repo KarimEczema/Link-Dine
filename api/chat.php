@@ -100,9 +100,12 @@ echo '<body>';
                 }
 
                 let data = await response.json();
+                console.log('Received messages:', data);
+
+                data = data.filter(msg => ((msg.sentTo === user2 && msg.iduser === user1) || (msg.sentTo === user1 && msg.iduser === user2)));
 
                 // Filter the data to include only the conversation between user1 and user2
-                data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
+                //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
 
                 // Sort the data based on the 'time' field in descending order (newest first)
                 data.sort((a, b) => new Date(b.time) - new Date(a.time));
