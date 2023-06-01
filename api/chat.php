@@ -95,10 +95,11 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const sendMessage = async (idUser, message, sentToId) => {
+const sendMessage = async (idUser, message, sentTo) => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
             method: 'POST',
@@ -106,7 +107,7 @@ const sendMessage = async (idUser, message, sentToId) => {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
-            body: JSON.stringify({ idUser, message, sentToId }), 
+            body: JSON.stringify({ idUser, message, sentTo }), 
         });
 
         if (!response.ok) {
@@ -143,9 +144,9 @@ const getUserIds = async () => {
 };
 
 
-const receiveMessages = async (idUser, sentToId) => {
+const receiveMessages = async (idUser, sentTo) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/messages?and=(sentToId.eq.${sentToId},idUser.eq.${idUser})`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages?and=(sentTo.eq.${sentTo},idUser.eq.${idUser})`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -186,19 +187,19 @@ $(document).ready(async function() {
     $('#userInput').keypress(async function(e) {
         if(e.which == 13) { 
             const message = $(this).val().trim();
-            const sentToId = $('.usernameButton.active').text();
+            const sentTo = $('.usernameButton.active').text();
 
             if (message === '') {
                 alert('Message is required!');
                 return;
             }
 
-            if (!sentToId) {
+            if (!sentTo) {
                 alert('Please select a user to send message to!');
                 return;
             }
 
-            await sendMessage(idUser, message, sentToId);
+            await sendMessage(idUser, message, sentTo);
             $(this).val(''); 
         }
     });
