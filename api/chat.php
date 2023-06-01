@@ -101,15 +101,16 @@ const receiveMessages = async (user1, user2) => {
         let data = await response.json();
 
         // Filter the data to include only the conversation between user1 and user2
-        data = data.filter(msg => (msg.sentTo === user1 || msg.sentTo === user2) && (msg.iduser === user1 || msg.iduser === user2));
+        data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
 
         // Sort the data based on the 'time' field in descending order (newest first)
         data.sort((a, b) => new Date(b.time) - new Date(a.time));
 
         $('#chatbox').empty();
         data.forEach(msg => {
-            $('#chatbox').append(`<p><b>${msg.username}:</b> ${msg.message}</p>`);
-        });
+    $('#chatbox').append(`<p><b>${msg.iduser}:</b> ${msg.message}</p>`);
+});
+
     } catch (error) {
         console.error('Error:', error.message);
     }
