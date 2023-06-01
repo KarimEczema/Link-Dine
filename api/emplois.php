@@ -12,7 +12,10 @@ echo '<body>';
 include 'navbar.php';
 ?>
 
- 
+<script>                
+import { createClient } from '@supabase/supabase-js'; 
+</script>
+
 <script type="text/javascript"> 
     function textecache(ntexte){ 
         var span =document.getElementById(ntexte); 
@@ -29,9 +32,40 @@ include 'navbar.php';
 
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
 
+<script>
+// Récupération des infos de la base de donnée (url et clé)
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
 
+<select id="posteListe" placeholder="Sélectionner l'utilisateur à supprimer">
+        <!-- User options will be dynamically inserted here -->
+    </select><br><br><br>
 
+const getPostes = async () => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/Emplois`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
+        const data = response.json();
+        return data.map(emploi => emploi.nom); 
+        } catch (error) {
+        console.error('Error:', error.message);
+        
+    }
+};
+
+$(document).ready(async function() {
+    const nomEmplois = await getPostes();
+    noms.forEach((emploi) => {
+        $('#posteListe').append(new Option(emploi, emploi));
+    });
+});
+</script>
 
 <nav class = "section"> 
     <div id = "Emplois"> 
