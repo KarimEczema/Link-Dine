@@ -23,7 +23,12 @@ include 'navbar.php';
 <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 
 </head>
+
+
+
 <body>
+
+<!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 	
 	<nav class = "Ajout-compte">
 
@@ -36,16 +41,20 @@ include 'navbar.php';
         </form>
     </nav>
 
+	<!--  La modification dans la base de donnée se fait en PHP  -->
+
     <?php
         
-try{
-    // create a PostgreSQL database connection
+	try{
+    // Création du contact avec la BDD
     $conn = new PDO($dsn);
 
-    // if form is submitted
+    // Si un formulaire a été récupéré et si le bouton a été pressé
     if($_POST){
         if(isset($_POST['ajouter']) && $_POST['ajouter'] == 'Creer') {
-            // query to add new user
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
             $sql = "INSERT INTO users (username, Email) VALUES (:nom, :email)";
             $stmt = $conn->prepare($sql);
 
@@ -54,16 +63,16 @@ try{
             $stmt->bindParam(':email', $_POST['email']);
             $stmt->execute();
 
+			//Message de confirmation pour l'utilisateur
             echo "Utilisateur ajouté !";
         }
     }
-}catch (PDOException $e){
-    // report error message
-    echo $e->getMessage();
-}
+	}catch (PDOException $e){
+    	// Message d'erreur si le formulaire n'a pas pu être récupéré
+    	echo $e->getMessage();
+	}
     ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
     $("#sendButton").click(function(){
