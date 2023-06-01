@@ -13,10 +13,7 @@ echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstr
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 
-
 ?>
-
-
 
 </head>
 
@@ -96,9 +93,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 }
 
                 let data = await response.json();
-                console.log('Received messages:', data);
+                //console.log('Received messages:', data);
 
-                data = data.filter(msg => ((msg.sentTo === user2 && msg.iduser === user1) ));
+                data = data.filter(msg => (parseInt(msg.sentTo) === user2 && parseInt(msg.iduser) === user1) || (parseInt(msg.sentTo) === user1 && parseInt(msg.iduser) === user2));
 
                 // Filter the data to include only the conversation between user1 and user2
                 //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
