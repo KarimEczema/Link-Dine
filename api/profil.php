@@ -21,10 +21,28 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 ?>
 
-<link href="css/profil.css" rel="stylesheet" type="text/css"/>
-
 <body>
-	<nav class = "profil" style = "border : solid; color: black; padding:7px">
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
+				 <div class="col-sm" ><img src="images/LogECE.png" width="121" height="49.5"></div>
+			</div>		
+		</div>
+	</header>
+	
+	<nav class = "navigation">
+		<ul id="liste1">
+		  <li><a href="accueil">Accueil</a></li>
+		  <li><a href="reseau">Mon réseau</a></li>
+		  <li><a href="vous">Vous</a></li>
+		  <li><a href="notifications">Notifications</a></li>
+		  <li><a href="messages">Messageries</a></li>
+		  <li><a href="emplois">Emplois</a></li>
+		</ul>
+	</nav>
+
+    <nav class = "profil" style = "border : solid; color: black; padding:7px">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3">
@@ -38,11 +56,12 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 			</div>
 		</div>
     </nav>
-    <nav class = "amis" style = "margin-top : 40px;">
-        <div id = "friends">
-            <h5>Amis en commun</h5>	
-        </div>
-        <div id="carrousel">
+	
+    <nav class = "section">
+		<div id = "amis">
+			<h5 style = "text-align : center; color:white"> Liste d'amis en commun</h5>
+		</div>
+		<div id="carrousel">
 			<ul id = "listc" style ="list-style-type : none;">
 				<li><img src="images/Celeste.png" width="120" height="100"></li>
 				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>	
@@ -55,13 +74,14 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 				<li><img src="book9.jpg" width="120" height="100"></li>
 				<li><img src="book10.jpg" width="120" height="100"></li>
 				<li><img src="book11.jpg" width="120" height="100"></li>
-				<li><img src="book12.jpg" width="120" height="100"></li>
+				<li><img src="book12.jpg" width="120" height="100"></li>w
 			</ul>
 		</div>
-        <div id="buttons">
-            <input type="button" value="<" class="prev">
-            <input type="button" value=">" class="next">
-        </div>
-    </nav>
-    <?php include 'foot.php';?>
+		<div id="buttons">
+			<input type="button" value="<" class="prev">
+			<input type="button" value=">" class="next">
+		</div>
+	</nav>
+	
+	<?php include 'foot.php';?>
 </body>

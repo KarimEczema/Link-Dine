@@ -37,11 +37,11 @@
 		function slideImg() {
 			 setTimeout(function() {
 			 $img.eq(i).css('display', 'inline').css('transition-delay','0.25s');
-			 $img.eq(i + 1).css('margin-left','50px').css('display',
+			 $img.eq(i + 1).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','0.5s');
-			 $img.eq(i + 2).css('margin-left','50px').css('display',
+			 $img.eq(i + 2).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','0.75s');
-			 $img.eq(i + 3).css('margin-left','50px').css('display',
+			 $img.eq(i + 3).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','1s');
 			 if (i < max-4) {
 			i = i+4;
@@ -50,11 +50,11 @@
 			 }
 			 $img.css('margin-left','0').css('display', 'none');
 			 $img.eq(i).css('display', 'inline').css('transition-delay','1.25s');
-			 $img.eq(i + 1).css('margin-left','50px').css('display',
+			 $img.eq(i + 1).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','1.5s');
-			 $img.eq(i + 2).css('margin-left','50px').css('display',
+			 $img.eq(i + 2).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','1.75s');
-			 $img.eq(i + 3).css('margin-left','50px').css('display',
+			 $img.eq(i + 3).css('margin-left','0').css('display',
 			 'inline').css('transition-delay','2s');
 			slideImg();
 			}, 4000);
