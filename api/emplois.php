@@ -59,15 +59,15 @@ include 'navbar.php';
                 <h6>Type de contrat : <?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
                 <h6>
             <div class="open-btn">
-                <button class="open-button" onclick="openForm()"><strong>Description du poste</strong></button>
+                <button class="open-button" onclick="openForm(<?php echo $row['idemploi']?>)"><strong>Description du poste</strong></button>
             </div> </h6> 
             <script></script>
             <div class="login-popup">
-                <div class="Description" id="form">
+                <div class="Description" id="form-<?php echo $row['idemploi'];?>">
                     <div class="descr-container">
                         <h4>Description de la formation :</h4>
                         <?php echo htmlspecialchars($row['description']); ?>
-                        <button type="button" class="btn cancel" onclick="closeForm()" style="background-color: antiquewhite">Fermer</button>
+                        <button type="button" class="btn cancel" onclick="closeForm(<?php echo $row['idemploi']?>)" style="background-color: antiquewhite">Fermer</button>
                     </div>
                 </div>
             </div>
@@ -75,12 +75,12 @@ include 'navbar.php';
         </div> 
 
     <script>
-        function openForm() {
-            document.getElementById("form").style.display = "block";
+        function openForm(id) {
+            document.getElementById("form-"+id).style.display = "block";
         }
 
-        function closeForm() {
-            document.getElementById("form").style.display = "none";
+        function closeForm(id) {
+            document.getElementById("form-"+id).style.display = "none";
         }
     </script>
 
