@@ -7,14 +7,12 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">'; 
+echo '<body>';
 
 include 'navbar.php';
 ?>
 
-<script>                
-import { createClient } from '@supabase/supabase-js'; 
-</script>
-
+ 
 <script type="text/javascript"> 
     function textecache(ntexte){ 
         var span =document.getElementById(ntexte); 
@@ -29,46 +27,7 @@ import { createClient } from '@supabase/supabase-js';
     }
 </script> 
 
-
 <link href="css/emploi.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-
-<script>
-// Récupération des infos de la base de donnée (url et clé)
-const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
-
-<select id="posteListe" placeholder="Liste Postes">
-        <!-- User options will be dynamically inserted here -->
-    </select><br><br><br>
-
-const getPostes = async () => {
-    try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/Emplois`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': supabaseAnonKey,
-            },
-        });
-        const data = response.json();
-        return data.map(emploi => emploi.nom); 
-        } catch (error) {
-        console.error('Error:', error.message);
-        
-    }
-};
-
-$(document).ready(async function() {
-    const nomEmplois = await getPostes();
-    noms.forEach((emploi) => {
-        $('#posteListe').append(new Option(emploi, emploi));
-    });
-});
-</script>
-
 
 <nav class = "section"> 
     <div id = "Emplois"> 
@@ -80,25 +39,25 @@ $(document).ready(async function() {
                 <h5><B>Intitulé du poste</B>Employeur</h5> 
                 <h6>Type de contrat </h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
-                <span id="span_text1" style="display: none";> Suite de la description trop longue </span> 
-                <h6> Salaire </h6> 
+                <span id="span_text1" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
             </div> 
             <div class="scroll-page" id="formation-2"> 
                 <h5><B>Intitulé du poste</B>- Employeur </h5> 
                 <h6>Type de contrat </h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6> 
-                <span id="span_text2" style="display: none";> Suite de la description trop longue </span> 
-                <h6> Salaire </h6> 
+                <span id="span_text2" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
             </div> 
             <div class="scroll-page" id="formation-3"> 
                 <h5><B>Intitulé du poste</B>- Employeur </h5> 
                 <h6>Type de contrat </h6> <br> 
                 <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6> 
-                <span id="span_text3" style="display: none";> Suite de la description trop longue </span> 
-                <h6> Salaire </h6> 
+                <span id="span_text3" style="display: none";>Suite de la description trop longue</span> 
+                <h6>Salaire</h6> 
             </div> 
         </div> 
-</nav> 
+    </nav> 
 
 
     <footer>
@@ -119,7 +78,5 @@ $(document).ready(async function() {
 			</div>
 		</div>
 	</footer>
-    </body>
-</html>
-
+</body>
  
