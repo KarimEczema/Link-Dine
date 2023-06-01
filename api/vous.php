@@ -18,6 +18,20 @@ include 'navbar.php';
 
 ?>
 
+<script type="text/javascript"> 
+    function textecache(ntexte){ 
+        var span =document.getElementById(ntexte); 
+        if(span.style.display === "none") 
+        { 
+            span.style.display="inline"; 
+        } 
+        else 
+        { 
+            span.style.display="none"; 
+        } 
+    }
+</script> 
+
 
 <!--
 ======================================================
