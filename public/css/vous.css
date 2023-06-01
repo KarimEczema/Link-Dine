@@ -157,6 +157,7 @@ ul#liste1 li a:hover {
     width: 50vw;
     height: 60vh;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     display: block;
     text-align: center;
