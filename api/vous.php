@@ -315,7 +315,6 @@ try {
 ======================================================
 -->
 
-<button onclick="generer()"> Click </button>
 
 <script>
     function generer()
@@ -381,7 +380,7 @@ try {
         </div>
     </div>
     <?php endwhile; ?>
-    }
+
 </script>
 
 <?php
@@ -391,6 +390,10 @@ try {
         ?>
 
     <h6 style="margin-top: 2%;"><?php echo htmlspecialchars($row['email']); ?></h6>
+}
+
+    <button onclick="generer()"> Générer un CV </button>
+
 </nav>
 <?php include 'foot.php'; ?>
 </body>
