@@ -38,7 +38,7 @@ include 'caroussel.php';
             <h5> Evènement de la semaine</h5>
         </div>
         <nav style="padding-bottom: 10%">
-        <?php include 'carrousel.php' ?>
+        <?php include 'caroussel.php' ?>
         </nav>
         <nav style="padding-top: 3%; padding-bottom: 6%">
             <div id="buttons" >
