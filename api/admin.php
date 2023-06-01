@@ -104,7 +104,7 @@ $(document).ready(function(){
     <h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
 	<select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
         <!-- User options will be dynamically inserted here -->
-    </select><br>
+    </select><br><br><br>
     <button id="sendButton" style="margin-top: 3% width:6% height:2%">Supprimer l'utilisateur</button>	
 
 	<!-- Défini la fonction ajax comme une fonction existante et permet la suppression -->
