@@ -75,10 +75,10 @@ include 'navbar.php';
             <div class="row">
                 <div class="col-sm-4" style = "background-color : purple">
                     <h5 style="margin-top:15%">Date de début :</h5>
-                    <input type="date" name="dateDebut" value="2023-01-01" min="1960-01-01" max="2023-12-31" style="margin : 15%">
+                    <input type="date" name="datedebut" value="2023-01-01" min="1960-01-01" max="2023-12-31" style="margin : 15%">
                     <br>
                     <h5>Date de fin :</h5>
-                    <input type="date" name="dateFin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
+                    <input type="date" name="datefin" value="2023-06-06" min="1960-01-01" max="2040-12-31" style="margin : 15% ">
                 </div>
                 <div class="col-sm-8" style="background-color: grey">
                    <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%"> </h5></div>
@@ -104,12 +104,12 @@ include 'navbar.php';
 
             // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-            $sql = "INSERT INTO formation ( dateDebut, dateFin, nom, institution) VALUES ( :dateDebut, :dateFin, :nom, :institution)";
+            $sql = "INSERT INTO formation ( datedebut, datefin, nom, institution) VALUES ( :datedebut, :datefin, :nom, :institution)";
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
-            $stmt->bindParam(':dateDebut', $_POST['dateDebut']);
-            $stmt->bindParam(':dateFin', $_POST['dateFin']);
+            $stmt->bindParam(':datedebut', $_POST['datedebut']);
+            $stmt->bindParam(':datefin', $_POST['datefin']);
             $stmt->bindParam(':nom', $_POST['nom']);
             $stmt->bindParam(':institution', $_POST['institution']);
             $stmt->execute();
