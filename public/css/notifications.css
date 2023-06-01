@@ -63,7 +63,7 @@ ul#listc li {
 	border: 2px solid black;
 }
 
-#block_deroulant {
+.scroll-container {
     width: 50vw;
     height: 30vh;
     overflow-y: scroll;
@@ -79,7 +79,7 @@ ul#listc li {
     width: 100%;
     float: left;
     text-align: left;
-    height: 40%;
+    height: 70%;
     margin-top: 5px;
 }
 

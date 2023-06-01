@@ -73,7 +73,7 @@ include 'caroussel.php';
                 <h6>29/05/2023</h6>
             </div>
         </div>
-
+        
     </nav>
     <?php include 'foot.php' ?>
     
