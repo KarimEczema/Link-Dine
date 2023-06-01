@@ -5,19 +5,6 @@ body{
 	text-align : center;
 }
 
-header{
-	/* Style pour le bandeau d'en-tête*/
-	color: white; 
-	padding:7px; 
-	background-color : #446AA9 ; 
-}
-
-
-.navigation{
-	/* Style du bandeau de navigation */
-	margin-top : 10px;
-}
-
 .section{
 	/* Style du corps de section */
 	color: white;
@@ -33,28 +20,30 @@ header{
 /* Style du carrousel */
 
 #carrousel {
-	margin: 50px 25% 10px 24%;
-	width: 750px;
+	width: 100%;
 	height: 150px;
 	list-style: none;
+	text-align:center;
 	left: 0;
 	margin-bottom: 0;
-	position: absolute;
+	background-color : #446AA9;
+	white-space: nowrap;
+	vertical-align: top;
 }
-#carrousel ul {
-	position: relative;
-}
-#carrousel ul>li {
+ul#listc {
 	list-style-type: none;
-	position: absolute;
-	top: 30%;
+}
+ul#listc ul>li {
+	list-style-type: none;
 	transition: 1s opacity;
 }
+
+ul#listc li {
+	display : inline-block;
+	margin : 3% 0 0 0;
+}
+
 .prev {
-	position: absolute;
-	display: block;
-	margin-left: 18%;
-	margin-top: 12%;
 	color: black;
 	width: 70px;
 	height: 35px;
@@ -64,10 +53,6 @@ header{
 	border: 2px solid black;
 }
 .next {
-	position: absolute;
-	display: block;
-	margin-left: 28%;
-	margin-top: 12%;
 	color: black;
 	width: 70px;
 	height: 35px;
@@ -80,12 +65,6 @@ header{
 .post{
 	margin-top: 35%;
 }
-
-footer{
-	/* Style du footer */
-	color: white;
-}
-
 
 ul#liste1 {
     list-style-type: none;

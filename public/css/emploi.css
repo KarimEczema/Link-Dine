@@ -5,19 +5,6 @@ body{
     text-align : center;
 }
 
-header{
-    /* Style pour le bandeau d'en-tête*/
-    color: white;
-    padding:7px;
-    background-color : #446AA9 ;
-}
-
-
-.navigation{
-    /* Style du bandeau de navigation */
-    margin-top : 10px;
-}
-
 .section{
     /* Style du corps de section */
     color: black;
@@ -61,11 +48,6 @@ header{
 
 #formation-3{
     background-color: lavenderblush ;
-}
-
-footer{
-    /* Style du footer */
-    color: white;
 }
 
 ul#liste1 {
