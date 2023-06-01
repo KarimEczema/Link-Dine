@@ -15,6 +15,7 @@
 		<li><a href="notifications">Notifications</a></li>
 		<li><a href="messages">Messageries</a></li>
 		<li><a href="emplois">Emplois</a></li>
+		<li><a href="chat">Messagerie</a></li>
 		<li style="float:right"><a href="admin">Admin</a></li>
 	</ul>
 </nav>

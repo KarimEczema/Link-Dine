@@ -14,7 +14,6 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<body>';
 
 include 'navbar.php';
-include 'foot.php';
 ?>
 
 <body>

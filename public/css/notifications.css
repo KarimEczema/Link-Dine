@@ -8,7 +8,7 @@ body{
 .section{
     /* Style du corps de section */
     color: black;
-    margin-top: 8%;
+    margin-top: 50px;
 }
 
 #Semaine, #Amis{
