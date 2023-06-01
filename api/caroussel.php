@@ -15,9 +15,9 @@
 			 i = i+4;
 			 $img.css('margin-left','0').css('display', 'none'); //on cache
 			 $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-			 $img.eq(i+1).css('margin-left','50px').css('display', 'inline');
-			 $img.eq(i+2).css('margin-left','50px').css('display', 'inline');
-			 $img.eq(i+3).css('margin-left','50px').css('display', 'inline'); } else {
+			 $img.eq(i+1).css('display', 'inline');
+			 $img.eq(i+2).css('display', 'inline');
+			 $img.eq(i+3).css('display', 'inline'); } else {
 			 i = 0;
 			 }
 		 });
@@ -27,9 +27,9 @@
 			 if (i >= 0) {
 			 $img.css('margin-left','0').css('display', 'none'); //on cache
 			 $img.eq(i).css('display', 'inline'); //on affiche l'image courante
-			 $img.eq(i+1).css('margin-left','50px').css('display', 'inline');
-			 $img.eq(i+2).css('margin-left','50px').css('display', 'inline');
-			 $img.eq(i+3).css('margin-left','50px').css('display', 'inline');
+			 $img.eq(i+1).css('display', 'inline');
+			 $img.eq(i+2).css('display', 'inline');
+			 $img.eq(i+3).css('display', 'inline');
 			 } else {
 			 i = 0;
 			 }
