@@ -13,6 +13,7 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 echo '<body>';
 
 include 'navbar.php';
