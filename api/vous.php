@@ -66,7 +66,7 @@ echo '<body>';
 
 <!--
 ----------   Ajout    ----------
--->
+
 
     <nav class = "Ajout-formation">
         <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
@@ -87,11 +87,12 @@ echo '<body>';
             <button type="submit" name="ajouterForm" value="CreerForm" style = " margin-top : 2%;">Publier</button>
         </form>
     </nav>
+    -->
 <!-- php pour ajouter dans la bdd -->
 
 <?php
 
-
+/*
 	try{
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -121,7 +122,7 @@ echo '<body>';
     	// Message d'erreur si le formulaire n'a pas pu être récupéré
     	echo $e->getMessage();
 	}
-    ?>
+   */ ?>
 
 
 <!--
