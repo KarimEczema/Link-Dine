@@ -57,10 +57,32 @@ include 'navbar.php';
         <div class="scroll-page" id="formation"> 
                 <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['employeur']); ?></h5> 
                 <h6>Type de contrat : <?php echo htmlspecialchars($row['contrat']); ?></h6> <br> 
-                <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6> 
-                <span id="span_text1" style="display: none";><?php echo htmlspecialchars($row['description']); ?></span> 
-                <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
-            </div> 
+                <h6>
+            <div class="open-btn">
+                <button class="open-button" onclick="openForm()"><strong>Description du poste</strong></button>
+            </div> </h6> 
+            <div class="login-popup">
+                <div class="Description" id="description">
+                    <form action="/action_page.php" class="descr-container">
+                        <h4>Description de la formation :</h4>
+                        <?php echo htmlspecialchars($row['description']); ?>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
+                    </form>
+                </div>
+            </div>
+            <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
+        </div> 
+
+    <script>
+        function openForm() {
+            document.getElementById("description").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("description").style.display = "none";
+        }
+    </script>
+
      <?php endwhile; ?>
    </tbody>
  </table>
