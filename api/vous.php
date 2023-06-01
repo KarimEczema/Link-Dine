@@ -17,7 +17,7 @@ echo '</head>';
 include 'navbar.php';
 
 ?>
-<script type="text/javascript">
+
 
 
 <!--
