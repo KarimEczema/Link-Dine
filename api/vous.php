@@ -170,6 +170,30 @@ echo '<body>';
 <!--
 ----------   Affichage    ----------
 -->
+
+<?php
+
+    $sql = "SELECT * FROM projet WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                 <div class="scroll-page" id="notif-1">
+                    <div class="row">
+                        <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['nom']); ?></div>
+                        <div class="col-sm-8" style="background-color: red">
+                        <h3><B><?php echo htmlspecialchars($row['description']); ?></B></h3>
+                  </div>
+                  </div>
+                  <?php endwhile; ?>
+
     <h1 style="padding:10% ">Projets</h1> 
 
     <div>  
@@ -179,17 +203,15 @@ echo '<body>';
     <input type="radio" name="position" /> 
     <input type="radio" name="position" /> 
     <main id="carousel"> 
+    <div class="item">
 
-    <table>
-              <tbody>
-                 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-                 <div class="item">
-                 houlalalalal
-                    
-                  </div>
-                  <?php endwhile; ?>
-               </tbody>
-    </table>
+    Projet 1
+
+    </div>
+    <div class="item">Projet 2</div>
+    <div class="item">Projet 3</div>
+    <div class="item">Projet 4</div>
+    <div class="item">Projet 5</div>
     </main></div>
 
 <!--
