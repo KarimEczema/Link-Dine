@@ -63,24 +63,41 @@ echo '<body>';
 <!--
 ----------   Affichage    ----------
 -->
+
+<!-- récupération des donnée dans la table formation -->
+
+<?php
+
+    $sql = "SELECT * FROM formation WHERE iduser= $iduser";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
+
     <h1 style="padding-top:10%">Formations</h1> 
  
-    <nav class = "formations" style="padding:5%"> 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-            <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
-        <div class="row"> 
-        <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-        <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
-        <div class="row"> 
-            <div class="col-sm-4" style = "background-color : purple">Affichage des dates début/fin</div> 
-            <div class="col-sm-8" style="background-color: red">Affichage Nom de la formation/description</div> 
-        </div>	 
+    <nav class = "formations" style="padding:5%">
+        <table>
+           <tbody>
+             <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                <div class="row">
+                    <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['datedebut']); ?>/<?php echo htmlspecialchars($row['datefin']); ?></div>
+                    <div class="col-sm-8" style="background-color: red"><B><?php echo htmlspecialchars($row['nom']); ?></B></div>
+                    <div class="col-sm-8" style="background-color: red"><?php echo htmlspecialchars($row['institution']); ?></div>
+                </div>
+             <?php endwhile; ?>
+           </tbody>
+        </table>
     </nav> 
 
-<!-- php de l'affichage depuis la bdd -->
 
 
 
