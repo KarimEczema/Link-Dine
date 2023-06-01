@@ -75,7 +75,34 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 	<input type="button" value=">" class="next">
 </div>
 
+<h1 style = "margin : 5% ">Supprimer un utilisateur</h1>
+	<select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
+        <!-- User options will be dynamically inserted here -->
+    </select>
+<button id="sendButton" style="margin-top: 3% width:6% height:2%">Supprimer l'utilisateur</button>	
+	
 
+
+<script>
+$(document).ready(function(){
+    $("#sendButton").click(function(){
+        var username = $("#userSelect").val();
+
+        $.ajax({
+            url: 'requestfriend', // path to your PHP script
+            type: 'post',
+            data: {username: username},
+            success: function(response) {
+                alert(response);
+                location.reload(); // Refresh the page
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+               console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
 
 <footer>
 	<div class="container-fluid">
