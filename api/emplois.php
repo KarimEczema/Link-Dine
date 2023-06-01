@@ -44,13 +44,15 @@ include 'navbar.php';
     ?>
 
 <nav>
+    <tbody>
 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
      <tr>
-       <td><?php echo htmlspecialchars($row['nom']); ?></td>
-       <td><?php echo htmlspecialchars($row['employeur']); ?></td>
+       <td><?php echo ($row['nom']); ?></td>
+       <td><?php echo ($row['employeur']); ?></td>
      </tr>
      <?php endwhile; ?>
 </nav>
+</tbody>
 
 <nav class = "section"> 
     <div id = "Emplois"> 
