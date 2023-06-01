@@ -152,7 +152,7 @@ echo '<body>';
 
 <!--
 ----------   Ajout    ----------
-
+-->
 
     <nav class = "Ajout-projet"> 
        <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
@@ -164,7 +164,7 @@ echo '<body>';
            <button type="submit" name="ajouterPjt" value="CreerPjt" style = " margin-top : 2%;">Publier</button>
        </form>
     </nav> 
--->
+
 <!-- php pour ajouter le projet à la bdd -->
 
 <?php
