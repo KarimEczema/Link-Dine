@@ -95,7 +95,14 @@ ul#liste1 li a:hover {
 		border-style: inset;
 }
 
+.login-popup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
 .Description {
+    display: none;
     position: fixed;
     left: 45%;
     top: 5%;
@@ -108,3 +115,8 @@ ul#liste1 li a:hover {
     padding: 20px;
     background-color: #fff;
   }      
+
+  .form-container .btn:hover,
+      .open-button:hover {
+        opacity: 1;
+      }
