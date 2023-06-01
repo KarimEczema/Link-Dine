@@ -90,7 +90,7 @@ include 'navbar.php';
 	
 	<nav class = "navigation">
 		<ul id="liste1">
-		  <li><a href="accueil">Accueil</a></li>
+		  <li><a href="admin-check">Accueil</a></li>
 		  <li><a href="reseau">Mon réseau</a></li>
 		  <li><a href="vous">Vous</a></li>
 		  <li><a href="notifications">Notifications</a></li>
