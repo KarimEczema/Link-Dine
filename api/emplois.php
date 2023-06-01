@@ -34,7 +34,7 @@ include 'navbar.php';
 	try{
     // Création du contact avec la BDD
             $conn = new PDO($dsn);
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->query($sql);
 
 	}catch (PDOException $e){
     	echo $e->getMessage();
