@@ -184,15 +184,6 @@ echo '<body>';
 	}
     ?>
 
-    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-                 <div class="scroll-page" id="notif-1">
-                    <div class="row">
-                        <div class="col-sm-4" style = "background-color : purple"><?php echo htmlspecialchars($row['nom']); ?></div>
-                        <div class="col-sm-8" style="background-color: red">
-                        <h3><B><?php echo htmlspecialchars($row['description']); ?></B></h3>
-                  </div>
-                  </div>
-                  <?php endwhile; ?>
 
     <h1 style="padding:10% ">Projets</h1> 
 
@@ -202,12 +193,20 @@ echo '<body>';
     <input type="radio" name="position" /> 
     <input type="radio" name="position" /> 
     <input type="radio" name="position" /> 
-    <main id="carousel"> 
-    <div class="item">
+    <main id="carousel">
 
-    Projet 1
 
-    </div>
+    <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                 <div class="item">
+
+                        <?php echo htmlspecialchars($row['nom']); ?>
+                        <br>
+                        <?php echo htmlspecialchars($row['description']); ?>
+                  
+                  </div>
+                  <?php endwhile; ?>
+
+
     <div class="item">Projet 2</div>
     <div class="item">Projet 3</div>
     <div class="item">Projet 4</div>
