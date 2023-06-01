@@ -40,6 +40,7 @@ echo '<body>';
     ?>
 
 <!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
 
     <nav class = "profil"> 
             <div class="row"> 
