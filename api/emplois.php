@@ -11,7 +11,6 @@ echo '<body>';
 
 include 'navbar.php';
 ?>
-
  
 <script type="text/javascript"> 
     function textecache(ntexte){ 
@@ -43,6 +42,7 @@ include 'navbar.php';
     ?>
 
 <nav>
+    <table>
     <tbody>
 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
      <tr>
@@ -52,6 +52,7 @@ include 'navbar.php';
      <?php endwhile; ?>
 </nav>
 </tbody>
+</table>
 
 <nav class = "section"> 
     <div id = "Emplois"> 
