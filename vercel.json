@@ -19,6 +19,7 @@
     { "src": "/chat", "dest": "/api/chat.php" },
     { "src": "/reseau", "dest": "/api/reseau.php" },
     { "src": "/profil", "dest": "/api/profil.php" },
+    { "src": "/auteur", "dest": "/api/auteur.php" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" },
     { "src": "/js/(.*)", "dest": "/public/js/$1" }
   ]
