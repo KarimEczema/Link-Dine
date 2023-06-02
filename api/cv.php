@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $conn = new PDO($dsn);
 
-            $sql = "SELECT * FROM formation WHERE iduser = $iduser";
+            $sql = "SELECT * FROM users WHERE iduser = $iduser";
             $stmt = $conn->query($sql);
             ?>
 
             <nav style="background-color:grey; padding:2%">
 
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                 <nav class="profil">
                     <div class="row">
                         <div class="col-sm-4" style="background-color : aliceblue">Photo</div>
@@ -35,6 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </nav>
+                <?php endwhile; ?>
+
+                <?php
+                $sql = "SELECT * FROM formation WHERE iduser = $iduser";
+                $stmt = $conn->query($sql);
+                ?>
+
+                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
                 <h4 style="margin-top:5%">Formation(s)</h4>
                 
