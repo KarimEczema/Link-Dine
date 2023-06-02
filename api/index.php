@@ -24,6 +24,15 @@ try {
     
     // if form is submitted
     if($_POST){  
+
+        $email = $_POST['email'];
+
+        // Check if the email is in the correct format
+        if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
+            echo "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
+            exit;
+        }
+        
         // query to check if username exists
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
