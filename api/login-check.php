@@ -32,10 +32,6 @@ if (isset($_COOKIE['jwt'])) {
         echo 'var iduser = "' . $iduser . '";';
         echo '</script>';
         // Continuer le traitement ou rediriger vers la page authentifiée
-
-        echo '<script>';
-        echo 'var username = "' . $iduser . '";';
-        echo '</script>';
         
     } catch (Exception $e) {
         // La validation du JWT a échoué
