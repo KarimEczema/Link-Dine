@@ -330,6 +330,10 @@ try {
         $conn = new PDO($dsn);
 
                 $cstCV = "SELECT constanceCV FROM users WHERE iduser = $iduser";
+                ?>
+                <script>console.log($cstCV);</script>
+                <?php
+                
                 if($cstCV == 0)
                 {
                     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
