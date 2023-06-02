@@ -27,7 +27,7 @@ include 'caroussel.php';
         $stmt = $conn->query($sql);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            $tabimages = explode(',', $row['tabimages']);
+            $tabimages = explode('', $row['tabimages']);
     
             if (!empty($tabimages)) {
                 echo '<nav class="section">
@@ -40,6 +40,7 @@ include 'caroussel.php';
                 foreach ($tabimages as $image) {
                     $imagePath = trim($image);
                     echo '<li><img src="' . $imagePath . '" width="120" height="100"></li>';
+                    $tabimages = explode(',', $row['tabimages']);
                 }
     
                 echo '</ul>
