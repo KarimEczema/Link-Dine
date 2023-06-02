@@ -24,30 +24,96 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 ?>
 
 <link href="css/reseau.css" rel="stylesheet" type="text/css"/>
-<body>	
-	<div id = "friends" style = "margin-top : 10%;">
-        <a href = "profil"><h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5></a>
-	</div>
-	<div id="carrousel">
-			<ul id = "listc" style ="list-style-type : none;">
-				<li><img src="images/Celeste.png" width="120" height="100"></li>
-				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>	
-				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="chibiartforadrienne" width="120" height="100"></li>
-				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="120" height="100"></li>
-				<li><img src="book9.jpg" width="120" height="100"></li>
-				<li><img src="book10.jpg" width="120" height="100"></li>
-				<li><img src="book11.jpg" width="120" height="100"></li>
-				<li><img src="book12.jpg" width="120" height="100"></li>
-			</ul>
-		</div>
-	<div id="buttons">
-		<input type="button" value="<" class="prev">
-		<input type="button" value=">" class="next">
-	</div>
-	<?php include 'foot.php';?>
+<body>
+
+
+<!--
+======================================================
+        Partie Profil
+======================================================
+-->
+
+<!-- récupération des donnée dans la table users -->
+
+<?php
+
+$sql = "SELECT * FROM users WHERE iduser= $iduser";
+try{
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+}catch (PDOException $e){
+    echo $e->getMessage();
+}
+?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
+
+<nav class = "profil">
+    <div class="row">
+        <div class="col-sm-4" style = "background-color : purple">Photo</div>
+        <div class="col-sm-8" style="background-color: red ; margin-left: 2%">
+            <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
+            <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
+        </div>
+    </div>
+</nav>
+
+<?php
+try {
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // query to check if username exists
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
+    $stmt = $conn->prepare($sql);
+
+    // bind parameters and execute
+    $stmt->execute([$iduser]);
+
+    $ami = $stmt->fetch();
+
+    // Check that the user has friends
+    if ($ami) {
+        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+
+        // Retrieve the friends' posts
+        $params = implode(',', array_fill(0, count($ami), '?'));
+        $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
+        $stmt->execute($ami);
+        $amis = $stmt->fetchAll();
+
+        ?>
+<div id = "friends" style = "margin-top : 10%;">
+    <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
+</div>
+
+<div id="carrousel">
+    <ul id = "listc" style ="list-style-type : none;">
+        <?php  foreach ($amis as $mesamis){ ?>
+            <li>
+                <a href="profil?id=<?php echo $mesamis['iduser'] ; ?>">
+                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>" alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                </a>
+            </li>
+        <?php }
+        } else {
+            echo "This user has no friends.";
+        }
+        }catch (PDOException $e) {
+            // report error message
+            echo $e->getMessage();
+        }?>
+    </ul>
+</div>
+<div id="buttons">
+    <input type="button" value="<" class="prev">
+    <input type="button" value=">" class="next">
+</div>
+
+<?php include 'foot.php';?>
+
 </body>
 </html>

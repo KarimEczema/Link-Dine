@@ -26,46 +26,115 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <link href="css/profil.css" rel="stylesheet" type="text/css"/>
 
 <body>
+<!--
+============================================
+        Profil de l'ami séléctionné
+============================================
+-->
+
+<!-- recupération en php des informations de la BDD -->
+<?php
+$expl = $_GET["id"];
+
+$sql = "SELECT * FROM users WHERE iduser = $expl";
+try{
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+}catch (PDOException $e){
+    echo $e->getMessage();
+}
+
+
+?>
+
+
+
+
 	<nav class = "profil" style = "border : solid; color: black; padding:7px">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3">
-					<img src="image" width="200" height="200">
-				</div>
-				<div class="col-sm-9">
-					<p><b>  [Nom]</b> [Statut] </p>
-					<h6>Description : </h6> 
-					<p>Ceci est ma description</p>  
-				</div>
-			</div>
+            <table>
+                <tbody>
+                <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                        </div>
+                        <div class="col-sm-8">
+                            <p><b>  <?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['statut']); ?> </p>
+                            <h6>Description : </h6>
+                            <p><?php echo htmlspecialchars($row['bio']); ?></p>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+                </tbody>
+            </table>
 		</div>
     </nav>
-    <nav class = "amis" style = "margin-top : 40px;">
-        <div id = "friends">
-            <h5>Amis en commun</h5>	
-        </div>
-        <div id="carrousel">
-			<ul id = "listc" style ="list-style-type : none;">
-				<li><img src="images/Celeste.png" width="120" height="100"></li>
-				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>	
-				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
-				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-				<li><img src="chibiartforadrienne" width="120" height="100"></li>
-				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-				<li><img src="images/logECE.png" width="120" height="100"></li>
-				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="120" height="100"></li>
-				<li><img src="book9.jpg" width="120" height="100"></li>
-				<li><img src="book10.jpg" width="120" height="100"></li>
-				<li><img src="book11.jpg" width="120" height="100"></li>
-				<li><img src="book12.jpg" width="120" height="100"></li>
-			</ul>
-		</div>
-		<div id="buttons">
-			<input type="button" value="<" class="prev">
-			<input type="button" value=">" class="next">
-		</div>
-	</nav>
-	
-	<?php include 'foot.php';?>
+
+
+<!--
+============================================
+     liste des amis non encore ajoutés
+============================================
+-->
+
+
+<?php
+try {
+// create a PostgreSQL database connection
+$conn = new PDO($dsn);
+
+// query to check if username exists
+$sql = "SELECT amis FROM users WHERE iduser = ?";
+$stmt = $conn->prepare($sql);
+
+// bind parameters and execute
+$stmt->execute([$expl]);
+
+$ami = $stmt->fetch();
+
+// Check that the user has friends
+if ($ami) {
+$ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+
+// Retrieve the friends' posts
+$params = implode(',', array_fill(0, count($ami), '?'));
+$stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
+$stmt->execute($ami);
+$amis = $stmt->fetchAll();
+
+?>
+
+    <div id = "friends" style = "margin-top : 10%;">
+        <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
+    </div>
+
+<div id="carrousel">
+    <ul id = "listc" style ="list-style-type : none;">
+        <?php  foreach ($amis as $mesamis){ ?>
+            <li>
+                <a href="profil?id=<?php echo $mesamis['iduser'] ; ?>">
+                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>" alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                </a>
+            </li>
+        <?php }
+        } else {
+            echo "This user has no friends.";
+        }
+        }catch (PDOException $e) {
+            // report error message
+            echo $e->getMessage();
+        }?>
+    </ul>
+</div>
+<div id="buttons">
+    <input type="button" value="<" class="prev">
+    <input type="button" value=">" class="next">
+</div>
+
+
+<?php include 'foot.php';?>
 </body>
 </html>
