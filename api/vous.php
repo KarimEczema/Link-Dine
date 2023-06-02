@@ -1,6 +1,8 @@
 <?php
 include 'login-check.php';
 
+session_start();
+
 echo '<html>';
 echo '<head>';
 echo '<title>Your Page Title</title>';
@@ -16,7 +18,6 @@ echo '<body>';
 echo '</head>';
 include 'navbar.php';
 
-session_start();
 if (!isset($_SESSION['countCV'])) {
   $_SESSION['countCV'] = 0;
 } else {
