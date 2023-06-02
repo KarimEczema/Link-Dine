@@ -59,65 +59,74 @@ body{
 	background-color: purple;
 }
 
-/* Control styles
--------------------------------------------- */
+/* Control styles -------------------------------------------- */
 
 .carousel {
     position: relative;
   }
-  .carousel	input {
+  
+  .carousel input {
     position: absolute;
     left: 0;
     z-index: 3;
     margin: 0;
   }
+  
   .carousel input:before {
     position: absolute;
     content: "<";
   }
+  
   input:checked ~ input:before {
     content: ">";
   }
+  
   input:checked {
     display: none;
   }
+  
   input:checked ~ input {
     right: 0;
-    left: auto;		
+    left: auto;
   }
+  
   input:checked + div + input {
     z-index: 4;
   }
+  
   input + div {
     position: absolute;
     z-index: 1;
-  }  
+    opacity: 0; /* Add opacity to hide initially */
+    transition: opacity 0.5s ease-in-out; /* Add transition for smooth fade-in/out effect */
+  }
+  
   input:checked + div {
-    z-index: 2;
-  }  
+    opacity: 1; /* Show the selected image */
+  }
   
+  /* Demo styles -------------------------------------------- */
   
-  /* Demo styles
-  --------------------------------------------  */
-  
-
   .carousel {
     width: 600px;
     height: 350px;
     margin: 2em auto;
-    overflow:hidden;
-    transform: translateZ(0px); /* stops flickering incode pen*/
+    overflow: hidden;
+    transform: translateZ(0px); /* stops flickering in CodePen */
     box-shadow: 0 0 2px 1px #ccc;
   }
-  .carousel	input {
+  
+  .carousel input {
     top: 150px;
     width: 60px;
     height: 60px;
     left: 10px;
   }
+  
   input:checked ~ input {
-    right: 10px;	
+    right: 10px;
   }
+  
   .carousel input:before {
     background: #888;
     border-radius: 50%;
@@ -130,19 +139,18 @@ body{
     border: 5px solid #fff;
   }
   
-  
-  /* Scroll
-  --------------------------------------------  */
+  /* Scroll -------------------------------------------- */
   
   #test1 input + div {
-    transform: translate3d(-100%,0,0);
-    transition: transform .5s ease-in-out;
-  }
-  #test1 input:checked + div {
-    transform: translate3d(0,0,0);
-  }
-  #test1 input:checked + div ~ div {
-    transform: translate3d(100%,0,0);
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.5s ease-in-out;
   }
   
+  #test1 input:checked + div {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  #test1 input:checked + div ~ div {
+    transform: translate3d(100%, 0, 0);
+  }
   
