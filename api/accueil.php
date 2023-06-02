@@ -20,10 +20,7 @@ include 'navbar.php';
 include 'caroussel.php';
 ?>
 
-
-<link href="css/accueil.css" rel="stylesheet" type="text/css"/>
 <body>
-
 	<nav class = "section">
 		<div id = "HebdoEvent">
 			<h5 style = "text-align : center; color:red"> Evènements de la semaine</h5>
@@ -48,21 +45,6 @@ include 'caroussel.php';
 			<input type="button" value="<" class="prev">
 			<input type="button" value=">" class="next">
 		</div>
-	</nav>
-	
-	<nav class = "post">
-		<form method="post" action="traitement.php">
-			<label for="ameliorer">Creer un post</label><br>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-7"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 10%;"></textarea></div>
-					<div class="col-sm-2">
-					 	<label for="image_uploads"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z"  width="120" height="100" alt="Appareil photo . png"></label>
-    					<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
-						<button type="submit"  style = "margin-top : 10%;">Publier</button>
-					</div>
-				</div>
-		</form>
 	</nav>
 
 
