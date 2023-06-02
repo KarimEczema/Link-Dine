@@ -15,6 +15,7 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
+include 'cv.php';
 
 ?>
 
@@ -318,7 +319,7 @@ try {
 
 
 <form id="boutonCV" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="affichageCV"></p>
+<p><input type="submit" name="affichageCV">Génerer le CV</p>
 </form>
 
 
