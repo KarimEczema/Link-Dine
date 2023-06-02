@@ -16,6 +16,10 @@
 		<li id="notifs"><a href="notifications">Notifications</a></li>
 		<li id="emplois"><a href="emplois">Emplois</a></li>
 		<li id="chat"><a href="chat">Messagerie</a></li>
-		<li id="admin" style="float:right"><a href="admin">Admin</a></li>
+		<?php if ($iduser == 1): ?>
+			<li id="admin" style="float:right"><a href="admin">Admin</a></li>
+		<?php else: ?>
+			<li id="auteur" style="float:right"><a href="auteur">Auteur</a></li>
+		<?php endif; ?>
 	</ul>
 </nav>

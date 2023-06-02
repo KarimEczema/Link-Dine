@@ -3,13 +3,18 @@ body{
 	margin-left : 25%;
 	margin-right : 25%;
 	text-align : center;
-    background-color: bisque;
 }
 
 .section{
     /* Style du corps de section */
     color: black;
     margin-top: 50px;
+}
+
+#HebdoEvent{
+	margin:10% 0 2% 0;
+	border: 3px solid black;
+	padding : 3px;
 }
 
 #Event{

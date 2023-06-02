@@ -33,7 +33,7 @@ body{
     width: 100%;
     float: left;
     text-align: left;
-    height: 30%;
+    height: 50%;
 
     margin-top: 10px;
 }
@@ -65,7 +65,8 @@ background-color: #f8f5f5;
 .form-container .btn:hover,
     .open-button:hover {
     opacity: 1;
-    }
+}
+
 #emplois{
     background-color: purple;
 }
