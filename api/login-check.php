@@ -36,15 +36,15 @@ if (isset($_COOKIE['jwt'])) {
     } catch (Exception $e) {
         // La validation du JWT a échoué
         // Rediriger vers la page de connexion ou afficher le message d'erreur
-        echo 'Erreur: ' . $e->getMessage();
-        header('Location: index.php');
+        echo 'Veuillez vous connecter: ' . $e->getMessage();
+        echo '<meta http-equiv="refresh" content="0; url=" />';
         exit;
     }
 } else {
     // Le JWT n'est pas défini, l'utilisateur n'est pas connecté
     // Rediriger vers la page de connexion ou afficher le message d'erreur
-    echo 'non';
-    header('Location: index.php');
+    echo 'Veuillez vous connecter';
+    echo '<meta http-equiv="refresh" content="0; url=" />';
     exit;
 }
 
