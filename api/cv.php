@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <nav style="background-color:grey; padding:2%">
 
+                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                 <nav class="profil">
                     <div class="row">
                         <div class="col-sm-4" style="background-color : aliceblue">Photo</div>
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </nav>
 
                 <h4 style="margin-top:5%">Formation(s)</h4>
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                
                     <div class="row">
                         <div class="col-sm-3" style="background-color:aliceblue ; margin-left: 10%">
                             <?php echo htmlspecialchars($row['datedebut']); ?> /
