@@ -34,8 +34,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 <!-- recupération en php des informations de la BDD -->
 <?php
+$expl = $_GET["id"];
 
-$sql = "SELECT * FROM users WHERE iduser= (SELECT amiexplore FROM users WHERE iduser= $iduser)";
+$sql = "SELECT * FROM users WHERE iduser = $expl";
 try{
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -58,7 +59,7 @@ try{
                 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="image" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
                         </div>
                         <div class="col-sm-8">
                             <p><b>  <?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['statut']); ?> </p>

@@ -27,7 +27,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <body>
 <?php
 
-$sql = "SELECT amis FROM users WHERE iduser = $iduser";
+$sql = "SELECT iduser, pp, nom FROM users WHERE iduser IN (SELECT amis FROM users WHERE iduser = $iduser)";
 try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -45,7 +45,11 @@ try {
 	<div id="carrousel">
 			<ul id = "listc" style ="list-style-type : none;">
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <li><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt=<?php echo htmlspecialchars($row['nom']); ?> width="120" height="100"></li>
+                    <li>
+                        <a href="profil.php?id=<?php echo $row['iduser']; ?>">
+                            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="<?php echo htmlspecialchars($row['nom']); ?>" width="120" height="100">
+                        </a>
+                    </li>
                 <?php endwhile; ?>
 			</ul>
 		</div>
