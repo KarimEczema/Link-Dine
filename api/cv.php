@@ -12,7 +12,7 @@
                 $stmt = $conn->query($sql);
                 ?>
 
-                <nav style="background-color:blue; padding:2%">
+                <nav style="background-color:grey; padding:2%">
 
                 <h4 style="margin-top:5%">Formation(s)</h4>
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
@@ -38,11 +38,11 @@
 
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <div class="row">
-                        <div style="background-color: aliceblue; margin-top:2%; margin-left: 10%">
-                            <h5><?php echo htmlspecialchars($row['nom']); ?> -</h5>
-                        </div>
-                        <div style="background-color: grey; margin-top:2%; margin-left: 2%; margin-right: 10%">
-                            <h6><?php echo htmlspecialchars($row['description']); ?></h6>
+                        <div class="col-sm-3" style="background-color:aliceblue ; margin-left: 10%"><?php echo htmlspecialchars($row['nom']); ?></div>
+                        <div class="col-sm-6" style="background-color: grey">
+                            <div style=" margin:2%; margin-right: 10%">
+                                <h5><?php echo htmlspecialchars($row['description']); ?></h5>
+                            </div>
                         </div>
                     </div>
                 <?php endwhile; ?>
@@ -55,7 +55,7 @@
                 ?>
 
                 <h6 style="margin-top: 2%;">
-                    <?php echo htmlspecialchars($row['email']); ?>
+                    <?php echo htmlspecialchars("email : "$row['email']); ?>
                 </h6>
 
                 </nav>
