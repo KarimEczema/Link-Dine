@@ -324,22 +324,43 @@ catch (PDOException $e) {
         Partie CV
 ======================================================
 -->
-
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
-  if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
-    // The 'creerCV' button with value 'creationCV' was clicked
-    include 'cv.php';
-    exit; // Optional: Use exit to stop executing the current PHP script
-  }
-}
-?>
+try {
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
 
-<form method="POST" action="">
-  <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
-</form>
+                $cstCV = "SELECT constanceCV FROM users WHERE iduser = $iduser";
+                if($cstCV == 0)
+                {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
+                        if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
+                      
+                      
+                          include 'cv.php';
+                          exit; 
+                        }
+                      }
+                      ?>
+                      
+                      <form method="POST" action="">
+                        <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
+                      </form>
+                      <?php
+                }
 
-<?php include 'foot.php'; ?>
+                
+    
+            
+        
+    }
+    catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+
+
+
+
+include 'foot.php'; ?>
 </body>
 
 </html>
