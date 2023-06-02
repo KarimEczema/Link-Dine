@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </nav>
             <?php
 
-            $sql = "UPDATE users SET constanteCV = 1 WHERE iduser = $iduser";
+            $sql = "UPDATE users SET constantecv = 1 WHERE iduser = $iduser";
             
         } catch (PDOException $e) {
             echo 'An error occurred: ' . $e->getMessage();
