@@ -320,6 +320,9 @@ try {
         if(isset($_POST['creerCV'])) {
         include 'cv.php';}
     }
+    catch (PDOException $e) {
+    echo $e->getMessage();
+}
 ?>
 
 <form id="boutonCV" name="bouton" method="post" action="cv.php">
