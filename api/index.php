@@ -64,11 +64,11 @@ try {
                 exit;
             }
             else {
-                $message_erreur = "Combinaison Nom d'Utilisateur et Email";
+                $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
             }
         }
         else{
-            $message_erreur = "Combinaison Nom d'Utilisateur et Email";
+            $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
         }
     }
 }
