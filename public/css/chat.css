@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #222274;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+#chatbox {
+    max-width: 60%;
+    width: 100%;
+    height: 100vh;
+    border-radius: 10px;
+    padding: 20px;
+    background: #4444fc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#userInput {
+    position: fixed;
+    bottom: 0;
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+    background: #4040a7;
+    color: #fff;
+}
+
+.usernameButton {
+    background-color: #4d4de0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.usernameButton.active {
+    background-color: #5353bd;
+}
+
+#userSelect {
+    max-width: 30%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    background: #222274;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+#chat{
+    background-color: purple;
+}
