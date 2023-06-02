@@ -66,7 +66,7 @@ try{
 
 <?php
 
-$sql = "SELECT iduser, pp, nom FROM users WHERE FIND_IN_SET(iduser, (SELECT amis FROM users WHERE iduser = $iduser)) > 0";
+$sql = "SELECT iduser, pp, nom FROM users WHERE iduser = ANY((SELECT amis FROM users WHERE iduser = $iduser))";
 try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
