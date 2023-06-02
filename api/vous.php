@@ -16,6 +16,13 @@ echo '<body>';
 echo '</head>';
 include 'navbar.php';
 
+session_start();
+if (!isset($_SESSION['countCV'])) {
+  $_SESSION['countCV'] = 0;
+} else {
+  $_SESSION['countCV']++;
+}
+
 ?>
 
 
@@ -318,7 +325,7 @@ catch (PDOException $e) {
 -->
 
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
   if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
     // The 'creerCV' button with value 'creationCV' was clicked
     include 'cv.php';
