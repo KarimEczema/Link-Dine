@@ -15,7 +15,7 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
-include 'cv.php';
+
 ?>
 
 
@@ -317,10 +317,19 @@ catch (PDOException $e) {
 ======================================================
 -->
 
-<form method="POST" action="cv.php">
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
+    // The 'creerCV' button with value 'creationCV' was clicked
+    include 'cv.php';
+    exit; // Optional: Use exit to stop executing the current PHP script
+  }
+}
+?>
+
+<form method="POST" action="">
   <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
 </form>
-
 
 <?php include 'foot.php'; ?>
 </body>
