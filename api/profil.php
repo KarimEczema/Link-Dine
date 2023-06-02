@@ -24,6 +24,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 ?>
 
 <link href="css/profil.css" rel="stylesheet" type="text/css"/>
+
+<body>
 <!--
 ============================================
         Profil de l'ami séléctionné
@@ -33,7 +35,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <!-- recupération en php des informations de la BDD -->
 <?php
 
-$sql = "SELECT * FROM user WHERE iduser= (SELECT amiexplore FROM user WHERE iduser= $iduser)";
+$sql = "SELECT * FROM users WHERE iduser= (SELECT amiexplore FROM users WHERE iduser= $iduser)";
 try{
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -43,13 +45,12 @@ try{
     echo $e->getMessage();
 }
 
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
 
 
-<body>
+
 	<nav class = "profil" style = "border : solid; color: black; padding:7px">
         <div class="container-fluid">
             <table>
