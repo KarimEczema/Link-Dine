@@ -55,7 +55,7 @@
                 ?>
 
                 <h6 style="margin-top: 2%;">
-                    <?php echo htmlspecialchars("email : "$row['email']); ?>
+                    <?php echo htmlspecialchars("email : " + $row['email']); ?>
                 </h6>
 
                 </nav>
