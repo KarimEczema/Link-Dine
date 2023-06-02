@@ -63,39 +63,60 @@ try{
 
 
 
-
+    <h1 style="padding:10% ">Time Line</h1>
 <?php
-
-$sql = "SELECT iduser, pp, nom FROM users WHERE iduser = ANY((SELECT amis FROM users WHERE iduser = $iduser))";
 try {
-    // Création du contact avec la BDD
+    // create a PostgreSQL database connection
     $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
 
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
+    // query to check if username exists
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
+    $stmt = $conn->prepare($sql);
 
-	<div id = "friends" style = "margin-top : 10%;">
-        <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
-	</div>
+    // bind parameters and execute
+    $stmt->execute([$iduser]);
 
-	<div id="carrousel">
-			<ul id = "listc" style ="list-style-type : none;">
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <li>
-                        <a href="profil.php?id=<?php echo $row['iduser']; ?>">
-                            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="<?php echo htmlspecialchars($row['nom']); ?>" width="120" height="100">
-                        </a>
-                    </li>
-                <?php endwhile; ?>
-			</ul>
-		</div>
-	<div id="buttons">
-		<input type="button" value="<" class="prev">
-		<input type="button" value=">" class="next">
-	</div>
-	<?php include 'foot.php';?>
+    $ami = $stmt->fetch();
+
+    // Check that the user has friends
+    if ($ami) {
+        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+
+        // Retrieve the friends' posts
+        $params = implode(',', array_fill(0, count($ami), '?'));
+        $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
+        $stmt->execute($ami);
+        $amis = $stmt->fetchAll();
+
+        ?>
+<div id = "friends" style = "margin-top : 10%;">
+    <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
+</div>
+
+<div id="carrousel">
+    <ul id = "listc" style ="list-style-type : none;">
+        <?php  foreach ($amis as $mesamis){ ?>
+            <li>
+                <a href="profil.php?id=<?php echo $mesamis['iduser'] ; ?>">
+                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>" alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                </a>
+            </li>
+        <?php }
+        } else {
+            echo "This user has no friends.";
+        }
+        }catch (PDOException $e) {
+            // report error message
+            echo $e->getMessage();
+        }?>
+    </ul>
+</div>
+<div id="buttons">
+    <input type="button" value="<" class="prev">
+    <input type="button" value=">" class="next">
+</div>
+
+<?php include 'foot.php';?>
+
 </body>
 </html>
