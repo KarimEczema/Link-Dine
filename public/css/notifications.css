@@ -99,6 +99,7 @@ body{
   
   /* Demo styles
   --------------------------------------------  */
+  
 
   .carousel {
     width: 600px;
@@ -145,3 +146,14 @@ body{
   }
   
   
+  /* Disolve
+  --------------------------------------------  */
+  
+  #test2 input + div {
+    transition: opacity 0s 1s;
+    opacity: 0;
+  }
+  #test2 input:checked + div {
+    transition: opacity 1s;
+    opacity: 1;
+  }
