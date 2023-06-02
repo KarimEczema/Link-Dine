@@ -1,19 +1,20 @@
 
 
-<?php if(isset($_POST['boutonCV'])) {
-echo'
-<script>
+<?php 
+
+creationCV(){
     
-        <?php
         $sql = "SELECT * FROM users WHERE iduser = $iduser";
         $conn = new PDO($dsn);
         $stmt = $conn->query($sql);
-        ?>
 
-            < nav class="CV" style = "margin-top:2%" >
+        echo '
+<html>
 
+< nav class="CV" style = "margin-top:2%" >
+            
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple; margin : 2%">Photo</div>
+        <div class="col-sm-4" style="background-color : purple; margin : 2%">.$Photo.</div>
         <div class="col-sm-7" style="background-color: red">
             <div style="background-color: green; margin:2%">
                 <h3><?php echo htmlspecialchars($row['username']); ?></h3>
@@ -23,9 +24,8 @@ echo'
             </div>
         </div>
     </div>
+</html>';
 
-</script>
-
-'
-
-} else { echo "bouton non cliqué"; } ?>
+        
+}
+?>

@@ -15,6 +15,7 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
+require("vous.php");
 ?>
 
 
@@ -298,6 +299,10 @@ try {
 
         }
     }
+}
+catch (PDOException $e) {
+    echo $e->getMessage();
+}
 
     ?>
 
@@ -313,24 +318,25 @@ try {
 -->
 <?php
 
+
     try {
+
         $conn = NEW PDO($dsn);
-    if (isset($_POST['bouton'])) {
-        echo '<form id="bouton" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="bouton"></p>
-</form> <?php ';
-    } else {
-        echo "bouton non cliqué";
+
+        if (isset($_POST['creerCV']) && $_POST['creerCV'] == 'creationCV') {
+
+            creationCV();
+
+        }
     }
-} catch (PDOException $e) {
-    // Message d'erreur si le formulaire n'a pas pu être récupéré
-    echo $e->getMessage();
-}
+         
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        
 ?>
 
-<form id="bouton" name="bouton" method="post" action="cv.php">
-    <p><input type="submit" name="bouton"></p>
-</form>
+<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Publier</button>
 
 
 
