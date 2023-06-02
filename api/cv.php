@@ -30,7 +30,7 @@
                 <h4 style="margin-top:5%">Projet(s)</h4>
 
                 <?php
-                $sql = "SELECT * FROM projets WHERE iduser = $iduser";
+                $sql = "SELECT * FROM projet WHERE iduser = $iduser";
                 $stmt = $conn->query($sql);
                 ?>
 
