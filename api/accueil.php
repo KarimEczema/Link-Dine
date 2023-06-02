@@ -59,7 +59,7 @@ try {
     $conn = new PDO($dsn);
 
     // query to check if username exists
-    $sql = "SELECT ami FROM users WHERE iduser = ?";
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
     $stmt = $conn->prepare($sql);
 
     // bind parameters and execute
@@ -69,7 +69,7 @@ try {
 
     // Check that the user has friends
     if ($ami) {
-        $ami = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
+        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
 
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($ami), '?'));
