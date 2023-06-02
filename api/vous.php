@@ -15,7 +15,7 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
-
+include 'cv.php';
 ?>
 
 
