@@ -317,10 +317,9 @@ try {
 -->
 
 
-
-
-<form id="creerCV" name="boutonCV" method="post" action="cv.php"> Générer un CV </button></form>
-
+<form id="boutonCV" name="bouton" method="post" action="cv.php">
+<p><input type="submit" name="affichageCV"></p>
+</form>
 
 
 <?php include 'foot.php'; ?>
