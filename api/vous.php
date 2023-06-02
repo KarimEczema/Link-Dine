@@ -104,7 +104,7 @@ include 'navbar.php';
 <!--
 ----------   Ajout    ----------
 -->
-    <?php $_POST['ajouterPjt']='CreerForm' ?>
+    
 
     <nav class = "Ajout-formation">
         <h1 style = "margin-top : 5% ">Ajouter une formation</h1>
@@ -224,7 +224,7 @@ include 'navbar.php';
 <!--
 ----------   Ajout    ----------
 -->
-    <?php $_POST['ajouterPjt']='CreerForm' ?>
+  
 
     <nav class = "Ajout-projet"> 
        <h1 style = "margin-top : 5% ">Ajouter un projet</h1>
