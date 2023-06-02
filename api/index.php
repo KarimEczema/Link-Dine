@@ -13,10 +13,10 @@ $password = "Y4vuPQm2xyTl";
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
 
-
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
+$error_message = ""; // initialize error message
 
 try {
     // create a PostgreSQL database connection
@@ -29,8 +29,7 @@ try {
 
         // Check if the email is in the correct format
         if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
-            echo "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
-            exit;
+            $error_message = "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
         }
         
         // query to check if username exists
@@ -46,7 +45,7 @@ try {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // assuming that your password field is 'Mdp'
-            if($_POST['email'] === $user['email']){
+            if($email === $user['email']){
                 // Generate JWT token
                 // Your secret key
                 $secretKey = '123';
@@ -65,28 +64,24 @@ try {
                 exit;
             }
             else {
-                echo "Invalid username or password!";
+                $error_message = "Invalid username or password!";
             }
         }
         else{
-            echo "Invalid username or password!";
+            $error_message = "Invalid username or password!";
         }
     }
 }
 catch (PDOException $e){
     // report error message
-    echo $e->getMessage();
+    $error_message = $e->getMessage();
 }
 ?>
 <link href="css/index.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
-<?php
-if(isset($_POST) && isset($error_message)) {
-    echo '<div class="error">' . $error_message . '</div>';
-}
-?>
+<div class="error-message"><?php echo $error_message; ?></div>
 
 <form method="post" action="">
   Nom d'utilisateur:<br>

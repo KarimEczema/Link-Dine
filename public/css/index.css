@@ -66,3 +66,14 @@ h2 {
     color: #ff0000;
     margin-bottom: 20px;
 }
+
+
+.error-message {
+    color: red;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
