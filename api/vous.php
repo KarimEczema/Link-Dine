@@ -353,6 +353,10 @@ try {
         </form>
         <?php
     }
+    else
+    {
+        include 'cv.php';
+    }
 
 
 
