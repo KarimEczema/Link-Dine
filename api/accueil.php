@@ -57,12 +57,10 @@ include 'caroussel.php';
 <?php
 
 $pdo = new PDO($dsn);
-// Votre ID utilisateur spécifique
-$valeur_iduser = $iduser;
 
 // Récupérez les amis de l'utilisateur
 $stmt = $pdo->prepare("SELECT amis FROM users WHERE iduser = $iduser");
-$stmt->execute([$valeur_iduser]);
+$stmt->execute([$iduser]);
 $ami = $stmt->fetch();
 
 // Vérifiez que l'utilisateur a des amis
