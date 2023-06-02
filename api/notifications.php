@@ -39,13 +39,10 @@ include 'caroussel.php';
             <ul id="listc" style="list-style-type: none;">
 
                 <?php $row = $stmt->fetch(PDO::FETCH_ASSOC);?>
-                    <?php $tabimages = explode(',', $row['tabimages']) ?>
-
-                    <?php foreach ($tabimages as $image): 
-                        $imagePath = trim($image);?>
-                        <li><img src="' . $imagePath . '" width="120" height="100"></li>;
+                    <?php $tabimages = explode(',', $row['tabimages']); ?>
+                    <?php foreach ($tabimages as $image): ?>
+                        <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
                     <?php endforeach; ?>
-
             </ul>
         </div>
         <div id="buttons">
