@@ -170,20 +170,20 @@ include 'navbar.php';
                     recevoirMessage(iduser, activeUserId);
                 }
             }, 500);
-
+            
             $('#messageButton').click(function() {
-            $('#chatbox').show();
-            $('#camera').hide();
-            $(this).addClass('active');
-            $('#cameraButton').removeClass('active');
-        });
+                $('#chatbox').css('display', 'block'); // Show chatbox
+                $('#camera').css('display', 'none');   // Hide camera div
+                $(this).addClass('active');
+                $('#cameraButton').removeClass('active');
+            });
 
-        $('#cameraButton').click(function() {
-            $('#chatbox').hide();
-            $('#camera').show();
-            $(this).addClass('active');
-            $('#messageButton').removeClass('active');
-        });
+            $('#cameraButton').click(function() {
+                $('#chatbox').css('display', 'none');   // Hide chatbox
+                $('#camera').css('display', 'block');  // Show camera div
+                $(this).addClass('active');
+                $('#messageButton').removeClass('active');
+});
     });
 
     </script>
