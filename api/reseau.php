@@ -97,7 +97,7 @@ try {
     <ul id = "listc" style ="list-style-type : none;">
         <?php  foreach ($amis as $mesamis){ ?>
             <li>
-                <a href="profil.php?id=<?php echo $mesamis['iduser'] ; ?>">
+                <a href="profil?id=<?php echo $mesamis['iduser'] ; ?>">
                     <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>" alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
                 </a>
             </li>
