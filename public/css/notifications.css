@@ -25,55 +25,6 @@ body{
 #Semaine{
     color:red;
 }
-
-#carrousel {
-    margin-left: 24%;
-    margin-top: 1%;
-    margin-bottom: 2%;
-    width: 750px;
-    height: 150px;
-    list-style: none;
-    left: 0;
-    position: absolute;
-}
-
-#carrousel ul {
-	position: relative;
-}
-#carrousel ul>li {
-	list-style-type: none;
-	position: absolute;
-	top: 30%;
-	transition: 1s opacity;
-}
-
-.prev {
-    position: absolute;
-    display: block;
-    margin-left: 18%;
-    margin-top: 2%;
-    color: black;
-    width: 70px;
-    height: 35px;
-    font-weight: 800;
-    background-color: darkgoldenrod;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-.next {
-    position: absolute;
-    display: block;
-    margin-left: 28%;
-    margin-top: 2%;
-    color: black;
-    width: 70px;
-    height: 35px;
-    font-weight: 800;
-    background-color: lightcoral;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
 .scroll-container {
     width: 50vw;
     height: 30vh;
@@ -88,7 +39,7 @@ body{
     width: 100%;
     float: left;
     text-align: left;
-    height: 30%;
+    height: 50%;
     margin-top: 5px;
 }
 
@@ -102,4 +53,8 @@ body{
 
 #notif-3{
     background-color: lavenderblush ;
+}
+
+#notifs{
+	background-color: purple;
 }
