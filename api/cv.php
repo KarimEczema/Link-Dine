@@ -1,5 +1,5 @@
 <script>
-    if(isset($_POST['creerCV'])) {
+    
         <?php
         $sql = "SELECT * FROM users WHERE iduser = $iduser";
         $conn = new PDO($dsn);
@@ -19,6 +19,5 @@
             </div>
         </div>
     </div>
-    }
 
 </script>
