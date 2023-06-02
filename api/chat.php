@@ -1,5 +1,4 @@
 <?php
-
 // Inclusion du test de login
 include 'login-check.php';
 
@@ -10,8 +9,8 @@ echo '<title>Messagerie</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
-echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/chat.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
@@ -39,8 +38,12 @@ include 'navbar.php';
         </div>
     </div>
 
-    <div id="camera" style="display: none;">
+    <div id="camera"  style="display: none;">
         <!-- La caméra sera insérée ici -->
+    </div>
+
+    <div id="videoCall" style="display: none; width: 100%; height: 100%;">
+        <!-- The video call will be inserted here -->
     </div>
 
     <input type="text" id="userInput" placeholder="Ecrivez ici..." />
@@ -70,6 +73,8 @@ include 'navbar.php';
             }
         };
 
+        let idUsernameMapping = {}; // For storing ID to username mapping
+
         const RecupUtilisateurs = async () => {
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
@@ -86,7 +91,9 @@ include 'navbar.php';
 
                 const data = await response.json();
 
-
+                data.forEach(user => {
+                    idUsernameMapping[user.iduser] = user.username;
+                });
 
                 return data.map(user => ({ iduser: user.iduser, username: user.username })); // assuming each user has a 'username' field
             } catch (error) {
@@ -113,15 +120,13 @@ include 'navbar.php';
 
                 data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
 
-                // Filter the data to include only the conversation between user1 and user2
-                //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
-
                 // Sort the data based on the 'time' field in descending order (newest first)
                 data.sort((a, b) => new Date(b.time) - new Date(a.time));
 
                 $('#chatbox').empty();
                 data.forEach(msg => {
-                    $('#chatbox').append(`<p><b>${msg.iduser}:</b> ${msg.message}</p>`);
+                    let displayUsername = msg.iduser == iduser ? 'vous' : idUsernameMapping[msg.iduser]; // Show 'vous' if the message is from the currently logged in user
+                    $('#chatbox').append(`<p><b>${displayUsername}:</b> ${msg.message}</p>`);
                 });
 
             } catch (error) {
@@ -183,10 +188,29 @@ include 'navbar.php';
                 $('#camera').css('display', 'block');  // Show camera div
                 $(this).addClass('active');
                 $('#messageButton').removeClass('active');
-});
+
+            $('#videoCallButton').click(function() {
+            $('#chatbox').css('display', 'none');   // Hide chatbox
+            $('#videoCall').css('display', 'block');  // Show videoCall div
+            $('#camera').css('display', 'none');   // Hide camera div
+            $(this).addClass('active');
+            $('#messageButton').removeClass('active');
+            $('#cameraButton').removeClass('active');
+
+            const domain = 'meet.jit.si';
+            const options = {
+                roomName: 'JitsiMeetAPIExample', // You might want to use a dynamic room name based on the chat context
+                width: '100%',
+                height: '100%',
+                parentNode: document.querySelector('#videoCall')
+            };
+            let api = new JitsiMeetExternalAPI(domain, options);
+        });
     });
 
     </script>
+
+    <script src='https://meet.jit.si/external_api.js'></script>
 
 </body>
 
