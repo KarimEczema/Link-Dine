@@ -20,8 +20,7 @@ include 'caroussel.php';
 <body>
 
     <?php
-
-    $sql = "SELECT tabimages FROM evenement";
+    $sql = "SELECT tabimages FROM evenement WHERE nom = 'Centrale Supelec'";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
@@ -40,12 +39,10 @@ include 'caroussel.php';
             <ul id="listc" style="list-style-type: none;">
 
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <?php if ($row['tabimages'] !== null): ?>
-                        <?php $tabimages = explode(',', $row['tabimages']); ?>
-                        <?php foreach ($tabimages as $image): ?>
-                            <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <?php $tabimages = explode(',', $row['tabimages']); ?>
+                    <?php foreach ($tabimages as $image): ?>
+                        <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
+                    <?php endforeach; ?>
                 <?php endwhile; ?>
 
             </ul>
@@ -55,8 +52,6 @@ include 'caroussel.php';
             <input type="button" value=">" class="next">
         </div>
     </nav>
-
-
 
 
 
