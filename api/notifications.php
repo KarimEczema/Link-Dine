@@ -48,7 +48,11 @@ include 'caroussel.php';
                 <input type="radio" name="item" value=$valueCar>
                 <div><img src="<?php echo trim($image); ?>"></div>
             </div>
-            <?php $valueCar++; ?>
+            <?php $valueCar++; 
+            
+            ?>
+            <script>console.log($valueCar);</script>
+
         <?php endforeach; ?>
 
     </nav>
