@@ -315,18 +315,10 @@ try {
 ======================================================
 -->
 
-<?php
-    try{
-        if(isset($_POST['creerCV'])) {
-        include 'cv.php';}
-    }
-    catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-?>
 
-<form id="boutonCV" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="affichageCV"></p>
+
+<form id="boutonCV" name="boutonCV" method="post" action="cv.php">
+<p><input type="submit" name="boutonCV"></p>
 </form>
 
 

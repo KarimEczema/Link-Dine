@@ -1,3 +1,7 @@
+
+
+<?php if(isset($_POST['boutonCV'])) {
+echo'
 <script>
     
         <?php
@@ -21,3 +25,7 @@
     </div>
 
 </script>
+
+'
+
+} else { echo "bouton non cliqué"; } ?>
