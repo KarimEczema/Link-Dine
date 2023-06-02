@@ -15,9 +15,26 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 ?>
 
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/{VERSION_NUMBER}/css/bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="https://source.zoom.us/{VERSION_NUMBER}/css/react-select.css" />
+
+<!-- Dependencies for client view and component view -->
+<script src="https://source.zoom.us/2.12.2/lib/vendor/react.min.js"></script>
+<script src="https://source.zoom.us/2.12.2/lib/vendor/react-dom.min.js"></script>
+<script src="https://source.zoom.us/2.12.2/lib/vendor/redux.min.js"></script>
+<script src="https://source.zoom.us/2.12.2/lib/vendor/redux-thunk.min.js"></script>
+<script src="https://source.zoom.us/2.12.2/lib/vendor/lodash.min.js"></script>
+
+<!-- Choose between the client view or component view: -->
+
+<!-- CDN for client view -->
+<script src="https://source.zoom.us/zoom-meeting-2.12.2.min.js"></script>
+
+<!-- CDN for component view -->
+<script src="https://source.zoom.us/zoom-meeting-embedded-2.12.2.min.js"></script>
 </head>
 
-<body>
+<body class="ReactModal__Body--open">
     <div id="chatbox">
         <!-- Messages will be dynamically inserted here -->
     </div>
@@ -157,7 +174,30 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 }
             }, 500);
         });
+
+
+
+        ZoomMtg.setZoomJSLib('https://source.zoom.us/2.12.2/lib', '/av')
+        // loads WebAssembly assets
+        ZoomMtg.preLoadWasm()
+        ZoomMtg.prepareWebSDK()
+        // loads language files, also passes any error messages to the ui
+        ZoomMtg.i18n.load('en-US')
+        ZoomMtg.i18n.reload('en-US')
     </script>
+
+
+<div id="zmmtg-root"></div>
+  <div id="aria-notify-area"></div>
+
+  <!-- added on meeting init -->
+  <div class="ReactModalPortal"></div>
+  <div class="ReactModalPortal"></div>
+  <div class="ReactModalPortal"></div>
+  <div class="ReactModalPortal"></div>
+  <div class="global-pop-up-box"></div>
+  <div class="sharer-controlbar-container sharer-controlbar-container--hidden"></div>
+
 </body>
 
 </html>

@@ -60,3 +60,7 @@ body {
     right: 0;
     top: 0;
 }
+
+#zmmtg-root {
+    display: block;
+  }
