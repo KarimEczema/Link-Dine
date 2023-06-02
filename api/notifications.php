@@ -47,7 +47,7 @@ include 'caroussel.php';
             ?>
             <?php foreach ($tabimages as $image): ?>
                 <input type="radio" name="item" value="<?php echo $valueCar; ?>">       
-                    <img src="<?php echo trim($image); ?>">
+                    <img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px">
                 <?php $valueCar++; ?>
             <?php endforeach; ?>
         </div>
