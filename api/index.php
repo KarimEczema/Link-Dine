@@ -85,7 +85,7 @@ catch (PDOException $e){
 
 <!-- Si le message d'erreur existe -->
 <?php if($message_erreur): ?>
-  <div class="message-error"><?php echo $message_erreur; ?></div>
+  <div class="message-erreur"><?php echo $message_erreur; ?></div>
 <?php endif; ?>
 
 <!-- Box de saisie -->
