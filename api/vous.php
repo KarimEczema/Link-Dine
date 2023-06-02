@@ -19,9 +19,9 @@ echo '</head>';
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
-  $_SESSION['countCV'] = 0;
+    $_SESSION['countCV'] = 0;
 } else {
-  $_SESSION['countCV']++;
+    $_SESSION['countCV']++;
 }
 
 ?>
@@ -307,59 +307,60 @@ try {
 
         }
     }
-}
-catch (PDOException $e) {
+} catch (PDOException $e) {
     echo $e->getMessage();
 }
 
-    ?>
+?>
 
 
 
 
-    <!-- Ajout du CV généré automatiquement -->
+<!-- Ajout du CV généré automatiquement -->
 
-    <!--
+<!--
 ======================================================
         Partie CV
 ======================================================
 -->
 <?php
 try {
-        // Création du contact avec la BDD
-        $conn = new PDO($dsn);
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
 
-                $cstCV = "SELECT constanceCV FROM users WHERE iduser = $iduser";
-                ?>
-                <script>console.log($cstCV);</script>
-                <?php
-                
-                if($cstCV == 0)
-                {
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
-                        if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
-                      
-                      
-                          include 'cv.php';
-                          exit; 
-                        }
-                      }
-                      ?>
-                      
-                      <form method="POST" action="">
-                        <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
-                      </form>
-                      <?php
-                }
+    $cstCV = "SELECT constanceCV FROM users WHERE iduser = $iduser";
+    $stmt = $conn->query($cstCV);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $cstCVValue = $row['constanceCV'];
+    ?>
 
-                
-    
-            
-        
+    <script>console.log(<?php echo json_encode($cstCVValue); ?>);</script>
+    <?php
+
+    if ($cstCVValue == 0) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSiON == 0) {
+            if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
+
+
+                include 'cv.php';
+                exit;
+            }
+        }
+        ?>
+
+        <form method="POST" action="">
+            <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
+        </form>
+        <?php
     }
-    catch (PDOException $e) {
-        echo $e->getMessage();
-    }
+
+
+
+
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
 
 
 
