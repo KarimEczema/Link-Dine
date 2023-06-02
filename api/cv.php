@@ -1,8 +1,4 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
-        // The 'creerCV' button with value 'creationCV' was clicked
-
 
         try {
             $conn = new PDO($dsn);
@@ -121,8 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             echo 'An error occurred: ' . $e->getMessage();
         }
-    }
-}
 
 include 'foot.php';
 
