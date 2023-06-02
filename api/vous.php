@@ -318,31 +318,9 @@ try {
 
 
 
-<script>
-    function generer() {
-        <?php
-        $sql = "SELECT * FROM users WHERE iduser = $iduser";
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
-        ?>
 
-            < nav class="CV" style = "margin-top:2%" >
+<form id="creerCV" name="boutonCV" method="post" action="cv.php"> Générer un CV </button></form>
 
-    <div class="row">
-        <div class="col-sm-4" style="background-color : purple; margin : 2%">Photo</div>
-        <div class="col-sm-7" style="background-color: red">
-            <div style="background-color: green; margin:2%">
-                <h3><?php echo htmlspecialchars($row['username']); ?></h3>
-            </div>
-            <div style="background-color: blue; margin:2%">
-                <h5><?php echo htmlspecialchars($row['description']); ?></h5>
-            </div>
-        </div>
-    </div>
-
-    }
-</script>
-<button onclick="generer()"> Générer un CV </button>
 
 
 <?php include 'foot.php'; ?>
