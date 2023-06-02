@@ -25,6 +25,45 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
 <link href="css/reseau.css" rel="stylesheet" type="text/css"/>
 <body>
+
+
+<!--
+======================================================
+        Partie Profil
+======================================================
+-->
+
+<!-- récupération des donnée dans la table users -->
+
+<?php
+
+$sql = "SELECT * FROM users WHERE iduser= $iduser";
+try{
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+}catch (PDOException $e){
+    echo $e->getMessage();
+}
+?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
+
+<nav class = "profil">
+    <div class="row">
+        <div class="col-sm-4" style = "background-color : purple">Photo</div>
+        <div class="col-sm-8" style="background-color: red">
+            <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
+            <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
+        </div>
+    </div>
+</nav>
+
+
+
+
 <?php
 
 $sql = "SELECT iduser, pp, nom FROM users WHERE iduser IN (SELECT amis FROM users WHERE iduser = $iduser)";
@@ -39,7 +78,7 @@ try {
 ?>
 
 	<div id = "friends" style = "margin-top : 10%;">
-        <a href = "profil"><h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5></a>
+        <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
 	</div>
 
 	<div id="carrousel">
