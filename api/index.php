@@ -83,7 +83,6 @@ catch (PDOException $e){
 
 <div class="error-message"><?php echo $error_message; ?></div>
 
-<br>
 
 <form method="post" action="">
   Nom d'utilisateur:<br>
