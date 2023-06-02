@@ -19,6 +19,7 @@ include 'caroussel.php';
 
 <body>
 
+
     <?php
     $sql = "SELECT tabimages FROM evenement WHERE organisateur = 'Centrale Supelec'";
     try {
@@ -26,39 +27,33 @@ include 'caroussel.php';
         $conn = new PDO($dsn);
         $stmt = $conn->query($sql);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row) {
-            $tabimages = explode('', $row['tabimages']);
-    
-            if (!empty($tabimages)) {
-                echo '<nav class="section">
-                        <div id="Event">
-                            <h5 style="text-align: center; color: red;">Événements</h5>
-                        </div>
-                        <div id="carrousel">
-                            <ul id="listc" style="list-style-type: none;">';
-    
-                foreach ($tabimages as $image) {
-                    $imagePath = trim($image);
-                    echo '<li><img src="' . $imagePath . '" width="120" height="100"></li>';
-                    $tabimages = explode(',', $row['tabimages']);
-                }
-    
-                echo '</ul>
-                    </div>
-                    <div id="buttons">
-                        <input type="button" value="<" class="prev">
-                        <input type="button" value=">" class="next">
-                    </div>
-                </nav>';
-            } else {
-                echo 'No images found.';
-            }
-
-    }
-} catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo $e->getMessage();
     }
     ?>
+
+    <nav class="section">
+        <div id="Event">
+            <h5 style="text-align: center; color: red;">Evènements</h5>
+        </div>
+        <div id="carrousel">
+            <ul id="listc" style="list-style-type: none;">
+                <?php $tabimages = explode(',', $row['tabimages']); ?>
+                <?php foreach ($tabimages as $image): ?>
+                    <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div id="buttons">
+            <input type="button" value="<" class="prev">
+            <input type="button" value=">" class="next">
+        </div>
+    </nav>
+
+
+
+
+
 
 
     <nav class="section" style="color : black;">
