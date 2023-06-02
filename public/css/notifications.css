@@ -129,6 +129,12 @@ body{
     text-align: center;
     border: 5px solid #fff;
   }
+
+  .carousel-item img {
+    width: 300px; /* Specify the desired width here */
+    height: 200px; /* Specify the desired height here */
+    object-fit: cover;
+}
   
   
   /* Scroll
