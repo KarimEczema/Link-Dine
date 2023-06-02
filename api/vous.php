@@ -317,30 +317,9 @@ catch (PDOException $e) {
 ======================================================
 -->
 
-<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Créer un CV à partie des informations personnelles</button>
-
-<?php
-
-
-    try {
-
-        $conn = NEW PDO($dsn);
-        echo 'console.log("louloulou1")';
-        if ($_POST['creerCV'] == 'creationCV') {
-            echo ' console.log("louloulou")';
-            include'cv.php';
-        }
-    }
-         
-        catch (PDOException $e) {
-            echo 'console.log("louloulou2")';
-            echo $e->getMessage();
-        }
-        
-?>
-
-
-
+<form method="POST" action="cv.php">
+  <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
+</form>
 
 
 <?php include 'foot.php'; ?>
