@@ -3,7 +3,7 @@ include 'login-check.php';
 
 echo '<html>'; 
 echo '<head>'; 
-echo '<title>Your Page Title</title>'; 
+echo '<title>Vous</title>'; 
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs 
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
@@ -60,7 +60,7 @@ include 'navbar.php';
             </div> 
             <div class="col-sm-8" style="background-color: grey">  
                <div style = "background-color: grey; margin:2%"><h5>Titre de la formation : <input type="text" name="Formation-titre" style="margin : 5%"> </h5></div> 
-               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="50" style="margin: 3%;"></textarea> </h5></div> 
+               <div style = "background-color: grey; margin:2%"><h5 style="margin:2%">Description de la formation : <textarea id="Formation-text" rows="10" cols="45" wrap="hard" style="margin: 3%;" required></textarea> </h5></div> 
            </div> 
            
        </div> 
