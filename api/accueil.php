@@ -25,7 +25,7 @@ include 'caroussel.php';
 <body>
 
 	<nav class = "section">
-		<div id = "Event">
+		<div id = "HebdoEvent">
 			<h5 style = "text-align : center; color:red"> Evènements de la semaine</h5>
 		</div>
 		<div id="carrousel">
@@ -64,6 +64,35 @@ include 'caroussel.php';
 				</div>
 		</form>
 	</nav>
+
+
+	<?php
+
+			$sql = "SELECT * FROM posts as p, user as u WHERE p.$iduser = u.$iduser OR p.$iduser = u.$amis";
+			try {
+				// Création du contact avec la BDD
+				$conn = new PDO($dsn);
+				$stmt = $conn->query($sql);
+
+			} catch (PDOException $e) {
+				echo $e->getMessage();
+			}
+		?>
+
+		<!-- affichage des données de la bdd avec php -->
+		<?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
+
+	<nav>
+		<div id = "Event">
+			<h5> Evènements de la semaine</h5>
+		</div>
+		
+		<p>
+            <?php echo htmlspecialchars($row['descriptionpost']); ?>
+        </p>
+
+	</nav>
+
 	<?php include 'foot.php';?>
 </body>
 </html>
