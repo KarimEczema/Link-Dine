@@ -324,6 +324,7 @@ catch (PDOException $e) {
         $conn = NEW PDO($dsn);
 
         if (isset($_POST['creerCV']) && $_POST['creerCV'] == 'creationCV') {
+            echo "lalalalala";
 
             include'cv.php';
 
@@ -336,7 +337,7 @@ catch (PDOException $e) {
         
 ?>
 
-<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Publier</button>
+<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Créer un CV à partie des informations personnelles</button>
 
 
 
