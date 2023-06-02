@@ -331,7 +331,7 @@ try {
     $cstCV = "SELECT constantecv FROM users WHERE iduser = $iduser";
     $stmt = $conn->query($cstCV);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $cstCVValue = $row['constanteCV'];
+    $cstCVValue = $row['constantecv'];
     ?>
 
     <script>console.log(<?php echo json_encode($cstCVValue); ?>);</script>
