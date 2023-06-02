@@ -37,14 +37,14 @@ if (isset($_COOKIE['jwt'])) {
         // La validation du JWT a échoué
         // Rediriger vers la page de connexion ou afficher le message d'erreur
         echo 'Veuillez vous connecter: ' . $e->getMessage();
-        echo '<meta http-equiv="refresh" content="0; url=" />';
+        echo '<meta http-equiv="refresh" content="0; url=index" />';
         exit;
     }
 } else {
     // Le JWT n'est pas défini, l'utilisateur n'est pas connecté
     // Rediriger vers la page de connexion ou afficher le message d'erreur
     echo 'Veuillez vous connecter';
-    echo '<meta http-equiv="refresh" content="0; url=" />';
+    echo '<meta http-equiv="refresh" content="0; url=index" />';
     exit;
 }
 
