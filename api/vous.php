@@ -321,12 +321,12 @@ try {
         include 'cv.php';}
     }
     catch (PDOException $e) {
-    echo $e->getMessage();
-}
+        echo $e->getMessage();
+    }
 ?>
 
 <form id="boutonCV" name="bouton" method="post" action="cv.php">
-<p>Génerer le CV</p>
+<p><input type="submit" name="affichageCV"></p>
 </form>
 
 
