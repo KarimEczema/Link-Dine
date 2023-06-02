@@ -322,16 +322,15 @@ catch (PDOException $e) {
     try {
 
         $conn = NEW PDO($dsn);
-
+        echo ' console.log("louloulou1")';
         if (isset($_POST['creerCV']) && $_POST['creerCV'] == 'creationCV') {
-            echo "lalalalala";
-
+            echo ' console.log("louloulou")';
             include'cv.php';
-
         }
     }
          
         catch (PDOException $e) {
+            echo 'console.log("louloulou2")';
             echo $e->getMessage();
         }
         
