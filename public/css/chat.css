@@ -63,4 +63,25 @@ body {
     background-color: purple;
 }
 
+#buttonArea {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #222274;
+}
 
+#messageButton.active, #cameraButton.active {
+    background-color: #5353bd;
+}
+
+#camera {
+    max-width: 60%;
+    width: 100%;
+    height: calc(100vh - 70px); /* Deduct the height of the navbar */
+    margin-top: 70px; /* Added this to push camera under the navbar */
+    border-radius: 10px;
+    padding: 20px;
+    background: #4444fc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}

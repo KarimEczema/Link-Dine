@@ -16,6 +16,7 @@ echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstr
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
+echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">';
 echo '</head>';
 echo '<body>';
 
@@ -31,7 +32,15 @@ include 'navbar.php';
         <!-- Les Messages sont insérés dynamiquement ici -->
     </div>
     <div id="userSelect">
-        <!-- La selection des utilisateurs est dynamiquement insérés ici -->
+    <!-- La sélection des utilisateurs est dynamiquement insérés ici -->
+        <div id="buttonArea" style="position: fixed; bottom: 0;">
+            <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
+            <button id="cameraButton" class="btn btn-primary"><i class="fas fa-camera"></i></button>
+        </div>
+    </div>
+
+    <div id="camera" style="display: none;">
+        <!-- La caméra sera insérée ici -->
     </div>
 
     <input type="text" id="userInput" placeholder="Ecrivez ici..." />
@@ -161,7 +170,21 @@ include 'navbar.php';
                     recevoirMessage(iduser, activeUserId);
                 }
             }, 500);
+
+            $('#messageButton').click(function() {
+            $('#chatbox').show();
+            $('#camera').hide();
+            $(this).addClass('active');
+            $('#cameraButton').removeClass('active');
         });
+
+        $('#cameraButton').click(function() {
+            $('#chatbox').hide();
+            $('#camera').show();
+            $(this).addClass('active');
+            $('#messageButton').removeClass('active');
+        });
+    });
 
     </script>
 
