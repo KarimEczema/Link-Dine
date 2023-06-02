@@ -32,26 +32,38 @@ include 'caroussel.php';
     }
     ?>
 
-    <?php $row['tabimages'] = trim($row['tabimages'], '{}');  // remove the starting and ending curly braces
-    $decoded_images = json_decode($row['tabimages'], true);  // decode the JSON string to an associative array ?>
+    <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
+    $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
 
     <nav class="section">
         <div id="Event">
             <h5 style="text-align: center; color: red;">Evènements</h5>
         </div>
         <div id="carrousel">
-            <ul id="listc" style="list-style-type: none;">
-                <?php $tabimages = explode(',', $row['tabimages']); ?>
-                <?php foreach ($tabimages as $image): ?>
-                    <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <div id="buttons">
-            <input type="button" value="<" class="prev">
-            <input type="button" value=">" class="next">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <?php $tabimages = explode(',', $row['tabimages']); ?>
+                        <?php foreach ($tabimages as $image): ?>
+                            <img src="<?php echo trim($image); ?>" width="120" height="100">
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </nav>
+
+
+
+
 
 
     <nav class="section" style="color : black;">
