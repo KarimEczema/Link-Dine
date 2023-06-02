@@ -54,16 +54,13 @@ try{
 <nav class = "profil">
     <div class="row">
         <div class="col-sm-4" style = "background-color : purple">Photo</div>
-        <div class="col-sm-8" style="background-color: red">
+        <div class="col-sm-8" style="background-color: red ; margin-left: 2%">
             <div style = "background-color: green; margin:2%"><h1><?php echo htmlspecialchars($row['username']); ?></h1><h3><?php echo htmlspecialchars($row['statut']); ?></h3></div>
             <div style = "background-color: blue; margin:2%"><h3><?php echo htmlspecialchars($row['bio']); ?></h3></div>
         </div>
     </div>
 </nav>
 
-
-
-    <h1 style="padding:10% ">Time Line</h1>
 <?php
 try {
     // create a PostgreSQL database connection
