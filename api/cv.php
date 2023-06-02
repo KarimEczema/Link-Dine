@@ -12,15 +12,17 @@
                 $stmt = $conn->query($sql);
                 ?>
 
+                <nav style="background-color:blue; padding:2%">
+
                 <h4 style="margin-top:5%">Formation(s)</h4>
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <div class="row">
-                        <div class="col-sm-3" style="background-color: purple; margin-left: 10%"><?php echo htmlspecialchars($row['datedebut']); ?> / <?php echo htmlspecialchars($row['datefin']); ?></div>
-                        <div class="col-sm-6" style="background-color: red">
-                            <div style="background-color: green; margin:2%; margin-right: 10%">
+                        <div class="col-sm-3" style="background-color:aliceblue ; margin-left: 10%"><?php echo htmlspecialchars($row['datedebut']); ?> / <?php echo htmlspecialchars($row['datefin']); ?></div>
+                        <div class="col-sm-6" style="background-color: grey">
+                            <div style=" margin:2%; margin-right: 10%">
                                 <h5><?php echo htmlspecialchars($row['nom']); ?></h5>
                             </div>
-                            <div style="background-color: yellow; margin:2%; margin-right: 10%">
+                            <div style=" margin:2%; margin-right: 10%">
                                 <h6><?php echo htmlspecialchars($row['institution']); ?></h6>
                             </div>
                         </div>
@@ -36,10 +38,10 @@
 
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <div class="row">
-                        <div style="background-color: green; margin-top:2%; margin-left: 10%">
+                        <div style="background-color: aliceblue; margin-top:2%; margin-left: 10%">
                             <h5><?php echo htmlspecialchars($row['nom']); ?> -</h5>
                         </div>
-                        <div style="background-color: yellow; margin-top:2%; margin-left: 2%; margin-right: 10%">
+                        <div style="background-color: grey; margin-top:2%; margin-left: 2%; margin-right: 10%">
                             <h6><?php echo htmlspecialchars($row['description']); ?></h6>
                         </div>
                     </div>
@@ -56,6 +58,7 @@
                     <?php echo htmlspecialchars($row['email']); ?>
                 </h6>
 
+                </nav>
                 <?php
             } catch (PDOException $e) {
                 echo 'An error occurred: ' . $e->getMessage();
