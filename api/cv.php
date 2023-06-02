@@ -42,16 +42,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $conn->query($sql);
                 ?>
 
+                <h4 style="margin-top:5%">Formation(s)</h4>
+
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
-                <h4 style="margin-top:5%">Formation(s)</h4>
+                
                 
                     <div class="row">
                         <div class="col-sm-3" style="background-color:aliceblue ; margin-left: 10%">
                             <?php echo htmlspecialchars($row['datedebut']); ?> /
                             <?php echo htmlspecialchars($row['datefin']); ?>
                         </div>
-                        <div class="col-sm-6" style="background-color: grey">
+                        <div class="col-sm-6" style="background-color: aliceblue">
                             <div style=" margin:2%; margin-right: 10%">
                                 <h5>
                                     <?php echo htmlspecialchars($row['nom']); ?>
@@ -78,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="col-sm-3" style="background-color:aliceblue ; margin-left: 10%">
                             <?php echo htmlspecialchars($row['nom']); ?>
                         </div>
-                        <div class="col-sm-6" style="background-color: grey">
+                        <div class="col-sm-6" style="background-color: aliceblue">
                             <div style=" margin:2%; margin-right: 10%">
                                 <h5>
                                     <?php echo htmlspecialchars($row['description']); ?>
@@ -107,4 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+ include 'foot.php';
 ?>
