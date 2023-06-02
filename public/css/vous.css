@@ -47,23 +47,23 @@ div.item {
 
 div.item:nth-of-type(1) { 
   --offset: 1; 
-  background-color: #90f1ef; 
+  background-color: #a4e7e6; 
 } 
 div.item:nth-of-type(2) { 
   --offset: 2; 
-  background-color: #ff70a6; 
+  background-color: #f3a8c5; 
 } 
 div.item:nth-of-type(3) { 
   --offset: 3; 
-  background-color: #ff9770; 
+  background-color: #fac1ac; 
 } 
 div.item:nth-of-type(4) { 
   --offset: 4; 
-  background-color: #ffd670; 
+  background-color: #eed9a4; 
 } 
 div.item:nth-of-type(5) { 
   --offset: 5; 
-  background-color: #e9ff70; 
+  background-color: #ecf7ae; 
 } 
 
 input:nth-of-type(1) { 
