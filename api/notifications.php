@@ -12,37 +12,37 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 echo '<body>';
 
-include 'navbar.php';   
+include 'navbar.php';
 include 'caroussel.php';
 ?>
 
 
 <body>
     <nav class = "section">
-        <div id = "Semaine" style = "color:red;">
-            <h5> Evènement de la semaine</h5>
-        </div>
-        <div id="carrousel">
-            <ul id = "listc" style ="list-style-type : none;">
-                <li><img src="images/Celeste.png" width="120" height="100"></li>
-                <li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>	
-                <li><img src="images/CelesteScare.png" width="120" height="100"></li>
-                <li><img src="images/CelesteTheo.png" width="120" height="100"></li>
-                <li><img src="chibiartforadrienne" width="120" height="100"></li>
-                <li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
-                <li><img src="images/logECE.png" width="120" height="100"></li>
-                <li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="120" height="100"></li>
-                <li><img src="book9.jpg" width="120" height="100"></li>
-                <li><img src="book10.jpg" width="120" height="100"></li>
-                <li><img src="book11.jpg" width="120" height="100"></li>
-                <li><img src="book12.jpg" width="120" height="100"></li>
-            </ul>
-        </div>
-        <div id="buttons" >
-            <input type="button" value="<" class="prev">
-            <input type="button" value=">" class="next">
-        </div>
-    </nav>
+		<div id = "Event">
+			<h5 style = "text-align : center; color:red"> Evènements</h5>
+		</div>
+		<div id="carrousel">
+			<ul id = "listc" style ="list-style-type : none;">
+				<li><img src="images/Celeste.png" width="120" height="100"></li>
+				<li><img src="images/Celeste_LVL8_FaceB.png" width="120" height="100"></li>	
+				<li><img src="images/CelesteScare.png" width="120" height="100"></li>
+				<li><img src="images/CelesteTheo.png" width="120" height="100"></li>
+				<li><img src="chibiartforadrienne" width="120" height="100"></li>
+				<li><img src="images/HollowKnightWallPaper.jfif" width="120" height="100"></li>
+				<li><img src="images/logECE.png" width="120" height="100"></li>
+				<li><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/StreetMordred.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvU3RyZWV0TW9yZHJlZC5qcGciLCJpYXQiOjE2ODU1NDkyNTYsImV4cCI6MTY4ODE0MTI1Nn0.FOqtr6jvNjSmCcK9k_CeAyBUuo3k_VSmS0VVub_mago&t=2023-05-31T16%3A07%3A38.151Z" width="120" height="100"></li>
+				<li><img src="book9.jpg" width="120" height="100"></li>
+				<li><img src="book10.jpg" width="120" height="100"></li>
+				<li><img src="book11.jpg" width="120" height="100"></li>
+				<li><img src="book12.jpg" width="120" height="100"></li>
+			</ul>
+		</div>
+		<div id="buttons">
+			<input type="button" value="<" class="prev">
+			<input type="button" value=">" class="next">
+		</div>
+	</nav>
 
     <nav class="section" style = "color : black;">
         <div id = "Amis">
@@ -50,28 +50,23 @@ include 'caroussel.php';
         </div>
 
         <div class="scroll-container">
-            <div class="scroll-page" id="formation-1">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
-                <h6>Type de contrat </h6> <br>
-                <h6>Description du poste <button type="button" onclick="textecache('span_text1');">...</button> </h6>
-                <span id="span_text1" style="display: none";>Suite de la description trop longue</span>
-                <h6>Salaire</h6>
+            <div class="scroll-page" id="notif-1">
+                <h5>Nom de l'amis </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
             </div>
-            <div class="scroll-page" id="formation-2">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
-                <h6>Type de contrat </h6> <br>
-                <h6>Description du poste <button type="button" onclick="textecache('span_text2');">...</button> </h6>
-                <span id="span_text2" style="display: none";>Suite de la description trop longue</span>
-                <h6>Salaire</h6>
+            <div class="scroll-page" id="notif-2">
+                <h5>Nom de l'amis  </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
             </div>
-            <div class="scroll-page" id="formation-3">
-                <h5><B>Intitulé du poste</B>- Employeur </h5>
-                <h6>Type de contrat </h6> <br>
-                <h6>Description du poste <button type="button" onclick="textecache('span_text3');">...</button> </h6>
-                <span id="span_text3" style="display: none";>Suite de la description trop longue</span>
-                <h6>Salaire</h6>
+            <div class="scroll-page" id="notif-3">
+                <h5>Nom de l'amis  </h5>
+                <h6>à : Action </h6>
+                <h6>29/05/2023</h6>
             </div>
         </div>
+        
     </nav>
 
     <?php include 'foot.php' ?>
