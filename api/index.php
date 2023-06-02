@@ -81,8 +81,9 @@ catch (PDOException $e){
 </head>
 <body>
 
-<div class="error-message"><?php echo $error_message; ?></div>
-
+<?php if($error_message): ?>
+  <div class="error-message"><?php echo $error_message; ?></div>
+<?php endif; ?>
 
 <form method="post" action="">
   Nom d'utilisateur:<br>
