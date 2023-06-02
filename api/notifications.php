@@ -40,10 +40,12 @@ include 'caroussel.php';
             <ul id="listc" style="list-style-type: none;">
 
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <?php $tabimages = explode(',', $row['tabimages']); ?>
-                    <?php foreach ($tabimages as $image): ?>
-                        <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
-                    <?php endforeach; ?>
+                    <?php if ($row['tabimages'] !== null): ?>
+                        <?php $tabimages = explode(',', $row['tabimages']); ?>
+                        <?php foreach ($tabimages as $image): ?>
+                            <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 <?php endwhile; ?>
 
             </ul>
@@ -53,6 +55,7 @@ include 'caroussel.php';
             <input type="button" value=">" class="next">
         </div>
     </nav>
+
 
 
 
