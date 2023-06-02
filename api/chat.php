@@ -1,7 +1,9 @@
 <?php
 
+// Inclusion du test de login
 include 'login-check.php';
 
+// Inclusion des bibliothèques
 echo '<html>';
 echo '<head>';
 echo '<title>Messagerie</title>';
@@ -10,50 +12,35 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstr
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/chat.css">';
-echo '<body>';
-
-include 'navbar.php';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
+echo '</head>';
+echo '<body>';
+
+// Inclusion de la barre de navigation
+
+include 'navbar.php';
 
 ?>
 
-<link type="text/css" rel="stylesheet" href="https://source.zoom.us/{VERSION_NUMBER}/css/bootstrap.css" />
-  <link type="text/css" rel="stylesheet" href="https://source.zoom.us/{VERSION_NUMBER}/css/react-select.css" />
+<body>
 
-<!-- Dependencies for client view and component view -->
-<script src="https://source.zoom.us/2.12.2/lib/vendor/react.min.js"></script>
-<script src="https://source.zoom.us/2.12.2/lib/vendor/react-dom.min.js"></script>
-<script src="https://source.zoom.us/2.12.2/lib/vendor/redux.min.js"></script>
-<script src="https://source.zoom.us/2.12.2/lib/vendor/redux-thunk.min.js"></script>
-<script src="https://source.zoom.us/2.12.2/lib/vendor/lodash.min.js"></script>
-
-<!-- Choose between the client view or component view: -->
-<meta http-equiv="origin-trial" content="">
-<!-- CDN for client view -->
-<script src="https://source.zoom.us/zoom-meeting-2.12.2.min.js"></script>
-
-<!-- CDN for component view -->
-<script src="https://source.zoom.us/zoom-meeting-embedded-2.12.2.min.js"></script>
-
-</head>
-
-<body class="ReactModal__Body--open">
     <div id="chatbox">
-        <!-- Messages will be dynamically inserted here -->
+        <!-- Les Messages sont insérés dynamiquement ici -->
     </div>
     <div id="userSelect">
-        <!-- User options will be dynamically inserted here -->
+        <!-- La selection des utilisateurs est dynamiquement insérés ici -->
     </div>
-    <input type="text" id="userInput" placeholder="Type your message..." />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <input type="text" id="userInput" placeholder="Ecrivez ici..." />
+
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-        const sendMessage = async (iduser, message, sentTo) => {
+        const envoyerMessage = async (iduser, message, sentTo) => {
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
                     method: 'POST',
@@ -74,8 +61,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             }
         };
 
-
-        const getUsers = async () => {
+        const RecupUtilisateurs = async () => {
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
                     method: 'GET',
@@ -99,8 +85,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             }
         };
 
-
-        const receiveMessages = async (user1, user2) => {
+        const recevoirMessage = async (user1, user2) => {
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/messages?or=(sentTo.eq.${user1},sentTo.eq.${user2})`, {
                     method: 'GET',
@@ -135,16 +120,14 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
             }
         };
 
-
-
         $(document).ready(async function () {
-            const users = await getUsers();
+            const users = await RecupUtilisateurs();
             users.forEach((user) => {
                 let userButton = $(`<button class='usernameButton' data-id='${user.iduser}'>${user.username}</button>`);
                 userButton.click(function () {
                     $('.usernameButton').removeClass('active');
                     $(this).addClass('active');
-                    receiveMessages(iduser, $(this).data('id'));
+                    recevoirMessage(iduser, $(this).data('id'));
                 });
 
                 $('#userSelect').append(userButton);
@@ -165,7 +148,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                         return;
                     }
 
-                    await sendMessage(iduser, message, sentTo);
+                    await envoyerMessage(iduser, message, sentTo);
                     $(this).val(''); // Clear the input field
                 }
             });
@@ -175,44 +158,13 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 console.log("iduser: ", iduser);
                 console.log("activeUserId: ", activeUserId);
                 if (activeUserId) {  // check if activeUserId is defined
-                    receiveMessages(iduser, activeUserId);
+                    recevoirMessage(iduser, activeUserId);
                 }
             }, 500);
         });
 
-
-/*
-        ZoomMtg.setZoomJSLib('https://source.zoom.us/2.12.2/lib', '/av')
-        // loads WebAssembly assets
-        ZoomMtg.preLoadWasm()
-        ZoomMtg.prepareWebSDK()
-        // loads language files, also passes any error messages to the ui
-        ZoomMtg.i18n.load('en-US')
-        ZoomMtg.i18n.reload('en-US')
-        */
     </script>
-<!--
-<main>
-      <h1>Zoom Meeting SDK Sample JavaScript</h1>
 
-   
-      <div id="meetingSDKElement">
-       
-      </div>
-
-      <button onClick="getSignature()">Join Meeting</button>
-    </main>
-
-    <script src="https://source.zoom.us/2.12.2/lib/vendor/react.min.js"></script>
-    <script src="https://source.zoom.us/2.12.2/lib/vendor/react-dom.min.js"></script>
-    <script src="https://source.zoom.us/2.12.2/lib/vendor/redux.min.js"></script>
-    <script src="https://source.zoom.us/2.12.2/lib/vendor/redux-thunk.min.js"></script>
-    <script src="https://source.zoom.us/2.12.2/lib/vendor/lodash.min.js"></script>
-
-   
-    <script src="https://source.zoom.us/zoom-meeting-2.12.2.min.js"></script>
-    <script type="text/javascript" src="js/component-view.js"></script>
-    -->
 </body>
 
 </html>
