@@ -3,7 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
         // The 'creerCV' button with value 'creationCV' was clicked
 
-        $conn = new PDO($dsn);
 
         try {
             $conn = new PDO($dsn);
@@ -104,6 +103,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             </nav>
             <?php
+
+            $sql = "UPDATE users SET constanteCV = 1 WHERE iduser = $iduser";
+            
         } catch (PDOException $e) {
             echo 'An error occurred: ' . $e->getMessage();
         }
@@ -111,4 +113,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
  include 'foot.php';
+
 ?>
