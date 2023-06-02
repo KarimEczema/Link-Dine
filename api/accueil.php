@@ -55,11 +55,13 @@ include 'caroussel.php';
 <h1 style="padding:10% ">Time Line</h1>
 
 <?php
+
+$pdo = new PDO($dsn);
 // Votre ID utilisateur spécifique
 $valeur_iduser = $iduser;
 
 // Récupérez les amis de l'utilisateur
-$stmt = $pdo->prepare("SELECT ami FROM users WHERE iduser = ?");
+$stmt = $pdo->prepare("SELECT amis FROM users WHERE iduser = $iduser");
 $stmt->execute([$valeur_iduser]);
 $ami = $stmt->fetch();
 
@@ -75,7 +77,7 @@ if ($ami) {
 
     // Affichez les posts
     foreach ($posts as $post) {
-        echo "ID: " . $post['id'] . ", Content: " . $post['content'] . "<br>";
+        echo "ID: " . $post['idpost'] . ", Content: " . $post['descriptionpost'] . "<br>";
     }
 } else {
     echo "Cet utilisateur n'a pas d'amis.";

@@ -20,7 +20,7 @@ include 'navbar.php';
 ?>
 
 
-<nav class = "post">
+<nav class = "post" style =" background-color: cyan;">
     <form method="post" action="traitement.php">
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
@@ -31,7 +31,7 @@ include 'navbar.php';
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
                     <button type="radio"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                     <fieldset>
-                        <legend>A qui voulez vous le partager ?</legend>
+                        <p>A qui voulez vous le partager ?</p>
 
                         <div>
                             <input type="radio" id="huey" name="drone" value="huey" checked>
@@ -48,3 +48,45 @@ include 'navbar.php';
         </div>
     </form>
 </nav>
+
+<nav class = "like" style =" background-color: bisque;">
+   <h5> Que vous pourriez aimer :</h5><br>
+
+
+</nav><div>
+
+
+    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+        <input type="radio" name="position" />
+    <?php endwhile; ?>
+
+    <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
+    try {
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
+
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    ?>
+
+
+    <main id="carousel">
+        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <div class="item">
+
+                <B>
+                    <?php echo htmlspecialchars($row['nom']); ?>
+                </B>
+                <br>
+                <br>
+                <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
+                    <?php echo htmlspecialchars($row['description']); ?>
+                </div>
+
+            </div>
+        <?php endwhile; ?>
+
+    </main>
+</div>
