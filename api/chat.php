@@ -26,7 +26,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <script src="https://source.zoom.us/2.12.2/lib/vendor/lodash.min.js"></script>
 
 <!-- Choose between the client view or component view: -->
-
+<meta http-equiv="origin-trial" content="">
 <!-- CDN for client view -->
 <script src="https://source.zoom.us/zoom-meeting-2.12.2.min.js"></script>
 
@@ -186,17 +186,26 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         ZoomMtg.i18n.reload('en-US')
     </script>
 
+<main>
+      <h1>Zoom Meeting SDK Sample JavaScript</h1>
 
-<div id="zmmtg-root"></div>
-  <div id="aria-notify-area"></div>
+      <!-- For Component View -->
+      <div id="meetingSDKElement">
+        <!-- Zoom Meeting SDK Rendered Here -->
+      </div>
 
-  <!-- added on meeting init -->
-  <div class="ReactModalPortal"></div>
-  <div class="ReactModalPortal"></div>
-  <div class="ReactModalPortal"></div>
-  <div class="ReactModalPortal"></div>
-  <div class="global-pop-up-box"></div>
-  <div class="sharer-controlbar-container sharer-controlbar-container--hidden"></div>
+      <button onClick="getSignature()">Join Meeting</button>
+    </main>
+
+    <script src="https://source.zoom.us/2.12.2/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/2.12.2/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/2.12.2/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/2.12.2/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/2.12.2/lib/vendor/lodash.min.js"></script>
+
+    <!-- For Client View -->
+    <script src="https://source.zoom.us/zoom-meeting-2.12.2.min.js"></script>
+    <script type="text/javascript" src="js/component-view.js"></script>
 
 </body>
 
