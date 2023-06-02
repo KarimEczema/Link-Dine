@@ -81,14 +81,12 @@ catch (PDOException $e){
 <link href="css/index.css" rel="stylesheet" type="text/css"/>
 </head>
 
-
 <body>
 
 <!-- Si le message d'erreur existe -->
 <?php if($message_erreur): ?>
   <div class="message-error"><?php echo $message_erreur; ?></div>
 <?php endif; ?>
-
 
 <!-- Box de saisie -->
 <form method="post" action="">
