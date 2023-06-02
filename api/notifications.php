@@ -20,7 +20,7 @@ include 'caroussel.php';
 <body>
 
     <?php
-    $sql = "SELECT tabimages FROM evenement WHERE nom = 'Centrale Supelec'";
+    $sql = "SELECT tabimages FROM evenement WHERE organisateur = 'Centrale Supelec'";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
