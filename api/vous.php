@@ -338,7 +338,7 @@ try {
     <?php
 
     if ($cstCVValue == 0) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION == 0) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
 
 
