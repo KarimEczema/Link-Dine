@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Include the JWT library
 require __DIR__ . '/vendor/autoload.php';

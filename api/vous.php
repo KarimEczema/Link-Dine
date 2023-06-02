@@ -1,7 +1,7 @@
 <?php
 include 'login-check.php';
 
-session_start();
+
 
 echo '<html>';
 echo '<head>';
