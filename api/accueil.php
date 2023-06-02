@@ -76,7 +76,7 @@ include 'caroussel.php';
 	<div>
 
 		<?php 
-			$ami = json_decode(p.$amis);
+			$ami = json_decode($amis);
 			$sql = "SELECT * FROM post as p, user as u WHERE p.$iduser = $ami ";
 			try {
 				// Création du contact avec la BDD
