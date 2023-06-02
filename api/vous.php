@@ -312,7 +312,9 @@ try {
 ======================================================
 -->
 <?php
+
     try {
+        $conn = NEW PDO($dsn);
     if (isset($_POST['bouton'])) {
         echo '<form id="bouton" name="bouton" method="post" action="cv.php">
 <p><input type="submit" name="bouton"></p>
