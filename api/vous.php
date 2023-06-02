@@ -131,6 +131,7 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
+    
 
 <nav class="Ajout-formation">
     <h1 style="margin-top : 5% ">Ajouter une formation</h1>
@@ -263,6 +264,7 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
+  
 
 <nav class="Ajout-projet">
     <h1 style="margin-top : 5% "> Ajouter un projet</h1>
@@ -371,5 +373,4 @@ try {
 
 include 'foot.php'; ?>
 </body>
-
 </html>
