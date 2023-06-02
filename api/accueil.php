@@ -77,7 +77,7 @@ include 'caroussel.php';
 
 		<?php 
 		
-			$sql = "SELECT * FROM post as p, user as u WHERE p.iduser = p.$$amis";
+			$sql = "SELECT * FROM post as p, user as u WHERE p.iduser = JSON_VALUE(Tab.json, 'p.$amis')";
 			try {
 				// Création du contact avec la BDD
 				$conn = new PDO($dsn);
