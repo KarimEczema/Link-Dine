@@ -95,7 +95,7 @@ body{
   input:checked + div {
     z-index: 2;
   }  
-  .item img {
+  .carousel-item img {
     width: 60; /* Specify the desired width here */
     height: 60; /* Specify the desired height here */
     object-fit: cover;
