@@ -8,7 +8,7 @@
             try {
                 $conn = new PDO($dsn);
                 
-                $sql = "SELECT * FROM formations WHERE iduser = $iduser";
+                $sql = "SELECT * FROM formation WHERE iduser = $iduser";
                 $stmt = $conn->query($sql);
                 ?>
 
