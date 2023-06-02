@@ -328,10 +328,10 @@ try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
 
-    $cstCV = "SELECT users.constancecv FROM users WHERE iduser = $iduser";
+    $cstCV = "SELECT constantecv FROM users WHERE iduser = $iduser";
     $stmt = $conn->query($cstCV);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $cstCVValue = $row['constanceCV'];
+    $cstCVValue = $row['constanteCV'];
     ?>
 
     <script>console.log(<?php echo json_encode($cstCVValue); ?>);</script>
