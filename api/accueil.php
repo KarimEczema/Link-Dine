@@ -58,35 +58,32 @@ try {
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
 
-   
-  
-        // query to check if username exists
-        $sql = "SELECT ami FROM users WHERE iduser = ?";
-        $stmt = $conn->prepare($sql);
+    // query to check if username exists
+    $sql = "SELECT ami FROM users WHERE iduser = ?";
+    $stmt = $conn->prepare($sql);
 
-        // bind parameters and execute
-        
-        $stmt->execute($iduser);
+    // bind parameters and execute
+    $stmt->execute([$iduser]);
 
-$ami = $stmt->fetch();
+    $ami = $stmt->fetch();
 
-// Vérifiez que l'utilisateur a des amis
-if ($ami) {
-    $ami = explode(',', trim($ami['ami'], '{}')); // convertir la chaîne de caractères du tableau en un tableau PHP
+    // Check that the user has friends
+    if ($ami) {
+        $ami = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
 
-    // Récupérez les posts des amis
-    $params = implode(',', array_fill(0, count($ami), '?'));
-    $stmt = $pdo->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-    $stmt->execute($ami);
-    $posts = $stmt->fetchAll();
+        // Retrieve the friends' posts
+        $params = implode(',', array_fill(0, count($ami), '?'));
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
+        $stmt->execute($ami);
+        $posts = $stmt->fetchAll();
 
-    // Affichez les posts
-    foreach ($posts as $post) {
-        echo "ID: " . $post['id'] . ", Content: " . $post['content'] . "<br>";
+        // Display the posts
+        foreach ($posts as $post) {
+            echo "ID: " . $post['id'] . ", Content: " . $post['content'] . "<br>";
+        }
+    } else {
+        echo "This user has no friends.";
     }
-} else {
-    echo "Cet utilisateur n'a pas d'amis.";
-}
     
 } catch (PDOException $e) {
     // report error message

@@ -47,15 +47,14 @@ include 'navbar.php';
             </div>
         </div>
     </form>
-    <label for="start">Start date:</label>
-
-    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+    <label for="start">Quand ?</label>
+    <input type="date" id="start" name="trip-start" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+    <label for="where" style = "display : inline; text-align : right;">Où ?</label>
+    <input type="text" id="where" name="trip-start" style = "display : inline; text-align : right;">
 </nav>
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
-
-
 </nav><div>
 
 
