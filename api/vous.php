@@ -315,11 +315,17 @@ try {
 ======================================================
 -->
 
+<?php if(isset($_POST['bouton'])) {
+echo '<form id="bouton" name="bouton" method="post" action="cv.php">
+<p><input type="submit" name="bouton"></p>
+</form> <?php ';
+} else { echo "bouton non cliqué"; } ?>
 
-
-<form id="boutonCV" name="boutonCV" method="post" action="cv.php">
-<p><input type="submit" name="boutonCV"></p>
+<form id="bouton" name="bouton" method="post" action="cv.php">
+<p><input type="submit" name="bouton"></p>
 </form>
+
+
 
 
 <?php include 'foot.php'; ?>
