@@ -32,6 +32,9 @@ include 'caroussel.php';
     }
     ?>
 
+    <?php $row['tabimages'] = trim($row['tabimages'], '{}');  // remove the starting and ending curly braces
+    $decoded_images = json_decode($row['tabimages'], true);  // decode the JSON string to an associative array ?>
+
     <nav class="section">
         <div id="Event">
             <h5 style="text-align: center; color: red;">Evènements</h5>
@@ -49,11 +52,6 @@ include 'caroussel.php';
             <input type="button" value=">" class="next">
         </div>
     </nav>
-
-
-
-
-
 
 
     <nav class="section" style="color : black;">
