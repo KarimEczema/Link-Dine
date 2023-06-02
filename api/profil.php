@@ -60,7 +60,7 @@ try{
                         <div class="col-sm-3">
                             <img src="image" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-8">
                             <p><b>  <?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['statut']); ?> </p>
                             <h6>Description : </h6>
                             <p><?php echo htmlspecialchars($row['bio']); ?></p>
