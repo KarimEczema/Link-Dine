@@ -66,9 +66,18 @@ include 'caroussel.php';
 	</nav>
 
 
-	<?php
+		<!--
+	----------   Affichage    ----------
+	-->
+	
 
-			$sql = "SELECT * FROM posts as p, user as u WHERE p.$iduser = u.$iduser OR p.$iduser = u.$amis";
+	<h1 style="padding:10% ">Time Line</h1>
+
+	<div>
+
+		<?php 
+		
+			$sql = "SELECT * FROM post as p, user as u WHERE p.iduser = p.$$amis";
 			try {
 				// Création du contact avec la BDD
 				$conn = new PDO($dsn);
@@ -79,19 +88,24 @@ include 'caroussel.php';
 			}
 		?>
 
-		<!-- affichage des données de la bdd avec php -->
-		<?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
-	<nav>
-		<div id = "Event">
-			<h5> Evènements de la semaine</h5>
-		</div>
-		
-		<p>
-            <?php echo htmlspecialchars($row['descriptionpost']); ?>
-        </p>
+		<main id="TL">
+			<?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+				<div class="item">
 
-	</nav>
+					<B>
+						<?php echo htmlspecialchars($row['descriptionami']); ?>
+					</B>
+					<br>
+					<br>
+					<div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
+						<?php echo htmlspecialchars($row['description']); ?>
+					</div>
+
+				</div>
+			<?php endwhile; ?>
+		</main>
+	</div>
 
 	<?php include 'foot.php';?>
 </body>
