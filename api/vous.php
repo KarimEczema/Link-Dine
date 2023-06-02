@@ -316,6 +316,9 @@ catch (PDOException $e) {
         Partie CV
 ======================================================
 -->
+
+<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Créer un CV à partie des informations personnelles</button>
+
 <?php
 
 
@@ -336,7 +339,6 @@ catch (PDOException $e) {
         
 ?>
 
-<button type="submit" name="creerCV" value="creationCV" style=" margin-top : 2%;">Créer un CV à partie des informations personnelles</button>
 
 
 
