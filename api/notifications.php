@@ -46,7 +46,7 @@ include 'caroussel.php';
             $tabimages = explode(',', $row['tabimages']);
             ?>
             <?php foreach ($tabimages as $image): ?>
-                <input type="radio" name="carousel-item" id="<?php echo $valueCar; ?>">
+                <input type="radio" name="item" id="<?php echo $valueCar; ?>">
                 <div class="carousel-item">
                     <img src="<?php echo trim($image); ?>">
                 </div>
