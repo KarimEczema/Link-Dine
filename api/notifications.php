@@ -40,12 +40,15 @@ include 'caroussel.php';
             <h5 style="text-align: center; color: red;">Evènements</h5>
         </div>
 
-        <?php $tabimages = explode(',', $row['tabimages']); ?>
+        <?php 
+        $valueCar = 1;
+        $tabimages = explode(',', $row['tabimages']); ?>
         <?php foreach ($tabimages as $image): ?>
             <div class="carousel" id="test1">
-                <input type="radio" name="item" value="1">
+                <input type="radio" name="item" value=$valueCar>
                 <div><img src="<?php echo trim($image); ?>"></div>
             </div>
+            $valueCar++;
         <?php endforeach; ?>
 
     </nav>
