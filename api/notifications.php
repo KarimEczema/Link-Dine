@@ -40,24 +40,19 @@ include 'caroussel.php';
             <h5 style="text-align: center; color: red;">Evènements</h5>
         </div>
 
-        <?php
-        $valueCar = 1;
-        $tabimages = explode(',', $row['tabimages']); ?>
-        <?php foreach ($tabimages as $image): ?>
-            <div class="carousel" id="test1">
-                <input type="radio" name="item" id="carousel-item-<?php echo $valueCar; ?>"
-                    value="<?php echo $valueCar; ?>">
-                <div>
+        <div class="carousel" id="test1">
+            <?php
+            $valueCar = 1;
+            $tabimages = explode(',', $row['tabimages']);
+            ?>
+            <?php foreach ($tabimages as $image): ?>
+                <input type="radio" name="carousel-item" id="carousel-item-<?php echo $valueCar; ?>">
+                <div class="carousel-item">
                     <img src="<?php echo trim($image); ?>">
                 </div>
-            </div>
-            <?php $valueCar++;
-
-            ?>
-            <script>console.log($valueCar);</script>
-
-        <?php endforeach; ?>
-
+                <?php $valueCar++; ?>
+            <?php endforeach; ?>
+        </div>
     </nav>
 
     <nav class="section" style="color : black;">
