@@ -298,31 +298,36 @@ try {
 
         }
     }
+
+    ?>
+
+
+
+
+    <!-- Ajout du CV généré automatiquement -->
+
+    <!--
+======================================================
+        Partie CV
+======================================================
+-->
+<?php
+    try {
+    if (isset($_POST['bouton'])) {
+        echo '<form id="bouton" name="bouton" method="post" action="cv.php">
+<p><input type="submit" name="bouton"></p>
+</form> <?php ';
+    } else {
+        echo "bouton non cliqué";
+    }
 } catch (PDOException $e) {
     // Message d'erreur si le formulaire n'a pas pu être récupéré
     echo $e->getMessage();
 }
 ?>
 
-
-
-
-<!-- Ajout du CV généré automatiquement -->
-
-<!--
-======================================================
-        Partie CV
-======================================================
--->
-
-<?php if(isset($_POST['bouton'])) {
-echo '<form id="bouton" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="bouton"></p>
-</form> <?php ';
-} else { echo "bouton non cliqué"; } ?>
-
 <form id="bouton" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="bouton"></p>
+    <p><input type="submit" name="bouton"></p>
 </form>
 
 
