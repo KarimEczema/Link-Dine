@@ -1,31 +1,20 @@
-
-
-<?php 
-
-creationCV(){
-    
-        $sql = "SELECT * FROM users WHERE iduser = $iduser";
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
-
-        echo '
-<html>
-
-< nav class="CV" style = "margin-top:2%" >
-            
-    <div class="row">
-        <div class="col-sm-4" style="background-color : purple; margin : 2%">.$Photo.</div>
-        <div class="col-sm-7" style="background-color: red">
-            <div style="background-color: green; margin:2%">
-                <h3><?php echo htmlspecialchars($row['username']); ?></h3>
-            </div>
-            <div style="background-color: blue; margin:2%">
-                <h5><?php echo htmlspecialchars($row['description']); ?></h5>
-            </div>
-        </div>
-    </div>
-</html>';
-
-        
-}
-?>
+<header>
+		<div class="container-fluid">
+			<div class="row">
+				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
+				 <div class="col-sm" ><img src="image" width="121" height="49.5"></div>
+			</div>		
+		</div>
+</header>
+	
+<nav class = "navigation">
+	<ul id="liste1">
+		<li id="accueil"><a href="accueil">Accueil</a></li>
+		<li id="reseau"><a href="reseau">Mon réseau</a></li>
+		<li id="vous"><a href="vous">Vous</a></li>
+		<li id="notifs"><a href="notifications">Notifications</a></li>
+		<li id="emplois"><a href="emplois">Emplois</a></li>
+		<li id="chat"><a href="chat">Messagerie</a></li>
+		<li id="admin" style="float:right"><a href="admin">Admin</a></li>
+	</ul>
+</nav>

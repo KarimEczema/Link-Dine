@@ -15,7 +15,7 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
-require("vous.php");
+
 ?>
 
 
@@ -325,7 +325,7 @@ catch (PDOException $e) {
 
         if (isset($_POST['creerCV']) && $_POST['creerCV'] == 'creationCV') {
 
-            creationCV();
+            include'cv.php';
 
         }
     }
