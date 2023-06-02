@@ -29,7 +29,7 @@ if (isset($_COOKIE['jwt'])) {
         $iduser = $decoded->iduser;
         
         echo '<script>';
-        echo 'var idUser = "' . $iduser . '";';
+        echo 'var iduser = "' . $iduser . '";';
         echo '</script>';
         // Continuer le traitement ou rediriger vers la page authentifiée
 
