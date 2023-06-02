@@ -49,7 +49,7 @@ include 'navbar.php';
     </form>
     <label for="start">Quand ?</label>
     <input type="date" id="start" name="trip-start" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
-    <label for="where" style = "display : inline; text-align : right;">Où ?</label>
+    <label for="where"style = "text-align : right;">Où ?</label>
     <input type="text" id="where" name="trip-start" style = "margin-left : 10%;">
 </nav>
 

@@ -79,7 +79,7 @@ try {
 
         // Display the posts
         foreach ($posts as $post) {
-            echo "ID: " . $post['id'] . ", Content: " . $post['content'] . "<br>";
+            echo "ID: " . $post['idpost'] . ", Content: " . $post['descriptionpost'] . "<br>";
         }
     } else {
         echo "This user has no friends.";
