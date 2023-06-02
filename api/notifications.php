@@ -38,13 +38,10 @@ include 'caroussel.php';
         <div id="carrousel">
             <ul id="listc" style="list-style-type: none;">
 
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
                     <?php $tabimages = explode(',', $row['tabimages']); ?>
                     <?php foreach ($tabimages as $image): ?>
                         <li><img src="<?php echo trim($image); ?>" width="120" height="100"></li>
                     <?php endforeach; ?>
-                <?php endwhile; ?>
 
             </ul>
         </div>
