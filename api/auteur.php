@@ -14,14 +14,43 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/auteur.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js"></script>';
 echo '<body>';
 
 include 'navbar.php';
 ?>
 
+<script>
+const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+    const imageFile = event.target.image_uploads.files[0];
+    
+    // The path where the file will be stored - I'm using the file name here to create the path
+    const filePath = 'post/' + imageFile.name;
+    
+    const { data, error } = await supabase.storage.from('Images').upload(filePath, imageFile);
+    if (error) {
+        console.error('Error uploading image: ', error);
+        return;
+    }
+    
+    // Get the public URL of the uploaded file
+    const imageUrl = supabase.storage.from('Images').getPublicUrl(filePath);
+    
+    // Now you can save this imageUrl to your post's photo column
+    // This part depends on how you're interacting with your database from PHP, 
+    // you might need to send a request to your PHP backend with the imageUrl
+}
+
+</script>
 
 <nav class = "post" style =" background-color: cyan;">
-    <form method="post" action="traitement.php">
+    <form method="post" action="traitement.php" onsubmit="handleFormSubmit(event)">
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
             <div class="row">
