@@ -7,9 +7,12 @@ echo '<title>Admin</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+
+
 echo '<body>';
 
 include 'navbar.php';
@@ -37,19 +40,46 @@ include 'caroussel.php';
 
     <nav class="section">
         <div id="Event">
-            <h5 style="text-align: center; color: red;">Evènements</h5>
+            <h5 style="text-align: center; color: red;">Evénements</h5>
         </div>
 
-        <div class="carousel" id="test1">
-            <?php
-            $valueCar = 1;
-            $tabimages = explode(',', $row['tabimages']);
-            ?>
-            <?php foreach ($tabimages as $image): ?>
-                <input type="radio" name="caroussel-item" value="<?php echo $valueCar; ?>">       
-                    <img src="<?php echo trim($image); ?>" style="height : 600px; width : 350px">
-                <?php $valueCar++; ?>
-            <?php endforeach; ?>
+        <div class="carousel slide" id="myCarousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <?php
+                $valueCar = 0;
+                foreach ($decoded_images as $image) {
+                    echo '<li data-target="#myCarousel" data-slide-to="' . $valueCar . '"';
+                    if ($valueCar === 0) {
+                        echo ' class="active"';
+                    }
+                    echo '></li>';
+                    $valueCar++;
+                }
+                ?>
+            </ol>
+            <div class="carousel-inner">
+                <?php
+                $valueCar = 0;
+                foreach ($decoded_images as $image) {
+                    echo '<div class="carousel-item';
+                    if ($valueCar === 0) {
+                        echo ' active';
+                    }
+                    echo '">';
+                    echo '<img src="' . trim($image) . '" alt="Carousel Image">';
+                    echo '</div>';
+                    $valueCar++;
+                }
+                ?>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </nav>
 
