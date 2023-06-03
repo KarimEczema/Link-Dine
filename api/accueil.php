@@ -104,7 +104,7 @@ try {
             $stmt2 = $conn->prepare($sql2);
             $stmt2->execute();
             $id = $stmt2->fetchAll();
-            <script>console.log($id);</script>
+            echo '<script> console.log($id);</script>';
 
             echo $id . " : " . $post['descriptionpost'] . "<br>";
         }
