@@ -124,12 +124,12 @@ try {
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
                 // get formations
-                $stmt = $conn->prepare("SELECT users.nom as username, nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, posts.nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
                 // get projets
-                $stmt = $conn->prepare("SELECT users.nom as username, nom as title, NULL as date, description, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, projet.nom as title, NULL as date, description, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
