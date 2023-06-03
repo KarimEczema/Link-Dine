@@ -164,19 +164,18 @@ include 'navbar.php';
                 console.error('Error:', error.message);
             }
         };
+
         $(document).ready(async function () {
-    const amisData = await RecupUtilisateurs(iduser);
-    // assuming RecupUtilisateurs(iduser) returns [{iduser, username, ...}]
-    currentUser = amisData[0].username; // get the current user's username
-    amisData.forEach((friend) => {
-        let userButton = $(`<button class='usernameButton' data-id='${friend.iduser}'>${friend.username}</button>`);
-        userButton.click(function () {
-            $('.usernameButton').removeClass('active');
-            $(this).addClass('active');
-            recevoirMessage(iduser, $(this).data('id'));
-        });
-        $('#userSelect').append(userButton);
-    });
+            const amisData = await RecupUtilisateurs(iduser);
+            amisData.forEach((friend) => {
+                let userButton = $(`<button class='usernameButton' data-id='${friend.iduser}'>${friend.username}</button>`);
+                userButton.click(function () {
+                    $('.usernameButton').removeClass('active');
+                    $(this).addClass('active');
+                    recevoirMessage(iduser, $(this).data('id'));
+                });
+                $('#userSelect').append(userButton);
+            });
 
 
             $('#userInput').keypress(async function (e) {
@@ -215,42 +214,49 @@ include 'navbar.php';
                 $('#cameraButton').removeClass('active');
             });
 
-            let currentUser;
-            $('#videoCallButton').click(function() {
-    const selectedUserName = $('.usernameButton.active').text(); // Assumes the button text is the username of the selected user
+            $('#cameraButton').click(function () {
+                $('#chatbox').css('display', 'none');   // Hide chatbox
+                $('#camera').css('display', 'block');  // Show camera div
+                $(this).addClass('active');
+                $('#messageButton').removeClass('active');
+            });
 
-    if(!selectedUserName) { // Check if a user has been selected
-        alert('Please select a user to start a video call!');
-        return;
-    }
+            $('#videoCallButton').click(function () {
+                const selectedUserName = $('.usernameButton.active').text(); // Assumes the button text is the username of the selected user
 
-    $('#chatbox').css('display', 'none');   // Hide chatbox
-    $('#videoCall').css('display', 'block');  // Show videoCall div
-    $('#camera').css('display', 'none');   // Hide camera div
-    $(this).addClass('active');
-    $('#messageButton').removeClass('active');
-    $('#cameraButton').removeClass('active');
+                if (!selectedUserName) { // Check if a user has been selected
+                    alert('Please select a user to start a video call!');
+                    return;
+                }
 
-    const domain = 'meet.jit.si';
+                $('#chatbox').css('display', 'none');   // Hide chatbox
+                $('#videoCall').css('display', 'block');  // Show videoCall div
+                $('#camera').css('display', 'none');   // Hide camera div
+                $(this).addClass('active');
+                $('#messageButton').removeClass('active');
+                $('#cameraButton').removeClass('active');
 
-    let roomName;
+                const domain = 'meet.jit.si';
 
-    // Create a room name by sorting the usernames alphabetically
-    if (currentUser < selectedUserName) {
-        roomName = `${currentUser}-${selectedUserName}`;
-    } else {
-        roomName = `${selectedUserName}-${currentUser}`;
-    }
+                const currentUserName = 'currentUserName'; // Get this dynamically based on your application context
+                let roomName;
 
-    const options = {
-        roomName: roomName, 
-        width: '100%',
-        height: '100%',
-        parentNode: document.querySelector('#videoCall')
-    };
+                // Create a room name by sorting the usernames alphabetically
+                if (currentUserName < selectedUserName) {
+                    roomName = `${currentUserName}-${selectedUserName}`;
+                } else {
+                    roomName = `${selectedUserName}-${currentUserName}`;
+                }
 
-    let api = new JitsiMeetExternalAPI(domain, options);
-});
+                const options = {
+                    roomName: roomName,
+                    width: '100%',
+                    height: '100%',
+                    parentNode: document.querySelector('#videoCall')
+                };
+
+                let api = new JitsiMeetExternalAPI(domain, options);
+            });
 
 
             $('#generalChatButton').click(function () {
