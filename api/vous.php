@@ -15,6 +15,13 @@ echo '<body>';
 
 echo '</head>';
 include 'navbar.php';
+
+if (!isset($_SESSION['countCV'])) {
+    $_SESSION['countCV'] = 0;
+} else {
+    $_SESSION['countCV']++;
+}
+
 ?>
 
 
@@ -45,7 +52,9 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple">Photo</div>
+        <div class="col-sm-4" style="background-color : purple">                            
+        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+</div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
@@ -122,6 +131,7 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
+    
 
 <nav class="Ajout-formation">
     <h1 style="margin-top : 5% ">Ajouter une formation</h1>
@@ -254,6 +264,7 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
+  
 
 <nav class="Ajout-projet">
     <h1 style="margin-top : 5% "> Ajouter un projet</h1>
@@ -299,9 +310,9 @@ try {
         }
     }
 } catch (PDOException $e) {
-    // Message d'erreur si le formulaire n'a pas pu être récupéré
     echo $e->getMessage();
 }
+
 ?>
 
 
@@ -314,23 +325,52 @@ try {
         Partie CV
 ======================================================
 -->
-
 <?php
-    try{
-        if(isset($_POST['creerCV'])) {
-        include 'cv.php';}
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+
+    $cstCV = "SELECT constantecv FROM users WHERE iduser = $iduser";
+    $stmt = $conn->query($cstCV);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $cstCVValue = $row['constantecv'];
+    ?>
+
+    <script>console.log(<?php echo json_encode($cstCVValue); ?>);</script>
+    <?php
+
+    if ($cstCVValue == 0) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['creerCV']) && $_POST['creerCV'] === 'creationCV') {
+
+
+                include 'cv.php';
+                exit;
+            }
+        }
+        ?>
+
+        <form method="POST" action="">
+            <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
+        </form>
+        <?php
     }
-    catch (PDOException $e) {
-        echo $e->getMessage();
+    else
+    {
+        include 'cv.php';
     }
-?>
-
-<form id="boutonCV" name="bouton" method="post" action="cv.php">
-<p><input type="submit" name="affichageCV"></p>
-</form>
 
 
-<?php include 'foot.php'; ?>
+
+
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+
+
+
+include 'foot.php'; ?>
 </body>
-
 </html>

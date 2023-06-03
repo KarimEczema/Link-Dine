@@ -19,9 +19,64 @@ include 'navbar.php';
 </head>
 
 
+
+<body>
+
+<!--
+======================================================
+        Partie Profil
+======================================================
+-->
+
+<!-- récupération des donnée dans la table users -->
+
+<?php
+
+$sql = "SELECT * FROM users WHERE iduser= $iduser";
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
+
+<nav class="profil" style = "margin-top:5% ">
+    <div class="row">
+        <div class="col-sm-4" style="background-color : purple">
+        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200"> 
+    </div>
+        <div class="col-sm-8" style="background-color: grey">
+            <div style="background-color: #d6a3b7; margin:2%">
+                <h3>
+                    <?php echo htmlspecialchars($row['username']); ?>
+                </h3>
+                <h5>
+                    <?php echo htmlspecialchars($row['statut']); ?>
+                </h5>
+            </div>
+            <div style="background-color: #a7d4d4; margin:2%">
+                <h3>
+                    <?php echo htmlspecialchars($row['bio']); ?>
+                </h3>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
 <!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 
 <nav class = "Ajout-compte">
+        <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
+        <form method="post" action="">
+        <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
+        <div style = "background-color: grey; margin:-top2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
 
     <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
     <form method="post" action="">
