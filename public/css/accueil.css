@@ -122,6 +122,6 @@ input:checked ~ input:before {
     text-align: left;
     height: 30%;
 
-    margin-top: 10px;
+    margin-top: 2%;
 }
 
