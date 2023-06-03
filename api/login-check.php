@@ -52,11 +52,6 @@ if (isset($_COOKIE['jwt'])) {
 
         $fondbg = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        echo' <script type="text/javascript">';
-        echo'     let jsVar = "' . $fondbg . '";'; // assignation de la variable php à la variable JavaScript
-        echo'     let stylebg = document.getElementById("bg") ';
-        echo'     stylebg.innerHTML = "body { backround-color:  ${jsVar}; }"';
-        echo' </script>';
 
 } catch (Exception $e) {
         // JWT validation failed
