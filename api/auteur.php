@@ -45,18 +45,18 @@ try{
         $ecriture = $_POST['write'];
         $image = $_POST['image_uploads'];
         $lieu = $_POST['lieu'];
-        $date = $_POST['dates'];
+        $dates = $_POST['dates'];
         $secu = $_POST['secu'];
 
         //On se connecte à la BDD
         $conn = new PDO($dsn);
 
         //On insère les données reçues
-        $sth = $conn->prepare(" INSERT INTO form(write, image_uploads, lieu, dates, secu) VALUES(:descriptionpost, :photo, :lieu, :dates, :secu");
+        $sth = $conn->prepare(" INSERT INTO posts(write, image_uploads, lieu, dates, secu) VALUES(:descriptionpost, :photo, :lieu, :dates, :secu");
         $sth->bindParam(':descriptionpost',$ecriture);
         //$sth->bindParam(':photo',$image);  INSERER L image du post
         $sth->bindParam(':lieu',$lieu);
-        $sth->bindParam(':dates',$date);
+        $sth->bindParam(':dates',$dates);
         $sth->bindParam(':secu',$secu);
         $sth->execute();
     }
