@@ -20,16 +20,28 @@ include 'navbar.php';
 include 'caroussel.php';
 ?>
 
+<!--
+======================================================
+        Partie Evénement de la semaine
+======================================================
+-->
+
 <?php
 $sql = "SELECT tabimages
 	FROM evenement
 	WHERE DATE(date) >= '2023-06-05'
 	  AND DATE(date) <= '2023-06-11';
 	";
+$sql2 = "SELECT nom, organisateur, description
+FROM evenement
+WHERE DATE(date) >= '2023-06-05'
+  AND DATE(date) <= '2023-06-11';
+";
 try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
     $stmt = $conn->query($sql);
+    $stmt2 = $conn->query($sql2);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo $e->getMessage();
@@ -38,8 +50,14 @@ try {
 
 <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
 $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
+<?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
 
-<h5 style="text-align: center; color: red; margin:3%">Evénement de la semaine :</h5>
+<div style="border:solid;">
+
+<h3 style="text-align: center; margin:3%">Evénement de la semaine :</h3>
+<h3 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['nom']); ?></h3>
+
+
 
 <div class="carousel" id="test1">
     <?php
@@ -61,8 +79,99 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
     <?php endforeach; ?>
 </div>
 
+</div>
+
 <!--
-----------   Affichage    ----------
+======================================================
+        Partie Evénements de mes amis (nouveaux posts)
+======================================================
+-->
+
+
+<h1 style="padding:10% ">Evénements de mes amis</h1>
+<?php
+try {
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // query to check if username exists
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
+    $stmt = $conn->prepare($sql);
+
+    // bind parameters and execute
+    $stmt->execute([$iduser]);
+
+    $amis = $stmt->fetch();
+
+    if ($amis && $amis['amis'] !== null) {
+        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+
+
+        // Check that the user has friends
+        if (!empty($amis)) {
+            // Retrieve the friends' posts
+            $params = implode(',', array_fill(0, count($amis), '?'));
+
+            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
+            $stmt->execute($amis);
+            $posts = $stmt->fetchAll(); ?>
+
+
+            <div class="scroll-container">
+                <table>
+                    <tbody>
+                        <?php
+
+                        // Display the posts
+                        foreach ($posts as $post) {
+
+                            $temp = $post['idpost'];
+
+                            $sql2 = "SELECT u.nom
+            FROM users u
+            JOIN posts p ON u.iduser = p.iduser
+            WHERE p.idpost = ?";
+
+                            $stmt2 = $conn->prepare($sql2);
+                            $stmt2->execute([$temp]);
+                            $result = $stmt2->fetch();
+                            ?>
+
+                            <div class="scroll-page" id="formation">
+                                <div class="col-sm-4" style="background-color:#d6a3b7">
+                                    <?php echo $result['nom']; ?>
+                                </div>
+                                <div class="col-sm-8" style="background-color:#a7d4d4 margin-bottom:3%">
+                                    <?php echo htmlspecialchars($post['descriptionpost']); ?>
+                                </div>
+                            </div>
+
+
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+
+        } else {
+            echo "This user has no friends.";
+        }
+    } else {
+        echo "This user has no friends.";
+    }
+
+} catch (PDOException $e) {
+    // report error message
+    echo $e->getMessage();
+}
+?>
+
+<!--
+======================================================
+        Partie derniers évènements de l'auteur
+======================================================
 -->
 
 
@@ -119,7 +228,7 @@ try {
                                 <div class="col-sm-4" style="background-color:#d6a3b7">
                                     <?php echo $result['nom']; ?>
                                 </div>
-                                <div class="col-sm-8" style="background-color:#a7d4d4">
+                                <div class="col-sm-8" style="background-color:#a7d4d4 margin-bottom:3%">
                                     <?php echo htmlspecialchars($post['descriptionpost']); ?>
                                 </div>
                             </div>
@@ -145,6 +254,7 @@ try {
     echo $e->getMessage();
 }
 ?>
+
 
 <?php include 'foot.php'; ?>
 </body>
