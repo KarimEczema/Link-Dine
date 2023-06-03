@@ -202,18 +202,11 @@ try {
 
     // combine all and sort by datepublication
     $combined = array_merge($posts, $formations, $projets);
-    usort($combined, function($a, $b) {
+    usort($combined, function ($a, $b) {
         return $b['datepublication'] <=> $a['datepublication'];
     });
 
-    // display
-    foreach($combined as $item) {
-        echo "<div>";
-        echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-        echo "<p>" . htmlspecialchars($item['description']) . "</p>";
-        echo "<p>Publication date: " . $item['datepublication'] . "</p>";
-        echo "</div>";
-    }
+
 
 } catch (PDOException $e) {
     // report error message
@@ -224,50 +217,32 @@ try {
 <br><br>
 <h1 style="padding:10% ">Mes événements</h1>
 
-<?php
 
-$sql = "SELECT * FROM posts WHERE DATE(date)<= '2023-06-06'  ORDER BY DATE(date) DESC";
-try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
 
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
+
 
 <nav class="myEvents">
     <div class="scroll-container">
         <table>
             <tbody>
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                <?php
 
+                // display
+                foreach ($combined as $item) {
+                    ?>
                     <div class="scroll-page" id="eventperso">
                         <div style="padding:2%; border:solid;">
-                            <h5>
-                                    <?php echo htmlspecialchars($row['Lieu']."-"); ?>
-                                
-                                <?php echo htmlspecialchars($row['date']); ?>
-                            </h5>
-                            <h6>
-                                <div class="open-btn">
-                                    <button class="open-button"
-                                        onclick="openForm(<?php echo $row['idpost'] ?>)"><strong>Description du post</strong></button>
-                                </div>
-                            </h6>
-                            <div class="login-popup">
-                                <div class="Description" id="form-<?php echo $row['idpost']; ?>">
-                                    <div class="descr-container">
-                                        <h4>Description de l'événement :</h4>
-                                        <?php echo htmlspecialchars($row['descriptionpost']); ?>
-                                        <button type="button" class="btn cancel"
-                                            onclick="closeForm(<?php echo $row['idpost'] ?>)"
-                                            style="background-color: antiquewhite">Fermer</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            
+                    <?php
+                    echo "<div>";
+                    echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+                    echo "<p>Publication date: " . $item['datepublication'] . "</p>";
+                    echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+                    echo "</div>";
+
+
+                    ?>
+
                     </div>
 
                     <script>
@@ -280,7 +255,7 @@ try {
                         }
                     </script>
 
-                <?php endwhile; ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
