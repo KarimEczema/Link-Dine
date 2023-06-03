@@ -6,6 +6,7 @@
   },
   "routes": [
     { "src": "/$", "dest": "/api/index.php" },
+    { "src": "/index", "dest": "/api/index.php" },
     { "src": "/accueil", "dest": "/api/accueil.php" },
     { "src": "/vous", "dest": "/api/vous.php" },
     { "src": "/notifications", "dest": "/api/notifications.php" },
