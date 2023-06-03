@@ -60,7 +60,51 @@ include 'caroussel.php';
             ?>
         <?php endforeach; ?>
     </div>
+
+    	<!--
+----------   Affichage    ----------
+-->
+
+
+<h1 style="padding:10% ">Time Line</h1>
+<?php
+try {
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // query to check if username exists
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
+    $stmt = $conn->prepare($sql);
+
+    // bind parameters and execute
+    $stmt->execute([$iduser]);
+
+    $ami = $stmt->fetch();
+
+    // Check that the user has friends
+    if ($ami) {
+        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+
+        // Retrieve the friends' posts
+        $params = implode(',', array_fill(0, count($ami), '?'));
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
+        $stmt->execute($ami);
+        $posts = $stmt->fetchAll();
+
+        // Display the posts
+        foreach ($posts as $post) {
+            echo "ID: " . $post['$ami'] . ", Content: " . $post['descriptionpost'] . "<br>";
+        }
+    } else {
+        echo "This user has no friends.";
+    }
     
+} catch (PDOException $e) {
+    // report error message
+    echo $e->getMessage();
+}
+?>
+
 	<?php include 'foot.php';?>
 </body>
 </html>
