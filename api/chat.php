@@ -34,7 +34,6 @@ include 'navbar.php';
     <!-- La sélection des utilisateurs est dynamiquement insérés ici -->
         <div id="buttonArea" style="position: fixed; bottom: 0;">
             <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
-            <button id="cameraButton" class="btn btn-primary"><i class="fas fa-camera"></i></button>
             <button id="videoCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
         </div>
     </div>
@@ -72,29 +71,44 @@ include 'navbar.php';
             }
         };
 
-        const RecupUtilisateurs = async () => {
-            try {
-                const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': supabaseAnonKey,
-                    },
-                });
+        const RecupUtilisateurs = async (currentUserId) => {
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch usernames');
-                }
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
 
-                const data = await response.json();
+        const currentUserData = await response.json();
+        const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
 
+        // Now fetch the friends data based on the amis array
+        const amisQueryString = amis.map(amisId => `iduser=eq.${amisId}`).join('&'); // Construct the query string
+        const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?${amisQueryString}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
 
+        if (!amisResponse.ok) {
+            throw new Error('Failed to fetch friends data');
+        }
 
-                return data.map(user => ({ iduser: user.iduser, username: user.username })); // assuming each user has a 'username' field
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        };
+        const amisData = await amisResponse.json();
+
+        return amisData.map(user => ({ iduser: user.iduser, username: user.username }));
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
 
         const recevoirMessage = async (user1, user2) => {
             try {
@@ -132,7 +146,7 @@ include 'navbar.php';
         };
 
         $(document).ready(async function () {
-            const users = await RecupUtilisateurs();
+            const users = await RecupUtilisateurs(iduser);
             users.forEach((user) => {
                 let userButton = $(`<button class='usernameButton' data-id='${user.iduser}'>${user.username}</button>`);
                 userButton.click(function () {
@@ -188,6 +202,13 @@ include 'navbar.php';
             });
 
             $('#videoCallButton').click(function() {
+            const selectedUserName = $('.usernameButton.active').text(); // Assumes the button text is the username of the selected user
+
+            if(!selectedUserName) { // Check if a user has been selected
+                alert('Please select a user to start a video call!');
+                return;
+            }
+            
             $('#chatbox').css('display', 'none');   // Hide chatbox
             $('#videoCall').css('display', 'block');  // Show videoCall div
             $('#camera').css('display', 'none');   // Hide camera div
@@ -196,12 +217,17 @@ include 'navbar.php';
             $('#cameraButton').removeClass('active');
 
             const domain = 'meet.jit.si';
+
+            const currentUserName = 'currentUserName'; // Get this dynamically based on your application context
+            const roomName = `${currentUserName}-${selectedUserName}`; // Create a unique room name for the user pair
+
             const options = {
-                roomName: 'JitsiMeetAPIExample', // You might want to use a dynamic room name based on the chat context
+                roomName: roomName, 
                 width: '100%',
                 height: '100%',
                 parentNode: document.querySelector('#videoCall')
             };
+            
             let api = new JitsiMeetExternalAPI(domain, options);
         });
     });
