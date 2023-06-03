@@ -85,10 +85,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         // bind parameters and execute
         $stmt->execute([$iduser]);
 
-        $ami = $stmt->fetch();
+        $result = $stmt->fetch();
 
-        if ($amis && $amis['amis'] !== null) {
-            $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+        if ($result && $result['amis'] !== null) {
+            $amis = explode(',', trim($result['amis'], '{}')); // convert the array string into a PHP array
     
 
             // Check that the user has friends
@@ -107,11 +107,11 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
                 <div id="carrousel">
                     <ul id="listc" style="list-style-type : none;">
-                        <?php foreach ($friends as $mesamis) { ?>
+                        <?php foreach ($friends as $friend) { ?>
                             <li>
-                                <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
-                                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
-                                        alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                                <a href="profil?id=<?php echo $friend['iduser']; ?>">
+                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>"
+                                        alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
                                 </a>
                             </li>
                         <?php }
