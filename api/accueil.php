@@ -184,7 +184,7 @@ try {
 
 <?php
 
-$sql = "SELECT * FROM evenement WHERE DATE(date)<= '2023-06-06'  ORDER BY DATE(date) DESC";
+$sql = "SELECT * FROM posts WHERE DATE(date)<= '2023-06-06'  ORDER BY DATE(date) DESC";
 try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -203,28 +203,24 @@ try {
 
                     <div class="scroll-page" id="eventperso">
                         <div style="padding:2%; border:solid;">
-                            <h5><B>
-                                    <?php echo htmlspecialchars($row['nom']); ?>
-                                </B>
+                            <h5>
+                                    <?php echo htmlspecialchars($row['Lieu']."-"); ?>
+                                
                                 <?php echo htmlspecialchars($row['date']); ?>
                             </h5>
-                            <h6>Organisateur :
-                                <?php echo htmlspecialchars($row['organisateur']); ?>
-                            </h6> <br>
                             <h6>
                                 <div class="open-btn">
                                     <button class="open-button"
-                                        onclick="openForm(<?php echo $row['idevent'] ?>)"><strong>Description de
-                                            l'événement</strong></button>
+                                        onclick="openForm(<?php echo $row['idpost'] ?>)"><strong>Description du post</strong></button>
                                 </div>
                             </h6>
                             <div class="login-popup">
-                                <div class="Description" id="form-<?php echo $row['idevent']; ?>">
+                                <div class="Description" id="form-<?php echo $row['idpost']; ?>">
                                     <div class="descr-container">
                                         <h4>Description de l'événement :</h4>
-                                        <?php echo htmlspecialchars($row['description']); ?>
+                                        <?php echo htmlspecialchars($row['descriptionpost']); ?>
                                         <button type="button" class="btn cancel"
-                                            onclick="closeForm(<?php echo $row['idevent'] ?>)"
+                                            onclick="closeForm(<?php echo $row['idpost'] ?>)"
                                             style="background-color: antiquewhite">Fermer</button>
                                     </div>
                                 </div>
