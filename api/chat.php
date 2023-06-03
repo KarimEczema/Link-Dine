@@ -51,25 +51,31 @@ include 'navbar.php';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
         const envoyerMessage = async (iduser, message, sentTo) => {
-            try {
-                const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': supabaseAnonKey,
-                    },
-                    body: JSON.stringify({ iduser, message, sentTo }), // include sentTo field
-                });
+    let payload = { iduser, message };
 
-                if (!response.ok) {
-                    throw new Error('Failed to send message');
-                }
+    if (sentTo) {
+        payload.sentTo = sentTo;
+    }
 
-                console.log('Message sent successfully');
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        };
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
+        console.log('Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+};
 
         const RecupUtilisateurs = async (currentUserId) => {
     try {
@@ -111,6 +117,10 @@ include 'navbar.php';
 };
 
         const recevoirMessage = async (user1, user2) => {
+            let url = `${supabaseUrl}/rest/v1/messages?`;
+            if(user1 && user2) {
+                url += `or=(sentTo.eq.${user1},sentTo.eq.${user2})`;
+            }
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/messages?or=(sentTo.eq.${user1},sentTo.eq.${user2})`, {
                     method: 'GET',
@@ -147,17 +157,17 @@ include 'navbar.php';
 
         $(document).ready(async function () {
             const users = await RecupUtilisateurs(iduser);
-            users.forEach((user) => {
-                let userButton = $(`<button class='usernameButton' data-id='${user.iduser}'>${user.username}</button>`);
+            amisData.forEach((friend) => {
+                let userButton = $(`<button class='usernameButton' data-id='${friend.iduser}'>${friend.username}</button>`);
                 userButton.click(function () {
                     $('.usernameButton').removeClass('active');
                     $(this).addClass('active');
                     recevoirMessage(iduser, $(this).data('id'));
                 });
-
                 $('#userSelect').append(userButton);
             });
 
+          
             $('#userInput').keypress(async function (e) {
                 if (e.which == 13) { // Enter key pressed
                     const message = $(this).val().trim();
@@ -229,6 +239,32 @@ include 'navbar.php';
             };
             
             let api = new JitsiMeetExternalAPI(domain, options);
+        });
+
+        $('#generalChatButton').click(function() {
+        $('.usernameButton').removeClass('active');
+        $(this).addClass('active');
+        recevoirMessage();
+        });
+
+        $('#userInput').keypress(async function (e) {
+        if (e.which == 13) { // Enter key pressed
+            const message = $(this).val().trim();
+            const sentTo = $('.usernameButton.active').data('id');
+            
+            if($('#generalChatButton').hasClass('active')) {
+                await envoyerMessage(iduser, message);
+            } else {
+                if (!sentTo) {
+                    alert('Please select a user to send message to!');
+                    return;
+                }
+
+                await envoyerMessage(iduser, message, sentTo);
+            }
+            
+            $(this).val(''); // Clear the input field
+        }
         });
     });
 
