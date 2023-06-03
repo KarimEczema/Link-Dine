@@ -92,9 +92,11 @@ try {
         $posts = $stmt->fetchAll();
 
         // Display the posts
-        foreach ($posts as $post) {
-            echo "ID: " . $post['$ami'] . ", Content: " . $post['descriptionpost'] . "<br>";
-        }
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+            foreach ($posts as $post) {
+                echo "ID: " . $post[$ami] . ", Content: " . $post['descriptionpost'] . "<br>";
+            }
+        endwhile;
     } else {
         echo "This user has no friends.";
     }
