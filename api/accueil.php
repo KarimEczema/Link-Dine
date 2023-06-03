@@ -84,7 +84,6 @@ try {
     // Check that the user has friends
     if ($amis) {
         foreach ($amis as $ami) {
-        $amis = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
 
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($ami), '?'));
