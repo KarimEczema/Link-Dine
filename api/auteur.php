@@ -76,7 +76,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
  
     const imageUploads = document.querySelector('#image_uploads').files[0];
     
-    const targetFile = 'images/' + imageUploads.name;
+    const targetFile = 'Images/' + imageUploads.name;
     const url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/' + targetFile;
 
     const formData = new FormData();
