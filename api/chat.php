@@ -1,13 +1,11 @@
 <?php
-// Inclusion du test de login
 include 'login-check.php';
 
-// Inclusion des bibliothèques
 echo '<html>';
 echo '<head>';
 echo '<title>Messagerie</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>'; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/chat.css">';
@@ -20,35 +18,30 @@ echo '<script src="https://meet.jit.si/external_api.js"></script>';
 echo '</head>';
 echo '<body>';
 
-// Inclusion de la barre de navigation
 include 'navbar.php';
-
 ?>
 
 <body>
 
     <div id="chatbox">
-        <!-- Les Messages sont insérés dynamiquement ici -->
     </div>
     <div id="userSelect">
-    <!-- La sélection des utilisateurs est dynamiquement insérés ici -->
         <div id="buttonArea" style="position: fixed; bottom: 0;">
             <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
             <button id="videoCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
-
     <div id="videoCall" style="display: none; width: 100%; height: 100%;">
-        <!-- The video call will be inserted here -->
     </div>
 
     <input type="text" id="userInput" placeholder="Ecrivez ici..." />
 
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
-
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw';
+        
+ 
         const envoyerMessage = async (iduser, message, sentTo) => {
     let payload = { iduser, message };
 
@@ -215,41 +208,41 @@ const RecupUtilisateurs = async (currentUserId) => {
 
            
             
-        $('#videoCallButton').click(function() {
-            const selectedUserId = $('.usernameButton.active').data('id'); // Assumes the data-id attribute is the user id of the selected user
+            $('#videoCallButton').click(function() {
+    const selectedUserId = $('.usernameButton.active').data('id'); 
 
-            if(!selectedUserId) { // Check if a user has been selected
-                alert('Please select a user to start a video call!');
-                return;
-            }
+    if(!selectedUserId) { 
+        alert('Please select a user to start a video call!');
+        return;
+    }
 
-            $('#chatbox').css('display', 'none');   // Hide chatbox
-            $('#videoCall').css('display', 'block');  // Show videoCall div
-            $('#camera').css('display', 'none');   // Hide camera div
-            $(this).addClass('active');
-            $('#messageButton').removeClass('active');
-            $('#cameraButton').removeClass('active');
+    $('#chatbox').css('display', 'none');   
+    $('#videoCall').css('display', 'block');  
+    $('#camera').css('display', 'none');   
+    $(this).addClass('active');
+    $('#messageButton').removeClass('active');
+    $('#cameraButton').removeClass('active');
 
-            const domain = 'meet.jit.si';
+    const domain = 'meet.jit.si';
 
-            let roomName;
+    let roomName;
 
-            // Create a room name by sorting the user IDs
-            if (iduser < selectedUserId) {
-                roomName = `${iduser}-${selectedUserId}`;
-            } else {
-                roomName = `${selectedUserId}-${iduser}`;
-            }
+    if (iduser < selectedUserId) {
+        roomName = `${iduser}-${selectedUserId}`;
+    } else {
+        roomName = `${selectedUserId}-${iduser}`;
+    }
 
-            const options = {
-                roomName: roomName, 
-                width: '100%',
-                height: '100%',
-                parentNode: document.querySelector('#videoCall')
-            };
+    const options = {
+        roomName: roomName, 
+        width: '100%',
+        height: '100%',
+        parentNode: document.querySelector('#videoCall')
+    };
 
-            let api = new JitsiMeetExternalAPI(domain, options);
-        });
+    let api = new JitsiMeetExternalAPI(domain, options);
+});
+
 
 
 
