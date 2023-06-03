@@ -20,126 +20,74 @@ include 'caroussel.php';
 </head>
 
 
-<?php
-$sql = "SELECT tabimages
-FROM evenement
-WHERE DATE(date) >= '2023-06-05'
-    AND DATE(date) <= '2023-06-11';
-";
-try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
-
-<?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
-$decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
-
-<h5 style="text-align: center; color: red; margin:3%">Evénement de la semaine :</h5>
-
-<div class="carousel" id="test1">
     <?php
-    $valueCar = 1;
-    $tabimages = explode(',', $row['tabimages']);
+    $sql = "SELECT tabimages
+    FROM evenement
+    WHERE DATE(date) >= '2023-06-05'
+      AND DATE(date) <= '2023-06-11';
+    ";
+    try {
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
     ?>
-    <?php foreach ($tabimages as $image):
-        if ($valueCar == 1) { ?>
-            <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> 
-            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-            <?php $valueCar++;
-        } else { ?>
-            <input type="radio" name="item" value="<?php echo $valueCar; ?>"> 
-            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-            <?php
-            $valueCar++;
-        }
-        ?>
-    <?php endforeach; ?>
-</div>
 
-<nav class="section" style="color : black;">
-    <div id="Amis">
-        <h5> Que font mes amis</h5>
+    <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
+    $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
+
+    <h5 style="text-align: center; color: red; margin:3%">Evénement de la semaine :</h5>
+
+    <div class="carousel" id="test1">
+        <?php
+        $valueCar = 1;
+        $tabimages = explode(',', $row['tabimages']);
+        ?>
+        <?php foreach ($tabimages as $image):
+            if ($valueCar == 1) { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> 
+                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                <?php $valueCar++;
+            } else { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>"> 
+                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                <?php
+                $valueCar++;
+            }
+            ?>
+        <?php endforeach; ?>
     </div>
 
-<?php
-try {
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
 
-    // query to check if username exists
-    $sql = "SELECT amis FROM users WHERE iduser = ?";
-    $stmt = $conn->prepare($sql);
+    <nav class="section" style="color : black;">
+        <div id="Amis">
+            <h5> Que font mes amis</h5>
+        </div>
 
-    // bind parameters and execute
-    $stmt->execute([$iduser]);
-
-    $amis = $stmt->fetch();
-
-    if ($amis && $amis['amis'] !== null) {
-        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
-
-
-        // Check that the user has friends
-        if (!empty($amis)) {
-            // Retrieve the friends' posts
-            $params = implode(',', array_fill(0, count($amis), '?'));
-
-            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-            $stmt->execute($amis);
-            $posts = $stmt->fetchAll(); ?>
-
-
-            <div class="scroll-container">
-                <table>
-                    <tbody>
-                        <?php
-
-                        // Display the posts
-                        foreach ($posts as $post) {
-
-                            $temp = $post['idpost'];
-
-                            $sql2 = "SELECT u.nom FROM users u JOIN posts p ON u.iduser = p.iduser WHERE p.idpost = ?";
-                            $stmt2 = $conn->prepare($sql2);
-                            $stmt2->execute([$temp]);
-                            $result = $stmt2->fetch();
-                            ?>
-
-                    <div class="scroll-page" id="notif-1">
-                                <h5><?php "SELECT username FROM users"?></h5>
-                                <h6>à : Action </h6>
-                                <h6>30/05/2023</h6>
-                            </div>
-                        </div>
-
-                    </nav>
-                            <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+        <div class="scroll-container">
+            <div class="scroll-page" id="notif-1">
+                <h5>Nom de l'amis </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
             </div>
-            <?php
+            <div class="scroll-page" id="notif-2">
+                <h5>Nom de l'amis </h5>
+                <h6>à : Action </h6>
+                <h6>30/05/2023</h6>
+            </div>
+            <div class="scroll-page" id="notif-3">
+                <h5>Nom de l'amis </h5>
+                <h6>à : Action </h6>
+                <h6>29/05/2023</h6>
+            </div>
+        </div>
 
-        } else {
-            echo "This user has no friends.";
-        }
-    } else {
-        echo "This user has no friends.";
-    }
+    </nav>
 
-} catch (PDOException $e) {
-    // report error message
-    echo $e->getMessage();
-}
-?>
-
-<?php include 'foot.php' ?>
+    <?php include 'foot.php' ?>
 
 </body>
 
