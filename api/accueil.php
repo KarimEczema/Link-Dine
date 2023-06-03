@@ -99,10 +99,10 @@ try {
             $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
-            WHERE p.idpost = $temp";            
+            WHERE p.idpost = ?";            
 
             $stmt2 = $conn->prepare($sql2);
-            $stmt2->execute();
+            $stmt2->execute([$temp]);
             $result = $stmt2->fetch();
 
             echo $result['nom'] . " : " . $post['descriptionpost'] . "<br>";
