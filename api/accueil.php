@@ -94,15 +94,13 @@ try {
         // Display the posts
         foreach ($posts as $post) {
 
-            echo "LOULOULOU".$post['idpost'];
-
             $temp = $post['idpost'];
-            echo '<script> console.log("' . $temp . '");</script>';
 
             $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
             WHERE p.idpost = $temp";
+            echo '<script> console.log("' . $sql2 . '");</script>';
             
 
             $stmt2 = $conn->prepare($sql2);
