@@ -133,7 +133,7 @@ try {
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
-            $stmt->bindParam(':drone', $_POST['fond']);
+            //$stmt->bindParam(':drone', $_POST['fond']);
             $stmt->execute();
 
             //Message de confirmation pour l'utilisateur
