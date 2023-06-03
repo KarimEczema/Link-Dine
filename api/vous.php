@@ -13,9 +13,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstr
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
-echo '<body>';
 
 echo '</head>';
+
+echo '<body>';
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -89,11 +90,11 @@ try {
 
         <div>
             <input type="radio" id="blanc" name="drone" value="white">
-            <label for="blanc">Fond blanc(par défaut)</label>
+            <label for="blanc">Fond blanc (par défaut)</label>
         </div>
 
         <div>
-            <input type="radio" id="bleu" name="drone" value="blue">
+            <input type="radio" id="bleu" name="drone" value="aqua">
             <label for="bleu">Fond bleu</label>
         </div>
 
@@ -103,7 +104,7 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="creme" name="drone" value="aqua">
+            <input type="radio" id="creme" name="drone" value="burlywood">
             <label for="creme">Fond crème</label>
         </div>
 

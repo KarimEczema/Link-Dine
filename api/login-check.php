@@ -38,8 +38,26 @@ if (isset($_COOKIE['jwt'])) {
         echo '<script>';
         echo 'var username = "' . $iduser . '";';
         echo '</script>';
-        
-    } catch (Exception $e) {
+
+        $sql = "SELECT fond FROM users WHERE iduser= $iduser";
+        try {
+            // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        $fondbg = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        echo' <script type="text/javascript">';
+        echo'    let jsVar = "' . $fondbg . '";'; // Now the PHP variable has been assigned to the JavaScript variable'
+        echo'    document.body.style.backgroundColor = jsVar;'; // Changing the bodys background color using JavaScript
+        echo' </script>';
+
+} catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message
         echo 'Error: ' . $e->getMessage();
