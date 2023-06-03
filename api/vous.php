@@ -1,10 +1,12 @@
 <?php
-include 'login-check.php';
-
-
 echo '<html>';
 echo '<head>';
 echo '<title>Your Page Title</title>';
+
+include 'login-check.php';
+
+
+
 
 
 // Ici, we're adding the links to Bootstrap CSS and jQuery via their CDNs
