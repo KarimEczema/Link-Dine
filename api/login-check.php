@@ -1,5 +1,5 @@
 <?php
-// Include the JWT library
+// Inclure la bibliothèque JWT
 require __DIR__ . '/vendor/autoload.php';
 
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
@@ -13,16 +13,16 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
-// Your secret key
-$secretKey = new Key('123', 'HS256');
+// Votre clé secrète
+$secretKey = new Key('fZabvRw78VA746', 'HS256');
 
-// Check if the JWT exists in the cookie
+// Vérifier si le JWT existe dans le cookie
 if (isset($_COOKIE['jwt'])) {
-    // Get the JWT from the cookie
+    // Obtenir le JWT du cookie
     $jwt = $_COOKIE['jwt'];
 
     try {
-        // Decode the JWT
+        // Décoder le JWT
         $decoded = JWT::decode($jwt, $secretKey);
 
         // Get the username from the decoded payload
@@ -49,16 +49,21 @@ if (isset($_COOKIE['jwt'])) {
             echo $e->getMessage();
         }
 
+
     } catch (Exception $e) {
-        // JWT validation failed
-        // Redirect to login page or show error message
-        echo 'Error: ' . $e->getMessage();
-        header('Location: index.php');
+        // La validation du JWT a échoué
+        // Rediriger vers la page de connexion ou afficher le message d'erreur
+        echo 'Veuillez vous connecter: ' . $e->getMessage();
+        echo '<meta http-equiv="refresh" content="0; url=index" />';
         exit;
     }
 } else {
-    // JWT is not set, user is not logged in
-    // Redirect to login page or show error message
-    header('Location: index.php');
+
+    // Le JWT n'est pas défini, l'utilisateur n'est pas connecté
+    // Rediriger vers la page de connexion ou afficher le message d'erreur
+    echo 'Veuillez vous connecter';
+    echo '<meta http-equiv="refresh" content="0; url=index" />';
     exit;
 }
+
+?>

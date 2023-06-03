@@ -1,9 +1,9 @@
 <?php
 
-// Include the JWT library
+// Inclusion de la Bibliothèque pour les tokens JWT
 require __DIR__ . '/vendor/autoload.php';
 
-
+// Données nécessaire à la connection à la base de données supabase
 $host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
 $port = "5432";
 $dbname = "verceldb";
@@ -12,23 +12,29 @@ $password = "Y4vuPQm2xyTl";
 
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
-
-
+//Importation des fonction nécessaire pour la création des tokens JWT
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
+$message_erreur = ""; // Initialisation du message d'erreur
 
 try {
-    // create a PostgreSQL database connection
+    // Connection à la base de données ProstgreSQL
     $conn = new PDO($dsn);
     
-    // if form is submitted
+    // Si le form est remplis
     if($_POST){  
-        // query to check if username exists
+
+        $email = $_POST['email'];
+
+        // Si l'email n'est pas dans le bon format
+        
+        
+        // Si le nom d'utilisateur existe dans la base de données
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
         
-        // bind parameters and execute
+        // Associé les paramètres et execté
         $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
         $stmt->execute();
         
@@ -36,49 +42,54 @@ try {
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            // assuming that your password field is 'Mdp'
-            if($_POST['email'] === $user['email']){
-                // Generate JWT token
-                // Your secret key
-                $secretKey = '123';
+            if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
+                $message_erreur = "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
+            }
+            // Si l'email rentré correspond à l'email associé à l'utilisateur
+            else if($email === $user['email']){
+                // Generation du token JWT
+                // Clef secrete
+                $secretKey = 'fZabvRw78VA746';
                 $payload = array(
                     'iduser' => $user['iduser'],
-                    'exp' => time() + 3600 // Expires in 1 hour
+                    'exp' => time() + 3600 // Expire 1h apres le login
                 );
-                $alg = 'HS256'; // Specify the desired algorithm here
+                $alg = 'HS256'; // Algorithme utilisé
 
                 $jwt = JWT::encode($payload, $secretKey, $alg);
                 
-                // Set JWT as a cookie
+                // Création du cookie avec le token
                 setcookie('jwt', $jwt, time()+3600); 
                 
                 echo '<meta http-equiv="refresh" content="0; url=accueil" />';
                 exit;
             }
             else {
-                echo "Invalid username or password!";
+                $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
             }
         }
         else{
-            echo "Invalid username or password!";
+            $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
         }
     }
 }
 catch (PDOException $e){
-    // report error message
-    echo $e->getMessage();
+    // Message d'erreur
+    $message_erreur = $e->getMessage();
 }
 ?>
+<!-- Inclusion du css -->
 <link href="css/index.css" rel="stylesheet" type="text/css"/>
 </head>
+
 <body>
 
-<?php
-if(isset($_POST) && isset($error_message)) {
-    echo '<div class="error">' . $error_message . '</div>';
-}
-?>
+<!-- Si le message d'erreur existe -->
+<?php if($message_erreur): ?>
+  <div class="message-erreur"><?php echo $message_erreur; ?></div>
+<?php endif; ?>
 
+<!-- Box de saisie -->
 <form method="post" action="">
   Nom d'utilisateur:<br>
   <input type="text" name="NomUtilisateur">

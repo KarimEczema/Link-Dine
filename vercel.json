@@ -6,6 +6,7 @@
   },
   "routes": [
     { "src": "/$", "dest": "/api/index.php" },
+    { "src": "/index", "dest": "/api/index.php" },
     { "src": "/accueil", "dest": "/api/accueil.php" },
     { "src": "/vous", "dest": "/api/vous.php" },
     { "src": "/notifications", "dest": "/api/notifications.php" },
@@ -19,6 +20,7 @@
     { "src": "/chat", "dest": "/api/chat.php" },
     { "src": "/reseau", "dest": "/api/reseau.php" },
     { "src": "/profil", "dest": "/api/profil.php" },
+    { "src": "/auteur", "dest": "/api/auteur.php" },
     { "src": "/css/(.*)", "dest": "/public/css/$1" },
     { "src": "/js/(.*)", "dest": "/public/js/$1" }
   ]
