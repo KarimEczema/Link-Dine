@@ -46,17 +46,17 @@ try {
 <!-- affichage des données de la bdd avec php -->
 <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
-<nav class="profil">
+<nav class="profil" style = "margin-top:5% ">
     <div class="row">
         <div class="col-sm-4" style="background-color : purple">Photo</div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
-                <h1>
-                    <?php echo htmlspecialchars($row['username']); ?>
-                </h1>
                 <h3>
-                    <?php echo htmlspecialchars($row['statut']); ?>
+                    <?php echo htmlspecialchars($row['username']); ?>
                 </h3>
+                <h5>
+                    <?php echo htmlspecialchars($row['statut']); ?>
+                </h5>
             </div>
             <div style="background-color: #a7d4d4; margin:2%">
                 <h3>
