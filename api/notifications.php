@@ -36,7 +36,8 @@ include 'caroussel.php';
     ?>
 
     <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
-    $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
+    $tabimages = explode(',', $row['tabimages']);
+    $decoded_images = json_decode($row['tabimages'], true);  // decode the JSON string to an associative array ?>
 
     <nav class="section">
         <div id="Event">
@@ -47,7 +48,7 @@ include 'caroussel.php';
             <ol class="carousel-indicators">
                 <?php
                 $valueCar = 0;
-                $tabimages = explode(',', $row['tabimages']);
+
                 foreach ($decoded_images as $image) {
                     echo '<li data-target="#myCarousel" data-slide-to="' . $valueCar . '"';
                     if ($valueCar === 0) {
@@ -62,7 +63,6 @@ include 'caroussel.php';
             <div class="carousel-inner">
                 <?php
                 $valueCar = 0;
-                $tabimages = explode(',', $row['tabimages']);
                 foreach ($decoded_images as $image) {
                     echo '<div class="carousel-item';
                     if ($valueCar === 0) {
