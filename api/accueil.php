@@ -87,16 +87,15 @@ try {
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($amis), '?'));
 
-        foreach ($amis as $ami) {
             $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-            $stmt->execute($ami);
+            $stmt->execute($amis);
             $posts = $stmt->fetchAll();
 
             // Display the posts
             foreach ($posts as $post) {
                 echo $post['iduser'] . " : " . $post['descriptionpost'] . "<br>";
             }
-        }
+        
     } else {
         echo "This user has no friends.";
     }
