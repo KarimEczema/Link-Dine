@@ -54,8 +54,9 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 
 <div style="border:solid;">
 
-<h3 style="text-align: center; margin:3%">Evénement de la semaine :</h3>
+<h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la semaine :</h3>
 <h3 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['nom']); ?></h3>
+<h2 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['organisateur']); ?></h2>
 
 
 
