@@ -129,7 +129,7 @@ try {
             $drone = $_POST['drone'];
             // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-            $sql = "UPDATE users SET fond = '.$drone.' WHERE iduser = $iduser";
+            $sql = "UPDATE users SET fond = '$drone' WHERE iduser = $iduser";
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
