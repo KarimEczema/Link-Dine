@@ -54,7 +54,7 @@ if (isset($_COOKIE['jwt'])) {
 
         echo' <script type="text/javascript">';
         echo'    let jsVar = "' . $fondbg . '";'; // Now the PHP variable has been assigned to the JavaScript variable'
-        echo'    document.body.style.backgroundColor = jsVar;'; // Changing the bodys background color using JavaScript
+        echo'    document.body.style.background-color = jsVar;'; // Changing the bodys background color using JavaScript
         echo' </script>';
 
 } catch (Exception $e) {
