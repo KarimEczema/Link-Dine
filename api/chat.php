@@ -156,7 +156,7 @@ include 'navbar.php';
         };
 
         $(document).ready(async function () {
-            const users = await RecupUtilisateurs(iduser);
+            const amisData = await RecupUtilisateurs(iduser); 
             amisData.forEach((friend) => {
                 let userButton = $(`<button class='usernameButton' data-id='${friend.iduser}'>${friend.username}</button>`);
                 userButton.click(function () {
