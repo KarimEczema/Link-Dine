@@ -124,13 +124,19 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
     } catch (PDOException $e) {
         // report error message
         echo $e->getMessage();
-    } ?>
-        </ul>
+    } 
+    
+    if ($result && $result['amis'] !== null) {?>
+    </ul>
     </div>
     <div id="buttons">
         <input type="button" value="<" class="prev">
         <input type="button" value=">" class="next">
     </div>
+    
+    <?php }
+        ?>
+        
 
     <?php include 'foot.php'; ?>
 
