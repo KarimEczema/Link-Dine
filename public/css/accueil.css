@@ -125,3 +125,11 @@ input:checked ~ input:before {
     margin-top: 2%;
 }
 
+
+
+.login-popup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
