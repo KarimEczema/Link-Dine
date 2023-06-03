@@ -1,4 +1,4 @@
-<?php include 'login-check.php'; 
+<?php
 
 echo '<html>';
 echo '<head>';
@@ -7,7 +7,9 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/emplois.css">'; 
-echo '<link rel="stylesheet" type="text/css" href="css/global.css">'; 
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+include 'login-check.php';
+echo '</head>';
 echo '<body>';
 
 include 'navbar.php';
@@ -44,7 +46,7 @@ include 'navbar.php';
 	}
     ?>
 
-<nav>
+
 
 <!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
 <nav class = "section"> 
