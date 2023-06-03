@@ -184,7 +184,7 @@ try {
 
 <?php
 
-$sql = "SELECT * FROM evenement";
+$sql = "SELECT * FROM evenement WHERE DATE(date)<= '2023-06-06'  ORDER BY DATE(date) DESC";
 try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
@@ -202,7 +202,7 @@ try {
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
                     <div class="scroll-page" id="eventperso">
-                        <div style="margin:2%; border:solid;">
+                        <div style="padding:2%; border:solid;">
                             <h5><B>
                                     <?php echo htmlspecialchars($row['nom']); ?>
                                 </B>
