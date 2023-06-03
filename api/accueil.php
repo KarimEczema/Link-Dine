@@ -55,8 +55,8 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 <div style="border:solid;">
 
 <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la semaine :</h3>
-<h3 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['nom']); ?></h3>
-<h2 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['organisateur']); ?></h2>
+<h2 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['nom']); ?></h2>
+<h3 style="text-align: center; margin:1%"><?php echo htmlspecialchars($row2['organisateur']); ?></h3>
 
 
 
@@ -176,85 +176,61 @@ try {
 -->
 
 
-<h1 style="padding:10% ">Time Line</h1>
+<h1 style="padding:10% ">Mes événements</h1>
+
 <?php
-try {
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
+    
+    $sql = "SELECT * FROM evenement";
+	try{
+    // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
 
-    // query to check if username exists
-    $sql = "SELECT amis FROM users WHERE iduser = ?";
-    $stmt = $conn->prepare($sql);
+	}catch (PDOException $e){
+    	echo $e->getMessage();
+	}
+    ?>
 
-    // bind parameters and execute
-    $stmt->execute([$iduser]);
+<nav class = "myEvents">  
+    <div class="scroll-container"> 
+        <table>
+            <tbody>
+                <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
 
-    $amis = $stmt->fetch();
-
-    if ($amis && $amis['amis'] !== null) {
-        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
-
-
-        // Check that the user has friends
-        if (!empty($amis)) {
-            // Retrieve the friends' posts
-            $params = implode(',', array_fill(0, count($amis), '?'));
-
-            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-            $stmt->execute($amis);
-            $posts = $stmt->fetchAll(); ?>
-
-
-            <div class="scroll-container">
-                <table>
-                    <tbody>
-                        <?php
-
-                        // Display the posts
-                        foreach ($posts as $post) {
-
-                            $temp = $post['idpost'];
-
-                            $sql2 = "SELECT u.nom
-            FROM users u
-            JOIN posts p ON u.iduser = p.iduser
-            WHERE p.idpost = ?";
-
-                            $stmt2 = $conn->prepare($sql2);
-                            $stmt2->execute([$temp]);
-                            $result = $stmt2->fetch();
-                            ?>
-
-                            <div class="scroll-page" id="formation">
-                                <div class="col-sm-4" style="background-color:#d6a3b7">
-                                    <?php echo $result['nom']; ?>
-                                </div>
-                                <div class="col-sm-8" style="background-color:#a7d4d4 margin-bottom:3%">
-                                    <?php echo htmlspecialchars($post['descriptionpost']); ?>
+                    <div class="scroll-page" id="eventperso"> 
+                        <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['date']); ?></h5> 
+                        <h6>Type de contrat : <?php echo htmlspecialchars($row['organisateur']); ?></h6> <br> 
+                        <h6>
+                            <div class="open-btn">
+                                <button class="open-button" onclick="openForm(<?php echo $row['idevent']?>)"><strong>Description de l'événement</strong></button>
+                            </div> 
+                        </h6> 
+                        <div class="login-popup">
+                            <div class="Description" id="form-<?php echo $row['idevent'];?>">
+                                <div class="descr-container">
+                                    <h4>Description de l'événement :</h4>
+                                    <?php echo htmlspecialchars($row['description']); ?>
+                                    <button type="button" class="btn cancel" onclick="closeForm(<?php echo $row['idevent']?>)" style="background-color: antiquewhite">Fermer</button>
                                 </div>
                             </div>
+                        </div>
+                    </div> 
 
-
-                            <?php
+                    <script>
+                        function openForm(id) {
+                            document.getElementById("form-"+id).style.display = "block";
                         }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-            <?php
 
-        } else {
-            echo "This user has no friends.";
-        }
-    } else {
-        echo "This user has no friends.";
-    }
+                        function closeForm(id) {
+                            document.getElementById("form-"+id).style.display = "none";
+                        }
+                    </script>
 
-} catch (PDOException $e) {
-    // report error message
-    echo $e->getMessage();
-}
-?>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div> 
+</nav> 
 
 
 <?php include 'foot.php'; ?>
