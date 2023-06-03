@@ -138,6 +138,7 @@ try {
 
             //Message de confirmation pour l'utilisateur
             echo "Choix enregistré!";
+            location.reload();
 
         }
     }
