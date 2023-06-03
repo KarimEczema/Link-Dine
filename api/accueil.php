@@ -99,18 +99,13 @@ try {
             $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
-            WHERE p.idpost = $temp";
-            echo '<script> console.log("sql :' . $sql2 . '");</script>';
-            
+            WHERE p.idpost = $temp";            
 
             $stmt2 = $conn->prepare($sql2);
             $stmt2->execute();
-            $id = $stmt2->fetchAll();
-            echo '<script> console.log("id :' . $id . '");</script>';
+            $result = $stmt2->fetch();
 
-            
-
-            echo $id . " : " . $post['descriptionpost'] . "<br>";
+            echo $result['nom'] . " : " . $post['descriptionpost'] . "<br>";
         }
 
     } else {
