@@ -87,41 +87,40 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
         $ami = $stmt->fetch();
 
-        if($amis && $amis['amis'] !== null)
-    {
-        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
-
-
-        // Check that the user has friends
-        if (!empty($amis)) {
+        if ($amis && $amis['amis'] !== null) {
+            $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
     
-            // Retrieve the friends' posts
-            $params = implode(',', array_fill(0, count($ami), '?'));
-            $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
-            $stmt->execute($ami);
-            $amis = $stmt->fetchAll();
 
-            ?>
-            <div id="friends" style="margin-top : 10%;">
-                <h5 style="text-align : center; color:#446AA9"> Liste d'amis</h5>
-            </div>
+            // Check that the user has friends
+            if (!empty($ami)) {
 
-            <div id="carrousel">
-                <ul id="listc" style="list-style-type : none;">
-                    <?php foreach ($amis as $mesamis) { ?>
-                        <li>
-                            <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
-                                <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
-                                    alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
-                            </a>
-                        </li>
-                    <?php }
+                // Retrieve the friends' posts
+                $params = implode(',', array_fill(0, count($ami), '?'));
+                $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
+                $stmt->execute($ami);
+                $amis = $stmt->fetchAll();
+
+                ?>
+                <div id="friends" style="margin-top : 10%;">
+                    <h5 style="text-align : center; color:#446AA9"> Liste d'amis</h5>
+                </div>
+
+                <div id="carrousel">
+                    <ul id="listc" style="list-style-type : none;">
+                        <?php foreach ($amis as $mesamis) { ?>
+                            <li>
+                                <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
+                                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
+                                        alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                                </a>
+                            </li>
+                        <?php }
+            } else {
+                echo "This user has no friends.";
+            }
         } else {
             echo "This user has no friends.";
         }
-    } else {
-        echo "This user has no friends.";
-}
     } catch (PDOException $e) {
         // report error message
         echo $e->getMessage();

@@ -81,64 +81,64 @@ try {
 
     $amis = $stmt->fetch();
 
-    if($amis && $amis['amis'] !== null)
-    {
-    $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+    if ($amis && $amis['amis'] !== null) {
+        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
 
 
-    // Check that the user has friends
-    if (!empty($amis)) {
-        // Retrieve the friends' posts
-        $params = implode(',', array_fill(0, count($amis), '?'));
+        // Check that the user has friends
+        if (!empty($amis)) {
+            // Retrieve the friends' posts
+            $params = implode(',', array_fill(0, count($amis), '?'));
 
-        $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-        $stmt->execute($amis);
-        $posts = $stmt->fetchAll(); ?>
+            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
+            $stmt->execute($amis);
+            $posts = $stmt->fetchAll(); ?>
 
 
-        <div class="scroll-container">
-            <table>
-                <tbody>
-                    <?php
+            <div class="scroll-container">
+                <table>
+                    <tbody>
+                        <?php
 
-                    // Display the posts
-                    foreach ($posts as $post) {
+                        // Display the posts
+                        foreach ($posts as $post) {
 
-                        $temp = $post['idpost'];
+                            $temp = $post['idpost'];
 
-                        $sql2 = "SELECT u.nom
+                            $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
             WHERE p.idpost = ?";
 
-                        $stmt2 = $conn->prepare($sql2);
-                        $stmt2->execute([$temp]);
-                        $result = $stmt2->fetch();
+                            $stmt2 = $conn->prepare($sql2);
+                            $stmt2->execute([$temp]);
+                            $result = $stmt2->fetch();
+                            ?>
+
+                            <div class="scroll-page" id="formation">
+                                <div class="col-sm-4" style="background-color:#d6a3b7">
+                                    <?php echo $result['nom']; ?>
+                                </div>
+                                <div class="col-sm-8" style="background-color:#a7d4d4">
+                                    <?php echo htmlspecialchars($post['descriptionpost']); ?>
+                                </div>
+                            </div>
+
+
+                            <?php
+                        }
                         ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
 
-                        <div class="scroll-page" id="formation">
-                            <div class="col-sm-4" style="background-color:#d6a3b7">
-                                <?php echo $result['nom']; ?>
-                            </div>
-                            <div class="col-sm-8" style="background-color:#a7d4d4">
-                                <?php echo htmlspecialchars($post['descriptionpost']); ?>
-                            </div>
-                        </div>
-
-
-                        <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-        <?php
-
+        } else {
+            echo "This user has no friends.";
+        }
     } else {
         echo "This user has no friends.";
-    } } else {
-        echo "This user has no friends.";
-}
+    }
 
 } catch (PDOException $e) {
     // report error message
