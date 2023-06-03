@@ -70,45 +70,6 @@ catch(PDOException $e){
 }
 ?>
 
-<script>
-document.querySelector('form').addEventListener('submit', async function(event) {
-    event.preventDefault();
- 
-    const imageUploads = document.querySelector('#image_uploads').files[0];
-    
-    const targetFile = 'Images/' + imageUploads.name;
-    const url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/' + targetFile;
-
-    const formData = new FormData();
-    formData.append('image_uploads', imageUploads);
-
-    try {
-        const uploadResponse = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
-                'Content-Type': imageUploads.type,
-                'Cache-Control': 'no-cache',
-            },
-            body: formData
-        });
-
-        const uploadResult = await uploadResponse.json();
-
-        console.log(uploadResult);
-
-        if (uploadResponse.status === 200) {
-            console.log("Image successfully uploaded");
-        } else {
-            console.log("Failed to upload image");
-        }
-
-    } catch (error) {
-        console.log('Error:', error);
-    }
-});
-</script>
-
 <nav class = "post" style =" background-color: cyan;">
     <form method="post" action="" enctype="multipart/form-data">
         <label for="ameliorer">Creer un post</label><br>
@@ -141,6 +102,56 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
     </form>
 </nav>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const write = document.querySelector('#write').value;
+        const lieu = document.querySelector('#lieu').value;
+        const date = document.querySelector('#date').value;
+        const secu = document.querySelector('input[name=secu]:checked').value;
+        const imageUploads = document.querySelector('#image_uploads').files[0];
+        
+        const targetFile = 'images/' + imageUploads.name;
+        const url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/' + targetFile;
+
+        const formData = new FormData();
+        formData.append('write', write);
+        formData.append('lieu', lieu);
+        formData.append('date', date);
+        formData.append('secu', secu);
+        formData.append('image_uploads', imageUploads);
+
+        try {
+            const uploadResponse = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
+                    'Content-Type': imageUploads.type,
+                    'Cache-Control': 'no-cache',
+                },
+                body: formData
+            });
+
+            const uploadResult = await uploadResponse.json();
+
+            console.log(uploadResult);
+
+            if (uploadResponse.status === 200) {
+                console.log("Image successfully uploaded");
+            } else {
+                console.log("Failed to upload image");
+            }
+
+        } catch (error) {
+            console.log('Error:', error);
+        }
+    });
+});
+</script>
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
