@@ -73,7 +73,7 @@ try {
     $conn = new PDO($dsn);
 
     // query to check if username exists
-    $sql = "SELECT ami FROM users WHERE iduser = ?";
+    $sql = "SELECT amis FROM users WHERE iduser = ?";
     $stmt = $conn->prepare($sql);
 
     // bind parameters and execute
