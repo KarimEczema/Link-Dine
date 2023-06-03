@@ -47,16 +47,16 @@ try{
         //On définit certaines variables.
         $ecriture = $_POST['write'];
         $lieu = $_POST['lieu'];
-        $dates = $_POST['dates'];
+        $date = $_POST['date'];
         $secu = $_POST['secu'];
 
         //On insère les données reçues
-        $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite) VALUES(:write, :personne, :lieu, :dates, :secu)";
+        $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite) VALUES(:write, :personne, :lieu, :date, :secu)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':write',$ecriture);
         $stmt->bindParam(':personne',$iduser);
         $stmt->bindParam(':lieu',$lieu);
-        $stmt->bindParam(':dates',$dates);
+        $stmt->bindParam(':date',$date);
         $stmt->bindParam(':secu',$secu);
         $stmt->execute();
 
@@ -97,11 +97,11 @@ catch(PDOException $e){
                 </div>
             </div>
         </div>
+        <label for="start">Quand ?</label>
+        <input type="date" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+        <label for="where"style = "text-align : right;">Où ?</label>
+        <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
     </form>
-    <label for="start">Quand ?</label>
-    <input type="date" id="dates" name="dates" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
-    <label for="where"style = "text-align : right;">Où ?</label>
-    <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
 </nav>
 
 <nav class = "like" style =" background-color: bisque;">
