@@ -47,6 +47,7 @@ include 'caroussel.php';
             <ol class="carousel-indicators">
                 <?php
                 $valueCar = 0;
+                $tabimages = explode(',', $row['tabimages']);
                 foreach ($decoded_images as $image) {
                     echo '<li data-target="#myCarousel" data-slide-to="' . $valueCar . '"';
                     if ($valueCar === 0) {
@@ -57,9 +58,11 @@ include 'caroussel.php';
                 }
                 ?>
             </ol>
+
             <div class="carousel-inner">
                 <?php
                 $valueCar = 0;
+                $tabimages = explode(',', $row['tabimages']);
                 foreach ($decoded_images as $image) {
                     echo '<div class="carousel-item';
                     if ($valueCar === 0) {
