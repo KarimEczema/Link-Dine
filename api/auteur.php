@@ -46,7 +46,7 @@ try{
         $conn = new PDO($dsn);
 
         //On insère les données reçues
-        $sql = "INSERT INTO posts(descriptionpost, iduser lieu, dates, accessibilite) VALUES(:write, :personne, :lieu, :dates, :secu)";
+        $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, dates, accessibilite) VALUES(:write, :personne, :lieu, :dates, :secu)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':write',$ecriture);
         $stmt->bindParam(':personne',$iduser);
