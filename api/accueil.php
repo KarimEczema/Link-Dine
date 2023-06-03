@@ -79,12 +79,12 @@ try {
     // bind parameters and execute
     $stmt->execute([$iduser]);
 
-    $ami = $stmt->fetch();
+    $amis = $stmt->fetch();
 
     // Check that the user has friends
-    if ($ami) {
-        foreach ($posts as $post) {
-        $ami = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
+    if ($amis) {
+        foreach ($amis as $ami) {
+        $amis = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
 
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($ami), '?'));
