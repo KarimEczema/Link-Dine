@@ -81,6 +81,13 @@ try {
 ============================================
 -->
 
+<!-- script pour reload la page au clic du bouton -->
+<script type="text/javascript">
+    var refresh = window.getElementById('refresh');
+    refresh.addEventListener('click', location.reload(), false);
+</script>
+
+
 <!-- Choix du fond par l'utilisateur via des boutons radio -->
 <nav class="Choix-fond">
     <h1 style="margin-top : 5%">Choisir son fond</h1>
@@ -111,7 +118,7 @@ try {
             <input type="radio" id="rouge" name="drone" value="crimson">
             <label for="rouge">Fond rouge</label>
         </div>
-        <button type="submit" name="choixFond" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
+        <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
     </form>
 </nav>
 
@@ -138,7 +145,6 @@ try {
 
             //Message de confirmation pour l'utilisateur
             echo "Choix enregistré!";
-            location.reload();
 
         }
     }
