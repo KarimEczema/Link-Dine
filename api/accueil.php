@@ -105,7 +105,7 @@ try {
             $stmt2->execute();
             $id = $stmt2->fetchAll();
 
-            echo $id['iduser'] . " : " . $post['descriptionpost'] . "<br>";
+            echo $id . " : " . $post['descriptionpost'] . "<br>";
         }
 
     } else {
