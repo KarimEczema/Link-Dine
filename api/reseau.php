@@ -88,14 +88,14 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         $ami = $stmt->fetch();
 
         if ($amis && $amis['amis'] !== null) {
-            $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+            $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
     
 
             // Check that the user has friends
-            if (!empty($ami)) {
+            if (!empty($amis)) {
 
                 // Retrieve the friends' posts
-                $params = implode(',', array_fill(0, count($ami), '?'));
+                $params = implode(',', array_fill(0, count($amis), '?'));
                 $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
                 $stmt->execute($ami);
                 $amis = $stmt->fetchAll();
