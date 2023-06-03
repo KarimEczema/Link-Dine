@@ -110,40 +110,36 @@ try {
 
 
 
-
     if ($amis && $amis['amis'] !== null) {
         $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
-
-
+    
         // Check that the user has friends
         if (!empty($amis)) {
-            // Retrieve the friends' posts
-
-
-
-
-
-            // get posts
-            $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
-            $stmt->execute([$amis]);
-            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // get formations
-            $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
-            $stmt->execute([$amis]);
-            $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // get projets
-            $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
-            $stmt->execute([$amis]);
-            $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // combine all and sort by datepublication
-            $combined = array_merge($posts, $formations, $projets);
+            $combined = [];
+    
+            foreach ($amis as $ami) {
+                // get posts
+                $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt->execute([$ami]);
+                $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                // get formations
+                $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt->execute([$ami]);
+                $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                // get projets
+                $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt->execute([$ami]);
+                $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                // combine all and sort by datepublication
+                $combined = array_merge($combined, $posts, $formations, $projets);
+            }
+    
             usort($combined, function ($a, $b) {
                 return $b['datepublication'] <=> $a['datepublication'];
             }); ?>
-
 
             <div class="scroll-container">
                 <table>
@@ -262,7 +258,10 @@ try {
                             echo "<div>";
                             echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
                             echo "<p>Publication date: " . $item['datepublication'] . "</p>";
-                            echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+                            if($item['description'] !== NULL)
+                            {
+                                echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+                            }
                             echo "</div>";
 
 
