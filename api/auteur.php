@@ -68,10 +68,10 @@ try{
             $target_dir = "Images/post/";
             $target_file = $target_dir . basename($file_name);
         
-            $url = 'https://<your-supabase-url>/storage/v1/object/public/'.$target_file;
+            $url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/'.$target_file;
         
             $headers = array(
-                'Authorization: Bearer <your-supabase-anon-key>',
+                'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
                 'Content-Type: '.mime_content_type($file_tmp),
                 'Cache-Control: no-cache',
             );
