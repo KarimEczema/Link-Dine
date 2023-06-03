@@ -95,36 +95,68 @@ body{
   input:checked + div {
     z-index: 2;
   }  
-  .custom-carousel {
-    width: 100%;
-    height: auto;
-  }
+
+  /* Demo styles
+  --------------------------------------------  */
   
-  .carousel-inner {
-    height: 400px;
-  }
-  
-  .carousel-item {
+  body {
+    font: 90% / 1.5 Arial;
     text-align: center;
   }
-  
-  .carousel-item img {
-    margin: 0 auto;
-    max-height: 100%;
-    max-width: 100%;
+  .carousel {
+    width: 600px;
+    height: 350px;
+    margin: 2em auto;
+    overflow:hidden;
+    transform: translateZ(0px); /* stops flickering incode pen*/
+    box-shadow: 0 0 2px 1px #ccc;
+  }
+  .carousel	input {
+    top: 150px;
+    width: 60px;
+    height: 60px;
+    left: 10px;
+  }
+  input:checked ~ input {
+    right: 10px;	
+  }
+  .carousel input:before {
+    background: #888;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 5px solid #fff;
   }
   
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-image: none;
+  
+  /* Scroll
+  --------------------------------------------  */
+  
+  #test1 input + div {
+    transform: translate3d(-100%,0,0);
+    transition: transform .5s ease-in-out;
+  }
+  #test1 input:checked + div {
+    transform: translate3d(0,0,0);
+  }
+  #test1 input:checked + div ~ div {
+    transform: translate3d(100%,0,0);
   }
   
-  .carousel-indicators li {
-    background-color: #000;
-    border: 1px solid #fff;
-  }
   
-  .carousel-indicators .active {
-    background-color: #fff;
+  /* Disolve
+  --------------------------------------------  */
+  
+  #test2 input + div {
+    transition: opacity 0s 1s;
+    opacity: 0;
+  }
+  #test2 input:checked + div {
+    transition: opacity 1s;
+    opacity: 1;
   }
   
