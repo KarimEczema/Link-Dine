@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const secu = document.querySelector('input[name=secu]:checked').value;
         const imageUploads = document.querySelector('#image_uploads').files[0];
         
-        const targetFile = 'Images/' + imageUploads.name;
+        const targetFile = 'images/' + imageUploads.name;
         const url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/' + targetFile;
 
         const formData = new FormData();
@@ -152,6 +152,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 </script>
+
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
