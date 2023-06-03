@@ -91,19 +91,20 @@ try {
         $stmt->execute($amis);
         $posts = $stmt->fetchAll();
 
-        $temp = $post['idpost'];
+        // Display the posts
+        foreach ($posts as $post) {
 
-        $sql2 = "SELECT u.name
+            $temp = $post['idpost'];
+
+            $sql2 = "SELECT u.name
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
             WHERE p.post = $temp";
 
-        $stmt2 = $conn->prepare($sql2);
-        $stmt2->execute();
-        $id = $stmt2->fetchAll();
+            $stmt2 = $conn->prepare($sql2);
+            $stmt2->execute();
+            $id = $stmt2->fetchAll();
 
-        // Display the posts
-        foreach ($posts as $post) {
             echo $id['iduser'] . " : " . $post['descriptionpost'] . "<br>";
         }
 
