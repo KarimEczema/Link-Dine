@@ -21,7 +21,7 @@ include 'caroussel.php';
 
 
     <?php
-    $sql = "SELECT tabimages FROM evenement WHERE organisateur = 'Centrale Supelec'";
+    $sql = "SELECT tabimages FROM evenement WHERE DATE(date) < '2023-06-11' AND DATE(date) > '2023-06-05'";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
@@ -35,7 +35,7 @@ include 'caroussel.php';
     <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
     $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
 
-    <h5 style="text-align: center; color: red;">Evènements</h5>
+    <h5 style="text-align: center; color: red; margin:3%">Evénement de la semaine :</h5>
 
     <div class="carousel" id="test1">
         <?php

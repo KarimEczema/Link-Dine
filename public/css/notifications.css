@@ -119,11 +119,11 @@ body{
   .carousel input:before {
     background: #888;
     border-radius: 50%;
+    position : absolute;
     color: #fff;
     font-size: 25px;
     width: 50px;
     height: 50px;
-    line-height: 50px;
     text-align: center;
     border: 5px solid #fff;
   }
