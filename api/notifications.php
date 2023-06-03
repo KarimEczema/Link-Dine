@@ -21,7 +21,7 @@ include 'caroussel.php';
 
 
     <?php
-    $sql = "SELECT tabimages FROM evenement WHERE DATE(date) < '2023-06-11' AND DATE(date) > '2023-06-05'";
+    $sql = "SELECT tabimages FROM evenement WHERE organisateur = 'Centrale Supelec'";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
