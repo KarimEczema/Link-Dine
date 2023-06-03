@@ -76,6 +76,81 @@ try {
 
 
 <!--
+============================================
+     Choix du fond personnalisé
+============================================
+-->
+
+<!-- Choix du fond par l'utilisateur via des boutons radio -->
+<nav class="Choix-fond">
+    <h1 style="margin-top : 5%">Choisir son fond</h1>
+    <form method="post" action="">
+        <p>Cliquez pour choisir le fond que vous préférez </p>
+
+        <div>
+            <input type="radio" id="blanc" name="drone" value="white">
+            <label for="blanc">Fond blanc(par défaut)</label>
+        </div>
+
+        <div>
+            <input type="radio" id="bleu" name="drone" value="blue">
+            <label for="bleu">Fond bleu</label>
+        </div>
+
+        <div>
+            <input type="radio" id="vert" name="drone" value="green">
+            <label for="vert">Fond vert</label>
+        </div>
+
+        <div>
+            <input type="radio" id="creme" name="drone" value="aqua">
+            <label for="creme">Fond crème</label>
+        </div>
+
+        <div>
+            <input type="radio" id="rouge" name="drone" value="crimson">
+            <label for="rouge">Fond rouge</label>
+        </div>
+        <button type="submit" name="choixFond" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
+    </form>
+</nav>
+
+
+<!-- Enregistrement des informations dans la bdd -->
+
+<?php
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if ($_POST) {
+        if (isset($_POST['choixFond']) && $_POST['choixFond'] == 'Fond') {
+
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sql = "UPDATE users SET fond = (:drone) WHERE iduser = $iduser";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            $stmt->bindParam(':drone', $_POST['fond']);
+            $stmt->execute();
+
+            //Message de confirmation pour l'utilisateur
+            echo "Choix enregistré!";
+
+        }
+    }
+} catch (PDOException $e) {
+    // Message d'erreur si le formulaire n'a pas pu être récupéré
+    echo $e->getMessage();
+}
+?>
+
+
+
+
+<!--
 ======================================================
         Partie Formations
 ======================================================
