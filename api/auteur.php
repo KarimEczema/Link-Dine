@@ -38,12 +38,17 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
-
 try{
     if($_POST)
     {
         //On se connecte à la BDD
         $conn = new PDO($dsn);
+
+        //On définit certaines variables.
+        $ecriture = $_POST[':write'];
+        $lieu = $_POST[':lieu'];
+        $dates = $_POST[':dates'];
+        $secu = $_POST[':secu'];
 
         //On insère les données reçues
         $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite) VALUES(:write, :personne, :lieu, :dates, :secu)";
