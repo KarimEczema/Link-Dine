@@ -59,58 +59,7 @@ try{
         $stmt->bindParam(':date',$date);
         $stmt->bindParam(':secu',$secu);
         $stmt->execute();
-        
-        if(isset($_FILES['image_uploads'])) {
-            $file_name = $_FILES['image_uploads']['name'];
-            $file_tmp = $_FILES['image_uploads']['tmp_name'];
-            $file_size = $_FILES['image_uploads']['size'];
-        
-            $target_dir = "images/";
-            $target_file = $target_dir . basename($file_name);
-            echo "Target file: " . $target_file;
-            
-            $url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/'.$target_file;
-        
-            $headers = array(
-                'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
-                'Content-Type: '.mime_content_type($file_tmp),
-                'Cache-Control: no-cache',
-            );
-         
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($file_tmp));
-            
-            $response = curl_exec($ch);
-        
-            // Print out the response
-            echo "Response: ";
-            var_dump($response);
-            
-            // Print out the HTTP status code
-            echo "HTTP Status Code: ";
-            var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));
-        
-            if (curl_errno($ch)) {
-                echo 'Error:' . curl_error($ch);
-            } else {
-                $response_array = json_decode($response, true);
-                if(array_key_exists('Key', $response_array)){
-                    echo "Image successfully uploaded";
-                }else{
-                    echo "Failed to upload image";
-                }
-            }
-        
-            curl_close ($ch);
-        } else {
-            // Print out details of the received file if file was not received
-            echo "File details: ";
-            var_dump($_FILES['image_uploads']);
-        }
+    
         //Message de confirmation pour l'utilisateur
          echo "Post publié !";
     }
@@ -121,6 +70,44 @@ catch(PDOException $e){
 }
 ?>
 
+<script>
+document.querySelector('form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+ 
+    const imageUploads = document.querySelector('#image_uploads').files[0];
+    
+    const targetFile = 'images/' + imageUploads.name;
+    const url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/' + targetFile;
+
+    const formData = new FormData();
+    formData.append('image_uploads', imageUploads);
+
+    try {
+        const uploadResponse = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
+                'Content-Type': imageUploads.type,
+                'Cache-Control': 'no-cache',
+            },
+            body: formData
+        });
+
+        const uploadResult = await uploadResponse.json();
+
+        console.log(uploadResult);
+
+        if (uploadResponse.status === 200) {
+            console.log("Image successfully uploaded");
+        } else {
+            console.log("Failed to upload image");
+        }
+
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+</script>
 
 <nav class = "post" style =" background-color: cyan;">
     <form method="post" action="" enctype="multipart/form-data">
@@ -130,7 +117,7 @@ catch(PDOException $e){
                 <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
                 <div class="col-sm-5">
                     <label for="image_uploads"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z"  width="120" height="100" alt="Appareil photo . png"></label>
-                    <input type="file" id="image_uploads" name="image_uploads"  style="display:none">
+                    <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
                     <button type="radio"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                     <fieldset>
                         <p>A qui voulez vous le partager ?</p>
