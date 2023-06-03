@@ -38,26 +38,29 @@ $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
-$ecriture = $_POST["write"];
-$image = $_POST["image_uploads"];
-$lieu = $_POST["lieu"];
-$date = $_POST["date"];
-$secu = $_POST["secu"];
 
 try{
-    //On se connecte à la BDD
-    $conn = new PDO($dsn);
+    if($_POST)
+    {
+        $ecriture = $_POST['write'];
+        $image = $_POST['image_uploads'];
+        $lieu = $_POST['lieu'];
+        $date = $_POST['dates'];
+        $secu = $_POST['secu'];
 
-    //On insère les données reçues
-    $sth = $conn->prepare("
-        INSERT INTO form(prenom, mail, age, sexe, pays)
-        VALUES(:prenom, :mail, :age, :sexe, :pays)");
-    $sth->bindParam(':descriptionpost',$ecriture);
-    //$sth->bindParam(':photo',$image);  INSERER L image du post
-    $sth->bindParam(':lieu',$lieu);
-    $sth->bindParam(':date',$date);
-    $sth->bindParam(':secu',$secu);
-    $sth->execute();
+        //On se connecte à la BDD
+        $conn = new PDO($dsn);
+
+        //On insère les données reçues
+        $sth = $conn->prepare(" INSERT INTO form(write, image_uploads, lieu, dates, secu) VALUES(:descriptionpost, :photo, :lieu, :dates, :secu");
+        $sth->bindParam(':descriptionpost',$ecriture);
+        //$sth->bindParam(':photo',$image);  INSERER L image du post
+        $sth->bindParam(':lieu',$lieu);
+        $sth->bindParam(':dates',$date);
+        $sth->bindParam(':secu',$secu);
+        $sth->execute();
+    }
+    
 }
 catch(PDOException $e){
     echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
@@ -84,7 +87,7 @@ catch(PDOException $e){
                         </div>
 
                         <div>
-                            <input type="radio" id="all" name="drone" value="all">
+                            <input type="radio" id="all" name="secu" value="all">
                             <label for="dewey">Tout le monde</label>
                         </div>
                     </fieldset>
@@ -93,7 +96,7 @@ catch(PDOException $e){
         </div>
     </form>
     <label for="start">Quand ?</label>
-    <input type="date" id="start" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+    <input type="date" id="start" name="dates" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
     <label for="where"style = "text-align : right;">Où ?</label>
     <input type="text" id="where" name="lieu" style = "margin-left : 10%;">
 </nav>
