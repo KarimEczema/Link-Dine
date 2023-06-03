@@ -126,6 +126,26 @@ input:checked ~ input:before {
 }
 
 
+.myEvents{
+  /* Style du corps de section */
+  color: black;
+  margin-top: 50px;
+}
+
+
+.Description {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-45%, 5%);
+  border: 2px solid #666;
+  z-index: 9;
+  }
+  .descr-container {
+  padding: 20px;
+  background-color: #f8f5f5;
+  }      
 
 .login-popup {
   position: relative;
