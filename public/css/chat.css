@@ -4,6 +4,8 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    margin-left : 25%;
+	margin-right : 25%;
     transition: background-color 0.3s ease;
     display: flex;
     flex-direction: column;
