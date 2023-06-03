@@ -120,7 +120,7 @@ input:checked ~ input:before {
     width: 100%;
     float: left;
     text-align: left;
-    height: 30%;
+    height: 10%;
 
     margin-top: 2%;
 }
