@@ -19,13 +19,58 @@ echo '<body>';
 include 'navbar.php';
 ?>
 
+<?php
+
+// Include the JWT library
+require __DIR__ . '/vendor/autoload.php';
+
+
+$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
+$port = "5432";
+$dbname = "verceldb";
+$user = "default";
+$password = "Y4vuPQm2xyTl";
+
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
+
+
+use \Firebase\JWT\JWT;
+use \Firebase\JWT\Key;
+
+$ecriture = $_POST["write"];
+$image = $_POST["image_uploads"];
+$lieu = $_POST["lieu"];
+$date = $_POST["date"];
+$secu = $_POST["secu"];
+
+try{
+    //On se connecte à la BDD
+    $conn = new PDO($dsn);
+
+    //On insère les données reçues
+    $sth = $conn->prepare("
+        INSERT INTO form(prenom, mail, age, sexe, pays)
+        VALUES(:prenom, :mail, :age, :sexe, :pays)");
+    $sth->bindParam(':descriptionpost',$ecriture);
+    //$sth->bindParam(':photo',$image);  INSERER L image du post
+    $sth->bindParam(':lieu',$lieu);
+    $sth->bindParam(':date',$date);
+    $sth->bindParam(':secu',$secu);
+    $sth->execute();
+}
+catch(PDOException $e){
+    echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+}
+?>
+
 
 <nav class = "post" style =" background-color: cyan;">
-    <form method="post" action="traitement.php">
+    <form method="post" action="auteur.php">
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-7"><textarea name="ameliorer" id="ameliorer" rows="10" cols="50" style="margin-right: 10%;" required></textarea></div>
+                <div class="col-sm-7"><textarea name="write" id="write" rows="10" cols="50" style="margin-right: 10%;" required></textarea></div>
                 <div class="col-sm-5">
                     <label for="image_uploads"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z"  width="120" height="100" alt="Appareil photo . png"></label>
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
@@ -34,12 +79,12 @@ include 'navbar.php';
                         <p>A qui voulez vous le partager ?</p>
 
                         <div>
-                            <input type="radio" id="huey" name="drone" value="huey" checked>
+                            <input type="radio" id="friend" name="secu" value="friend" checked>
                         <label for="huey">Vos amis</label>
                         </div>
 
                         <div>
-                            <input type="radio" id="dewey" name="drone" value="dewey">
+                            <input type="radio" id="all" name="drone" value="all">
                             <label for="dewey">Tout le monde</label>
                         </div>
                     </fieldset>
@@ -48,47 +93,11 @@ include 'navbar.php';
         </div>
     </form>
     <label for="start">Quand ?</label>
-    <input type="date" id="start" name="trip-start" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+    <input type="date" id="start" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
     <label for="where"style = "text-align : right;">Où ?</label>
-    <input type="text" id="where" name="trip-start" style = "margin-left : 10%;">
+    <input type="text" id="where" name="lieu" style = "margin-left : 10%;">
 </nav>
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
-</nav><div>
-
-
-    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-        <input type="radio" name="position" />
-    <?php endwhile; ?>
-
-    <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
-    try {
-        // Création du contact avec la BDD
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
-
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-    ?>
-
-
-    <main id="carousel">
-        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-            <div class="item">
-
-                <B>
-                    <?php echo htmlspecialchars($row['nom']); ?>
-                </B>
-                <br>
-                <br>
-                <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
-                    <?php echo htmlspecialchars($row['description']); ?>
-                </div>
-
-            </div>
-        <?php endwhile; ?>
-
-    </main>
-</div>
+</nav>
