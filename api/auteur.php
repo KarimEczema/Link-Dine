@@ -73,7 +73,7 @@ catch(PDOException $e){
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-7"><input type = "text" name="write" id="write" style = "height : 50%" required/></div>
+                <div class="col-sm-7"><textarea name="write" id="write" cols = "50" row = "10" wrap="hard" required></textarea></div>
                 <div class="col-sm-5">
                     <label for="image_uploads"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z"  width="120" height="100" alt="Appareil photo . png"></label>
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
