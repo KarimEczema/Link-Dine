@@ -76,7 +76,7 @@ include 'navbar.php';
     }
 };
 
-        const RecupUtilisateurs = async (currentUserId) => {
+const RecupUtilisateurs = async (currentUserId) => {
     try {
         const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}`, {
             method: 'GET',
@@ -91,18 +91,18 @@ include 'navbar.php';
         }
 
         const currentUserData = await response.json();
-        console.log("Current user data: ", currentUserData);  // Debug line
+        const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
 
-        const amis = currentUserData[0]?.amis || [];
+        if (amis.length === 0) {
+            console.log("The user has no friends.");
+            return [];
+        }
 
-        console.log("Amis: ", amis);  // Debug line
+        // Create a comma-separated string of friend IDs
+        const amisIdString = amis.join(',');
 
-        // Construct the query string
-        const amisQueryString = amis.map(amisId => `iduser=eq.${amisId}`).join('&');
-
-        console.log("Query string: ", amisQueryString);  // Debug line
-
-        const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?${amisQueryString}`, {
+        // Now fetch the friends data based on the amis array
+        const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?iduser=in.(${amisIdString})`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,16 +110,21 @@ include 'navbar.php';
             },
         });
 
+        if (!amisResponse.ok) {
+            throw new Error('Failed to fetch friends data');
+        }
+
         const amisData = await amisResponse.json();
 
-        console.log("Amis data: ", amisData);  // Debug line
-
-        return amisData.map(user => ({ iduser: user.iduser, username: user.username }));
+        console.log("Amis data: ", amisData);
+        
+        return amisData;
 
     } catch (error) {
-        console.error('Error:', error.message);
+        console.error('Failed to fetch user or friends data', error);
     }
 };
+
 
         const recevoirMessage = async (user1, user2) => {
             let url = `${supabaseUrl}/rest/v1/messages?`;
