@@ -87,15 +87,26 @@ try {
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($amis), '?'));
 
-            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-            $stmt->execute($amis);
-            $posts = $stmt->fetchAll();
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
+        $stmt->execute($amis);
+        $posts = $stmt->fetchAll();
 
-            // Display the posts
-            foreach ($posts as $post) {
-                echo $post['iduser'] . " : " . $post['descriptionpost'] . "<br>";
-            }
-        
+        $temp = $post['idpost'];
+
+        $sql2 = "SELECT u.name
+            FROM users u
+            JOIN posts p ON u.iduser = p.iduser
+            WHERE p.post = $temp";
+
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->execute();
+        $id = $stmt2->fetchAll();
+
+        // Display the posts
+        foreach ($posts as $post) {
+            echo $id['iduser'] . " : " . $post['descriptionpost'] . "<br>";
+        }
+
     } else {
         echo "This user has no friends.";
     }
