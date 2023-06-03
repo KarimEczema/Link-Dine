@@ -62,19 +62,8 @@ body{
 /* Control styles
 -------------------------------------------- */
 
-.carousel {
-    position: relative;
-  }
-  .carousel	input {
-    position: absolute;
-    left: 0;
-    z-index: 3;
-    margin: 0;
-  }
-  .carousel input:before {
-    position: absolute;
-    content: "<";
-  }
+
+
   input:checked ~ input:before {
     content: ">";
   }
@@ -83,7 +72,8 @@ body{
   }
   input:checked ~ input {
     right: 0;
-    left: auto;		
+    left: auto;	
+    right: 10px;	
   }
   input:checked + div + input {
     z-index: 4;
@@ -96,10 +86,8 @@ body{
     z-index: 2;
   }  
 
-  /* Demo styles
-  --------------------------------------------  */
-
   .carousel {
+    position : relative;
     width: 600px;
     height: 350px;
     margin: 2em auto;
@@ -112,10 +100,11 @@ body{
     width: 60px;
     height: 60px;
     left: 10px;
+    z-index: 3; /* Add a higher z-index to make the buttons appear above the image */
+    margin: 0;
+    position: absolute;
   }
-  input:checked ~ input {
-    right: 10px;	
-  }
+ 
   .carousel input:before {
     background: #888;
     border-radius: 50%;
@@ -126,9 +115,11 @@ body{
     line-height: 50px;
     text-align: center;
     border: 5px solid #fff;
-  }
-  
-  
+    position: absolute;
+    content: "<";
+    z-index: 4; /* Add a higher z-index to make the buttons appear above the image */
+}
+
   /* Scroll
   --------------------------------------------  */
   
@@ -142,17 +133,3 @@ body{
   #test1 input:checked + div ~ div {
     transform: translate3d(100%,0,0);
   }
-  
-  
-  /* Disolve
-  --------------------------------------------  */
-  
-  #test2 input + div {
-    transition: opacity 0s 1s;
-    opacity: 0;
-  }
-  #test2 input:checked + div {
-    transition: opacity 1s;
-    opacity: 1;
-  }
-  
