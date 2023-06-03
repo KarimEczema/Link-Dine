@@ -32,7 +32,7 @@ include 'navbar.php';
     </div>
     <div id="userSelect">
     <!-- La sélection des utilisateurs est dynamiquement insérés ici -->
-    
+
         <div id="buttonArea" style="position: fixed; bottom: 0;">
             <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
             <button id="cameraButton" class="btn btn-primary"><i class="fas fa-camera"></i></button>
@@ -41,7 +41,7 @@ include 'navbar.php';
 
 
 
-    <div id="videoCall" style="display: none; width: 100%; height: 100%;">
+    <div id="videoCall" style="display: none;">
         <!-- The video call will be inserted here -->
     </div>
 
