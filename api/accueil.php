@@ -83,9 +83,9 @@ try {
 
     // Check that the user has friends
     if ($amis) {
-        $amis = explode(',', trim($ami['ami'], '{}')); // convert the array string into a PHP array
+        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
         // Retrieve the friends' posts
-        $params = implode(',', array_fill(0, count($ami), '?'));
+        $params = implode(',', array_fill(0, count($amis), '?'));
 
         foreach ($amis as $ami) {
             $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
