@@ -216,41 +216,43 @@ include 'navbar.php';
             });
 
             let currentUser;
-            $('#videoCallButton').click(function() {
-    const selectedUserName = $('.usernameButton.active').text(); // Assumes the button text is the username of the selected user
+            
+        $('#videoCallButton').click(function() {
+            const selectedUserId = $('.usernameButton.active').data('id'); // Assumes the data-id attribute is the user id of the selected user
 
-    if(!selectedUserName) { // Check if a user has been selected
-        alert('Please select a user to start a video call!');
-        return;
-    }
+            if(!selectedUserId) { // Check if a user has been selected
+                alert('Please select a user to start a video call!');
+                return;
+            }
 
-    $('#chatbox').css('display', 'none');   // Hide chatbox
-    $('#videoCall').css('display', 'block');  // Show videoCall div
-    $('#camera').css('display', 'none');   // Hide camera div
-    $(this).addClass('active');
-    $('#messageButton').removeClass('active');
-    $('#cameraButton').removeClass('active');
+            $('#chatbox').css('display', 'none');   // Hide chatbox
+            $('#videoCall').css('display', 'block');  // Show videoCall div
+            $('#camera').css('display', 'none');   // Hide camera div
+            $(this).addClass('active');
+            $('#messageButton').removeClass('active');
+            $('#cameraButton').removeClass('active');
 
-    const domain = 'meet.jit.si';
+            const domain = 'meet.jit.si';
 
-    let roomName;
+            let roomName;
 
-    // Create a room name by sorting the usernames alphabetically
-    if (currentUser < selectedUserName) {
-        roomName = `${currentUser}-${selectedUserName}`;
-    } else {
-        roomName = `${selectedUserName}-${currentUser}`;
-    }
+            // Create a room name by sorting the user IDs
+            if (iduser < selectedUserId) {
+                roomName = `${iduser}-${selectedUserId}`;
+            } else {
+                roomName = `${selectedUserId}-${iduser}`;
+            }
 
-    const options = {
-        roomName: roomName, 
-        width: '100%',
-        height: '100%',
-        parentNode: document.querySelector('#videoCall')
-    };
+            const options = {
+                roomName: roomName, 
+                width: '100%',
+                height: '100%',
+                parentNode: document.querySelector('#videoCall')
+            };
 
-    let api = new JitsiMeetExternalAPI(domain, options);
-});
+            let api = new JitsiMeetExternalAPI(domain, options);
+        });
+
 
 
             $('#generalChatButton').click(function () {
