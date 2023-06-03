@@ -28,9 +28,7 @@ try {
         $email = $_POST['email'];
 
         // Si l'email n'est pas dans le bon format
-        if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
-            $message_erreur = "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
-        }
+        
         
         // Si le nom d'utilisateur existe dans la base de données
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
@@ -44,8 +42,11 @@ try {
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
+            if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
+                $message_erreur = "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
+            }
             // Si l'email rentré correspond à l'email associé à l'utilisateur
-            if($email === $user['email']){
+            else if($email === $user['email']){
                 // Generation du token JWT
                 // Clef secrete
                 $secretKey = 'fZabvRw78VA746';

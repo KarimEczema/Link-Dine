@@ -45,7 +45,6 @@ include 'navbar.php';
 
     <input type="text" id="userInput" placeholder="Ecrivez ici..." />
 
-
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
@@ -92,10 +91,17 @@ include 'navbar.php';
         }
 
         const currentUserData = await response.json();
-        const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
+        console.log("Current user data: ", currentUserData);  // Debug line
 
-        // Now fetch the friends data based on the amis array
-        const amisQueryString = amis.map(amisId => `iduser=eq.${amisId}`).join('&'); // Construct the query string
+        const amis = currentUserData[0]?.amis || [];
+
+        console.log("Amis: ", amis);  // Debug line
+
+        // Construct the query string
+        const amisQueryString = amis.map(amisId => `iduser=eq.${amisId}`).join('&');
+
+        console.log("Query string: ", amisQueryString);  // Debug line
+
         const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?${amisQueryString}`, {
             method: 'GET',
             headers: {
@@ -104,16 +110,12 @@ include 'navbar.php';
             },
         });
 
-        if (!amisResponse.ok) {
-            throw new Error('Failed to fetch friends data');
-        }
-
         const amisData = await amisResponse.json();
 
-        console.log(amisData); // This line will print the friends data to the console
+        console.log("Amis data: ", amisData);  // Debug line
 
         return amisData.map(user => ({ iduser: user.iduser, username: user.username }));
-        
+
     } catch (error) {
         console.error('Error:', error.message);
     }
