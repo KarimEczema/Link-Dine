@@ -97,7 +97,7 @@ try {
             echo "LOULOULOU".$post['idpost'];
 
             $temp = $post['idpost'];
-            echo '<script> console.log($temp);</script>';
+            echo '<script> console.log("' . $temp . '");</script>';
 
             $sql2 = "SELECT u.nom
             FROM users u
