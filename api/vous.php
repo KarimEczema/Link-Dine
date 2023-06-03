@@ -6,7 +6,7 @@ echo '<html>';
 echo '<head>';
 echo '<title>Your Page Title</title>';
 
-echo '<style id="bg" >';
+echo '<style id="bg" ></style>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs 
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';

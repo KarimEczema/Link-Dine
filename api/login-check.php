@@ -72,5 +72,3 @@ if (isset($_COOKIE['jwt'])) {
     header('Location: index.php');
     exit;
 }
-
-?>
