@@ -85,6 +85,14 @@ try{
             
             $response = curl_exec($ch);
         
+            // Print out the response
+            echo "Response: ";
+            var_dump($response);
+            
+            // Print out the HTTP status code
+            echo "HTTP Status Code: ";
+            var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+        
             if (curl_errno($ch)) {
                 echo 'Error:' . curl_error($ch);
             } else {
@@ -97,6 +105,10 @@ try{
             }
         
             curl_close ($ch);
+        } else {
+            // Print out details of the received file if file was not received
+            echo "File details: ";
+            var_dump($_FILES['image_uploads']);
         }
         //Message de confirmation pour l'utilisateur
          echo "Post publié !";
