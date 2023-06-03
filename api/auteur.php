@@ -45,10 +45,10 @@ try{
         $conn = new PDO($dsn);
 
         //On définit certaines variables.
-        $ecriture = $_POST[':write'];
-        $lieu = $_POST[':lieu'];
-        $dates = $_POST[':dates'];
-        $secu = $_POST[':secu'];
+        $ecriture = $_POST['write'];
+        $lieu = $_POST['lieu'];
+        $dates = $_POST['dates'];
+        $secu = $_POST['secu'];
 
         //On insère les données reçues
         $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite) VALUES(:write, :personne, :lieu, :dates, :secu)";
