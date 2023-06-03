@@ -45,11 +45,11 @@ include 'caroussel.php';
         <?php foreach ($tabimages as $image):
             if ($valueCar == 1) { ?>
                 <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> 
-                <div><img src="<?php echo trim($image); ?>" style="height : 600px; width : 350px"></div>
+                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
                 <?php $valueCar++;
             } else { ?>
                 <input type="radio" name="item" value="<?php echo $valueCar; ?>"> 
-                <div><img src="<?php echo trim($image); ?>" style="height : 600px; width : 350px"></div>
+                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
                 <?php
                 $valueCar++;
             }
