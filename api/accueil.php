@@ -81,9 +81,13 @@ try {
 
     $amis = $stmt->fetch();
 
+    if($amis && $amis['amis'] !== null)
+    {
+    $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+
+
     // Check that the user has friends
-    if ($amis) {
-        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+    if (!empty($amis)) {
         // Retrieve the friends' posts
         $params = implode(',', array_fill(0, count($amis), '?'));
 
@@ -132,7 +136,9 @@ try {
 
     } else {
         echo "This user has no friends.";
-    }
+    } } else {
+        echo "This user has no friends.";
+}
 
 } catch (PDOException $e) {
     // report error message
