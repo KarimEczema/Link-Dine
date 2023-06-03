@@ -99,7 +99,7 @@ try {
             $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
-            WHERE p.post = $temp";
+            WHERE p.idpost = $temp";
 
             $stmt2 = $conn->prepare($sql2);
             $stmt2->execute();
