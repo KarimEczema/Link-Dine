@@ -108,6 +108,9 @@ try {
 
     $amis = $stmt->fetch();
 
+
+
+
     if ($amis && $amis['amis'] !== null) {
         $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
 
@@ -115,11 +118,31 @@ try {
         // Check that the user has friends
         if (!empty($amis)) {
             // Retrieve the friends' posts
-            $params = implode(',', array_fill(0, count($amis), '?'));
 
-            $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
-            $stmt->execute($amis);
-            $posts = $stmt->fetchAll(); ?>
+
+
+
+
+            // get posts
+            $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
+            $stmt->execute([$amis]);
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // get formations
+            $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+            $stmt->execute([$amis]);
+            $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // get projets
+            $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
+            $stmt->execute([$amis]);
+            $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // combine all and sort by datepublication
+            $combined = array_merge($posts, $formations, $projets);
+            usort($combined, function ($a, $b) {
+                return $b['datepublication'] <=> $a['datepublication'];
+            }); ?>
 
 
             <div class="scroll-container">
@@ -127,33 +150,35 @@ try {
                     <tbody>
                         <?php
 
-                        // Display the posts
-                        foreach ($posts as $post) {
 
-                            $temp = $post['idpost'];
-
-                            $sql2 = "SELECT u.nom
-            FROM users u
-            JOIN posts p ON u.iduser = p.iduser
-            WHERE p.idpost = ?";
-
-                            $stmt2 = $conn->prepare($sql2);
-                            $stmt2->execute([$temp]);
-                            $result = $stmt2->fetch();
+                        foreach ($combined as $item) {
                             ?>
+                            <div class="scroll-page" id="eventperso">
+                                <div style="padding:2%; border:solid;">
 
-                            <div class="scroll-page" id="formation">
-                                <div class="col-sm-4" style="background-color:#d6a3b7">
-                                    <?php echo $result['nom']; ?>
+                                    <?php
+                                    echo "<div>";
+                                    echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+                                    echo "<p>Publication date: " . $item['datepublication'] . "</p>";
+                                    echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+                                    echo "</div>";
+
+
+                                    ?>
+
                                 </div>
-                                <div class="col-sm-8" style="background-color:#a7d4d4 margin-bottom:3%">
-                                    <?php echo htmlspecialchars($post['descriptionpost']); ?>
-                                </div>
-                            </div>
 
+                                <script>
+                                    function openForm(id) {
+                                        document.getElementById("form-" + id).style.display = "block";
+                                    }
 
-                            <?php
-                        }
+                                    function closeForm(id) {
+                                        document.getElementById("form-" + id).style.display = "none";
+                                    }
+                                </script>
+
+                            <?php }
                         ?>
                     </tbody>
                 </table>
@@ -191,7 +216,7 @@ try {
     $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // get formations
-    $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+    $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, (datedebut, ',',datedebut) as date,  NULL as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
     $stmt->execute([$iduser]);
     $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -232,30 +257,30 @@ try {
                     ?>
                     <div class="scroll-page" id="eventperso">
                         <div style="padding:2%; border:solid;">
-                            
-                    <?php
-                    echo "<div>";
-                    echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-                    echo "<p>Publication date: " . $item['datepublication'] . "</p>";
-                    echo "<p>" . htmlspecialchars($item['description']) . "</p>";
-                    echo "</div>";
+
+                            <?php
+                            echo "<div>";
+                            echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+                            echo "<p>Publication date: " . $item['datepublication'] . "</p>";
+                            echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+                            echo "</div>";
 
 
-                    ?>
+                            ?>
 
-                    </div>
+                        </div>
 
-                    <script>
-                        function openForm(id) {
-                            document.getElementById("form-" + id).style.display = "block";
-                        }
+                        <script>
+                            function openForm(id) {
+                                document.getElementById("form-" + id).style.display = "block";
+                            }
 
-                        function closeForm(id) {
-                            document.getElementById("form-" + id).style.display = "none";
-                        }
-                    </script>
+                            function closeForm(id) {
+                                document.getElementById("form-" + id).style.display = "none";
+                            }
+                        </script>
 
-                <?php } ?>
+                    <?php } ?>
             </tbody>
         </table>
     </div>
