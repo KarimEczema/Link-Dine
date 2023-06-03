@@ -198,6 +198,7 @@ try {
                 <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
 
                     <div class="scroll-page" id="eventperso"> 
+                        <div style="margin:2%">
                         <h5><B><?php echo htmlspecialchars($row['nom']); ?></B>   <?php echo htmlspecialchars($row['date']); ?></h5> 
                         <h6>Type de contrat : <?php echo htmlspecialchars($row['organisateur']); ?></h6> <br> 
                         <h6>
@@ -213,6 +214,7 @@ try {
                                     <button type="button" class="btn cancel" onclick="closeForm(<?php echo $row['idevent']?>)" style="background-color: antiquewhite">Fermer</button>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div> 
 
