@@ -119,23 +119,27 @@ try {
     
             foreach ($amis as $ami) {
                 // get posts
-                $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+            
                 // get formations
-                $stmt = $conn->prepare("SELECT nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+            
                 // get projets
-                $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, nom as title, NULL as date, description, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+            
                 // combine all and sort by datepublication
                 $combined = array_merge($combined, $posts, $formations, $projets);
             }
+            
+            usort($combined, function ($a, $b) {
+                return $b['datepublication'] <=> $a['datepublication'];
+            });
     
             usort($combined, function ($a, $b) {
                 return $b['datepublication'] <=> $a['datepublication'];
@@ -159,6 +163,7 @@ try {
                                         echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
 
                                     }
+                                    echo "<p>Posted by: " . htmlspecialchars($item['username']) . "</p>";
                                     echo "<p>Publication date: " . $item['datepublication'] . "</p>";
                                     echo "<p>" . htmlspecialchars($item['description']) . "</p>";
                                     echo "</div>";
@@ -178,7 +183,9 @@ try {
                                     }
                                 </script>
 
-                            <?php }
+                            <?php                         
+                        
+                        }
                         ?>
                     </tbody>
                 </table>
