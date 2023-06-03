@@ -16,11 +16,11 @@ echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
 echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">';
+echo '<script src="https://meet.jit.si/external_api.js"></script>';
 echo '</head>';
 echo '<body>';
 
 // Inclusion de la barre de navigation
-
 include 'navbar.php';
 
 ?>
@@ -32,20 +32,20 @@ include 'navbar.php';
     </div>
     <div id="userSelect">
     <!-- La sélection des utilisateurs est dynamiquement insérés ici -->
-
         <div id="buttonArea" style="position: fixed; bottom: 0;">
             <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
             <button id="cameraButton" class="btn btn-primary"><i class="fas fa-camera"></i></button>
+            <button id="videoCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
 
-
-    <div id="videoCall" style="display: none;">
+    <div id="videoCall" style="display: none; width: 100%; height: 100%;">
         <!-- The video call will be inserted here -->
     </div>
 
     <input type="text" id="userInput" placeholder="Ecrivez ici..." />
+
 
     <script>
         const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
@@ -72,8 +72,6 @@ include 'navbar.php';
             }
         };
 
-        let idUsernameMapping = {}; // For storing ID to username mapping
-
         const RecupUtilisateurs = async () => {
             try {
                 const response = await fetch(`${supabaseUrl}/rest/v1/users`, {
@@ -90,9 +88,7 @@ include 'navbar.php';
 
                 const data = await response.json();
 
-                data.forEach(user => {
-                    idUsernameMapping[user.iduser] = user.username;
-                });
+
 
                 return data.map(user => ({ iduser: user.iduser, username: user.username })); // assuming each user has a 'username' field
             } catch (error) {
@@ -119,13 +115,15 @@ include 'navbar.php';
 
                 data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
 
+                // Filter the data to include only the conversation between user1 and user2
+                //data = data.filter(msg => (msg.sentTo === user1 && msg.iduser === user2) || (msg.iduser === user1 && msg.sentTo === user2));
+
                 // Sort the data based on the 'time' field in descending order (newest first)
                 data.sort((a, b) => new Date(b.time) - new Date(a.time));
 
                 $('#chatbox').empty();
                 data.forEach(msg => {
-                    let displayUsername = msg.iduser == iduser ? 'vous' : idUsernameMapping[msg.iduser]; // Show 'vous' if the message is from the currently logged in user
-                    $('#chatbox').append(`<p><b>${displayUsername}:</b> ${msg.message}</p>`);
+                    $('#chatbox').append(`<p><b>${msg.iduser}:</b> ${msg.message}</p>`);
                 });
 
             } catch (error) {
@@ -187,6 +185,7 @@ include 'navbar.php';
                 $('#camera').css('display', 'block');  // Show camera div
                 $(this).addClass('active');
                 $('#messageButton').removeClass('active');
+            });
 
             $('#videoCallButton').click(function() {
             $('#chatbox').css('display', 'none');   // Hide chatbox
@@ -207,9 +206,9 @@ include 'navbar.php';
         });
     });
 
-    </script>
 
-    <script src='https://meet.jit.si/external_api.js'></script>
+
+    </script>
 
 </body>
 
