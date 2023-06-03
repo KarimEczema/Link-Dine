@@ -65,9 +65,10 @@ try{
             $file_tmp = $_FILES['image_uploads']['tmp_name'];
             $file_size = $_FILES['image_uploads']['size'];
         
-            $target_dir = "Images/post/";
+            $target_dir = "Images";
             $target_file = $target_dir . basename($file_name);
-        
+            echo "Target file: " . $target_file;
+            
             $url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/'.$target_file;
         
             $headers = array(
@@ -75,7 +76,7 @@ try{
                 'Content-Type: '.mime_content_type($file_tmp),
                 'Cache-Control: no-cache',
             );
-        
+         
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
