@@ -42,7 +42,7 @@ try{
         $stmt->bindParam(':date',$date);
         $stmt->bindParam(':secu',$secu);
         $stmt->execute();
-
+        
         if(isset($_FILES['image_uploads'])) {
             $file_name = $_FILES['image_uploads']['name'];
             $file_tmp = $_FILES['image_uploads']['tmp_name'];
@@ -51,10 +51,10 @@ try{
             $target_dir = "Images/post/";
             $target_file = $target_dir . basename($file_name);
         
-            $url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/'.$target_file;
+            $url = 'https://<your-supabase-url>/storage/v1/object/public/'.$target_file;
         
             $headers = array(
-                'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
+                'Authorization: Bearer <your-supabase-anon-key>',
                 'Content-Type: '.mime_content_type($file_tmp),
                 'Cache-Control: no-cache',
             );
@@ -81,7 +81,6 @@ try{
         
             curl_close ($ch);
         }
-
         //Message de confirmation pour l'utilisateur
          echo "Post publié !";
     }
@@ -130,38 +129,6 @@ catch(PDOException $e){
    <h5> Que vous pourriez aimer :</h5><br>
 </nav><div>
 
-
-    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-        <input type="radio" name="position" />
-    <?php endwhile; ?>
-
-    <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
-    try {
-        // Création du contact avec la BDD
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
-
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-    ?>
-
-
-    <main id="carousel">
-        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-            <div class="item">
-
-                <B>
-                    <?php echo htmlspecialchars($row['nom']); ?>
-                </B>
-                <br>
-                <br>
-                <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
-                    <?php echo htmlspecialchars($row['description']); ?>
-                </div>
-
-            </div>
-        <?php endwhile; ?>
 
     </main>
 </div>
