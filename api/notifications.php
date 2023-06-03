@@ -38,6 +38,7 @@ include 'caroussel.php';
     <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
     $tabimages = explode(',', $row['tabimages']);
     $decoded_images = json_decode($row['tabimages'], true);  // decode the JSON string to an associative array ?>
+    <script>console.log($decoded_images);</script>
 
     <nav class="section">
         <div id="Event">
