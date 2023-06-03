@@ -65,7 +65,7 @@ try{
             $file_tmp = $_FILES['image_uploads']['tmp_name'];
             $file_size = $_FILES['image_uploads']['size'];
         
-            $target_dir = "Images/";
+            $target_dir = "images/";
             $target_file = $target_dir . basename($file_name);
             echo "Target file: " . $target_file;
             
