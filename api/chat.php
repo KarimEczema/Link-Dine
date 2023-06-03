@@ -110,7 +110,10 @@ include 'navbar.php';
 
         const amisData = await amisResponse.json();
 
+        console.log(amisData); // This line will print the friends data to the console
+
         return amisData.map(user => ({ iduser: user.iduser, username: user.username }));
+        
     } catch (error) {
         console.error('Error:', error.message);
     }
