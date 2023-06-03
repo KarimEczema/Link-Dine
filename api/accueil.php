@@ -124,7 +124,7 @@ try {
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
                 // get formations
-                $stmt = $conn->prepare("SELECT CONCAT nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
