@@ -89,24 +89,46 @@ try {
 
         $stmt = $conn->prepare("SELECT * FROM posts WHERE iduser IN ($params)");
         $stmt->execute($amis);
-        $posts = $stmt->fetchAll();
+        $posts = $stmt->fetchAll(); ?>
 
-        // Display the posts
-        foreach ($posts as $post) {
 
-            $temp = $post['idpost'];
+        <div class="scroll-container">
+            <table>
+                <tbody>
+                    <?php
 
-            $sql2 = "SELECT u.nom
+                    // Display the posts
+                    foreach ($posts as $post) {
+
+                        $temp = $post['idpost'];
+
+                        $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
-            WHERE p.idpost = ?";            
+            WHERE p.idpost = ?";
 
-            $stmt2 = $conn->prepare($sql2);
-            $stmt2->execute([$temp]);
-            $result = $stmt2->fetch();
+                        $stmt2 = $conn->prepare($sql2);
+                        $stmt2->execute([$temp]);
+                        $result = $stmt2->fetch();
+                        ?>
 
-            echo $result['nom'] . " : " . $post['descriptionpost'] . "<br>";
-        }
+                        <div class="scroll-page" id="formation">
+                            <div class="col-sm-4" style="background-color:#d6a3b7">
+                                <?php echo $result['nom']; ?>
+                            </div>
+                            <div class="col-sm-8" style="background-color:#a7d4d4">
+                                <?php echo htmlspecialchars($post['descriptionpost']); ?>
+                            </div>
+                        </div>
+
+
+                        <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
 
     } else {
         echo "This user has no friends.";
