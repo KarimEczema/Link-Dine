@@ -42,12 +42,6 @@ use \Firebase\JWT\Key;
 try{
     if($_POST)
     {
-        $ecriture = $_POST[':write'];
-        $image = $_POST[':image_uploads'];
-        $lieu = $_POST[':lieu'];
-        $dates = $_POST[':dates'];
-        $secu = $_POST[':secu'];
-
         //On se connecte à la BDD
         $conn = new PDO($dsn);
 
