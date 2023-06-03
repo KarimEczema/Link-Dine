@@ -127,7 +127,7 @@ try{
 
     // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-    $sql = "INSERT INTO users ( fond ) VALUES ( :drone)";
+    $sql = "UPDATE users SET fond = (:drone) WHERE iduser = $iduser";
     $stmt = $conn->prepare($sql);
 
     // bind parameters and execute
