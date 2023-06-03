@@ -88,7 +88,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         $ami = $stmt->fetch();
 
         // Check that the user has friends
-        if ($ami) {
+        if ($ami != NULL) {
             $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
     
             // Retrieve the friends' posts
