@@ -99,9 +99,12 @@ try {
                 </a>
             </li>
         <?php }
-        } else {
+        }
+
+        else {
             echo "This user has no friends.";
         }
+
         }catch (PDOException $e) {
             // report error message
             echo $e->getMessage();
