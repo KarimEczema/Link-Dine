@@ -124,7 +124,7 @@ try {
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
                 // get formations
-                $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT CONCAT nom as title, (datedebut, ',' , datefin) as date, institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
@@ -242,7 +242,7 @@ try {
 
 
 
-<nav class="myEvents">
+<nav class="myEvents" style="margin-bottom:5%">
     <div class="scroll-container">
         <table>
             <tbody>
@@ -257,7 +257,7 @@ try {
                             <?php
                             echo "<div>";
                             echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-                            echo "<p>Publication date: " . $item['datepublication'] . "</p>";
+                            echo "<p>Date de publication: " . $item['datepublication'] . "</p>";
                             if($item['description'] !== NULL)
                             {
                                 echo "<p>" . htmlspecialchars($item['description']) . "</p>";
