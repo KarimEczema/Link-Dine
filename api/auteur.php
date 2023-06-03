@@ -46,13 +46,17 @@ try{
         $conn = new PDO($dsn);
 
         //On insère les données reçues
-        $sth = $conn->prepare(" INSERT INTO posts(descriptionpost, photo, lieu, date, accessibilite) VALUES(:write, :image_uploads, :lieu, :dates, :secu");
-        $sth->bindParam(':write',$ecriture);
+        $sql = " INSERT INTO posts(descriptionpost, photo, lieu, date, accessibilite) VALUES(:write, :image_uploads, :lieu, :dates, :secu)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':write',$ecriture);
         //$sth->bindParam(':photo',$image);  INSERER L image du post
-        $sth->bindParam(':lieu',$lieu);
-        $sth->bindParam(':dates',$dates);
-        $sth->bindParam(':secu',$secu);
-        $sth->execute();
+        $stmt->bindParam(':lieu',$lieu);
+        $stmt->bindParam(':dates',$dates);
+        $stmt->bindParam(':secu',$secu);
+        $stmt->execute();
+
+        //Message de confirmation pour l'utilisateur
+         echo "Post publié !";
     }
     
 }
