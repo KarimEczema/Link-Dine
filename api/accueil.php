@@ -96,7 +96,7 @@ try {
 
             $temp = $post['idpost'];
 
-            $sql2 = "SELECT u.name
+            $sql2 = "SELECT u.nom
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
             WHERE p.post = $temp";
