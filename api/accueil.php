@@ -94,6 +94,8 @@ try {
         // Display the posts
         foreach ($posts as $post) {
 
+            echo "LOULOULOU".$post['idpost'];
+
             $temp = $post['idpost'];
             echo '<script> console.log($temp);</script>';
 
