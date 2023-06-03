@@ -38,7 +38,9 @@ if (isset($_COOKIE['jwt'])) {
             // Get the color from the query result
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $color = $result['fond'];
-
+            
+            echo 'The background color is: ' . $color;
+            
             echo '<style>';
             echo 'body { background-color: ' . $color . '; }';
             echo '</style>';
