@@ -126,10 +126,10 @@ try {
     // Si un formulaire a été récupéré et si le bouton a été pressé
     if ($_POST) {
         if (isset($_POST['choixFond']) && $_POST['choixFond'] == 'Fond') {
-
+            $drone = $_POST['drone'];
             // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
 
-            $sql = "UPDATE users SET fond = (:drone) WHERE iduser = $iduser";
+            $sql = "UPDATE users SET fond = $drone WHERE iduser = $iduser";
             $stmt = $conn->prepare($sql);
 
             // bind parameters and execute
