@@ -98,11 +98,7 @@ body{
 
   /* Demo styles
   --------------------------------------------  */
-  
-  body {
-    font: 90% / 1.5 Arial;
-    text-align: center;
-  }
+
   .carousel {
     width: 600px;
     height: 350px;

@@ -35,23 +35,27 @@ include 'caroussel.php';
     <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
     $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
 
-    <nav class="section">
-        <div id="Event">
-            <h5 style="text-align: center; color: red;">Evènements</h5>
-        </div>
+    <h5 style="text-align: center; color: red;">Evènements</h5>
 
-        <div class="carousel" id="test1">
-            <?php
-            $valueCar = 1;
-            $tabimages = explode(',', $row['tabimages']);
+    <div class="carousel" id="test1">
+        <?php
+        $valueCar = 1;
+        $tabimages = explode(',', $row['tabimages']);
+        ?>
+        <?php foreach ($tabimages as $image):
+            if ($valueCar == 1) {
+                echo '<input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> ';
+                echo '<div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>';
+                $valueCar++;
+            } else {
+                echo '<input type="radio" name="item" value="<?php echo $valueCar; ?>"> ';
+                echo '<div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>';
+                $valueCar++;
+            }
             ?>
-            <?php foreach ($tabimages as $image): ?>
-                <input type="radio" name="item" value="<?php echo $valueCar; ?>">       
-                    <img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px">
-                <?php $valueCar++; ?>
-            <?php endforeach; ?>
-        </div>
-    </nav>
+        <?php endforeach; ?>
+    </div>
+
 
     <nav class="section" style="color : black;">
         <div id="Amis">
