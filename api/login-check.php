@@ -27,8 +27,13 @@ if (isset($_COOKIE['jwt'])) {
 
         // Get the username from the decoded payload
         $iduser = $decoded->iduser;
-        
+
+        echo '<script>';
+        echo 'var iduser = "' . $iduser . '";';
+        echo '</script>';
+
         $sql = "SELECT fond FROM users WHERE iduser= $iduser";
+
 
         try {
             // Création du contact avec la BDD
