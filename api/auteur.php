@@ -14,17 +14,48 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/auteur.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
-echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.11.6/dist/umd/supabase.min.js"></script>';
 echo '<body>';
 
 include 'navbar.php';
 ?>
 
-<script scr="js/upload.js">
-</script>
+<?php
+
+try{
+    if($_POST)
+    {
+        //On se connecte à la BDD
+        $conn = new PDO($dsn);
+
+        //On définit certaines variables.
+        $ecriture = $_POST['write'];
+        $lieu = $_POST['lieu'];
+        $date = $_POST['date'];
+        $secu = $_POST['secu'];
+
+        //On insère les données reçues
+        $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite) VALUES(:write, :personne, :lieu, :date, :secu)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':write',$ecriture);
+        $stmt->bindParam(':personne',$iduser);
+        $stmt->bindParam(':lieu',$lieu);
+        $stmt->bindParam(':date',$date);
+        $stmt->bindParam(':secu',$secu);
+        $stmt->execute();
+
+        //Message de confirmation pour l'utilisateur
+         echo "Post publié !";
+    }
+    
+}
+catch(PDOException $e){
+    echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+}
+?>
+
 
 <nav class = "post" style =" background-color: cyan;">
-    <form method="post" action="traitement.php" onsubmit="">
+    <form method="post" action="traitement.php">
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
             <div class="row">
