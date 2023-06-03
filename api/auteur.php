@@ -46,7 +46,7 @@ try{
         $conn = new PDO($dsn);
 
         //On insère les données reçues
-        $sql = " INSERT INTO posts(descriptionpost, photo, lieu, date, accessibilite) VALUES(:write, :image_uploads, :lieu, :dates, :secu)";
+        $sql = "INSERT INTO posts(descriptionpost, photo, lieu,  accessibilite) VALUES(:write, :lieu, :dates, :secu)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':write',$ecriture);
         //$sth->bindParam(':photo',$image);  INSERER L image du post
