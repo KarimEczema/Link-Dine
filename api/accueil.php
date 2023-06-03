@@ -164,7 +164,7 @@ try {
 
                                     }
                                     echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>";
-                                    echo "<p stylel="font-style:italix">Date de publication: " . $item['datepublication'] . "</p>";
+                                    echo "<p style="font-style:italic">Date de publication: " . $item['datepublication'] . "</p>";
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
 
