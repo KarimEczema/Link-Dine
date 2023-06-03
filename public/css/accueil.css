@@ -153,3 +153,11 @@ input:checked ~ input:before {
   width: 100%;
 }
 
+#eventPerso{
+  background-color: mintcream ;
+}
+
+.form-container .btn:hover,
+    .open-button:hover {
+    opacity: 1;
+    }
