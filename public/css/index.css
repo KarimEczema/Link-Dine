@@ -11,6 +11,7 @@ body {
     background-size: 200% 200%;
     background-position: center center;
     background-image: linear-gradient(45deg, #222274, #4040a7, #5353bd, #4d4de0, #4444fc);
+    position: relative;
 }
 
 @keyframes Gradient {
@@ -65,4 +66,17 @@ h2 {
 .error {
     color: #ff0000;
     margin-bottom: 20px;
+}
+
+
+.message-erreur {
+    color: red;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: absolute;
+    top: 25%;
 }
