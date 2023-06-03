@@ -180,6 +180,48 @@ try {
 -->
 
 
+<?php
+try {
+    // create a PostgreSQL database connection
+    $conn = new PDO($dsn);
+
+    // get posts
+    $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
+    $stmt->execute([$iduser]);
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // get formations
+    $stmt = $conn->prepare("SELECT CONCAT(nom, ', ', institution) as title, datedebut as date, datedebut as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+    $stmt->execute([$iduser]);
+    $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // get projets
+    $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
+    $stmt->execute([$iduser]);
+    $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // combine all and sort by datepublication
+    $combined = array_merge($posts, $formations, $projets);
+    usort($combined, function($a, $b) {
+        return $b['datepublication'] <=> $a['datepublication'];
+    });
+
+    // display
+    foreach($combined as $item) {
+        echo "<div>";
+        echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+        echo "<p>" . htmlspecialchars($item['description']) . "</p>";
+        echo "<p>Publication date: " . $item['datepublication'] . "</p>";
+        echo "</div>";
+    }
+
+} catch (PDOException $e) {
+    // report error message
+    echo $e->getMessage();
+}
+?>
+
+<br><br>
 <h1 style="padding:10% ">Mes événements</h1>
 
 <?php

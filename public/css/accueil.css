@@ -116,13 +116,16 @@ input:checked ~ input:before {
     text-align: center;
 }
 
-.scroll-page {
-    width: 100%;
-    float: left;
-    text-align: left;
-    height: auto;
 
-    margin-top: 2%;
+.scrolling-page {
+  height: 400px;
+  overflow: auto;
+}
+
+.element {
+  background: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 
