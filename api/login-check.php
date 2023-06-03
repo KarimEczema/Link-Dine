@@ -55,7 +55,7 @@ if (isset($_COOKIE['jwt'])) {
         echo' <script type="text/javascript">';
         echo'     let jsVar = "' . $fondbg . '";'; // assignation de la variable php à la variable JavaScript
         echo'     let stylebg = document.getElementById("bg") ';
-        echo'     stylebg.innerHTML = "body { backround-color:  $fonbg }"';
+        echo'     stylebg.innerHTML = "body { backround-color:  ${fonbg}; }"';
         echo' </script>';
 
 } catch (Exception $e) {
