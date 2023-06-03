@@ -26,10 +26,11 @@ if (!isset($_SESSION['countCV'])) {
 
 ?>
 
-<body style="background-color: <?php $fondbg ?> ">
-
+<?php
+echo '<body style="background-color:  ' $fondbg '">';
+?>
 <?php include 'navbar.php';
-    echo '$fondbg';
+    echo $fondbg;
 ?>
 
 <!--
