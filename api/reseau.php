@@ -87,9 +87,13 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
         $ami = $stmt->fetch();
 
+        if($amis && $amis['amis'] !== null)
+    {
+        $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+
+
         // Check that the user has friends
-        if ($ami != NULL) {
-            $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+        if (!empty($amis)) {
     
             // Retrieve the friends' posts
             $params = implode(',', array_fill(0, count($ami), '?'));
@@ -115,6 +119,9 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
         } else {
             echo "This user has no friends.";
         }
+    } else {
+        echo "This user has no friends.";
+}
     } catch (PDOException $e) {
         // report error message
         echo $e->getMessage();
