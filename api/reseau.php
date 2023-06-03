@@ -97,8 +97,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 // Retrieve the friends' posts
                 $params = implode(',', array_fill(0, count($amis), '?'));
                 $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
-                $stmt->execute($ami);
-                $amis = $stmt->fetchAll();
+                $stmt->execute($amis);
+                $friends = $stmt->fetchAll();
 
                 ?>
                 <div id="friends" style="margin-top : 10%;">
@@ -107,7 +107,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 
                 <div id="carrousel">
                     <ul id="listc" style="list-style-type : none;">
-                        <?php foreach ($amis as $mesamis) { ?>
+                        <?php foreach ($friends as $mesamis) { ?>
                             <li>
                                 <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
                                     <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
