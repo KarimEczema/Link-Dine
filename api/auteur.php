@@ -93,7 +93,7 @@ catch(PDOException $e){
 
 
 <nav class = "post" style =" background-color: cyan;">
-    <form method="post" action="traitement.php" enctype="multipart/form-data">
+    <form method="post" action="" enctype="multipart/form-data">
         <label for="ameliorer">Creer un post</label><br>
         <div class="container-fluid">
             <div class="row">
