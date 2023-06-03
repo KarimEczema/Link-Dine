@@ -39,7 +39,7 @@ if (isset($_COOKIE['jwt'])) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $color = $result['fond'];
             
-            echo 'The background color is: ' . $color;
+            //echo 'The background color is: ' . $color;
             
             echo '<style>';
             echo 'body { background-color: ' . $color . '; }';

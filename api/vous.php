@@ -88,7 +88,7 @@ try {
         <p>Cliquez pour choisir le fond que vous préférez </p>
 
         <div>
-            <input type="radio" id="blanc" name="drone" value="white">
+            <input type="radio" id="blanc" name="drone" value="white" checked>
             <label for="blanc">Fond blanc (par défaut)</label>
         </div>
 
