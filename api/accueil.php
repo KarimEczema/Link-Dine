@@ -100,12 +100,14 @@ try {
             FROM users u
             JOIN posts p ON u.iduser = p.iduser
             WHERE p.idpost = $temp";
-            echo '<script> console.log("' . $sql2 . '");</script>';
+            echo '<script> console.log("sql :' . $sql2 . '");</script>';
             
 
             $stmt2 = $conn->prepare($sql2);
             $stmt2->execute();
             $id = $stmt2->fetchAll();
+            echo '<script> console.log("id :' . $id . '");</script>';
+
             
 
             echo $id . " : " . $post['descriptionpost'] . "<br>";
