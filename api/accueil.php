@@ -124,7 +124,7 @@ try {
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
                 // get formations
-                $stmt = $conn->prepare("SELECT users.nom as username, posts.nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, formation.nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
