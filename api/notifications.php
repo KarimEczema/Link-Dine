@@ -43,13 +43,14 @@ include 'caroussel.php';
         $tabimages = explode(',', $row['tabimages']);
         ?>
         <?php foreach ($tabimages as $image):
-            if ($valueCar == 1) {
-                echo '<input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> ';
-                echo '<div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>';
-                $valueCar++;
-            } else {
-                echo '<input type="radio" name="item" value="<?php echo $valueCar; ?>"> ';
-                echo '<div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>';
+            if ($valueCar == 1) { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked> 
+                <div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>
+                <?php $valueCar++;
+            } else { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>"> 
+                <div><img src="<?php echo trim($image); ?>" style="height : 60px; width : 60px"></div>
+                <?php
                 $valueCar++;
             }
             ?>
