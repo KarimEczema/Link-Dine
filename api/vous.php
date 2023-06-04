@@ -57,7 +57,9 @@ try {
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
     $photo = $_POST['image_url'];
-    $stmt = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':photo',$photo); 
+    $stmt->execute();
     }
 
 } catch (PDOException $e) {
