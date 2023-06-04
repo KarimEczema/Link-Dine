@@ -224,28 +224,34 @@ include 'navbar.php';
                             <h6>Description de l'événement:
                                 <?php echo htmlspecialchars($row['description']); ?>
                             </h6>
-
-                            <div style="border:solid;">
-
-                                <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la
-                                    semaine :</h3>
-                                <h2 style="text-align: center; margin:1%">
-                                    <?php echo htmlspecialchars($row2['nom']); ?>
-                                </h2>
-                                <h3 style="text-align: center; margin:1%">
-                                    <?php echo htmlspecialchars($row2['organisateur']); ?>
-                                </h3>
-
-
-
-                                
-
+                            <div class="login-popup">
+                                <div class="Description" id="form-<?php echo $row['idemploi']; ?>">
+                                    <div class="descr-container">
+                                        <h4>Description de la formation :</h4>
+                                        <?php echo htmlspecialchars($row['description']); ?>
+                                        <button type="button" class="btn cancel"
+                                            onclick="closeForm(<?php echo $row['idemploi'] ?>)"
+                                            style="background-color: antiquewhite">Fermer</button>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+
+                        <script>
+                            function openForm(id) {
+                                document.getElementById("form-" + id).style.display = "block";
+                            }
+
+                            function closeForm(id) {
+                                document.getElementById("form-" + id).style.display = "none";
+                            }
+                        </script>
+
+
+            </div>
+        <?php endwhile; ?>
+        </tbody>
+        </table>
         </div>
     </nav>
 
