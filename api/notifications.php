@@ -71,7 +71,9 @@ include 'caroussel.php';
 =====================================================================================
 -->
 
-<h1 style="padding:10%">Evénements de mes amis</h1>
+
+<h1 style="padding:10% ">Cela pourrait aussi vous intéresser :</h1>
+<h4 style="padding:10% ">Les amis de vos amis</h4>
 <?php
 try {
     // create a PostgreSQL database connection
@@ -102,10 +104,10 @@ try {
                 if ($friends && $friends['amis'] !== null) {
                     $friends = explode(',', trim($friends['amis'], '{}')); // convert the array string into a PHP array
 
-                    // Combine the friends' IDs with the current friend's ID
-                    $friendIds = array_merge([$ami], $friends);
+                    // Remove the user and their friends from the friends' array
+                    $friends = array_diff($friends, [$iduser], $amis);
 
-                    foreach ($friendIds as $friendId) {
+                    foreach ($friends as $friendId) {
                         // Get posts
                         $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                         $stmt->execute([$friendId]);
@@ -181,6 +183,7 @@ try {
     echo $e->getMessage();
 }
 ?>
+
 
     <?php include 'foot.php' ?>
 
