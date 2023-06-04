@@ -116,12 +116,14 @@ try {
         // Check that the user has friends
         if (!empty($amis)) {
             $combined = [];
-
+			$allPosts = [];
             foreach ($amis as $ami) {
                 // get posts
                 $stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+				$allPosts = array_merge($allPosts, $posts);
             }
 ?>
             <div class="scroll-container">
@@ -130,7 +132,7 @@ try {
                         <?php
 
 
-                        foreach ($posts as $item) {
+                        foreach ($allPosts as $item) {
                             ?>
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
@@ -167,23 +169,26 @@ try {
                                     $stmt = $conn->query($chcom);
                                     $com = $stmt->fetch(PDO::FETCH_ASSOC);
 
-									var_dump($com);
 									
                                     ?>
 
                                     <!-- script pour changer les variables à chaque post -->
                                     <script>
+
+										var buttonId = $(this).attr('id');
+										var idpost = buttonId.split('-')[1];
+
                                         // Récupérer le bouton de like par son ID
                                         var boutonl = document.getElementById('boutonlike');
 
                                         // Changer la valeur du bouton
-                                        boutonl.value = idpost ;
+                                        boutonl.value = idpost;
 
                                         // Récupérer le bouton de commentaire par son ID
-                                        var boutonc = document.getElementById('boutoncom');
+                                        var boutonc = document.getElementById('<?php echo $idpost; ?>');
 
                                         // Changer la valeur du bouton
-                                        boutonc.value = idpost ;
+                                        boutonc.value = idpost;
                                     </script>
 
 
@@ -237,7 +242,7 @@ try {
                                                 <form method="post" action="">
                                                     <h4>Contenu de votre commentaire :</h4>
                                                     <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                    <button type="submit" id="boutoncom" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                    <button type="submit" id="boutoncom-<?php echo $idpost; ?>" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                                     <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                                 </form>
                                             </div>
