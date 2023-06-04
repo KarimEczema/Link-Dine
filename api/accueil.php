@@ -243,7 +243,7 @@ try {
                                                 echo "Il n'y a pas encore de commentaires pour ce post.";
                                                 }
                                                 ?>
-                                                <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
+                                                <button type="button" class="btn cancel" onclick="fermtabcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                             </div>
                                         </div>
                                     </div>
