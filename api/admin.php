@@ -103,7 +103,10 @@ if($_POST){
 
         //Message de confirmation pour l'utilisateur
         echo "Utilisateur ajouté !";
-        echo 'ajout.form.reset()';
+        ?>
+        <script>ajout.form.reset()</script>
+        <?php
+        
     }
 }
 }catch (PDOException $e){
