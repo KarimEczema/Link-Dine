@@ -101,8 +101,14 @@ try {
         <div class="col-sm-4" style="background-color : purple">  
         <form method="post" action="" enctype="multipart/form-data"> 
         <input type="hidden" id="image_url" name="image_url">
+        <?php if($row['pp'] !== null) {?>
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </label>
+        <?php } 
+        else { ?>
+            <label for="image_uploads"><img src="" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+        <?php }
+        ?>
         <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
         <button type="submit" id="publish_button">Changer de Photo</button>
     </form>
