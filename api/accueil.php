@@ -196,6 +196,9 @@ try {
 													success: function(data) {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
+													error: function(xhr, status, error) {
+														console.error(xhr);
+													}
 												});
 											});
 
@@ -216,6 +219,9 @@ try {
 													success: function(data) {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
+													error: function(xhr, status, error) {
+														console.error(xhr);
+													}
 												});
 											});
 										});
