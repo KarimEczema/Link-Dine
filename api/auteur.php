@@ -59,7 +59,59 @@ try{
         $stmt->bindParam(':date',$date);
         $stmt->bindParam(':secu',$secu);
         $stmt->execute();
-    
+        
+        if(isset($_FILES['image_uploads'])) {
+            $file_name = $_FILES['image_uploads']['name'];
+            $file_tmp = $_FILES['image_uploads']['tmp_name'];
+            $file_size = $_FILES['image_uploads']['size'];
+        
+            $target_dir = "images/";
+            $target_file = $target_dir . basename($file_name);
+            echo "Target file: " . $target_file;
+            
+            $url = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/sign/'.$target_file;
+        
+            $headers = array(
+                'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw',
+                'Content-Type: '.mime_content_type($file_tmp),
+                'Cache-Control: no-cache',
+            );
+         
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($file_tmp));
+            
+            $response = curl_exec($ch);
+        
+            // Print out the response
+            echo "Response: ";
+            var_dump($response);
+            
+            // Print out the HTTP status code
+            echo "HTTP Status Code: ";
+            var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+        
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            } else {
+                $response_array = json_decode($response, true);
+                if(array_key_exists('Key', $response_array)){
+                    echo "Image successfully uploaded";
+                }else{
+                    echo "Failed to upload image";
+                }
+            }
+        
+            curl_close ($ch);
+        } else {
+            // Print out details of the received file if file was not received
+            echo "File details: ";
+            var_dump($_FILES['image_uploads']);
+        }
+
         //Message de confirmation pour l'utilisateur
          echo "Post publié !";
     }
