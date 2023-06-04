@@ -169,8 +169,7 @@ try {
                                     <?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
-                                    $_POST['ajouterlike']='CreerCom';
-                                    $_POST['ajouterCom']='Creerlike';
+                                    
                                     ?>
 
                                     <form>
