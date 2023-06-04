@@ -70,11 +70,6 @@ try {
 <!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 
 <nav class = "Ajout-compte">
-        <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <form method="post" action="">
-        <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
-        <div style = "background-color: grey; margin:-top2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
-
     <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
     <form method="post" action="">
     <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
