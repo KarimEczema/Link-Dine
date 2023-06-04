@@ -135,10 +135,13 @@ try {
                             ?>
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
+								<?php if( $item['photo']  !== null)
+								{?>
+									<div><img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"></div>
 
-											<div><img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"></div>
+									<?php}
 				
-											<?php
+											
                                     if ($item['title'] !== NULL) {
                                         echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
 
