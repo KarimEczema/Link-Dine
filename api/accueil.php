@@ -185,7 +185,7 @@ try {
 										var idpost = buttonId.split('-')[1];
 
 										$.ajax({
-										url: 'like',
+										url: 'like.php',
 										method: 'POST',
 										data: {
 											idpost: idpost
