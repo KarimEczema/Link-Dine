@@ -114,45 +114,6 @@ input:nth-of-type(5):checked ~ main#carousel {
   padding-bottom: 2%; 
 }
 
-ul#liste1 li {
-    float: left;
-	border-right: 1px solid #bbb;
-}
-
-
-ul#liste1 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-ul#liste1 li a:hover {
-    background-color: #111;
-		border-style: inset;
-}
-
-.scroll-container {
-    width: 50vw;
-    height: 60vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    display: block;
-    text-align: center;
-}
-
-.scroll-page {
-    width: 100%;
-    padding: 0%;
-    margin-right: 0%;
-    float: left;
-    text-align: left;
-    height: 50%;
-    margin-top: 10px;
-}
-
 #vous{
 	background-color: purple;
 }

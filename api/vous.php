@@ -1,11 +1,9 @@
 <?php
 include 'login-check.php';
 
-
-
-echo '<html>';
-echo '<head>';
-echo '<title>Your Page Title</title>';
+echo '<html>'; 
+echo '<head>'; 
+echo '<title>Vous</title>'; 
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs 
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
@@ -54,7 +52,9 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple">Photo</div>
+        <div class="col-sm-4" style="background-color : purple">                            
+        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+</div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
