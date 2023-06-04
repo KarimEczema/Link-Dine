@@ -189,116 +189,59 @@ include 'navbar.php';
 =====================================================================================
 -->
 
-    <?php
+<?php
+$sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
 
-    $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
-    try {
-        // Création du contact avec la BDD
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
-
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-    ?>
-
-    <!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
-    <nav class="section">
-        <div id="events">
-            <h5> Evénements organisés par l'ECE :</h5>
-        </div>
-        <div class="scroll-container">
-            <table>
-                <tbody>
-                    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-
-                        <div class="scroll-page" id="event">
-                            <h5><B>
-                                    <?php echo htmlspecialchars($row['nom']); ?>
-                                </B>
-                                <?php echo htmlspecialchars($row['organisateur']); ?>
-                            </h5>
-                            <h6>Date de l'événement:
-                                <?php echo htmlspecialchars($row['date']); ?>
-                            </h6> <br>
-                            <h6>Description de l'événement:
-                                <?php echo htmlspecialchars($row['description']); ?>
-                            </h6>
-
-                            <div style="border:solid;">
-
-                                <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la
-                                    semaine :</h3>
-                                <h2 style="text-align: center; margin:1%">
-                                    <?php echo htmlspecialchars($row2['nom']); ?>
-                                </h2>
-                                <h3 style="text-align: center; margin:1%">
-                                    <?php echo htmlspecialchars($row2['organisateur']); ?>
-                                </h3>
-
-
-
-                                
-                                    <?php
-                                    $valueCar = 1;
-                                    $tabimages = explode(',', $row2['tabimages']);
-                                    ?>
-                                    <?php foreach ($tabimages as $image):
-                                        if ($valueCar == 1) { ?>
-                                            <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
-                                            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                                            <?php $valueCar++;
-                                        } else { ?>
-                                            <input type="radio" name="item" value="<?php echo $valueCar; ?>">
-                                            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                                            <?php
-                                            $valueCar++;
-                                        }
-                                        ?>
-                                       
-                                            <h5><b>
-                                                    <?php echo htmlspecialchars($row['nom']); ?>
-                                                </b>
-                                                <?php echo htmlspecialchars($row['organisateur']); ?>
-                                            </h5>
-                                            <h6>Date de l'événement:
-                                                <?php echo htmlspecialchars($row['date']); ?>
-                                            </h6><br>
-                                            <h6>Description de l'événement:
-                                                <?php echo htmlspecialchars($row['description']); ?>
-                                            </h6>
-                                            <div class="carousel" id="test1">
-                                            <div class="scroll-page" id="event">
-                                            <?php
-                                            $sql2 = "SELECT tabimages FROM evenement WHERE id = ?";
-                                            $stmt2 = $conn->prepare($sql2);
-                                            $stmt2->execute([$row['id']]);
-
-                                            while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-                                                $row2['tabimages'] = trim($row2['tabimages'], '{}'); // remove the starting and ending curly braces
-                                                $decoded_images = json_decode($row2['tabimages'], true); // decode the JSON string to an associative array
-                                                ?>
-                                                <div style="border:solid;">
-                                                    <!-- Carousel code here -->
-                                                </div>
-                                                <?php
-                                            }
-                                            
-                                            ?>
-                                            </div>
-
-                                        </div>
-                                    <?php endforeach; ?>
-                                
-
+<!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
+<nav class="section">
+    <div id="events">
+        <h5>Evénements organisés par l'ECE :</h5>
+    </div>
+    <div class="scroll-container">
+        <table>
+            <tbody>
+                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                    <div class="scroll-page" id="event">
+                        <h5><b><?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['organisateur']); ?></h5>
+                        <h6>Date de l'événement: <?php echo htmlspecialchars($row['date']); ?></h6>
+                        <br>
+                        <h6>Description de l'événement: <?php echo htmlspecialchars($row['description']); ?></h6>
+                        <div class="carousel" id="carousel-<?php echo $row['id']; ?>">
+                            <?php
+                            $tabimages = explode(',', $row['tabimages']);
+                            foreach ($tabimages as $index => $image):
+                                $activeClass = ($index === 0) ? 'active' : '';
+                            ?>
+                            <div class="carousel-item <?php echo $activeClass; ?>">
+                                <img src="<?php echo trim($image); ?>" style="height: 350px; width: 600px">
                             </div>
-
+                            <?php endforeach; ?>
                         </div>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        </div>
-    </nav>
+                    </div>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</nav>
+
+<!-- Initialize Carousels -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var carousels = document.getElementsByClassName('carousel');
+        Array.from(carousels).forEach(function(carousel) {
+            M.Carousel.init(carousel);
+        });
+    });
+</script>
 
 
     <?php include 'foot.php' ?>
