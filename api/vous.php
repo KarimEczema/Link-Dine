@@ -55,10 +55,13 @@ try {
 
 <nav class="profil">
     <div class="row">
+        <?php
+        if(htmlspecialchars($row['pp']) !== null) { ?>
         <div class="col-sm-4" style="background-color : purple">
             <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
                 width="200" height="200">
         </div>
+        <?php } ?>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
