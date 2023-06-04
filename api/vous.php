@@ -54,7 +54,7 @@ try {
 try {
 
     if ($_POST) {
-        $imageUrl = $_POST['imageUrl'];
+        $image_url = $_POST['image_url'];
         
     
         // Create the connection with the database
@@ -63,7 +63,7 @@ try {
         // Update the user's profile picture
         $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':photo', $imageUrl);
+        $stmt->bindParam(':photo', $image_url);
         $stmt->execute();
     }
 
