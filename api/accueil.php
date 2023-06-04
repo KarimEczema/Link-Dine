@@ -20,7 +20,9 @@ echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 </head>
 <?php
 echo '<body>';
-
+?>
+<nav class = "bg">
+<?php
 include 'navbar.php';
 include 'caroussel.php';
 include 'pub.php';
@@ -312,5 +314,6 @@ try {
 
 
 <?php include 'foot.php'; ?>
+</nav>
 </body>
 </html>
