@@ -6,6 +6,8 @@ echo '<title>Notifications</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">';
+echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
@@ -233,18 +235,15 @@ try {
     </div>
 </nav>
 
-<!-- Initialize Carousels -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var carousels = document.getElementsByClassName('carousel');
-        Array.from(carousels).forEach(function(carousel) {
-            M.Carousel.init(carousel);
-        });
-    });
-</script>
-
-
     <?php include 'foot.php' ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var carousels = document.getElementsByClassName('carousel');
+            Array.from(carousels).forEach(function(carousel) {
+                M.Carousel.init(carousel);
+            });
+        });
+    </script>
 
 </body>
 
