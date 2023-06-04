@@ -25,6 +25,7 @@ if (!isset($_SESSION['countCV'])) {
 ?>
 
 
+<script src="js/upload.js"></script>
 
 <!--
 ======================================================

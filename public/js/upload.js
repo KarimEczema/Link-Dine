@@ -51,10 +51,12 @@ document.querySelector('form').addEventListener('submit', async function(event) 
             return;
         }
 
+        let sanitizedFileName = sanitizeFilename(file.name);
         const { data, error } = await supabase
-            .storage
-            .from('Images') // replace with your bucket name
-            .upload('post/' + file.name, file);
+        .storage
+        .from('Images') // replace with your bucket name
+        .upload('post/' + sanitizedFileName, file);
+
 
         if (error) {
             console.error('Upload error: ', error.message);
@@ -62,7 +64,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         } else {
             // Construct the full URL of the uploaded file
             var storageBaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/';
-            var fullUrl = storageBaseUrl + 'Images/post/' + file.name;
+            var fullUrl = storageBaseUrl + 'Images/post/' + sanitizedFileName;
             
             // Save the full URL of the uploaded file in the hidden input
             document.getElementById('image_url').value = fullUrl;
@@ -75,5 +77,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     }
 });
 
-
+function sanitizeFilename(filename) {
+    return filename.replace(/[^\w.]/gi, '_');  // replaces all non-alphanumeric and non-dot characters with underscores
+}
 
