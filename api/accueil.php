@@ -49,8 +49,8 @@ try {
 ?>
 
 <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
-$decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
-<?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
+$decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array
+$row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
 
 <div style="border:solid;">
 
@@ -149,10 +149,24 @@ try {
                                     <?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
+
+
                                     $idpost = $item['idpost'];
                                     echo '<script>';
                                     echo 'var idpost = "' . $idpost . '";';
                                     echo '</script>';
+
+                                    /*
+                                        Recupération des commentaires du tableau
+                                    */
+
+                                    $chcom = "SELECT commentaires
+                                    FROM commentaire
+                                    WHERE idpost = $idpost;";
+
+                                    $stmt = $conn->query($chcom);
+                                    $com = $stmt->fetch(PDO::FETCH_ASSOC);
+
                                     ?>
 
                                     <!-- script pour changer les variables à chaque post -->
@@ -186,7 +200,10 @@ try {
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrcommentaire()">Commentaire</button>
+                                                <button class="open-button" onclick="ouvrcommentaire()">Commenter </button>
+                                            </div>
+                                            <div class="open-btn">
+                                                <button class="open-button" onclick="ouvrtabcommentaire()">Commentaires </button>
                                             </div>
                                         </h6>
 
@@ -202,6 +219,33 @@ try {
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="login-popup">
+                                        <div class="Description" id="formulaire">
+                                            <div class="descr-container">
+                                                <h4>Commentaires du post :</h4>
+                                                <?php
+                                                if ($com && $com['commentaires'] !== null) {
+                                                    $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
+
+                                                    // Check that the user has friends
+                                                    if (!empty($com)) {
+
+                                                         foreach ($tabcom as $com) {
+                                                            echo trim($com);
+                                                            echo '<hr>';
+                                                        }
+
+                                                    } else {
+                                                    echo "Il n'y a pas encore de commentaires pour ce post";
+                                                    }
+                                                } else {
+                                                echo "Il n'y a pas encore de commentaires pour ce post.";
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
 
@@ -211,26 +255,53 @@ try {
                                     if($_POST)
                                     {
                                         if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $idpost) {
-                                            //On se connecte à la BDD
-                                            $conn = new PDO($dsn);
 
-                                            //On définit certaines variables.
-                                            $ecriture = $_POST['write'];
+                                            //vérification s'il s'agit du premier commentaire ou non
+                                            if ($com && $com['commentaires'] == null) {
+                                                $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
+                                                // Double check
+                                                if (empty($com)) {
+                                                    //On se connecte à la BDD
+                                                    $conn = new PDO($dsn);
 
-                                            //On insère les données reçues
-                                            $sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
-                                            $stmt = $conn->prepare($sql);
-                                            $stmt->bindParam(':write', $ecriture);
-                                            $stmt->bindParam(':personne', $iduser);
-                                            $stmt->bindParam(':post', $idpost);
+                                                    //On définit certaines variables.
+                                                    $ecriture = $_POST['write'];
 
-                                            $stmt->execute();
+                                                    //On insère les données reçues
+                                                    $sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
+                                                    $stmt = $conn->prepare($sql);
+                                                    $stmt->bindParam(':write', $ecriture);
+                                                    $stmt->bindParam(':personne', $iduser);
+                                                    $stmt->bindParam(':post', $idpost);
 
-                                            //Message de confirmation pour l'utilisateur
-                                            echo "Commentaire publié !";
+                                                    $stmt->execute();
+
+                                                    //Message de confirmation pour l'utilisateur
+                                                    echo "Commentaire publié !";
+                                                }
+                                                else{
+                                                    //On se connecte à la BDD
+                                                    $conn = new PDO($dsn);
+
+                                                    //On définit certaines variables.
+                                                    $ecriture = $_POST['write'];
+
+                                                    //On insère les données reçues
+                                                    $sql = "UPDATE commentaires SET commentaires = array_append(commentaires, :write) WHERE idpost=$idpost";
+                                                    $stmt = $conn->prepare($sql);
+                                                    $stmt->bindParam(':write', $ecriture);
+
+                                                    $stmt->execute();
+
+                                                    //Message de confirmation pour l'utilisateur
+                                                    echo "Commentaire publié !";
+
+                                                    }
+                                                }
+                                            }
                                         }
-                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
+                                        if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
@@ -246,11 +317,12 @@ try {
                                             echo "Vous aimez ce post";
                                         }
                                     }
+                                    catch(PDOException $e){
+                                    echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+                                }
 
                                 }
-                                catch(PDOException $e){
-                                echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
-                                }
+
                                 ?>
 
                                 <!--
@@ -261,15 +333,22 @@ try {
                                         document.getElementById("form-").style.display = "block";
                                     }
 
+                                    function ouvrtabcommentaire() {
+                                        document.getElementById("formulaire").style.display = "block";
+                                    }
 
                                     function fermcommentaire() {
                                         document.getElementById("form-").style.display = "none";
+                                    }
+
+                                    function fermtabcommentaire() {
+                                        document.getElementById("formulaire").style.display = "none";
                                     }
                                 </script>
 
                             <?php
 
-                        }
+
                         ?>
                     </tbody>
                 </table>
