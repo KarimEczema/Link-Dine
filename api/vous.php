@@ -49,8 +49,9 @@ if (!isset($_SESSION['countCV'])) {
 
 <?php
 
-$sql = "SELECT * FROM users WHERE iduser= $iduser";
+
 try {
+    $sql = "SELECT * FROM users WHERE iduser= $iduser";
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
     $stmt = $conn->query($sql);
