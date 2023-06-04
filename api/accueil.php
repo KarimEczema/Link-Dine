@@ -165,7 +165,7 @@ try {
                                     }
                                     echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>";
                                     echo "<p style="font-style:italic">Date de publication: " . $item['datepublication'] . "</p>";
-                                    echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+                                    echo "<p>" . htmlspecialchars($item['description']) . "</p>";
                                     echo "</div>";
 
 
@@ -271,7 +271,7 @@ try {
                             echo "<p style="font-style:italic">Date de publication: " . $item['datepublication'] . "</p>";
                             if($item['description'] !== NULL)
                             {
-                                echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+                                echo "<p>" . htmlspecialchars($item['description']) . "</p>";
                             }
                             echo "</div>";
 
