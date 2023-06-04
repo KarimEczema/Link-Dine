@@ -72,8 +72,8 @@ include 'caroussel.php';
 -->
 
 
-<h1 style="padding:10% ">Cela pourrait aussi vous intéresser :</h1>
-<h4 style="padding:10% ">Les amis de vos amis</h4>
+<h1 style="padding:2% ">Cela pourrait aussi vous intéresser :</h1>
+<h4 style="padding:2% ">Les amis de vos amis</h4>
 <?php
 try {
     // create a PostgreSQL database connection
