@@ -182,49 +182,57 @@ try {
 
 									<script>
 										$(document).ready(function() {
-											// Get the initial like count for each post
-											$('.like-button').each(function() {
-												var buttonId = $(this).attr('id');
-												var idpost = buttonId.split('-')[1];
+    // Get the initial like count for each post
+    $('.like-button').each(function() {
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
 
-												$.ajax({
-													url: 'get_likes',
-													method: 'GET',
-													data: {
-														idpost: idpost
-													},
-													success: function(data) {
-														$('#' + buttonId).text('like (' + data + ')');
-													},
-													error: function(xhr, status, error) {
-														console.error(xhr);
-													}
-												});
-											});
+        $.ajax({
+            url: 'get_likes',
+            method: 'GET',
+            data: {
+                idpost: idpost
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            }
+        });
+    });
 
-											// Handle click event on like button
-											$('.like-button').click(function(e) {
-												e.preventDefault();
-												
-												var buttonId = $(this).attr('id');
-												var idpost = buttonId.split('-')[1];
+    // Handle click event on like button
+    $('.like-button').click(function(e) {
+        e.preventDefault();
 
-												$.ajax({
-													url: 'like',
-													method: 'POST',
-													data: {
-														idpost: idpost,
-														iduser: iduser
-													},
-													success: function(data) {
-														$('#' + buttonId).text('like (' + data + ')');
-													},
-													error: function(xhr, status, error) {
-														console.error(xhr);
-													}
-												});
-											});
-										});
+        // Disable the button immediately to prevent multiple clicks
+        $(this).prop('disabled', true);
+
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
+
+        $.ajax({
+            url: 'like',
+            method: 'POST',
+            data: {
+                idpost: idpost,
+                iduser: iduser
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            },
+            complete: function() {
+                // Re-enable the button when the AJAX request is complete
+                $('#' + buttonId).prop('disabled', false);
+            }
+        });
+    });
+});
+
 										</script>
 
 									<!-- Partie partage -->
