@@ -13,7 +13,6 @@ body{
 
 #Emplois{
     text-align : center;
-    color:red;
     border: 3px solid black;
     border-radius: 5%;
     padding : 3px;
@@ -33,8 +32,7 @@ body{
     width: 100%;
     float: left;
     text-align: left;
-    height: 30%;
-
+    height: 40%;
     margin-top: 10px;
 }
 
