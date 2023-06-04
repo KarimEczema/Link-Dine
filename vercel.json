@@ -15,6 +15,7 @@
     { "src": "/login-check", "dest": "/api/login-check.php"},
     { "src": "/admin-check", "dest": "/api/admin-check.php"},
     { "src": "/notifications", "dest": "/api/notifications.php"},
+    { "src": "/like", "dest": "/api/like.php"},
     { "src": "/nav", "dest": "/api/navbar.php"},
     { "src": "/delete", "dest": "/api/delete.php"},
     { "src": "/chat", "dest": "/api/chat.php" },
