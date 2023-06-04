@@ -97,7 +97,7 @@ include 'navbar.php';
                             <?php
                             foreach ($combined as $item) {
 
-                                if ($item['accessibilite'] != 'Amis') { ?>
+                                if ($item['acces'] != 'Amis') { ?>
                                     <div class="scroll-page" id="eventPerso">
                                         <div style="padding:2%; border:solid;">
                                             <?php
