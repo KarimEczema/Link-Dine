@@ -47,13 +47,19 @@ include 'navbar.php';
         $valueCar = 1;
         $tabimages = explode(',', $row['tabimages']);
         ?>
-        <?php foreach ($tabimages as $image): ?>
-                <input type="radio" name="item" value="<?php echo $valueCar; ?>" >
+        <?php foreach ($tabimages as $image):
+            if ($valueCar == 1) { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
                 <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
                 <?php $valueCar++;
-         endforeach; ?>
-
- 
+            } else { ?>
+                <input type="radio" name="item" value="<?php echo $valueCar; ?>">
+                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                <?php
+                $valueCar++;
+            }
+            ?>
+        <?php endforeach; ?>
     </div>
 
 
@@ -243,9 +249,9 @@ include 'navbar.php';
                                     $tabimages = explode(',', $row['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image): ?>
-                                            <input type="radio" name="item" value="<?php echo $valueCar; ?>" >
-                                            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                                            <?php $valueCar++;
+                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>">
+                                        <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                                        <?php $valueCar++;
                                         ?>
                                     <?php endforeach; ?>
                                 </div>
