@@ -12,13 +12,11 @@ echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 include 'login-check.php';
 echo '</head>';
 echo '<body>';
-
+?>
+    <nav class = "bg">
+<?php
 include 'navbar.php';
 ?>
-
-
-<body>
-<nav id = "bg">
     <?php include 'eventamis.php'; ?>
 
     <!--
