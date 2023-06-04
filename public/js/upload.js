@@ -33,7 +33,9 @@ document.getElementById('image_uploads').addEventListener('change', function() {
     }
 });
 
-document.getElementById('publish_button').addEventListener('click', async function() {
+document.querySelector('form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
     var fileInput = document.getElementById('image_uploads');
     var file = fileInput.files[0];
 
@@ -62,6 +64,7 @@ document.getElementById('publish_button').addEventListener('click', async functi
             document.getElementById('image_url').value = 'Images/post/' + file.name;
             console.log('File uploaded: ', data);
             alert('File successfully uploaded.');
+            event.target.submit(); // submit the form after the image is uploaded
         }
     } else {
         alert('Please choose a file to upload.');
