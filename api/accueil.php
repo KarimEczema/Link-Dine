@@ -166,7 +166,7 @@ try {
 
                                     $stmt = $conn->query($chcom);
                                     $com = $stmt->fetch(PDO::FETCH_ASSOC);
-
+									
                                     ?>
 
                                     <!-- script pour changer les variables à chaque post -->
@@ -248,15 +248,15 @@ try {
                                                 <h4>Commentaires du post :</h4>
                                                 <?php
 
-												echo $com;
+												
                                                 if ($com && $com['commentaires'] !== null) {
                                                     $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
                                                     // Check that the user has friends
                                                     if (!empty($com)) {
 
-                                                         foreach ($tabcom as $com) {
-                                                            echo trim($com);
+                                                         foreach ($tabcom as $comment) {
+                                                            echo trim($comment);
                                                             echo '<hr>';
                                                         }
 
