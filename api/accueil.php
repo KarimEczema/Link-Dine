@@ -188,7 +188,7 @@ try {
 												var idpost = buttonId.split('-')[1];
 
 												$.ajax({
-													url: 'get_likes.php',
+													url: 'get_likes',
 													method: 'GET',
 													data: {
 														idpost: idpost
@@ -210,7 +210,7 @@ try {
 												var idpost = buttonId.split('-')[1];
 
 												$.ajax({
-													url: 'like.php',
+													url: 'like',
 													method: 'POST',
 													data: {
 														idpost: idpost,
