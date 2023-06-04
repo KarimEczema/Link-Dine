@@ -39,8 +39,8 @@ document.getElementById('publish_button').addEventListener('click', async functi
 
         const { data, error } = await supabase
             .storage
-            .from('uploads')
-            .upload(file.name, file);
+            .from('Images') // replace with your bucket name
+            .upload('post/' + file.name, file);
 
         if (error) {
             console.error('Upload error: ', error.message);
