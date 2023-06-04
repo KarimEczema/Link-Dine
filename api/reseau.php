@@ -33,52 +33,85 @@ include 'caroussel.php';
 <body>
 
 
-    <!--
+<!--
 ======================================================
         Partie Profil
 ======================================================
 -->
 
-    <!-- récupération des donnée dans la table users -->
+<!-- récupération des donnée dans la table users -->
 
-    <?php
 
-    $sql = "SELECT * FROM users WHERE iduser= $iduser";
-    try {
-        // Création du contact avec la BDD
-        $conn = new PDO($dsn);
-        $stmt = $conn->query($sql);
 
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+<?php
+
+try {
+
+    if ($_POST) {
+            $image_url = $_POST['image_url'];
+        
+    
+            // Create the connection with the database
+            $conn = new PDO($dsn);
+        
+            // Update the user's profile picture
+            $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':photo', $image_url);
+            $stmt->execute();
+        }
     }
-    ?>
 
-    <!-- affichage des données de la bdd avec php -->
-    <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
+catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
 
-    <nav class="profil">
-        <div class="row">
-            <div class="col-sm-4" style="background-color : purple">Photo</div>
-            <div class="col-sm-8" style="background-color: red ; margin-left: 2%">
-                <div style="background-color: green; margin:2%">
-                    <h1>
-                        <?php echo htmlspecialchars($row['username']); ?>
-                    </h1>
-                    <h3>
-                        <?php echo htmlspecialchars($row['statut']); ?>
-                    </h3>
-                </div>
-                <div style="background-color: blue; margin:2%">
-                    <h3>
-                        <?php echo htmlspecialchars($row['bio']); ?>
-                    </h3>
-                </div>
+<?php
+
+
+try {
+    $sql = "SELECT * FROM users WHERE iduser= $iduser";
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
+
+<!-- affichage des données de la bdd avec php -->
+<?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
+
+<nav class="profil">
+    <div class="row">
+        <div class="col-sm-4" style="background-color : purple">  
+        <form method="post" action="" enctype="multipart/form-data"> 
+        <input type="hidden" id="image_url" name="image_url">
+        <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+        </label>
+        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
+        <button type="submit" id="publish_button">Changer de Photo</button>
+    </form>
+    </div>
+        <div class="col-sm-8" style="background-color: grey">
+            <div style="background-color: #d6a3b7; margin:2%">
+                <h1>
+                    <?php echo htmlspecialchars($row['username']); ?>
+                </h1>
+                <h3>
+                    <?php echo htmlspecialchars($row['statut']); ?>
+                </h3>
+            </div>
+            <div style="background-color: #a7d4d4; margin:2%">
+                <h3>
+                    <?php echo htmlspecialchars($row['bio']); ?>
+                </h3>
             </div>
         </div>
-    </nav>
-
-    <?php
+    </div>
+</nav>    <?php
     try {
         // create a PostgreSQL database connection
         $conn = new PDO($dsn);
