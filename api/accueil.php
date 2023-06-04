@@ -166,6 +166,8 @@ try {
 
                                     $stmt = $conn->query($chcom);
                                     $com = $stmt->fetch(PDO::FETCH_ASSOC);
+
+									var_dump($com);
 									
                                     ?>
 
