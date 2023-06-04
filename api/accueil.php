@@ -197,7 +197,7 @@ try {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
 													error: function(xhr, status, error) {
-														//console.error(xhr);
+														console.error(xhr);
 													}
 												});
 											});
@@ -220,7 +220,7 @@ try {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
 													error: function(xhr, status, error) {
-														//console.error(xhr);
+														console.error(xhr);
 													}
 												});
 											});
