@@ -85,12 +85,12 @@ catch(PDOException $e){
                         <p>A qui voulez vous le partager ?</p>
 
                         <div>
-                            <input type="radio" id="friend" name="secu" value="friend" checked>
+                            <input type="radio" id="friend" name="secu" value="Amis" checked>
                         <label for="huey">Vos amis</label>
                         </div>
 
                         <div>
-                            <input type="radio" id="all" name="secu" value="all">
+                            <input type="radio" id="all" name="secu" value="tous">
                             <label for="dewey">Tout le monde</label>
                         </div>
                     </fieldset>
