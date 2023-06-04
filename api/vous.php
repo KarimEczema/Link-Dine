@@ -101,7 +101,7 @@ try {
         <div class="col-sm-4" style="background-color : purple">  
         <form method="post" action="" enctype="multipart/form-data"> 
         <input type="hidden" id="image_url" name="image_url">
-        <?php if(htmlspecialchars($row['pp'])!== null) {?>
+        <?php if($row['pp'] !== null) {?>
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </label>
         <?php } ?>
