@@ -24,7 +24,7 @@ if (!isset($_SESSION['countCV'])) {
 }
 
 ?>
-
+<script type="module" src="js/upload.js"></script>
 
 
 
@@ -105,7 +105,7 @@ try {
         </div>
     </div>
 </nav>
-<script type="module" src="js/upload.js"></script>
+
 
 
 <!--
