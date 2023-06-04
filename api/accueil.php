@@ -119,7 +119,7 @@ try {
 
             foreach ($amis as $ami) {
                 // get posts
-                $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -149,7 +149,7 @@ try {
                                     <?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
-                                    $idpost=$item['idpost'];
+                                    $idpost = $item['idpost'];
                                     echo '<script>';
                                     echo 'var idpost = "' . $idpost . '";';
                                     echo '</script>';
