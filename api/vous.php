@@ -47,13 +47,27 @@ if (!isset($_SESSION['countCV'])) {
 
 <!-- récupération des donnée dans la table users -->
 
+<?php
+
+$sql = "SELECT * FROM users WHERE iduser= $iduser";
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $stmt = $conn->query($sql);
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
 
 <?php
 
 try {
+
     if ($_POST) {
         $image_url = $_POST['image_url'];
-
+        
+    
         // Create the connection with the database
         $conn = new PDO($dsn);
     
@@ -67,22 +81,7 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
-
-// Fetch the user data
-$sql = "SELECT * FROM users WHERE iduser= $iduser";
-try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
-
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-
-// Fetch the data
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-
 
 <!-- affichage des données de la bdd avec php -->
 <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
