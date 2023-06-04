@@ -35,12 +35,11 @@ include 'pub.php';
 
 <body>
 
-
     <!--
-======================================================
-        Partie Profil
-======================================================
--->
+    ======================================================
+            Partie Profil
+    ======================================================
+    -->
 
     <!-- récupération des donnée dans la table users -->
 
@@ -62,9 +61,12 @@ include 'pub.php';
 
     <nav class="profil">
         <div class="row">
-            <div class="col-sm-4" style="background-color : purple">Photo</div>
-            <div class="col-sm-8" style="background-color: red ; margin-left: 2%">
-                <div style="background-color: green; margin:2%">
+            <div class="col-sm-4" style="background-color : purple">
+                <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
+                    width="200" height="200">
+            </div>
+            <div class="col-sm-8" style="background-color: grey">
+                <div style="background-color: #d6a3b7; margin:2%">
                     <h1>
                         <?php echo htmlspecialchars($row['username']); ?>
                     </h1>
@@ -72,7 +74,7 @@ include 'pub.php';
                         <?php echo htmlspecialchars($row['statut']); ?>
                     </h3>
                 </div>
-                <div style="background-color: blue; margin:2%">
+                <div style="background-color: #a7d4d4; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['bio']); ?>
                     </h3>
@@ -80,7 +82,6 @@ include 'pub.php';
             </div>
         </div>
     </nav>
-
     <?php
     try {
         // create a PostgreSQL database connection
