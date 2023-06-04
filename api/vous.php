@@ -4,26 +4,23 @@ echo '<html>';
 echo '<head>';
 echo '<title>Vous</title>';
 
-
-// Inclusion des bibliothèques nécessaire et des styles
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 
-// Check d'authentification
 include 'login-check.php';
+
+// Ici, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+
 
 echo '</head>';
 echo '<body>';
 ?>
-    <!--Fond personalisé-->
     <nav class = "bg">
-
 <?php
 
-// Inclusion de la barre de navigation
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -33,12 +30,7 @@ if (!isset($_SESSION['countCV'])) {
 }
 
 ?>
-
-<!-- Inclusion des scripts pour l'upload d'images-->
-
 <script type="module" src="js/upload.js"></script>
-
-<!-- Fonction de previsualisation de la nouvelle image de profil-->
 <script> function previewImage() {
     var file = document.getElementById('image_uploads').files[0];
     if (file) {
@@ -71,10 +63,10 @@ try {
             $image_url = $_POST['image_url'];
         
     
-            // Connection à la base de données
+            // Create the connection with the database
             $conn = new PDO($dsn);
         
-            // =Mettre à jour l'url de la photo de profil de l'utilisateur
+            // Update the user's profile picture
             $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':photo', $image_url);
@@ -89,7 +81,7 @@ catch (PDOException $e) {
 
 <?php
 
-// Recuperation des données utilisateurs
+
 try {
     $sql = "SELECT * FROM users WHERE iduser= $iduser";
     // Création du contact avec la BDD
@@ -103,7 +95,6 @@ try {
 
 <!-- affichage des données de la bdd avec php -->
 <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
-
 
 <nav class="profil">
     <div class="row">
@@ -205,7 +196,7 @@ try {
             $sql = "UPDATE users SET fond = '$drone' WHERE iduser = $iduser";
             $stmt = $conn->prepare($sql);
 
-            
+            // bind parameters and execute
             //$stmt->bindParam(':drone', $_POST['fond']);
             $stmt->execute();
 
@@ -326,6 +317,7 @@ try {
             $sql = "INSERT INTO formation ( iduser, datedebut, datefin, nom, institution) VALUES ($iduser, :datedebut, :datefin, :nom, :institution)";
             $stmt = $conn->prepare($sql);
 
+            // bind parameters and execute
             $stmt->bindParam(':datedebut', $_POST['datedebut']);
             $stmt->bindParam(':datefin', $_POST['datefin']);
             $stmt->bindParam(':nom', $_POST['nom']);
@@ -446,6 +438,7 @@ try {
             $sqlp = "INSERT INTO projet ( iduser, nom, description) VALUES ($iduser, :nompjt, :description)";
             $stmtp = $conn->prepare($sqlp);
 
+            // bind parameters and execute
             $stmtp->bindParam(':nompjt', $_POST['nompjt']);
             $stmtp->bindParam(':description', $_POST['description']);
             $stmtp->execute();

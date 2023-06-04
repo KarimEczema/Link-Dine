@@ -82,23 +82,23 @@ try{
 
 <?php
 try {
-// Connection à la base de données
+// create a PostgreSQL database connection
 $conn = new PDO($dsn);
 
-
+// query to check if username exists
 $sql = "SELECT amis FROM users WHERE iduser = ?";
 $stmt = $conn->prepare($sql);
 
-
+// bind parameters and execute
 $stmt->execute([$expl]);
 
 $ami = $stmt->fetch();
 
-// Si l'utilisateur a des amis
+// Check that the user has friends
 if ($ami) {
-$ami = explode(',', trim($ami['amis'], '{}')); // Convertir en chaine de charactere
+$ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
 
-// Recuperer les posts de ses amis
+// Retrieve the friends' posts
 $params = implode(',', array_fill(0, count($ami), '?'));
 $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
 $stmt->execute($ami);
@@ -123,7 +123,7 @@ $amis = $stmt->fetchAll();
             echo "This user has no friends.";
         }
         }catch (PDOException $e) {
-            //Affichage message d'erreur
+            // report error message
             echo $e->getMessage();
         }?>
     </ul>

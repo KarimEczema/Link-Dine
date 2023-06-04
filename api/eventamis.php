@@ -9,86 +9,97 @@
 <h4></h4>
 <?php
 try {
-    // Lien avec la BDD
+    // create a PostgreSQL database connection
     $conn = new PDO($dsn);
 
-    // Requête SQL et récupération de la liste d'amis de l'utilisateur
+    // query to check if username exists
     $sql = "SELECT amis FROM users WHERE iduser = ?";
     $stmt = $conn->prepare($sql);
+
+    // bind parameters and execute
     $stmt->execute([$iduser]);
+
     $amis = $stmt->fetch();
 
 
 
     if ($amis && $amis['amis'] !== null) {
-        $amis = explode(',', trim($amis['amis'], '{}')); // Convertion d'un array string en PHP array
-
-        // Si l'utilisateur a des amis, on récupère pour chacun d'entre eux les pots, formations et projet
+        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+    
+        // Check that the user has friends
         if (!empty($amis)) {
             $combined = [];
-
+    
             foreach ($amis as $ami) {
-                // Posts
+                // get posts
                 $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // Formations
+            
+                // get formations
                 $stmt = $conn->prepare("SELECT users.nom as username, formation.nom as title, (datedebut, ', ' ,datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // Projets
+            
+                // get projets
                 $stmt = $conn->prepare("SELECT users.nom as username, projet.nom as title, NULL as date, description, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // On les met tous ensembles pour pouvoir ensuite trier par ordre de date 
+            
+                // combine all and sort by datepublication
                 $combined = array_merge($combined, $posts, $formations, $projets);
             }
-
-            //Tri
+            
             usort($combined, function ($a, $b) {
                 return $b['datepublication'] <=> $a['datepublication'];
             });
-
+    
             usort($combined, function ($a, $b) {
                 return $b['datepublication'] <=> $a['datepublication'];
             }); ?>
 
-            <!-- On affiche dans un scroller toutes les infos avec l'évènement le plus récent en haut -->
             <div class="scroll-container">
                 <table>
                     <tbody>
                         <?php
-                        //Pour chaque événement, affichage des 3 données récupérées
+
+
                         foreach ($combined as $item) {
                             ?>
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
+
                                     <?php
                                     echo "<div>";
-                                    if ($item['title'] !== NULL) {
+                                    if($item['title'] !== NULL)
+                                    {
                                         echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+
                                     }
                                     echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
-                                    <h6 style="font-style:italic">Date de publication:
-                                        <?php echo htmlspecialchars($item['datepublication']) ?>
-                                    </h6>;
-                                    <?php
+                                    <h6 style="font-style:italic">Date de publication: <?php echo htmlspecialchars($item['datepublication']) ?> </h6>;
+
+<?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
+
+
                                     ?>
+
                                 </div>
+
                                 <script>
                                     function openForm(id) {
                                         document.getElementById("form-" + id).style.display = "block";
                                     }
+
                                     function closeForm(id) {
                                         document.getElementById("form-" + id).style.display = "none";
                                     }
                                 </script>
-                            <?php
+
+                            <?php                         
+                        
                         }
                         ?>
                     </tbody>
@@ -97,13 +108,14 @@ try {
             <?php
 
         } else {
-            echo "Vous n'avez pas d'amis.";
+            echo "This user has no friends.";
         }
     } else {
-        echo "Vous n'avez pas d'amis.";
+        echo "This user has no friends.";
     }
 
 } catch (PDOException $e) {
+    // report error message
     echo $e->getMessage();
 }
 ?>

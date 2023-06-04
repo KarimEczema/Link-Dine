@@ -1,5 +1,3 @@
-<!-- Caroussel réutilisable -->
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $img = $('#carrousel img');

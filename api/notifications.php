@@ -30,52 +30,54 @@ include 'navbar.php';
     <h4 style="padding:2% ">Les amis de vos amis</h4>
     <?php
     try {
-        // Connexion database
+        // create a PostgreSQL database connection
         $conn = new PDO($dsn);
 
-        // requete SQL pour récupérer les infos des amis
+        // query to check if username exists
         $sql = "SELECT amis FROM users WHERE iduser = ?";
         $stmt = $conn->prepare($sql);
 
+        // bind parameters and execute
         $stmt->execute([$iduser]);
 
         $amis = $stmt->fetch();
 
         if ($amis && $amis['amis'] !== null) {
-            $amis = explode(',', trim($amis['amis'], '{}')); // conversion pour récupérer le bon type
+            $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
     
-            // Si l'utilisateur a des amis
+            // Check that the user has friends
             if (!empty($amis)) {
                 $combined = [];
 
                 foreach ($amis as $ami) {
-                    // Récupère les infos des amis
+                    // Get the friends of the current friend
                     $stmt = $conn->prepare("SELECT amis FROM users WHERE iduser = ?");
                     $stmt->execute([$ami]);
                     $friends = $stmt->fetch();
 
                     if ($friends && $friends['amis'] !== null) {
-                        $friends = explode(',', trim($friends['amis'], '{}')); 
+                        $friends = explode(',', trim($friends['amis'], '{}')); // convert the array string into a PHP array
     
+                        // Remove the user and their friends from the friends' array
                         $friends = array_diff($friends, [$iduser], $amis);
 
                         foreach ($friends as $friendId) {
-                            // Récupère Posts
+                            // Get posts excluding the user's own posts
                             $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, accessibilite as acces, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? AND posts.iduser <> ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId, $iduser]);
                             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                            // Formations
+                            // Get formations
                             $stmt = $conn->prepare("SELECT users.nom as username, formation.nom as title, (datedebut || ', ' || datefin) as date, institution as description, NULL as acces, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId]);
                             $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                            // Projects
+                            // Get projects
                             $stmt = $conn->prepare("SELECT users.nom as username, projet.nom as title, NULL as date, description, NULL as acces, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId]);
                             $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                            // Combine
+                            // Combine all and sort by datepublication
                             $combined = array_merge($combined, $posts, $formations, $projets);
                         }
                     }
@@ -86,7 +88,7 @@ include 'navbar.php';
                 });
 
                 ?>
-                <!-- Affiche le scroller avec les infos des amis en bouclant pour tous -->
+
                 <div class="scroll-container">
                     <table>
                         <tbody>
@@ -164,7 +166,6 @@ include 'navbar.php';
         <div class="scroll-container">
             <table>
                 <tbody>
-
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
                         <div class="scroll-page" id="eventPerso" style="border:solid; padding-bottom:3px">
@@ -197,9 +198,8 @@ include 'navbar.php';
                                 </div>
                             </div>
                             <?php
-                            //Conversion depuis le tableau json en type utilisable
                             if ($row['tabimages'] !== NULL) {
-                                $row['tabimages'] = trim($row['tabimages'], '{}'); // Enlève les accolades au débéut et à la fin
+                                $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
                                 <div class="carousel" id="test1" style="padding-bottom:3%">
                                     <?php
@@ -261,7 +261,6 @@ try {
     <div class="scroll-container">
         <table>
             <tbody>
-                <!-- Boucle pour chaque Evenement -->
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
                     <div class="scroll-page" id="eventPerso" style="border:solid; padding-bottom:3px">
@@ -293,10 +292,9 @@ try {
                                 </div>
                             </div>
                         </div>
-                        <!-- Insertion des images et conversion depuis le json -->
                         <?php
                         if ($row['tabimages'] !== NULL) {
-                            $row['tabimages'] = trim($row['tabimages'], '{}'); 
+                            $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                             $decoded_images = json_decode($row['tabimages'], true); ?>
                             <div class="carousel" id="test1" style="padding-bottom:3%">
                                 <?php
