@@ -11,9 +11,10 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstr
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+echo '</head>';
 echo '<body>';
 
-echo '</head>';
+
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -50,17 +51,23 @@ try {
 
 <?php
 
+
 $sql = "INSERT INTO users(photo) VALUES(:photo);";
 try {
-    if($_POST)
-    {
 
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $photo = $_POST['image_url'];
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':photo',$photo); 
-    $stmt->execute();
+    if ($_POST) {
+        $imageUrl = $_POST['imageUrl'];
+        $userId = $_POST['userId'];
+    
+        // Create the connection with the database
+        $conn = new PDO($dsn);
+    
+        // Update the user's profile picture
+        $sql = "UPDATE users SET photo = :photo WHERE iduser = :iduser";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':photo', $imageUrl);
+        $stmt->bindParam(':iduser', $userId);
+        $stmt->execute();
     }
 
 } catch (PDOException $e) {
@@ -75,10 +82,11 @@ try {
     <div class="row">
         <div class="col-sm-4" style="background-color : purple">  
         <form method="post" action="" enctype="multipart/form-data"> 
-
+        <input type="hidden" id="image_url" name="image_url">
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </label>
         <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
+        <button type="submit" id="publish_button">Changer de Photo</button>
     </form>
     </div>
         <div class="col-sm-8" style="background-color: grey">
