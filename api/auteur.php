@@ -156,11 +156,11 @@ catch(PDOException $e){
     </form>
 </nav>
 
-<input type="file" id="imageuploads" name="image_uploads" accept=".jpg, .jpeg, .png">
+<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
 <img id="preview" src="#" alt="Image Preview" style="display: none;">
 
 <script>
-document.getElementById('imageuploads').addEventListener('change', function() {
+document.getElementById('image_uploads').addEventListener('change', function() {
     var file = this.files[0]; // get the uploaded file
 
     // check if a file is selected
@@ -175,7 +175,6 @@ document.getElementById('imageuploads').addEventListener('change', function() {
     }
 });
 </script>
-
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
 </nav>
