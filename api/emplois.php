@@ -74,6 +74,7 @@ include 'navbar.php';
                             </div>
                         </div>
                         <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
+                        <h6 style="font-style:italic">(Date de publication : <?php echo htmlspecialchars($row['datepublication']); ?> )</h6> 
                     </div> 
 
                     <script>
