@@ -170,62 +170,36 @@ try {
 										boutonc.value = idpost;
 									</script>
 
-									<?php
-									if($_SERVER['REQUEST_METHOD'] == 'POST') {
-										// Connectez-vous à votre base de données
-										$conn = new PDO($dsn);
-
-										// Obtenez l'ID du post
-										$idpost = $_POST['idpost'];
-
-										// Insérez le nouveau like
-										$sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne)";
-										$stmt = $conn->prepare($sql);
-										$stmt->bindParam(':post', $idpost);
-										$stmt->bindParam(':personne', $iduser);
-										$stmt->execute();
-
-										// Obtenez le nouveau nombre de likes
-										$sql = "SELECT COUNT(*) as count FROM likes WHERE idpost = :post";
-										$stmt = $conn->prepare($sql);
-										$stmt->bindParam(':post', $idpost);
-										$stmt->execute();
-										$likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
-
-										// Retournez le nouveau nombre de likes
-										echo $likeCount;
-									}
-									?>
-
-									<script>
-										$(document).ready(function () {
-											$('.like-button').click(function (e) {
-												e.preventDefault();
-
-												var buttonId = $(this).attr('id');
-												var idpost = buttonId.split('-')[1];
-
-												$.ajax({
-													url: 'like.php',
-													method: 'POST',
-													data: {
-														idpost: idpost
-													},
-													success: function (data) {
-														$('#' + buttonId).text('like (' + data + ')');
-													},
-													error: function (xhr, status, error) {
-														console.error(xhr);
-													}
-												});
-											});
-										});
-									</script>
+									
 									<!-- Partie like -->
 									<form>
-										<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
-											style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
+  									<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike" style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
 									</form>
+
+									<script>
+									$(document).ready(function() {
+									$('.like-button').click(function(e) {
+										e.preventDefault();
+										
+										var buttonId = $(this).attr('id');
+										var idpost = buttonId.split('-')[1];
+
+										$.ajax({
+										url: 'like',
+										method: 'POST',
+										data: {
+											idpost: idpost
+										},
+										success: function(data) {
+											$('#' + buttonId).text('like (' + data + ')');
+										},
+										error: function(xhr, status, error) {
+											console.error(xhr);
+										}
+										});
+									});
+									});
+									</script>
 
 									<!-- Partie partage -->
 									<!-- ShareThis BEGIN -->
