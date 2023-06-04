@@ -47,14 +47,37 @@ try {
 }
 ?>
 
+<?php
+
+$sql = "INSERT INTO users(photo) VALUES(:photo);";
+try {
+    if($_POST)
+    {
+
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+    $photo = $_POST['image_url'];
+    $stmt = $conn->query($sql);
+    }
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
+
 <!-- affichage des données de la bdd avec php -->
 <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple">                            
-        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
-</div>
+        <div class="col-sm-4" style="background-color : purple">  
+        <form method="post" action="" enctype="multipart/form-data"> 
+
+        <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+        </label>
+        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
+    </form>
+    </div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>

@@ -60,8 +60,12 @@ document.querySelector('form').addEventListener('submit', async function(event) 
             console.error('Upload error: ', error.message);
             alert('Error uploading file.');
         } else {
-            // Save the URL of the uploaded file in the hidden input
-            document.getElementById('image_url').value = 'Images/post/' + file.name;
+            // Construct the full URL of the uploaded file
+            var storageBaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/';
+            var fullUrl = storageBaseUrl + 'Images/post/' + file.name;
+            
+            // Save the full URL of the uploaded file in the hidden input
+            document.getElementById('image_url').value = fullUrl;
             console.log('File uploaded: ', data);
             alert('File successfully uploaded.');
             event.target.submit(); // submit the form after the image is uploaded
@@ -70,5 +74,6 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         alert('Please choose a file to upload.');
     }
 });
+
 
 
