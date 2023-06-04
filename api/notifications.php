@@ -13,15 +13,11 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 
-?>
-<nav class = "bg">
-<?php
-
 include 'navbar.php';
 ?>
 
 
-</head>
+<body>
 
     <?php include 'eventamis.php'; ?>
 
@@ -248,6 +244,6 @@ include 'navbar.php';
 
     <?php include 'foot.php' ?>
 
-    </nav>
 </body>
+
 </html>

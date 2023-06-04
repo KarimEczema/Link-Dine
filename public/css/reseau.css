@@ -5,10 +5,10 @@ body{
 	text-align : center;
 }
 
-.profil{ 
-    /* Style pour la partie profil en haut de page */ 
-    margin-top : 80px; 
-} 
+.profil{
+	/* Style pour la partie profil en haut de page */
+	margin-top : 80px;
+}
 
 #reseau{
 	background-color: purple;
