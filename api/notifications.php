@@ -194,8 +194,7 @@ include 'caroussel.php';
     <?php
 
     $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
-    $sql = "SELECT tabimages
-	FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
+    $sql2 = "SELECT tabimages FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
@@ -230,10 +229,9 @@ include 'caroussel.php';
                             </h6>
 
 
-
-                            <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
-                                $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
                             <?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
+                            <?php $row2['tabimages'] = trim($row2['tabimages'], '{}'); // remove the starting and ending curly braces
+                                $decoded_images = json_decode($row2['tabimages'], true); // decode the JSON string to an associative array ?>
 
                             <div style="border:solid;">
 
@@ -251,7 +249,7 @@ include 'caroussel.php';
                                 <div class="carousel" id="test1">
                                     <?php
                                     $valueCar = 1;
-                                    $tabimages = explode(',', $row['tabimages']);
+                                    $tabimages = explode(',', $row2['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image):
                                         if ($valueCar == 1) { ?>
