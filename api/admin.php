@@ -28,7 +28,6 @@ include 'navbar.php';
 
 
 <?php
-session_start();
 $sql = "SELECT * FROM users WHERE iduser= $iduser";
 try {
     // Création du contact avec la BDD
@@ -103,7 +102,6 @@ if($_POST){
         //Message de confirmation pour l'utilisateur
         echo "Utilisateur ajouté !";
         $stmt->closeCursor();
-        session_destroy();
     }
 }
 }catch (PDOException $e){
