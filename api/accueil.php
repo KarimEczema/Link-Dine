@@ -166,7 +166,10 @@ try {
 										var boutonl = document.getElementById('boutonlike');
 
 										// Changer la valeur du bouton
-										boutonl.value = idpost;
+										if(idpost != null)
+                                        {
+                                            boutonl.value = idpost;
+                                        }
 
 										// Récupérer le bouton de commentaire par son ID
 										var boutonc = document.getElementById('boutoncom');
