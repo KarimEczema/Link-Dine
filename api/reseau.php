@@ -9,6 +9,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstr
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/reseau.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 
 include 'login-check.php';
 
@@ -57,8 +58,7 @@ include 'pub.php';
     <nav class="profil">
         <div class="row">
             <div class="col-sm-4" style="background-color : purple">
-                <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
-                    width="200" height="200">
+                <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="auto" height="200">
             </div>
             <div class="col-sm-8" style="background-color: grey">
                 <div style="background-color: #d6a3b7; margin:2%">
