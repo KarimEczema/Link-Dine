@@ -157,6 +157,7 @@ input:checked ~ input:before {
 
 #eventPerso{
   background-color: mintcream ;
+  padding:3%;
 }
 
 .form-container .btn:hover,
