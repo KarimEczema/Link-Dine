@@ -251,7 +251,7 @@ try {
                                                 <?php
 
 												
-                                                if ($com && $com['commentaires'] !== null) {
+                                                if ($com && $com['commentaires'] !== '') {
                                                     $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
                                                     // Check that the user has friends
