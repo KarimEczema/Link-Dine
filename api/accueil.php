@@ -166,10 +166,7 @@ try {
 										var boutonl = document.getElementById('boutonlike');
 
 										// Changer la valeur du bouton
-										if(idpost != null)
-                                        {
-                                            boutonl.value = idpost;
-                                        }
+										boutonl.value = idpost;
 
 										// Récupérer le bouton de commentaire par son ID
 										var boutonc = document.getElementById('boutoncom');
@@ -200,7 +197,7 @@ try {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
 													error: function(xhr, status, error) {
-														console.error(xhr);
+														//console.error(xhr);
 													}
 												});
 											});
@@ -223,7 +220,7 @@ try {
 														$('#' + buttonId).text('like (' + data + ')');
 													},
 													error: function(xhr, status, error) {
-														console.error(xhr);
+														//console.error(xhr);
 													}
 												});
 											});
