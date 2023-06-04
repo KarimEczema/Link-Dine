@@ -65,17 +65,17 @@ include 'navbar.php';
 
                         foreach ($friends as $friendId) {
                             // Get posts excluding the user's own posts
-                            $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? AND posts.iduser <> ? ORDER BY datepublication DESC");
+                            $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, accessibilite as acces, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? AND posts.iduser <> ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId, $iduser]);
                             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             // Get formations
-                            $stmt = $conn->prepare("SELECT users.nom as username, formation.nom as title, (datedebut || ', ' || datefin) as date, institution as description, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
+                            $stmt = $conn->prepare("SELECT users.nom as username, formation.nom as title, (datedebut || ', ' || datefin) as date, institution as description, NULL as acces, datepublication FROM formation INNER JOIN users ON formation.iduser = users.iduser WHERE formation.iduser = ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId]);
                             $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             // Get projects
-                            $stmt = $conn->prepare("SELECT users.nom as username, projet.nom as title, NULL as date, description, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
+                            $stmt = $conn->prepare("SELECT users.nom as username, projet.nom as title, NULL as date, description, NULL as acces, datepublication FROM projet INNER JOIN users ON projet.iduser = users.iduser WHERE projet.iduser = ? ORDER BY datepublication DESC");
                             $stmt->execute([$friendId]);
                             $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -97,7 +97,7 @@ include 'navbar.php';
                             <?php
                             foreach ($combined as $item) {
 
-                                if ($item['accessibilite'] == 'tous') { ?>
+                                if ($item['accessibilite'] != 'Amis') { ?>
                                     <div class="scroll-page" id="eventPerso">
                                         <div style="padding:2%; border:solid;">
                                             <?php
