@@ -23,23 +23,6 @@ include 'navbar.php';
 
 <?php
 
-// Include the JWT library
-require __DIR__ . '/vendor/autoload.php';
-
-
-$host = "ep-twilight-term-343583-pooler.eu-central-1.postgres.vercel-storage.com";
-$port = "5432";
-$dbname = "verceldb";
-$user = "default";
-$password = "Y4vuPQm2xyTl";
-
-$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
-
-
-
-use \Firebase\JWT\JWT;
-use \Firebase\JWT\Key;
-
 try{
     if($_POST)
     {
@@ -112,55 +95,7 @@ catch(PDOException $e){
 <img id="preview" src="#" alt="Image Preview" style="display: none;">
 
 <script src="js/upload.js"></script>
-<script>
-document.getElementById('image_uploads').addEventListener('change', function() {
-    var file = this.files[0]; // get the uploaded file
 
-    // check if a file is selected
-    if (file) {
-        var reader = new FileReader();
-        reader.onloadend = function() {
-            // when the file is read, set the src of the image
-            document.getElementById('preview').src = reader.result;
-            document.getElementById('preview').style.display = 'block';
-        }
-        reader.readAsDataURL(file); // read the uploaded file
-    }
-});
-
-document.getElementById('publish_button').addEventListener('click', async function() {
-    var fileInput = document.getElementById('image_uploads');
-    var file = fileInput.files[0];
-
-    if (file) {
-        if (file.size > 5000000) { // limiting to 5MB
-            alert("File is too large to upload. Please choose a file smaller than 5MB.");
-            return;
-        }
-
-        let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // allowed file extensions
-        if (!allowedExtensions.exec(file.name)) {
-            alert('Invalid file type. Only .jpg, .jpeg, .png files are allowed.');
-            return;
-        }
-
-        const { data, error } = await supabase
-            .storage
-            .from('uploads')
-            .upload(file.name, file);
-
-        if (error) {
-            console.error('Upload error: ', error.message);
-            alert('Error uploading file.');
-        } else {
-            console.log('File uploaded: ', data);
-            alert('File successfully uploaded.');
-        }
-    } else {
-        alert('Please choose a file to upload.');
-    }
-});
-</script>
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
 </nav>
