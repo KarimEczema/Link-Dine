@@ -2,8 +2,7 @@
 
 echo '<html>';
 echo '<head>';
-echo '<title>Your Page Title</title>';
-
+echo '<title>Vous</title>';
 
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
@@ -56,9 +55,10 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple">                            
-        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
-</div>
+        <div class="col-sm-4" style="background-color : purple">
+            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
+                width="200" height="200">
+        </div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
@@ -217,7 +217,7 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
-    
+
 
 <nav class="Ajout-formation">
     <h1 style="margin-top : 5% ">Ajouter une formation</h1>
@@ -234,11 +234,11 @@ try {
             </div>
             <div class="col-sm-8" style="background-color: grey">
                 <div style="background-color: grey; margin:2%">
-                    <h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%"> </h5>
+                    <h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%" required> </h5>
                 </div>
                 <div style="background-color: grey; margin:2%">
                     <h5 style="margin:2%">Description de la formation : <textarea name="institution" id="Formation-text"
-                            rows="10" cols="50" style="margin: 3%;"></textarea> </h5>
+                            rows="10" cols="50" style="margin: 3%;" required></textarea> </h5>
                 </div>
             </div>
         </div>
@@ -350,18 +350,18 @@ try {
 <!--
 ----------   Ajout    ----------
 -->
-  
+
 
 <nav class="Ajout-projet">
     <h1 style="margin-top : 5% "> Ajouter un projet</h1>
     <form method="post" action="">
 
         <div style="background-color: grey; margin:2%">
-            <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%"> </h5>
+            <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%" required> </h5>
         </div>
         <div style="background-color: grey; margin:2%">
             <h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text" rows="10"
-                cols="50" style="margin: 3%;"></textarea>
+                cols="50" style="margin: 3%;" required></textarea>
         </div>
 
         <button type="submit" name="ajouterPjt" value="CreerPjt" style=" margin-top : 2%;">Publier</button>
@@ -440,9 +440,7 @@ try {
             <button type="submit" name="creerCV" value="creationCV">Créer un CV à partir des informations personnelles</button>
         </form>
         <?php
-    }
-    else
-    {
+    } else {
         include 'cv.php';
     }
 
@@ -459,4 +457,5 @@ try {
 
 include 'foot.php'; ?>
 </body>
+
 </html>
