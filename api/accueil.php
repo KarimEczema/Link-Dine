@@ -135,11 +135,11 @@ try {
                             ?>
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
-								<?php if( $item['photo']  !== null)
+								<?php if( !empty(trim($item['photo']))) 
 								{?>
 									<div><img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"></div>
 
-									<?php}
+									<?php }
 				
 											
                                     if ($item['title'] !== NULL) {
