@@ -210,7 +210,7 @@ try {
                                 try{
                                     if($_POST)
                                     {
-                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == 'Creercom') {
+                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $idpost) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
@@ -223,21 +223,21 @@ try {
                                             $stmt = $conn->prepare($sql);
                                             $stmt->bindParam(':write', $ecriture);
                                             $stmt->bindParam(':personne', $iduser);
-                                            $stmt->bindParam(':post', $item['idpost']);
+                                            $stmt->bindParam(':post', $idpost);
 
                                             $stmt->execute();
 
                                             //Message de confirmation pour l'utilisateur
                                             echo "Commentaire publié !";
                                         }
-                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $item['idpost']) {
+                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
                                             //On insère les données reçues
                                             $sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
                                             $stmt = $conn->prepare($sql);
-                                            $stmt->bindParam(':post', $item['idpost']);
+                                            $stmt->bindParam(':post', $idpost);
                                             $stmt->bindParam(':personne', $iduser);
 
                                             $stmt->execute();
