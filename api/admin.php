@@ -10,17 +10,13 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 include 'admin-check.php';
 echo '</head>';
 echo '<body>';
-
+?>
+    <nav class = "bg">
+<?php
 include 'navbar.php';
 ?>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<link href="css/admin.css" rel="stylesheet" type="text/css"/>
-</head>
 
-
-
-<body>
 
 <!--
 ======================================================
@@ -30,8 +26,8 @@ include 'navbar.php';
 
 <!-- récupération des donnée dans la table users -->
 
-<?php
 
+<?php
 $sql = "SELECT * FROM users WHERE iduser= $iduser";
 try {
     // Création du contact avec la BDD
@@ -69,19 +65,13 @@ try {
     </div>
 </nav>
 
-
 <!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 
 <nav class = "Ajout-compte">
-        <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-        <form method="post" action="">
-        <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
-        <div style = "background-color: grey; margin:-top2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
-
     <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
-    <form method="post" action="">
-    <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
-    <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
+    <form id ="ajout" method="post" action="">
+    <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%" required> </h5></div>
+    <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%" required> </h5></div>
 
     <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Creer">
     </form>
@@ -111,6 +101,7 @@ if($_POST){
 
         //Message de confirmation pour l'utilisateur
         echo "Utilisateur ajouté !";
+        $stmt->closeCursor();
     }
 }
 }catch (PDOException $e){
@@ -135,7 +126,7 @@ $("#sendButton").click(function(){
         data: {username: username},
         success: function(response) {
             alert(response);
-            location.reload(); // Refresh the page
+            //location.reload(); // Refresh the page
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
@@ -191,5 +182,7 @@ usernames.forEach((user) => {
 
 </script>
 <?php include 'foot.php';?>
+
+</nav>
 </body>
 </html>

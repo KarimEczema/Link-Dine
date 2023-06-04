@@ -43,3 +43,138 @@ ul#liste1 li a {
 ul#liste1 li a:hover {
     background-color: #111;
 }
+
+
+.Description {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid #666;
+    z-index: 9;
+    }
+    .descr-container {
+    padding: 20px;
+    background-color: #f8f5f5;
+    }      
+  
+  .login-popup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  
+  #eventPerso{
+    background-color: mintcream ;
+  }
+  
+  .form-container .btn:hover,
+      .open-button:hover {
+      opacity: 1;
+      }
+
+      .scroll-container {
+        width: 50vw;
+        height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .scrolling-page {
+      height: 400px;
+      overflow: auto;
+    }
+    
+    .element {
+      background: #f2f2f2;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    
+    .myEvents{
+      /* Style du corps de section */
+      color: black;
+      margin-top: 50px;
+    }
+    
+    
+/* Control styles
+-------------------------------------------- */
+
+
+
+input:checked ~ input:before {
+    content: ">";
+  }
+  input:checked {
+    display: none;
+  }
+  input:checked ~ input {
+    right: 0;
+    left: auto;	
+    right: 10px;	
+  }
+  input:checked + div + input {
+    z-index: 4;
+  }
+  input + div {
+    position: absolute;
+    z-index: 1;
+  }  
+  input:checked + div {
+    z-index: 2;
+  }  
+
+  .carousel {
+    position : relative;
+    width: 600px;
+    height: 350px;
+    margin: 2em auto;
+    overflow:hidden;
+    transform: translateZ(0px); /* stops flickering incode pen*/
+    box-shadow: 0 0 2px 1px #ccc;
+  }
+  .carousel	input {
+    top: 150px;
+    width: 60px;
+    height: 60px;
+    left: 10px;
+    z-index: 3; /* Add a higher z-index to make the buttons appear above the image */
+    margin: 0;
+    position: absolute;
+  }
+ 
+  .carousel input:before {
+    background: #888;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 5px solid #fff;
+    position: absolute;
+    content: "<";
+    z-index: 4; /* Add a higher z-index to make the buttons appear above the image */
+}
+
+  /* Scroll
+  --------------------------------------------  */
+  
+  #test1 input + div {
+    transform: translate3d(-100%,0,0);
+    transition: transform .5s ease-in-out;
+  }
+  #test1 input:checked + div {
+    transform: translate3d(0,0,0);
+  }
+  #test1 input:checked + div ~ div {
+    transform: translate3d(100%,0,0);
+  }

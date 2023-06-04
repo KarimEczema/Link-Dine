@@ -12,6 +12,9 @@ echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 include 'login-check.php';
 echo '</head>';
 echo '<body>';
+?>
+    <nav class = "bg">
+<?php
 
 include 'navbar.php';
 include 'caroussel.php';
@@ -22,10 +25,6 @@ echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 
 ?>
-
-<link href="css/profil.css" rel="stylesheet" type="text/css"/>
-
-<body>
 <!--
 ============================================
         Profil de l'ami séléctionné
@@ -136,5 +135,6 @@ $amis = $stmt->fetchAll();
 
 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

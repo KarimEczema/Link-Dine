@@ -6,6 +6,7 @@
 
 
 <h1 style="padding:10% ">Evénements de mes amis</h1>
+<h4></h4>
 <?php
 try {
     // create a PostgreSQL database connection

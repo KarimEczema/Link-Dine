@@ -16,7 +16,7 @@ use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
 // Your secret key
-$secretKey = new Key('123', 'HS256');
+$secretKey = new Key('fZabvRw78VA746', 'HS256');
 
 // Check if the JWT exists in the cookie
 if (isset($_COOKIE['jwt'])) {
@@ -40,7 +40,7 @@ if (isset($_COOKIE['jwt'])) {
         } else {
             // If user id is not equal to 1, redirect or show error message
             echo 'Error: User id is not admin';
-            header('Location: index.php');
+            echo '<meta http-equiv="refresh" content="0; url=index" />';
             exit;
         }
         
@@ -48,14 +48,14 @@ if (isset($_COOKIE['jwt'])) {
         // JWT validation failed
         // Redirect to login page or show error message
         echo 'Error: ' . $e->getMessage();
-        header('Location: index.php');
+        echo '<meta http-equiv="refresh" content="0; url=index" />';
         exit;
     }
 } else {
     // JWT is not set, user is not logged in
     // Redirect to login page or show error message
     echo 'not';
-    header('Location: index.php');
+    echo '<meta http-equiv="refresh" content="0; url=index" />';
     exit;
 }
 
