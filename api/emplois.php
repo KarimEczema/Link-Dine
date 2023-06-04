@@ -33,7 +33,7 @@ include 'navbar.php';
 <!-- Récupère dans la base de données les informations relatives à Emplois-->
 <?php
     
-    $sql = "SELECT * FROM Emplois";
+    $sql = "SELECT * FROM Emplois ORDER BY datepublication DESC";
 	try{
     // Création du contact avec la BDD
             $conn = new PDO($dsn);
