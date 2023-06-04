@@ -121,8 +121,8 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
         while($ami = $stmt->fetch(PDO::FETCH_ASSOC)) :
             
                 $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
-
-
+        endwhile;
+        }
 
     if ($amis && $amis['amis'] !== null) {
         $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
