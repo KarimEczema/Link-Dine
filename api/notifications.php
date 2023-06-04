@@ -108,9 +108,9 @@ try {
                     $friends = array_diff($friends, [$iduser], $amis);
 
                     foreach ($friends as $friendId) {
-                        // Get posts
-                        $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
-                        $stmt->execute([$friendId]);
+                        // Get posts excluding the user's own posts
+                        $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? AND posts.iduser <> ? ORDER BY datepublication DESC");
+                        $stmt->execute([$friendId, $iduser]);
                         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         // Get formations
@@ -183,6 +183,7 @@ try {
     echo $e->getMessage();
 }
 ?>
+
 
 
     <?php include 'foot.php' ?>
