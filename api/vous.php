@@ -57,16 +57,15 @@ try {
 
     if ($_POST) {
         $imageUrl = $_POST['imageUrl'];
-        $userId = $_POST['userId'];
+        
     
         // Create the connection with the database
         $conn = new PDO($dsn);
     
         // Update the user's profile picture
-        $sql = "UPDATE users SET photo = :photo WHERE iduser = :iduser";
+        $sql = "UPDATE users SET photo = :photo WHERE iduser = $iduser";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':photo', $imageUrl);
-        $stmt->bindParam(':iduser', $userId);
         $stmt->execute();
     }
 
