@@ -1,6 +1,3 @@
-
-
-
 <?php
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 $conn = new PDO($dsn);
@@ -10,37 +7,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idpost = $_POST['idpost'];
     $iduser = $_POST['iduser'];
 
-    // Check if the user has already liked this post
-    $stmt = $conn->prepare("SELECT * FROM likes WHERE idpost = :post AND iduser = :personne");
+    // Check if a like record already exists for this user and post
+    $sql = "SELECT * FROM likes WHERE idpost = :post AND iduser = :user";
+    $stmt = $conn->prepare($sql);
     $stmt->bindParam(':post', $idpost);
-    $stmt->bindParam(':personne', $iduser);
+    $stmt->bindParam(':user', $iduser);
     $stmt->execute();
-    $alreadyLiked = $stmt->fetch(PDO::FETCH_ASSOC);
+    $likeRecord = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($alreadyLiked) {
-        // User already liked this post, so remove the like
-        $sql = "DELETE FROM likes WHERE idpost = :post AND iduser = :personne";
+    if ($likeRecord) {
+        // A like record exists, so this is a 'dislike' action. Delete the record.
+        $sql = "DELETE FROM likes WHERE idpost = :post AND iduser = :user";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':post', $idpost);
-        $stmt->bindParam(':personne', $iduser);
+        $stmt->bindParam(':user', $iduser);
         $stmt->execute();
     } else {
-        // User has not liked this post yet, so add the like
-        $sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne)";
+        // No like record exists, so this is a 'like' action. Insert a new record.
+        $sql = "INSERT INTO likes (idpost, iduser) VALUES (:post, :user)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':post', $idpost);
-        $stmt->bindParam(':personne', $iduser);
+        $stmt->bindParam(':user', $iduser);
         $stmt->execute();
     }
 
-    // Get the new like count
+    // Get the updated like count
     $sql = "SELECT COUNT(*) as count FROM likes WHERE idpost = :post";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':post', $idpost);
     $stmt->execute();
-    $likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];    
+    $likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
 
-    // Return the new like count
+    // Return the updated like count
     echo $likeCount;
 }
 ?>
