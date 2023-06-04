@@ -154,7 +154,7 @@ try {
 
                                     <form>
                                         <!-- Partie like -->
-                                        <button type="submit" name="ajouterlike" value="Creerlike"  style = "margin-top : 10%; margin-left : 3%;">like</button>
+                                        <button type="submit" name="ajouterlike" value="<?php echo htmlspecialchars($item['idpost'])?>"  style = "margin-top : 10%; margin-left : 3%;">like</button>
                                     </form>
 
                                         <!-- Partie partage -->
@@ -177,7 +177,7 @@ try {
                                                 <form method="post" action="">
                                                     <h4>Contenu de votre commentaire :</h4>
                                                     <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                    <button type="submit" name="ajouterCom" value="CreerCom"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                    <button type="submit" name="ajouterCom" value="<?php echo htmlspecialchars($item['idpost'])?>"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                                     <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                                 </form>
                                             </div>
@@ -191,7 +191,7 @@ try {
                                 try{
                                     if($_POST)
                                     {
-                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == 'CreerCom') {
+                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $item['idpost']) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
@@ -200,24 +200,25 @@ try {
 
 
                                             //On insère les données reçues
-                                            $sql = "INSERT INTO commentaire(commentaire, iduser) VALUES(:write, :personne)";
+                                            $sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
                                             $stmt = $conn->prepare($sql);
                                             $stmt->bindParam(':write', $ecriture);
                                             $stmt->bindParam(':personne', $iduser);
+                                            $stmt->bindParam(':post', $item['idpost']);
 
                                             $stmt->execute();
 
                                             //Message de confirmation pour l'utilisateur
                                             echo "Commentaire publié !";
                                         }
-                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == 'Creerlike') {
+                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $item['idpost']) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
                                             //On insère les données reçues
                                             $sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
                                             $stmt = $conn->prepare($sql);
-                                            $stmt->bindParam(':post', $ecriture);
+                                            $stmt->bindParam(':post', $item['idpost']);
                                             $stmt->bindParam(':personne', $iduser);
 
                                             $stmt->execute();

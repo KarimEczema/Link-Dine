@@ -84,7 +84,7 @@ catch(PDOException $e){
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" style="display:none">
                     <button type="radio"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                     <fieldset>
-                        <p>A qui voulez vous le partager ?</p>
+                        <p>A qui voulez-vous le partager ?</p>
 
                         <div>
                             <input type="radio" id="friend" name="secu" value="friend" checked>
