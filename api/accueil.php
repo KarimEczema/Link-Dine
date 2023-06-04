@@ -170,7 +170,6 @@ try {
                                         boutonc.value = idpost ;
                                     </script>
 
-
                                     <!-- Partie like -->
                                     <form>
                                         <button type="submit" id="boutonlike" name="ajouterlike"   style = "margin-top : 10%; margin-left : 3%;">like</button>
@@ -224,7 +223,6 @@ try {
                                             $stmt->bindParam(':write', $ecriture);
                                             $stmt->bindParam(':personne', $iduser);
                                             $stmt->bindParam(':post', $idpost);
-
                                             $stmt->execute();
 
                                             //Message de confirmation pour l'utilisateur
