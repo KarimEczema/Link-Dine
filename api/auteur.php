@@ -23,12 +23,22 @@ include 'navbar.php';
 
 <?php
 
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
 try{
     if($_POST)
     {
+
+        $conn = new PDO($dsn);
         // get the URL of the uploaded file from the hidden input
         $photo = $_POST['image_url'];
-
+        
+    
+        //On définit certaines variables.
+        $ecriture = $_POST['write'];
+        $lieu = $_POST['lieu'];
+        $date = $_POST['date'];
+        $secu = $_POST['secu'];
         // the rest of your code ...
 
         //On insère les données reçues
