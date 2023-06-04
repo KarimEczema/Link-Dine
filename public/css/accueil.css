@@ -116,7 +116,6 @@ input:checked ~ input:before {
     text-align: center;
 }
 
-
 .scrolling-page {
   height: 400px;
   overflow: auto;

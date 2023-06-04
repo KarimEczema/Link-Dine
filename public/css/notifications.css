@@ -25,23 +25,6 @@ body{
 #Semaine{
     color:red;
 }
-.scroll-container {
-    width: 50vw;
-    height: 30vh;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.scroll-page {
-    width: 100%;
-    float: left;
-    text-align: left;
-    height: 50%;
-    margin-top: 5px;
-}
 
 #notif-1{
     background-color: mintcream ;
@@ -59,77 +42,4 @@ body{
 	background-color: purple;
 }
 
-/* Control styles
--------------------------------------------- */
 
-
-
-  input:checked ~ input:before {
-    content: ">";
-  }
-  input:checked {
-    display: none;
-  }
-  input:checked ~ input {
-    right: 0;
-    left: auto;	
-    right: 10px;	
-  }
-  input:checked + div + input {
-    z-index: 4;
-  }
-  input + div {
-    position: absolute;
-    z-index: 1;
-  }  
-  input:checked + div {
-    z-index: 2;
-  }  
-
-  .carousel {
-    position : relative;
-    width: 600px;
-    height: 350px;
-    margin: 2em auto;
-    overflow:hidden;
-    transform: translateZ(0px); /* stops flickering incode pen*/
-    box-shadow: 0 0 2px 1px #ccc;
-  }
-  .carousel	input {
-    top: 150px;
-    width: 60px;
-    height: 60px;
-    left: 10px;
-    z-index: 3; /* Add a higher z-index to make the buttons appear above the image */
-    margin: 0;
-    position: absolute;
-  }
- 
-  .carousel input:before {
-    background: #888;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border: 5px solid #fff;
-    position: absolute;
-    content: "<";
-    z-index: 4; /* Add a higher z-index to make the buttons appear above the image */
-}
-
-  /* Scroll
-  --------------------------------------------  */
-  
-  #test1 input + div {
-    transform: translate3d(-100%,0,0);
-    transition: transform .5s ease-in-out;
-  }
-  #test1 input:checked + div {
-    transform: translate3d(0,0,0);
-  }
-  #test1 input:checked + div ~ div {
-    transform: translate3d(100%,0,0);
-  }
