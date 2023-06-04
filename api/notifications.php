@@ -238,7 +238,7 @@ include 'navbar.php';
 
 
 
-                                <div class="carousel" id="test1">
+                                
                                     <?php
                                     $valueCar = 1;
                                     $tabimages = explode(',', $row2['tabimages']);
@@ -255,7 +255,7 @@ include 'navbar.php';
                                             $valueCar++;
                                         }
                                         ?>
-                                        <div class="scroll-page" id="event">
+                                       
                                             <h5><b>
                                                     <?php echo htmlspecialchars($row['nom']); ?>
                                                 </b>
@@ -267,7 +267,8 @@ include 'navbar.php';
                                             <h6>Description de l'événement:
                                                 <?php echo htmlspecialchars($row['description']); ?>
                                             </h6>
-
+                                            <div class="carousel" id="test1">
+                                            <div class="scroll-page" id="event">
                                             <?php
                                             $sql2 = "SELECT tabimages FROM evenement WHERE id = ?";
                                             $stmt2 = $conn->prepare($sql2);
@@ -282,10 +283,13 @@ include 'navbar.php';
                                                 </div>
                                                 <?php
                                             }
+                                            
                                             ?>
+                                            </div>
+
                                         </div>
                                     <?php endforeach; ?>
-                                </div>
+                                
 
                             </div>
 
