@@ -175,10 +175,6 @@ try {
 
                                     <!-- script pour changer les variables à chaque post -->
                                     <script>
-
-										var buttonId = $(this).attr('id');
-										var idpost = buttonId.split('-')[1];
-
                                         // Récupérer le bouton de like par son ID
                                         var boutonl = document.getElementById('boutonlike');
 
