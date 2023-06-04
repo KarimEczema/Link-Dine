@@ -193,7 +193,7 @@ include 'caroussel.php';
 
     <?php
 
-    $sql = "SELECT * FROM evenement WHERE oragnisateur LIKE '%ECE' ORDER BY datepublication DESC";
+    $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
     $sql = "SELECT tabimages
 	FROM evenement WHERE oragnisateur LIKE '%ECE' ORDER BY datepublication DESC";
     try {
