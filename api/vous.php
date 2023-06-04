@@ -60,17 +60,20 @@ if (!isset($_SESSION['countCV'])) {
 try {
 
     if ($_POST) {
-        $image_url = $_POST['image_url'];
+        if(!$_POST['image_url'])
+        {
+            $image_url = $_POST['image_url'];
         
     
-        // Create the connection with the database
-        $conn = new PDO($dsn);
-    
-        // Update the user's profile picture
-        $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':photo', $image_url);
-        $stmt->execute();
+            // Create the connection with the database
+            $conn = new PDO($dsn);
+        
+            // Update the user's profile picture
+            $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':photo', $image_url);
+            $stmt->execute();
+        }
     }
 
 } catch (PDOException $e) {
