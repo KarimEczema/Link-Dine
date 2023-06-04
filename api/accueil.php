@@ -259,7 +259,7 @@ try {
 
                                             //vérification s'il s'agit du premier commentaire ou non
                                             if ($com && $com['commentaires'] == null) {
-                                                $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
+                                                //$tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
                                                 // Double check
                                                 if (empty($com)) {
