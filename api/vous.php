@@ -60,8 +60,6 @@ if (!isset($_SESSION['countCV'])) {
 try {
 
     if ($_POST) {
-        if(!$_POST['image_url'])
-        {
             $image_url = $_POST['image_url'];
         
     
@@ -76,7 +74,7 @@ try {
         }
     }
 
-} catch (PDOException $e) {
+catch (PDOException $e) {
     echo $e->getMessage();
 }
 ?>

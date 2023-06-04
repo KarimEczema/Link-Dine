@@ -142,7 +142,7 @@ include 'caroussel.php';
     
     <?php }
         ?>
-        
+
 
     <?php include 'foot.php'; ?>
 
