@@ -147,7 +147,7 @@ try {
                                     </h6>;
 
                                     <?php
-                                    echo "<h6>" . htmlspecialchars($item['descriptionpost']) . "</h6>";
+                                    echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
 
 
