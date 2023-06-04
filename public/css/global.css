@@ -43,10 +43,3 @@ ul#liste1 li a {
 ul#liste1 li a:hover {
     background-color: #111;
 }
-
-#ad
-{
-    margin-top : 20%;
-    position: sticky;
-    right : 0;
-}

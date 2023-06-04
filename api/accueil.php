@@ -14,15 +14,20 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+?>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3533297835167860" crossorigin="anonymous"></script>
+
+</head>
+<?php
 echo '<body>';
 
 include 'navbar.php';
 include 'caroussel.php';
-include 'pub.php';
-echo '</head>'
+
 ?>
 
-<?php
+
+<?php   
     $sql = "SELECT tabimages
 	FROM evenement
 	WHERE DATE(date) >= '2023-06-05'

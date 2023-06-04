@@ -15,7 +15,11 @@ echo '<link rel="stylesheet" type="text/css" href="css/reseau.css">';
 
 
 include 'login-check.php';
-echo '</head>';
+?>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3533297835167860" crossorigin="anonymous"></script>
+
+</head>
+<?php
 echo '<body>';
 
 include 'navbar.php';
