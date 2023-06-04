@@ -195,7 +195,7 @@ include 'caroussel.php';
 
     $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
     $sql = "SELECT tabimages
-	FROM evenement WHERE oragnisateur LIKE '%ECE' ORDER BY datepublication DESC";
+	FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY datepublication DESC";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
