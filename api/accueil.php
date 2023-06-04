@@ -185,7 +185,7 @@ try {
 											
 											var buttonId = $(this).attr('id');
 											var idpost = buttonId.split('-')[1];
-											var iduser = $(this).data('userid');
+											//var iduser = $(this).data('userid');
 
 											$.ajax({
 												url: 'like',
