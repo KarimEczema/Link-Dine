@@ -174,9 +174,9 @@ try {
 
                                     <form>
                                         <!-- Partie like -->
-                                        <input type="button" value="Like" onclick="like($iduser)">
-                                        <button type="submit" name="ajouterlike" value="Creerlike"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                        <button type="submit" name="ajouterlike" value="Creerlike"  style = "margin-top : 10%; margin-left : 3%;">like</button>
                                     </form>
+
                                         <!-- Partie partage -->
                                         <!-- ShareThis BEGIN -->
                                         <p>Pour partager : </p>
@@ -187,7 +187,7 @@ try {
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrcommentaire($iduser)">Commentaire</button>
+                                                <button class="open-button" onclick="ouvrcommentaire()">Commentaire</button>
                                             </div>
                                         </h6>
 
@@ -198,7 +198,7 @@ try {
                                                     <h4>Contenu de votre commentaire :</h4>
                                                     <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
                                                     <button type="submit" name="ajouterCom" value="CreerCom"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
-                                                    <button type="button" class="btn cancel" onclick="fermcommentaire($iduser)" style="background-color: antiquewhite">Fermer</button>
+                                                    <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -257,12 +257,12 @@ try {
                                         Code Js pour like et Commentaire
                                 -->
                                 <script>
-                                    function ouvrcommentaire(id) {
+                                    function ouvrcommentaire() {
                                         document.getElementById("form-").style.display = "block";
                                     }
 
 
-                                    function fermcommentaire(id) {
+                                    function fermcommentaire() {
                                         document.getElementById("form-").style.display = "none";
                                     }
                                 </script>
