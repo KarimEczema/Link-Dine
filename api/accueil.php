@@ -224,10 +224,10 @@ try {
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrcommentaire(<?php echo $row['idemploi'];?>)">Commenter </button>
+                                                <button class="open-button" onclick="ouvrcommentaire(<?php echo $row['idpost'];?>)">Commenter </button>
                                             </div>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrtabcommentaire(<?php echo $row['idemploi'];?>)">Commentaires </button>
+                                                <button class="open-button" onclick="ouvrtabcommentaire(<?php echo $row['idpost'];?>)">Commentaires </button>
                                             </div>
                                         </h6>
 
