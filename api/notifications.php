@@ -212,7 +212,7 @@ include 'navbar.php';
                 <tbody>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
-                        <div class="scroll-page" id="event">
+                        <div class="scroll-page" id="eventPerso">
                             <h5><B>
                                     <?php echo htmlspecialchars($row['nom']); ?>
                                 </B>
@@ -221,8 +221,12 @@ include 'navbar.php';
                             <h6>Date de l'événement:
                                 <?php echo htmlspecialchars($row['date']); ?>
                             </h6> <br>
-                            <h6>Description de l'événement:
-                                <?php echo htmlspecialchars($row['description']); ?>
+                            <h6>
+                                <div class="open-btn">
+                                    <button class="open-button"
+                                        onclick="openForm(<?php echo $row['idevent'] ?>)"><strong>Description de
+                                            lévénement</strong></button>
+                                </div>
                             </h6>
                             <div class="login-popup">
                                 <div class="Description" id="form-<?php echo $row['idevent']; ?>">
@@ -235,23 +239,22 @@ include 'navbar.php';
                                     </div>
                                 </div>
                             </div>
+
+                            <script>
+                                function openForm(id) {
+                                    document.getElementById("form-" + id).style.display = "block";
+                                }
+
+                                function closeForm(id) {
+                                    document.getElementById("form-" + id).style.display = "none";
+                                }
+                            </script>
+
+
                         </div>
-
-                        <script>
-                            function openForm(id) {
-                                document.getElementById("form-" + id).style.display = "block";
-                            }
-
-                            function closeForm(id) {
-                                document.getElementById("form-" + id).style.display = "none";
-                            }
-                        </script>
-
-
-            </div>
-        <?php endwhile; ?>
-        </tbody>
-        </table>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
     </nav>
 
