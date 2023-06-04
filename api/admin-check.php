@@ -16,7 +16,7 @@ use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
 
 // Your secret key
-$secretKey = new Key('123', 'HS256');
+$secretKey = new Key('fZabvRw78VA746', 'HS256');
 
 // Check if the JWT exists in the cookie
 if (isset($_COOKIE['jwt'])) {
