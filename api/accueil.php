@@ -116,14 +116,12 @@ try {
         // Check that the user has friends
         if (!empty($amis)) {
             $combined = [];
-			$allPosts = [];
+
             foreach ($amis as $ami) {
                 // get posts
                 $stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-				$allPosts = array_merge($allPosts, $posts);
             }
 ?>
             <div class="scroll-container">
@@ -132,7 +130,7 @@ try {
                         <?php
 
 
-                        foreach ($allPosts as $item) {
+                        foreach ($posts as $item) {
                             ?>
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
@@ -168,7 +166,7 @@ try {
 
                                     $stmt = $conn->query($chcom);
                                     $com = $stmt->fetch(PDO::FETCH_ASSOC);
-									
+
 									var_dump($com);
 									
                                     ?>
@@ -179,18 +177,18 @@ try {
                                         var boutonl = document.getElementById('boutonlike');
 
                                         // Changer la valeur du bouton
-                                        boutonl.value = idpost;
+                                        boutonl.value = idpost ;
 
                                         // Récupérer le bouton de commentaire par son ID
-                                        var boutonc = document.getElementById('boutoncom-<?php echo $idpost; ?>');
+                                        var boutonc = document.getElementById('boutoncom');
 
                                         // Changer la valeur du bouton
-                                        boutonc.value = idpost;
+                                        boutonc.value = idpost ;
                                     </script>
 
 
                                     <!-- Partie like -->
-                                    <form method="post" action="">
+                                    <form>
                                         <button type="submit" id="boutonlike" name="ajouterlike"   style = "margin-top : 10%; margin-left : 3%;">like</button>
                                     </form>
 
@@ -206,15 +204,16 @@ try {
                                     -->
 
                                     <script type="text/javascript">
-                                       function ouvrcommentaire(idpost) {
-											document.getElementById("form-" + idpost).style.display = "block";
-										}
+                                        function ouvrcommentaire(id) {
+                                            document.getElementById("form-"+id).style.display = "block";
+                                        }
 
-										function fermcommentaire(idpost) {
-											document.getElementById("form-" + idpost).style.display = "none";
-										}
-                                        function ouvrtabcommentaire() {
-                                            document.getElementById("formulaire").style.display = "block";
+                                        function ouvrtabcommentaire(id) {
+                                            document.getElementById("formulaire"+id).style.display = "block";
+                                        }
+
+                                        function fermcommentaire() {
+                                            document.getElementById("form-").style.display = "none";
                                         }
 
                                         function fermtabcommentaire() {
@@ -225,28 +224,25 @@ try {
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrcommentaire(<?php echo $idpost; ?>)">Commenter </button>
+                                                <button class="open-button" onclick="ouvrcommentaire(<?php echo $row['idemploi'];?>)">Commenter </button>
                                             </div>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrtabcommentaire()">Commentaires </button>
+                                                <button class="open-button" onclick="ouvrtabcommentaire(<?php echo $row['idemploi'];?>)">Commentaires </button>
                                             </div>
                                         </h6>
 
-										<div class="login-popup">
-											<div class="Description" id="form-<?php echo $idpost; ?>">
-												<div class="descr-container">
-													<form method="post" action="">
-														<h4>Contenu de votre commentaire :</h4>
-														<div class="col-sm-7">
-															<textarea name="write" id="write-<?php echo $idpost; ?>" cols = "50" rows = "10" wrap="hard" required></textarea>
-														</div>
-														<button type="submit" id="boutoncom-<?php echo $idpost; ?>" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
-														<button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
-													</form>
-												</div>
-											</div>
-										</div>
-
+                                    <div class="login-popup">
+                                        <div class="Description" id="form-<?php echo $item['idpost'];?>">
+                                            <div class="descr-container">
+                                                <form method="post" action="">
+                                                    <h4>Contenu de votre commentaire :</h4>
+                                                    <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
+                                                    <button type="submit" id="boutoncom" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                    <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="login-popup">
                                         <div class="Description" id="formulaire">
@@ -254,6 +250,7 @@ try {
                                                 <h4>Commentaires du post :</h4>
                                                 <?php
 
+												
                                                 if ($com && $com['commentaires'] !== '') {
                                                     $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
@@ -374,6 +371,13 @@ try {
                                 }
 
                                 ?>
+
+
+
+                            <?php
+
+
+                        ?>
                     </tbody>
                 </table>
             </div>
