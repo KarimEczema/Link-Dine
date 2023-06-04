@@ -17,6 +17,10 @@ include 'login-check.php';
 
 echo '</head>';
 echo '<body>';
+?>
+<nav id = "bg">
+<?php
+
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -26,7 +30,19 @@ if (!isset($_SESSION['countCV'])) {
 }
 
 ?>
-
+<script type="module" src="js/upload.js"></script>
+<script> function previewImage() {
+    var file = document.getElementById('image_uploads').files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            document.getElementById('preview').src = reader.result;
+            document.getElementById('preview').style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 
 
 <!--
@@ -37,10 +53,37 @@ if (!isset($_SESSION['countCV'])) {
 
 <!-- récupération des donnée dans la table users -->
 
+
+
 <?php
 
-$sql = "SELECT * FROM users WHERE iduser= $iduser";
 try {
+
+    if ($_POST) {
+            $image_url = $_POST['image_url'];
+        
+    
+            // Create the connection with the database
+            $conn = new PDO($dsn);
+        
+            // Update the user's profile picture
+            $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':photo', $image_url);
+            $stmt->execute();
+        }
+    }
+
+catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
+
+<?php
+
+
+try {
+    $sql = "SELECT * FROM users WHERE iduser= $iduser";
     // Création du contact avec la BDD
     $conn = new PDO($dsn);
     $stmt = $conn->query($sql);
@@ -55,13 +98,17 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <?php
-        if(htmlspecialchars($row['pp']) !== null) { ?>
-        <div class="col-sm-4" style="background-color : purple">
-            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
-                width="200" height="200">
-        </div>
+        <div class="col-sm-4" style="background-color : purple">  
+        <form method="post" action="" enctype="multipart/form-data"> 
+        <input type="hidden" id="image_url" name="image_url">
+        <?php if(htmlspecialchars($row['pp'])!== null) {?>
+        <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+        </label>
         <?php } ?>
+        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
+        <button type="submit" id="publish_button">Changer de Photo</button>
+    </form>
+    </div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
@@ -94,7 +141,6 @@ try {
     refresh.addEventListener('click', location.reload(), false);
 </script>
 
-
 <!-- Choix du fond par l'utilisateur via des boutons radio -->
 <nav class="Choix-fond">
     <h1 style="margin-top : 5%">Choisir son fond</h1>
@@ -107,12 +153,12 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="bleu" name="drone" value="aqua">
+            <input type="radio" id="bleu" name="drone" value="paleturquoise">
             <label for="bleu">Fond bleu</label>
         </div>
 
         <div>
-            <input type="radio" id="vert" name="drone" value="green">
+            <input type="radio" id="vert" name="drone" value="#71da88">
             <label for="vert">Fond vert</label>
         </div>
 
@@ -122,7 +168,7 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="rouge" name="drone" value="crimson">
+            <input type="radio" id="rouge" name="drone" value="#e05a5a">
             <label for="rouge">Fond rouge</label>
         </div>
         <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
@@ -459,6 +505,6 @@ try {
 
 
 include 'foot.php'; ?>
+</nav>
 </body>
-
 </html>

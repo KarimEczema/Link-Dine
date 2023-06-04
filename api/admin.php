@@ -30,6 +30,8 @@ include 'navbar.php';
 
 <!-- récupération des donnée dans la table users -->
 
+<nav id = "bg">
+
 <?php
 
 $sql = "SELECT * FROM users WHERE iduser= $iduser";
@@ -191,5 +193,7 @@ usernames.forEach((user) => {
 
 </script>
 <?php include 'foot.php';?>
+
+</nav>
 </body>
 </html>

@@ -18,6 +18,11 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 
+?>
+<nav id = "bg">
+<?php
+
+
 include 'navbar.php';
 include 'caroussel.php';
 
@@ -137,10 +142,10 @@ include 'caroussel.php';
     
     <?php }
         ?>
-        
+
 
     <?php include 'foot.php'; ?>
 
+    </nav>
 </body>
-
 </html>
