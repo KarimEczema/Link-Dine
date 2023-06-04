@@ -100,8 +100,8 @@ catch(PDOException $e){
             </div>
         </div>
         <label for="start">Quand ?</label>
-        <input type="date" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
-        <label for="where"style = "text-align : right;">Où ?</label>
+        <input type="datetime-local" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+        <label for="where"style = "margin-left : 10%;">Où ?</label>
         <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
     </form>
 </nav>
