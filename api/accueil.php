@@ -147,12 +147,15 @@ try {
                                     </h6>;
 
                                     <?php
-                                    echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+                                    echo "<h6>" . htmlspecialchars($item['descriptionpost']) . "</h6>";
                                     echo "</div>";
 
 
                                     $idpost = $item['idpost'];
+									
                                     echo '<script>';
+									echo'console.log("$idpost")';
+									echo'console.log("$item["idpost"]")';
                                     echo 'var idpost = "' . $idpost . '";';
                                     echo '</script>';
 
@@ -180,10 +183,10 @@ try {
                                         boutonl.value = idpost ;
 
                                         // Récupérer le bouton de commentaire par son ID
-                                        var boutonc = document.getElementById('boutoncom');
+                                        //var boutonc = document.getElementById('boutoncom');
 
                                         // Changer la valeur du bouton
-                                        boutonc.value = idpost ;
+                                        //boutonc.value = idpost ;
                                     </script>
 
 
@@ -212,12 +215,12 @@ try {
                                             document.getElementById("formulaire"+id).style.display = "block";
                                         }
 
-                                        function fermcommentaire() {
-                                            document.getElementById("form-").style.display = "none";
+                                        function fermcommentaire(id) {
+                                            document.getElementById("form-"+id).style.display = "none";
                                         }
 
-                                        function fermtabcommentaire() {
-                                            document.getElementById("formulaire").style.display = "none";
+                                        function fermtabcommentaire(id) {
+                                            document.getElementById("formulaire"+id).style.display = "none";
                                         }
                                     </script>
 
@@ -237,7 +240,7 @@ try {
                                                 <form method="post" action="">
                                                     <h4>Contenu de votre commentaire :</h4>
                                                     <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                    <button type="submit" id="boutoncom" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                    <button type="submit" id="boutoncom" name="ajouterCom" value= <?php echo $item['idpost'];?> style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                                     <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                                 </form>
                                             </div>
