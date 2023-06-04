@@ -197,6 +197,28 @@ try {
 
                                         </div><!-- ShareThis END -->
 
+                                    <!--
+                                    Code Js pour like et Commentaire
+                                    -->
+
+                                    <script type="text/javascript">
+                                        function ouvrcommentaire() {
+                                            document.getElementById("form-").style.display = "block";
+                                        }
+
+                                        function ouvrtabcommentaire() {
+                                            document.getElementById("formulaire").style.display = "block";
+                                        }
+
+                                        function fermcommentaire() {
+                                            document.getElementById("form-").style.display = "none";
+                                        }
+
+                                        function fermtabcommentaire() {
+                                            document.getElementById("formulaire").style.display = "none";
+                                        }
+                                    </script>
+
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
@@ -346,26 +368,7 @@ try {
 
                                 ?>
 
-                                <!--
-                                        Code Js pour like et Commentaire
-                                -->
-                                <script>
-                                    function ouvrcommentaire() {
-                                        document.getElementById("form-").style.display = "block";
-                                    }
 
-                                    function ouvrtabcommentaire() {
-                                        document.getElementById("formulaire").style.display = "block";
-                                    }
-
-                                    function fermcommentaire() {
-                                        document.getElementById("form-").style.display = "none";
-                                    }
-
-                                    function fermtabcommentaire() {
-                                        document.getElementById("formulaire").style.display = "none";
-                                    }
-                                </script>
 
                             <?php
 
