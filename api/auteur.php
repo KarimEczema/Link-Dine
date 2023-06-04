@@ -39,7 +39,7 @@ try{
         $lieu = $_POST['lieu'];
         $date = $_POST['date'];
         $secu = $_POST['secu'];
-        // the rest of your code ...
+        
 
         //On insère les données reçues
         $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite, photo) VALUES(:write, :personne, :lieu, :date, :secu, :photo)";
@@ -49,7 +49,7 @@ try{
         $stmt->bindParam(':lieu',$lieu);
         $stmt->bindParam(':date',$date);
         $stmt->bindParam(':secu',$secu);
-        $stmt->bindParam(':photo',$photo); // bind the photo
+        $stmt->bindParam(':photo',$photo); 
         $stmt->execute();
 
         //Message de confirmation pour l'utilisateur
@@ -69,10 +69,9 @@ catch(PDOException $e){
             <div class="row">
                 <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
                 <div class="col-sm-5">
-                    <label for="image_uploads"><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z"  width="120" height="100" alt="Appareil photo . png"></label>
-                    <img id="preview" src="appareil photo.png" width="120" height="100" alt="Appareil photo . png">
-
-                    <!-- add onchange event to your file input to call the previewImage function when a file is selected -->
+                    <label for="image_uploads"><img id="preview" src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/sign/Images/Photo_site.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvUGhvdG9fc2l0ZS5wbmciLCJpYXQiOjE2ODU2NTA2OTIsImV4cCI6MTY4NjI1NTQ5Mn0.8V7VO2OmDmNFaN6lwNzgsw0zp_qBRhgorvFpWzmQDfc&t=2023-06-01T20%3A18%3A11.492Z" width="120" height="100" alt="Appareil photo . png">
+</label>
+                    
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
                     <button type="radio" id="publish_button" style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                     <fieldset>
@@ -95,8 +94,8 @@ catch(PDOException $e){
         <input type="date" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
         <label for="where"style = "text-align : right;">Où ?</label>
         <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
-
         <input type="hidden" id="image_url" name="image_url">
+        
     </form>
 </nav>
 
