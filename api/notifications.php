@@ -6,8 +6,6 @@ echo '<title>Notifications</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
-echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">';
-echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
@@ -191,59 +189,68 @@ include 'navbar.php';
 =====================================================================================
 -->
 
-<?php
-$sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
-try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
+    <?php
 
-<!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
-<nav class="section">
-    <div id="events">
-        <h5>Evénements organisés par l'ECE :</h5>
-    </div>
-    <div class="scroll-container">
-        <table>
-            <tbody>
-                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                    <div class="scroll-page" id="event">
-                        <h5><b><?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['organisateur']); ?></h5>
-                        <h6>Date de l'événement: <?php echo htmlspecialchars($row['date']); ?></h6>
-                        <br>
-                        <h6>Description de l'événement: <?php echo htmlspecialchars($row['description']); ?></h6>
-                        <div class="carousel" id="carousel-<?php echo $row['id']; ?>">
-                            <?php
-                            $tabimages = explode(',', $row['tabimages']);
-                            foreach ($tabimages as $index => $image):
-                                $activeClass = ($index === 0) ? 'active' : '';
-                            ?>
-                            <div class="carousel-item <?php echo $activeClass; ?>">
-                                <img src="<?php echo trim($image); ?>" style="height: 350px; width: 600px">
+    $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
+    try {
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
+
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    ?>
+
+    <!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
+    <nav class="section">
+        <div id="events">
+            <h5> Evénements organisés par l'ECE :</h5>
+        </div>
+        <div class="scroll-container">
+            <table>
+                <tbody>
+                    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+
+                        <div class="scroll-page" id="event">
+                            <h5><B>
+                                    <?php echo htmlspecialchars($row['nom']); ?>
+                                </B>
+                                <?php echo htmlspecialchars($row['organisateur']); ?>
+                            </h5>
+                            <h6>Date de l'événement:
+                                <?php echo htmlspecialchars($row['date']); ?>
+                            </h6> <br>
+                            <h6>Description de l'événement:
+                                <?php echo htmlspecialchars($row['description']); ?>
+                            </h6>
+
+                            <div style="border:solid;">
+
+                                <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la
+                                    semaine :</h3>
+                                <h2 style="text-align: center; margin:1%">
+                                    <?php echo htmlspecialchars($row2['nom']); ?>
+                                </h2>
+                                <h3 style="text-align: center; margin:1%">
+                                    <?php echo htmlspecialchars($row2['organisateur']); ?>
+                                </h3>
+
+
+
+                                
+
                             </div>
-                            <?php endforeach; ?>
+
                         </div>
-                    </div>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
-</nav>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
+    </nav>
+
 
     <?php include 'foot.php' ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var carousels = document.getElementsByClassName('carousel');
-            Array.from(carousels).forEach(function(carousel) {
-                M.Carousel.init(carousel);
-            });
-        });
-    </script>
 
 </body>
 
