@@ -104,7 +104,11 @@ try {
         <?php if($row['pp'] !== null) {?>
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </label>
-        <?php } ?>
+        <?php } 
+        else { ?>
+            <label for="image_uploads"><img src="" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+        <?php }
+        ?>
         <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
         <button type="submit" id="publish_button">Changer de Photo</button>
     </form>
