@@ -8,6 +8,7 @@ echo '<title>Accueil</title>';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
@@ -23,7 +24,7 @@ include 'caroussel.php';
 
 <!--
 ======================================================
-        Partie Evénement de la semaine
+		Partie Evénement de la semaine
 ======================================================
 -->
 
@@ -39,13 +40,13 @@ WHERE DATE(date) >= '2023-06-05'
   AND DATE(date) <= '2023-06-11';
 ";
 try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
-    $stmt2 = $conn->query($sql2);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+	// Création du contact avec la BDD
+	$conn = new PDO($dsn);
+	$stmt = $conn->query($sql);
+	$stmt2 = $conn->query($sql2);
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo $e->getMessage();
+	echo $e->getMessage();
 }
 ?>
 
@@ -55,41 +56,41 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 
 <div style="border:solid;">
 
-    <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la semaine :</h3>
-    <h2 style="text-align: center; margin:1%">
-        <?php echo htmlspecialchars($row2['nom']); ?>
-    </h2>
-    <h3 style="text-align: center; margin:1%">
-        <?php echo htmlspecialchars($row2['organisateur']); ?>
-    </h3>
+	<h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la semaine :</h3>
+	<h2 style="text-align: center; margin:1%">
+		<?php echo htmlspecialchars($row2['nom']); ?>
+	</h2>
+	<h3 style="text-align: center; margin:1%">
+		<?php echo htmlspecialchars($row2['organisateur']); ?>
+	</h3>
 
 
 
-    <div class="carousel" id="test1">
-        <?php
-        $valueCar = 1;
-        $tabimages = explode(',', $row['tabimages']);
-        ?>
-        <?php foreach ($tabimages as $image):
-            if ($valueCar == 1) { ?>
-                <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
-                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                <?php $valueCar++;
-            } else { ?>
-                <input type="radio" name="item" value="<?php echo $valueCar; ?>">
-                <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                <?php
-                $valueCar++;
-            }
-            ?>
-        <?php endforeach; ?>
-    </div>
+	<div class="carousel" id="test1">
+		<?php
+		$valueCar = 1;
+		$tabimages = explode(',', $row['tabimages']);
+		?>
+		<?php foreach ($tabimages as $image):
+			if ($valueCar == 1) { ?>
+				<input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
+				<div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+				<?php $valueCar++;
+			} else { ?>
+				<input type="radio" name="item" value="<?php echo $valueCar; ?>">
+				<div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+				<?php
+				$valueCar++;
+			}
+			?>
+		<?php endforeach; ?>
+	</div>
 
 </div>
 
 <!--
 ======================================================
-        Partie Evénements de mes amis (nouveaux posts)
+		Partie Evénements de mes amis (nouveaux posts)
 ======================================================
 -->
 
@@ -97,139 +98,295 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 <h1 style="padding:10% ">Evénements de mes amis</h1>
 <?php
 try {
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
+	// create a PostgreSQL database connection
+	$conn = new PDO($dsn);
 
-    // query to check if username exists
-    $sql = "SELECT amis FROM users WHERE iduser = ?";
-    $stmt = $conn->prepare($sql);
+	// query to check if username exists
+	$sql = "SELECT amis FROM users WHERE iduser = ?";
+	$stmt = $conn->prepare($sql);
 
-    // bind parameters and execute
-    $stmt->execute([$iduser]);
+	// bind parameters and execute
+	$stmt->execute([$iduser]);
 
-    $amis = $stmt->fetch();
+	$amis = $stmt->fetch();
 
 
 
-    if ($amis && $amis['amis'] !== null) {
-        $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
+	if ($amis && $amis['amis'] !== null) {
+		$amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
 
-        // Check that the user has friends
-        if (!empty($amis)) {
-            $combined = [];
+		// Check that the user has friends
+		if (!empty($amis)) {
+			$combined = [];
 
-            foreach ($amis as $ami) {
-                // get posts
-                $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, photo, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
-                $stmt->execute([$ami]);
-                $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($amis as $ami) {
+				// get posts
+				$stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
+				$stmt->execute([$ami]);
+				$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+			?>
+			<div class="scroll-container">
+				<table>
+					<tbody>
+						<?php
+
+
+						foreach ($posts as $item) {
+							?>
+							<div class="scroll-page" id="eventperso">
+								<div style="padding:2%; border:solid;">
+
+									<?php
+									echo "<div>";
+									if ($item['title'] !== NULL) {
+										echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+
+									}
+									echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
+									<h6 style="font-style:italic">Date de publication:
+										<?php echo htmlspecialchars($item['datepublication']) ?>
+									</h6>;
+
+									<?php
+									echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+									echo "</div>";
+									$idpost = $item['idpost'];
+									echo '<script>';
+									echo 'var idpost = "' . $idpost . '";';
+									echo '</script>';
+									echo '<script>';
+									echo 'var iduser = "' . $iduser . '";';
+									echo '</script>';
+									// Now you can use $likeCount in your HTML to display the number of likes for the post
+
+									?>
+
+									<!-- script pour changer les variables à chaque post -->
+									<script>
+										// Récupérer le bouton de like par son ID
+										var boutonl = document.getElementById('boutonlike');
+
+										// Changer la valeur du bouton
+										boutonl.value = idpost;
+
+										// Récupérer le bouton de commentaire par son ID
+										var boutonc = document.getElementById('boutoncom');
+
+										// Changer la valeur du bouton
+										boutonc.value = idpost;
+									</script>
+
+									<!-- Partie like -->
+									<form>
+  									<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike" style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
+									</form>
+
+									<script>
+										$(document).ready(function() {
+    // Get the initial like count for each post
+    $('.like-button').each(function() {
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
+
+        $.ajax({
+            url: 'get_likes',
+            method: 'GET',
+            data: {
+                idpost: idpost
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
             }
-?>
-            <div class="scroll-container">
-                <table>
-                    <tbody>
-                        <?php
+        });
+    });
+
+    // Handle click event on like button
+    $('.like-button').click(function(e) {
+        e.preventDefault();
+
+        // Disable the button immediately to prevent multiple clicks
+        $(this).prop('disabled', true);
+
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
+
+        $.ajax({
+            url: 'like',
+            method: 'POST',
+            data: {
+                idpost: idpost,
+                iduser: iduser
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            },
+            complete: function() {
+                // Re-enable the button when the AJAX request is complete
+                $('#' + buttonId).prop('disabled', false);
+            }
+        });
+    });
+});
+
+										</script>
+
+									<!-- Partie partage -->
+									<!-- ShareThis BEGIN -->
+									<p>Pour partager : </p>
+									<div class="sharethis-inline-share-buttons">
+
+									</div><!-- ShareThis END -->
+
+									<!-- Partie Commentaire -->
+									<h6>
+										<div class="open-btn">
+											<button class="open-button" onclick="ouvrcommentaire()">Commentaire</button>
+										</div>
+									</h6>
+
+									<div class="login-popup">
+										<div class="Description" id="form-">
+											<div class="descr-container">
+												<form method="post" action="">
+													<h4>Contenu de votre commentaire :</h4>
+													<div class="col-sm-7"><textarea name="write" id="write" cols="50" rows="10"
+															wrap="hard" required></textarea></div>
+													<button type="submit" id="boutoncom" name="ajouterCom"
+														style="margin-top : 10%; margin-left : 3%;">Publier</button>
+													<button type="button" class="btn cancel" onclick="fermcommentaire()"
+														style="background-color: antiquewhite">Fermer</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
-                        foreach ($posts as $item) {
-                            ?>
-                            <div class="scroll-page" id="eventperso">
-                                <div style="padding:2%; border:solid;">
-								<?php if( !empty(trim($item['photo']))) 
-								{?>
-									<div><img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"></div>
+								<!-- Code php pour envoyer le commentaire -->
+								<?php
+								try {
+									if ($_POST) {
+										if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $idpost) {
+											//On se connecte à la BDD
+											$conn = new PDO($dsn);
 
-									<?php }
-				
-											
-                                    if ($item['title'] !== NULL) {
-                                        echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-
-                                    }
-                                    echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
-                                    <h6 style="font-style:italic">Date de publication:
-                                        <?php echo htmlspecialchars($item['datepublication']) ?>
-                                    </h6>;
-
-                                    <?php
-                                    echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
-                                    echo "</div>";
+											//On définit certaines variables.
+											$ecriture = $_POST['write'];
 
 
-                                    ?>
+											//On insère les données reçues
+											$sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
+											$stmt = $conn->prepare($sql);
+											$stmt->bindParam(':write', $ecriture);
+											$stmt->bindParam(':personne', $iduser);
+											$stmt->bindParam(':post', $idpost);
+											$stmt->execute();
 
-                                </div>
+											//Message de confirmation pour l'utilisateur
+											echo "Commentaire publié !";
+										} else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
+											//On se connecte à la BDD
+											$conn = new PDO($dsn);
 
-                                <script>
-                                    function openForm(id) {
-                                        document.getElementById("form-" + id).style.display = "block";
-                                    }
+											//On insère les données reçues
+											$sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
+											$stmt = $conn->prepare($sql);
+											$stmt->bindParam(':post', $idpost);
+											$stmt->bindParam(':personne', $iduser);
 
-                                    function closeForm(id) {
-                                        document.getElementById("form-" + id).style.display = "none";
-                                    }
-                                </script>
+											$stmt->execute();
 
-                            <?php
+											//Message de confirmation pour l'utilisateur
+											echo "Vous aimez ce post";
+										}
+									}
 
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-            <?php
+								} catch (PDOException $e) {
+									echo 'Impossible de traiter les données. Erreur : ' . $e->getMessage();
+								}
+								?>
 
-        } else {
-            echo "This user has no friends.";
-        }
-    } else {
-        echo "This user has no friends.";
-    }
+								<!--
+										Code Js pour like et Commentaire
+								-->
+								<script>
+									function ouvrcommentaire() {
+										document.getElementById("form-").style.display = "block";
+									}
+
+
+									function fermcommentaire() {
+										document.getElementById("form-").style.display = "none";
+									}
+								</script>
+
+								<?php
+
+						}
+						?>
+					</tbody>
+				</table>
+			</div>
+			<?php
+
+		} else {
+			echo "This user has no friends.";
+		}
+	} else {
+		echo "This user has no friends.";
+	}
 
 } catch (PDOException $e) {
-    // report error message
-    echo $e->getMessage();
+	// report error message
+	echo $e->getMessage();
 }
 ?>
 
 <!--
 ======================================================
-        Partie derniers évènements de l'auteur
+		Partie derniers évènements de l'auteur
 ======================================================
 -->
 
 
 <?php
 try {
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
+	// create a PostgreSQL database connection
+	$conn = new PDO($dsn);
 
-    // get posts
-    $stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
-    $stmt->execute([$iduser]);
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	// get posts
+	$stmt = $conn->prepare("SELECT lieu as title, date, descriptionpost as description, datepublication FROM posts WHERE iduser = ? ORDER BY datepublication DESC");
+	$stmt->execute([$iduser]);
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // get formations
-    $stmt = $conn->prepare("SELECT nom as title, (datedebut, ', ', datefin) as date,  institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
-    $stmt->execute([$iduser]);
-    $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	// get formations
+	$stmt = $conn->prepare("SELECT nom as title, (datedebut, ', ', datefin) as date,  institution as description, datepublication FROM formation WHERE iduser = ? ORDER BY datepublication DESC");
+	$stmt->execute([$iduser]);
+	$formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // get projets
-    $stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
-    $stmt->execute([$iduser]);
-    $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	// get projets
+	$stmt = $conn->prepare("SELECT nom as title, NULL as date, description, datepublication FROM projet WHERE iduser = ? ORDER BY datepublication DESC");
+	$stmt->execute([$iduser]);
+	$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // combine all and sort by datepublication
-    $combined = array_merge($posts, $formations, $projets);
-    usort($combined, function ($a, $b) {
-        return $b['datepublication'] <=> $a['datepublication'];
-    });
+	// combine all and sort by datepublication
+	$combined = array_merge($posts, $formations, $projets);
+	usort($combined, function ($a, $b) {
+		return $b['datepublication'] <=> $a['datepublication'];
+	});
 
 
 
 } catch (PDOException $e) {
-    // report error message
-    echo $e->getMessage();
+	// report error message
+	echo $e->getMessage();
 }
 ?>
 
@@ -238,50 +395,48 @@ try {
 
 
 <nav class="myEvents" style="margin-bottom:5%">
-    <div class="scroll-container">
-        <table>
-            <tbody>
-                <?php
+	<div class="scroll-container">
+		<table>
+			<tbody>
+				<?php
 
-                // display
-                foreach ($combined as $item) {
-                    ?>
-                    <div class="scroll-page" id="eventperso">
-                        <div style="padding:2%; border:solid;">
+				// display
+				foreach ($combined as $item) {
+					?>
+					<div class="scroll-page" id="eventperso">
+						<div style="padding:2%; border:solid;">
 
-                            <?php
-                            echo "<div>";
-                            echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-                            ?>
-                            <h6 style="font-style:italic">Date de publication:
-                                <?php echo htmlspecialchars($item['datepublication']); ?>
-                            </h6>;
+							<?php
+							echo "<div>";
+							echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+							?>
+							<h6 style="font-style:italic">Date de publication:
+								<?php echo htmlspecialchars($item['datepublication']); ?>
+							</h6>;
 
-                            <?php
-                            if ($item['description'] !== NULL) {
-                                echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
-                            }
-                            echo "</div>";
+							<?php
+							if ($item['description'] !== NULL) {
+								echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+							}
+							echo "</div>";
+							?>
 
+						</div>
 
-                            ?>
+						<script>
+							function openForm(id) {
+								document.getElementById("form-" + id).style.display = "block";
+							}
 
-                        </div>
+							function closeForm(id) {
+								document.getElementById("form-" + id).style.display = "none";
+							}
+						</script>
 
-                        <script>
-                            function openForm(id) {
-                                document.getElementById("form-" + id).style.display = "block";
-                            }
-
-                            function closeForm(id) {
-                                document.getElementById("form-" + id).style.display = "none";
-                            }
-                        </script>
-
-                    <?php } ?>
-            </tbody>
-        </table>
-    </div>
+					<?php } ?>
+			</tbody>
+		</table>
+	</div>
 </nav>
 
 

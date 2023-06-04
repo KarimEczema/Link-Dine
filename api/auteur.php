@@ -1,6 +1,5 @@
 <?php
 
-include 'login-check.php';
 
 echo '<html>';
 echo '<head>';
@@ -14,6 +13,8 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/auteur.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+
+include 'login-check.php';
 echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1/dist/umd/supabase.min.js"></script>';
 echo '</head>';
 echo '<body>';
