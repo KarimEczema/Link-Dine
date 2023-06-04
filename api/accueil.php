@@ -168,7 +168,8 @@ try {
 
                                     $stmt = $conn->query($chcom);
                                     $com = $stmt->fetch(PDO::FETCH_ASSOC);
-
+									
+									var_dump($com);
 									
                                     ?>
 
@@ -185,7 +186,7 @@ try {
                                         boutonl.value = idpost;
 
                                         // Récupérer le bouton de commentaire par son ID
-                                        var boutonc = document.getElementById('<?php echo $idpost; ?>');
+                                        var boutonc = document.getElementById('boutoncom-<?php echo $idpost; ?>');
 
                                         // Changer la valeur du bouton
                                         boutonc.value = idpost;
