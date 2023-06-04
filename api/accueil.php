@@ -96,14 +96,14 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 <h1 style="padding:10% ">Evénements de mes amis</h1>
 <?php
 try {
-
+	// create a PostgreSQL database connection
 	$conn = new PDO($dsn);
 
-
+	// query to check if username exists
 	$sql = "SELECT amis FROM users WHERE iduser = ?";
 	$stmt = $conn->prepare($sql);
 
-	
+	// bind parameters and execute
 	$stmt->execute([$iduser]);
 
 	$amis = $stmt->fetch();
@@ -111,14 +111,14 @@ try {
 
 
 	if ($amis && $amis['amis'] !== null) {
-		$amis = explode(',', trim($amis['amis'], '{}')); 
+		$amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
 
-	
+		// Check that the user has friends
 		if (!empty($amis)) {
 			$combined = [];
 
 			foreach ($amis as $ami) {
-				
+				// get posts
 				$stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
 				$stmt->execute([$ami]);
 				$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -156,10 +156,11 @@ try {
 									echo '<script>';
 									echo 'var iduser = "' . $iduser . '";';
 									echo '</script>';
-									
+									// Now you can use $likeCount in your HTML to display the number of likes for the post
+
 									?>
 
-									
+									<!-- script pour changer les variables à chaque post -->
 									<script>
 										// Récupérer le bouton de like par son ID
 										var boutonl = document.getElementById('boutonlike');
@@ -181,65 +182,149 @@ try {
 
 									<script>
 										$(document).ready(function() {
-										
-										$('.like-button').each(function() {
-											var buttonId = $(this).attr('id');
-											var idpost = buttonId.split('-')[1];
+    // Get the initial like count for each post
+    $('.like-button').each(function() {
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
 
-											$.ajax({
-												url: 'get_likes',
-												method: 'GET',
-												data: {
-													idpost: idpost
-												},
-												success: function(data) {
-													$('#' + buttonId).text('like (' + data + ')');
-												},
-												error: function(xhr, status, error) {
-													console.error(xhr);
-												}
-											});
-										});
+        $.ajax({
+            url: 'get_likes',
+            method: 'GET',
+            data: {
+                idpost: idpost
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            }
+        });
+    });
 
-										
-										$('.like-button').click(function(e) {
-											e.preventDefault();
+    // Handle click event on like button
+    $('.like-button').click(function(e) {
+        e.preventDefault();
 
-											
-											$(this).prop('disabled', true);
+        // Disable the button immediately to prevent multiple clicks
+        $(this).prop('disabled', true);
 
-											var buttonId = $(this).attr('id');
-											var idpost = buttonId.split('-')[1];
+        var buttonId = $(this).attr('id');
+        var idpost = buttonId.split('-')[1];
 
-											$.ajax({
-												url: 'like',
-												method: 'POST',
-												data: {
-													idpost: idpost,
-													iduser: iduser
-												},
-												success: function(data) {
-													$('#' + buttonId).text('like (' + data + ')');
-												},
-												error: function(xhr, status, error) {
-													console.error(xhr);
-												},
-												complete: function() {
-													
-													$('#' + buttonId).prop('disabled', false);
-												}
-											});
-										});
-									});
+        $.ajax({
+            url: 'like',
+            method: 'POST',
+            data: {
+                idpost: idpost,
+                iduser: iduser
+            },
+            success: function(data) {
+                $('#' + buttonId).text('like (' + data + ')');
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr);
+            },
+            complete: function() {
+                // Re-enable the button when the AJAX request is complete
+                $('#' + buttonId).prop('disabled', false);
+            }
+        });
+    });
+});
 
 										</script>
 
 									<!-- Partie partage -->
-									
+									<!-- ShareThis BEGIN -->
 									<p>Pour partager : </p>
 									<div class="sharethis-inline-share-buttons">
 
+									</div><!-- ShareThis END -->
+
+									<!-- Partie Commentaire -->
+									<h6>
+										<div class="open-btn">
+											<button class="open-button" onclick="ouvrcommentaire()">Commentaire</button>
+										</div>
+									</h6>
+
+									<div class="login-popup">
+										<div class="Description" id="form-">
+											<div class="descr-container">
+												<form method="post" action="">
+													<h4>Contenu de votre commentaire :</h4>
+													<div class="col-sm-7"><textarea name="write" id="write" cols="50" rows="10"
+															wrap="hard" required></textarea></div>
+													<button type="submit" id="boutoncom" name="ajouterCom"
+														style="margin-top : 10%; margin-left : 3%;">Publier</button>
+													<button type="button" class="btn cancel" onclick="fermcommentaire()"
+														style="background-color: antiquewhite">Fermer</button>
+												</form>
+											</div>
+										</div>
 									</div>
+								</div>
+
+
+								<!-- Code php pour envoyer le commentaire -->
+								<?php
+								try {
+									if ($_POST) {
+										if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $idpost) {
+											//On se connecte à la BDD
+											$conn = new PDO($dsn);
+
+											//On définit certaines variables.
+											$ecriture = $_POST['write'];
+
+
+											//On insère les données reçues
+											$sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
+											$stmt = $conn->prepare($sql);
+											$stmt->bindParam(':write', $ecriture);
+											$stmt->bindParam(':personne', $iduser);
+											$stmt->bindParam(':post', $idpost);
+											$stmt->execute();
+
+											//Message de confirmation pour l'utilisateur
+											echo "Commentaire publié !";
+										} else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
+											//On se connecte à la BDD
+											$conn = new PDO($dsn);
+
+											//On insère les données reçues
+											$sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
+											$stmt = $conn->prepare($sql);
+											$stmt->bindParam(':post', $idpost);
+											$stmt->bindParam(':personne', $iduser);
+
+											$stmt->execute();
+
+											//Message de confirmation pour l'utilisateur
+											echo "Vous aimez ce post";
+										}
+									}
+
+								} catch (PDOException $e) {
+									echo 'Impossible de traiter les données. Erreur : ' . $e->getMessage();
+								}
+								?>
+
+								<!--
+										Code Js pour like et Commentaire
+								-->
+								<script>
+									function ouvrcommentaire() {
+										document.getElementById("form-").style.display = "block";
+									}
+
+
+									function fermcommentaire() {
+										document.getElementById("form-").style.display = "none";
+									}
+								</script>
+
 								<?php
 
 						}
