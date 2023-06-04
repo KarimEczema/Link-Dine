@@ -8,6 +8,7 @@ echo '<title>Accueil</title>';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
@@ -165,22 +166,90 @@ try {
                                     echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
                                     <h6 style="font-style:italic">Date de publication: <?php echo htmlspecialchars($item['datepublication']) ?> </h6>;
 
-<?php
+                                    <?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
 
-
                                     ?>
+
+                                    <form>
+                                        <!-- Partie like -->
+                                        <input type="button" value="Like" onclick="like($iduser)">
+
+                                        <!-- Partie partage -->
+                                        <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+
+                                        <!-- Partie Commentaire -->
+                                        <h6>
+                                            <div class="open-btn">
+                                                <button class="open-button" onclick="ouvrcommentaire($iduser)">Commentaire</button>
+                                            </div>
+                                        </h6>
+                                        <div class="login-popup">
+                                            <div class="Description" id="form-<?php echo $row['idemploi'];?>">
+                                                <div class="descr-container">
+                                                    <form method="post" action="">
+                                                        <h4>Contenu de votre commentaire :</h4>
+                                                        <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
+                                                        <button type="radio" name="ajouterCom" value="CreerCom"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                        <button type="button" class="btn cancel" onclick="fermcommentaire($iduser)" style="background-color: antiquewhite">Fermer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
 
                                 </div>
 
-                                <script>
-                                    function openForm(id) {
-                                        document.getElementById("form-" + id).style.display = "block";
+
+                                <!-- Code php pour envoyer le commentaire -->
+                                <?php
+                                try{
+                                    if($_POST)
+                                    {
+                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == 'CreerCom') {
+                                            //On se connecte à la BDD
+                                            $conn = new PDO($dsn);
+
+                                            //On définit certaines variables.
+                                            $ecriture = $_POST['write'];
+
+
+                                            //On insère les données reçues
+                                            $sql = "INSERT INTO commentaire(commentaire, iduser) VALUES(:write, :personne)";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->bindParam(':write', $ecriture);
+                                            $stmt->bindParam(':personne', $iduser);
+
+                                            $stmt->execute();
+
+                                            //Message de confirmation pour l'utilisateur
+                                            echo "Commentaire publié !";
+                                        }
                                     }
 
-                                    function closeForm(id) {
-                                        document.getElementById("form-" + id).style.display = "none";
+                                }
+                                catch(PDOException $e){
+                                echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+                                }
+                                ?>
+
+                                <!--
+                                        Code Js pour like et Commentaire
+                                -->
+                                <script>
+                                    function like(id) {
+
+                                    }
+
+
+                                    function ouvrcommentaire(id) {
+                                        document.getElementById("form-"+id).style.display = "block";
+                                    }
+
+
+                                    function fermcommentaire(id) {
+                                        document.getElementById("form-"+id).style.display = "none";
                                     }
                                 </script>
 
