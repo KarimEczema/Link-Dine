@@ -22,6 +22,10 @@ include 'login-check.php';
 <?php
 echo '<body>';
 
+?>
+<nav class = "bg">
+<?php
+
 include 'navbar.php';
 include 'caroussel.php';
 include 'pub.php';
@@ -145,6 +149,6 @@ include 'pub.php';
 
     <?php include 'foot.php'; ?>
 
+    </nav>
 </body>
-
 </html>

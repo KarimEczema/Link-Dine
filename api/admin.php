@@ -21,7 +21,7 @@ include 'navbar.php';
 
 
 <body>
-
+<nav class = "bg">
 <!--
 ======================================================
         Partie Profil
@@ -191,5 +191,6 @@ usernames.forEach((user) => {
 
 </script>
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

@@ -19,6 +19,9 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 
 echo '</head>';
 echo '<body>';
+?>
+<nav class = "bg">
+<?php
 
 include 'navbar.php';
 ?>
@@ -279,7 +282,6 @@ const RecupUtilisateurs = async (currentUserId) => {
 
 
     </script>
-
+</nav>
 </body>
-
 </html>

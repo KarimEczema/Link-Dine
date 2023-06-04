@@ -16,6 +16,9 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 echo '<body>';
 
+?>
+<nav class = "bg">
+<?php
 include 'navbar.php';
 ?>
 
@@ -107,3 +110,6 @@ catch(PDOException $e){
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
 </nav>
+</nav>
+</body>
+</html>

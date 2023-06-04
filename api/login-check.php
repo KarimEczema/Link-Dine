@@ -47,7 +47,7 @@ if (isset($_COOKIE['jwt'])) {
             //echo 'The background color is: ' . $color;
             
             echo '<style>';
-            echo 'body { background-color: ' . $color . '; }';
+            echo '.bg { background-color: ' . $color . '; }';
             echo '</style>';
 
         } catch (PDOException $e) {
