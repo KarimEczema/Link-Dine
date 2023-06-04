@@ -18,9 +18,13 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1/dist/umd
 echo '</head>';
 echo '<body>';
 
+?>
+    <nav class = "bg">
+<?php
 include 'navbar.php';
 ?>
 
+   
 
 
 <nav class = "post" style =" background-color: cyan;">

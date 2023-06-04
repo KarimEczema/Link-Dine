@@ -1,7 +1,5 @@
 <?php
 
-include 'login-check.php';
-
 echo '<html>';
 echo '<head>';
 echo '<title>Profil</title>';
@@ -11,7 +9,13 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/profil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+include 'login-check.php';
+echo '</head>';
 echo '<body>';
+
+?>
+<nav class = "bg">
+<?php
 
 include 'navbar.php';
 include 'caroussel.php';
@@ -136,5 +140,6 @@ $amis = $stmt->fetchAll();
 
 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

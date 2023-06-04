@@ -105,3 +105,61 @@ input:checked ~ input:before {
   #test1 input:checked + div ~ div {
     transform: translate3d(100%,0,0);
   }
+
+  .scroll-container {
+    width: 50vw;
+    height: 60vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.scrolling-page {
+  height: 400px;
+  overflow: auto;
+}
+
+.element {
+  background: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+.myEvents{
+  /* Style du corps de section */
+  color: black;
+  margin-top: 50px;
+}
+
+
+.Description {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-45%, 5%);
+  border: 2px solid #666;
+  z-index: 9;
+  }
+  .descr-container {
+  padding: 20px;
+  background-color: #f8f5f5;
+  }      
+
+.login-popup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+#eventPerso{
+  background-color: mintcream ;
+}
+
+.form-container .btn:hover,
+    .open-button:hover {
+    opacity: 1;
+    }

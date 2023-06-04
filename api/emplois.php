@@ -1,4 +1,4 @@
-<?php include 'login-check.php'; 
+<?php
 
 echo '<html>';
 echo '<head>';
@@ -7,8 +7,13 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> '; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/emplois.css">'; 
-echo '<link rel="stylesheet" type="text/css" href="css/global.css">'; 
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+include 'login-check.php';
+echo '</head>';
 echo '<body>';
+?>
+<nav class = "bg">
+<?php
 
 include 'navbar.php';
 
@@ -33,7 +38,7 @@ include 'navbar.php';
 <!-- Récupère dans la base de données les informations relatives à Emplois-->
 <?php
     
-    $sql = "SELECT * FROM Emplois";
+    $sql = "SELECT * FROM Emplois ORDER BY datepublication DESC";
 	try{
     // Création du contact avec la BDD
             $conn = new PDO($dsn);
@@ -44,7 +49,7 @@ include 'navbar.php';
 	}
     ?>
 
-<nav>
+
 
 <!-- Affichage des données récupérées dans un scroller, autant de paragraphe dans le scroller que de ligne dans la BDD -->
 <nav class = "section"> 
@@ -74,6 +79,7 @@ include 'navbar.php';
                             </div>
                         </div>
                         <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
+                        <h6 style="font-style:italic">(Date de publication : <?php echo htmlspecialchars($row['datepublication']); ?> )</h6> 
                     </div> 
 
                     <script>
@@ -92,5 +98,6 @@ include 'navbar.php';
     </div> 
 </nav> 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

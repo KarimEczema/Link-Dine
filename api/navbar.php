@@ -13,7 +13,7 @@
 		<li id="reseau"><a href="reseau">Mon réseau</a></li>
 		<li id="vous"><a href="vous">Vous</a></li>
 		<li id="notifs"><a href="notifications">Notifications</a></li>
-		<li id="emplois"><a href="emplois">Emplois</a></li>
+		<li id="emploisnav"><a href="emplois">Emplois</a></li>
 		<li id="chat"><a href="chat">Messagerie</a></li>
 		<?php if ($iduser == 1): ?>
 			<li id="admin" style="float:right"><a href="admin">Admin</a></li>
