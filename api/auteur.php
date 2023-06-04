@@ -156,8 +156,11 @@ catch(PDOException $e){
     </form>
 </nav>
 
+<input type="file" id="imageuploads" name="image_uploads" accept=".jpg, .jpeg, .png">
+<img id="preview" src="#" alt="Image Preview" style="display: none;">
+
 <script>
-document.getElementById('image_uploads').addEventListener('change', function() {
+document.getElementById('imageuploads').addEventListener('change', function() {
     var file = this.files[0]; // get the uploaded file
 
     // check if a file is selected
