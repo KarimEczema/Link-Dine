@@ -156,6 +156,16 @@ try {
 									echo '<script>';
 									echo 'var iduser = "' . $iduser . '";';
 									echo '</script>';
+
+									// Get the like count for a post
+									$sql = "SELECT COUNT(*) as count FROM likes WHERE idpost = :post";
+									$stmt = $conn->prepare($sql);
+									$stmt->bindParam(':post', $idpost);
+									$stmt->execute();
+									$likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+
+// Now you can use $likeCount in your HTML to display the number of likes for the post
+
 									?>
 
 									<!-- script pour changer les variables à chaque post -->
