@@ -206,16 +206,15 @@ try {
                                     -->
 
                                     <script type="text/javascript">
-                                        function ouvrcommentaire() {
-                                            document.getElementById("form-").style.display = "block";
-                                        }
+                                       function ouvrcommentaire(idpost) {
+											document.getElementById("form-" + idpost).style.display = "block";
+										}
 
+										function fermcommentaire(idpost) {
+											document.getElementById("form-" + idpost).style.display = "none";
+										}
                                         function ouvrtabcommentaire() {
                                             document.getElementById("formulaire").style.display = "block";
-                                        }
-
-                                        function fermcommentaire() {
-                                            document.getElementById("form-").style.display = "none";
                                         }
 
                                         function fermtabcommentaire() {
@@ -226,25 +225,28 @@ try {
                                         <!-- Partie Commentaire -->
                                         <h6>
                                             <div class="open-btn">
-                                                <button class="open-button" onclick="ouvrcommentaire()">Commenter </button>
+                                                <button class="open-button" onclick="ouvrcommentaire(<?php echo $idpost; ?>)">Commenter </button>
                                             </div>
                                             <div class="open-btn">
                                                 <button class="open-button" onclick="ouvrtabcommentaire()">Commentaires </button>
                                             </div>
                                         </h6>
 
-                                    <div class="login-popup">
-                                        <div class="Description" id="form-">
-                                            <div class="descr-container">
-                                                <form method="post" action="">
-                                                    <h4>Contenu de votre commentaire :</h4>
-                                                    <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                    <button type="submit" id="boutoncom-<?php echo $idpost; ?>" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
-                                                    <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+										<div class="login-popup">
+											<div class="Description" id="form-<?php echo $idpost; ?>">
+												<div class="descr-container">
+													<form method="post" action="">
+														<h4>Contenu de votre commentaire :</h4>
+														<div class="col-sm-7">
+															<textarea name="write" id="write-<?php echo $idpost; ?>" cols = "50" rows = "10" wrap="hard" required></textarea>
+														</div>
+														<button type="submit" id="boutoncom-<?php echo $idpost; ?>" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+														<button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+
 
                                     <div class="login-popup">
                                         <div class="Description" id="formulaire">
@@ -372,13 +374,6 @@ try {
                                 }
 
                                 ?>
-
-
-
-                            <?php
-
-
-                        ?>
                     </tbody>
                 </table>
             </div>
