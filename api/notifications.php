@@ -225,12 +225,12 @@ include 'navbar.php';
                                 <?php echo htmlspecialchars($row['description']); ?>
                             </h6>
                             <div class="login-popup">
-                                <div class="Description" id="form-<?php echo $row['idemploi']; ?>">
+                                <div class="Description" id="form-<?php echo $row['idevent']; ?>">
                                     <div class="descr-container">
                                         <h4>Description de la formation :</h4>
                                         <?php echo htmlspecialchars($row['description']); ?>
                                         <button type="button" class="btn cancel"
-                                            onclick="closeForm(<?php echo $row['idemploi'] ?>)"
+                                            onclick="closeForm(<?php echo $row['idevent'] ?>)"
                                             style="background-color: antiquewhite">Fermer</button>
                                     </div>
                                 </div>
