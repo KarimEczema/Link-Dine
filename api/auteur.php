@@ -156,6 +156,23 @@ catch(PDOException $e){
     </form>
 </nav>
 
+<script>
+document.getElementById('image_uploads').addEventListener('change', function() {
+    var file = this.files[0]; // get the uploaded file
+
+    // check if a file is selected
+    if (file) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            // when the file is read, set the src of the image
+            document.getElementById('preview').src = reader.result;
+            document.getElementById('preview').style.display = 'block';
+        }
+        reader.readAsDataURL(file); // read the uploaded file
+    }
+});
+</script>
+
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
 </nav>
