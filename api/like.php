@@ -7,8 +7,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idpost = $_POST['idpost'];
     $iduser = $_POST['iduser'];
 
-    // Insert the new like
-    $sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne) ON CONFLICT (idpost, iduser) DO NOTHING";
+    // Check if the user has already liked this post
+    $stmt = $conn->prepare("SELECT * FROM likes WHERE idpost = :post AND iduser = :personne");
+    $stmt->bindParam(':post', $idpost);
+    $stmt->bindParam(':personne', $iduser);
+    $stmt->execute();
+    $alreadyLiked = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($alreadyLiked) {
+        // User already liked this post, so remove the like
+        $sql = "DELETE FROM likes WHERE idpost = :post AND iduser = :personne";
+    } else {
+        // User has not liked this post yet, so add the like
+        $sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne)";
+    }
+
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':post', $idpost);
     $stmt->bindParam(':personne', $iduser);
