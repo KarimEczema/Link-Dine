@@ -191,7 +191,7 @@ include 'navbar.php';
 
     <?php
 
-    $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
+    $sql = "SELECT * FROM evenement WHERE organisateur LIKE 'ECE%' ORDER BY date DESC";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
