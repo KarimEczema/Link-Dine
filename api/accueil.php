@@ -169,6 +169,34 @@ try {
 										// Changer la valeur du bouton
 										boutonc.value = idpost;
 									</script>
+
+									<?php
+									if($_SERVER['REQUEST_METHOD'] == 'POST') {
+										// Connectez-vous à votre base de données
+										$conn = new PDO($dsn);
+
+										// Obtenez l'ID du post
+										$idpost = $_POST['idpost'];
+
+										// Insérez le nouveau like
+										$sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne)";
+										$stmt = $conn->prepare($sql);
+										$stmt->bindParam(':post', $idpost);
+										$stmt->bindParam(':personne', $iduser);
+										$stmt->execute();
+
+										// Obtenez le nouveau nombre de likes
+										$sql = "SELECT COUNT(*) as count FROM likes WHERE idpost = :post";
+										$stmt = $conn->prepare($sql);
+										$stmt->bindParam(':post', $idpost);
+										$stmt->execute();
+										$likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+
+										// Retournez le nouveau nombre de likes
+										echo $likeCount;
+									}
+									?>
+
 									<script>
 										$(document).ready(function () {
 											$('.like-button').click(function (e) {
@@ -381,8 +409,6 @@ try {
 								echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
 							}
 							echo "</div>";
-
-
 							?>
 
 						</div>
