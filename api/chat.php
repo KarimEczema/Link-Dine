@@ -1,5 +1,6 @@
 <?php
 
+//Inclusions nécessaires
 echo '<html>';
 echo '<head>';
 echo '<title>Messagerie</title>';
@@ -23,6 +24,7 @@ echo '<body>';
 include 'navbar.php';
 ?>
 
+<!--- Appelle la fonction chat.js qui se charge de tout le fonctionnement de la messagerie et de la visio -->
 <body>
 
     <div id="chatbox">

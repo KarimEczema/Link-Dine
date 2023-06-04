@@ -1,3 +1,5 @@
+<!-- Barre de navigation qui s'affiche en haut de toute les pages pour permettre la navigation -->
+
 <header>
 		<div class="container-fluid">
 			<div class="row">

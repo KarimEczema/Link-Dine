@@ -1,11 +1,15 @@
+<!-- Footer que l'on va afficher en bas de chaque page -->
+
 <footer>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6" style = "border : solid; color: black; padding:2px">
                 <p style = "margin-top:10%;">
+                <!-- Présentation du site -->
                 Bienvenue sur Link dine, le plus grand réseau professionnel mondial comptant plus de 2 utilisateurs dans plus de 0 pays et territoires du monde.
                 </p>
             </div>
+            <!-- Contact pour contacter les gérants du site  -->
             <div class="col-sm-6" style = "border : solid; color: black; padding:2px">
                 <p style="text-align : center;">Nous contacter</p>
                 

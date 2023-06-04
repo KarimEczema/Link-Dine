@@ -1,5 +1,6 @@
 <?php
 
+//Inclusion de librairies nécessaires
 echo '<html>';
 echo '<head>';
 echo '<title>Admin</title>';
