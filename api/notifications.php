@@ -240,32 +240,29 @@ include 'navbar.php';
                                 </div>
                             </div>
                             <?php
-                            if($row['tabimages'] !== NULL)
-                            {
+                            if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                            <div class="carousel" id="test1" style="padding-bottom:3%">
-                                <?php
-                                $valueCar = 1;
-                                $tabimages = explode(',', $row['tabimages']);
-                                ?>
-                                <?php foreach ($tabimages as $image):
-                                    if ($valueCar == 1) { ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
-                                        <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                                        <?php $valueCar++;
-                                    } else { ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>">
-                                        <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
-                                        <?php
-                                        $valueCar++;
-                                    }
+                                <div class="carousel" id="test1" style="padding-bottom:3%">
+                                    <?php
+                                    $valueCar = 1;
+                                    $tabimages = explode(',', $row['tabimages']);
                                     ?>
-                                <?php endforeach; ?>
-                            </div>
-                           <?php } ?>
-                            
-
+                                    <?php foreach ($tabimages as $image):
+                                        if ($valueCar == 1) { ?>
+                                            <input type="radio" name="item" value="<?php echo $valueCar; ?>" >
+                                            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                                            <?php $valueCar++;
+                                        } else { ?>
+                                            <input type="radio" name="item" value="<?php echo $valueCar; ?>">
+                                            <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                                            <?php
+                                            $valueCar++;
+                                        }
+                                        ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php } ?>
 
                             <script>
                                 function openForm(id) {
