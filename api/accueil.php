@@ -194,7 +194,7 @@ try {
 
 
                                     <!-- Partie like -->
-                                    <form>
+                                    <form method="post" action="">
                                         <button type="submit" id="boutonlike" name="ajouterlike"   style = "margin-top : 10%; margin-left : 3%;">like</button>
                                     </form>
 
@@ -256,7 +256,6 @@ try {
                                                 <h4>Commentaires du post :</h4>
                                                 <?php
 
-												
                                                 if ($com && $com['commentaires'] !== '') {
                                                     $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
