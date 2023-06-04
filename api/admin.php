@@ -72,8 +72,8 @@ try {
 <nav class = "Ajout-compte">
     <h1 style = "margin-top : 5% ">Ajouter un utilisateur</h1>
     <form method="post" action="">
-    <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%"> </h5></div>
-    <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%"> </h5></div>
+    <div style = "background-color: grey; margin-top:2%" ><h5>Pseudo : <input type="text" name="nom" style="margin : 5%" required> </h5></div>
+    <div style = "background-color: grey; margin:2%"><h5>Email : <input type="text" name="email" style="margin : 5%" required> </h5></div>
 
     <input type="submit"  style = "margin-top : 2%;" name="ajouter" value="Creer">
     </form>
