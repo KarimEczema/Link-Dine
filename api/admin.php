@@ -103,9 +103,7 @@ if($_POST){
 
         //Message de confirmation pour l'utilisateur
         echo "Utilisateur ajouté !";
-        ?>
-        <script>ajout.form.reset()</script>
-        <?php
+        $stmt->closeCursor();
         
     }
 }
