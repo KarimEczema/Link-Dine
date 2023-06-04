@@ -51,8 +51,6 @@ try {
 
 <?php
 
-
-$sql = "INSERT INTO users(photo) VALUES(:photo);";
 try {
 
     if ($_POST) {
@@ -63,7 +61,7 @@ try {
         $conn = new PDO($dsn);
     
         // Update the user's profile picture
-        $sql = "UPDATE users SET photo = :photo WHERE iduser = $iduser";
+        $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':photo', $imageUrl);
         $stmt->execute();
