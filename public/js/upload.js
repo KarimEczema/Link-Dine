@@ -3,7 +3,7 @@
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co'
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+var supabase = supabase.default(supabaseUrl, supabaseAnonKey);
 
 
 document.getElementById('image_uploads').addEventListener('change', function() {
