@@ -164,7 +164,7 @@ try {
 									$stmt->execute();
 									$likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
 
-// Now you can use $likeCount in your HTML to display the number of likes for the post
+									// Now you can use $likeCount in your HTML to display the number of likes for the post
 
 									?>
 
@@ -212,6 +212,26 @@ try {
 												}
 											});
 										});
+										$('.like-button').each(function() {
+										var buttonId = $(this).attr('id');
+										var idpost = buttonId.split('-')[1];
+										//var iduser = $(this).data('userid');
+
+										$.ajax({
+										url: 'like',
+										method: 'POST',
+										data: {
+											idpost: idpost,
+											iduser: iduser
+										},
+										success: function(data) {
+											$('#' + buttonId).text('like (' + data + ')');
+										},
+										error: function(xhr, status, error) {
+											console.error(xhr);
+										}
+										});
+									});
 									});
 									</script>
 

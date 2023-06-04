@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':post', $idpost);
     $stmt->execute();
-    $likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+    $likeCount = $stmt->fetch(PDO::FETCH_ASSOC)['count'];    
 
     // Return the new like count
     echo $likeCount;
