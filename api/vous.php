@@ -138,9 +138,8 @@ try {
     refresh.addEventListener('click', location.reload(), false);
 </script>
 
-
 <!-- Choix du fond par l'utilisateur via des boutons radio -->
-<nav class="Choix-fond" display="content">
+<nav class="Choix-fond">
     <h1 style="margin-top : 5%">Choisir son fond</h1>
     <form method="post" action="">
         <p>Cliquez pour choisir le fond que vous préférez </p>
@@ -151,12 +150,12 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="bleu" name="drone" value="paleturquoise">
+            <input type="radio" id="bleu" name="drone" value="aqua">
             <label for="bleu">Fond bleu</label>
         </div>
 
         <div>
-            <input type="radio" id="vert" name="drone" value="#71da88">
+            <input type="radio" id="vert" name="drone" value="green">
             <label for="vert">Fond vert</label>
         </div>
 
@@ -166,7 +165,7 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="rouge" name="drone" value="#e05a5a">
+            <input type="radio" id="rouge" name="drone" value="crimson">
             <label for="rouge">Fond rouge</label>
         </div>
         <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
