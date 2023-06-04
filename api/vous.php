@@ -78,7 +78,7 @@ try {
 try {
     $sql = "SELECT * FROM users WHERE iduser= $iduser";
     // Création du contact avec la BDD
-
+    $conn = new PDO($dsn);
     $stmt = $conn->query($sql);
 
 } catch (PDOException $e) {
