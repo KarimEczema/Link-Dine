@@ -40,7 +40,7 @@ include 'caroussel.php';
     <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
     $decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
 
-    <h5 style="text-align: center; color: red; margin:3%">Evénement de la semaine :</h5>
+    <h5 style="text-align: center; margin:3%">Evénement de la semaine :</h5>
 
     <div class="carousel" id="test1">
         <?php

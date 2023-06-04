@@ -35,7 +35,7 @@ include 'navbar.php';
 <!-- Récupère dans la base de données les informations relatives à Emplois-->
 <?php
     
-    $sql = "SELECT * FROM Emplois";
+    $sql = "SELECT * FROM Emplois ORDER BY datepublication DESC";
 	try{
     // Création du contact avec la BDD
             $conn = new PDO($dsn);
@@ -76,6 +76,7 @@ include 'navbar.php';
                             </div>
                         </div>
                         <h6>Salaire : <?php echo htmlspecialchars($row['salaire']); ?>/an</h6> 
+                        <h6 style="font-style:italic">(Date de publication : <?php echo htmlspecialchars($row['datepublication']); ?> )</h6> 
                     </div> 
 
                     <script>
