@@ -154,7 +154,6 @@ include 'navbar.php';
                                         echo "</div>";
                                         ?>
                                     </div>
-
                                     <script>
                                         function openForm(id) {
                                             document.getElementById("form-" + id).style.display = "block";
