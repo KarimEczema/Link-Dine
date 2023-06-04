@@ -1,29 +1,29 @@
 <?php
-include 'login-check.php';
 
 echo '<html>';
 echo '<head>';
 echo '<title>Réseau</title>';
 
 
-echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
+// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
-echo '<link rel="stylesheet" type="text/css" href="css/reseau.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/reseau.css">';
+
+
+include 'login-check.php';
+echo '</head>';
 echo '<body>';
 
 include 'navbar.php';
 include 'caroussel.php';
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+
 
 ?>
 
-<link href="css/reseau.css" rel="stylesheet" type="text/css" />
 
 <body>
 
@@ -99,6 +99,7 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
                 $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
                 $stmt->execute($amis);
                 $friends = $stmt->fetchAll();
+
 
                 ?>
                 <div id="friends" style="margin-top : 10%;">

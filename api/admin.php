@@ -1,7 +1,5 @@
 <?php
 
-include 'admin-check.php';
-
 echo '<html>';
 echo '<head>';
 echo '<title>Admin</title>';
@@ -9,6 +7,8 @@ echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/admin.css">'; 
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+include 'admin-check.php';
+echo '</head>';
 echo '<body>';
 
 include 'navbar.php';

@@ -20,19 +20,41 @@ $secretKey = new Key('fZabvRw78VA746', 'HS256');
 if (isset($_COOKIE['jwt'])) {
     // Obtenir le JWT du cookie
     $jwt = $_COOKIE['jwt'];
-    
+
     try {
         // Décoder le JWT
         $decoded = JWT::decode($jwt, $secretKey);
-        
-        // Obtenir le nom d'utilisateur du payload décodé
+
+        // Get the username from the decoded payload
         $iduser = $decoded->iduser;
-        
+
         echo '<script>';
         echo 'var iduser = "' . $iduser . '";';
         echo '</script>';
-        // Continuer le traitement ou rediriger vers la page authentifiée
-        
+
+        $sql = "SELECT fond FROM users WHERE iduser= $iduser";
+
+
+        try {
+            // Création du contact avec la BDD
+            $conn = new PDO($dsn);
+            $stmt = $conn->query($sql);
+
+            // Get the color from the query result
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $color = $result['fond'];
+            
+            //echo 'The background color is: ' . $color;
+            
+            echo '<style>';
+            echo 'body { background-color: ' . $color . '; }';
+            echo '</style>';
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+
     } catch (Exception $e) {
         // La validation du JWT a échoué
         // Rediriger vers la page de connexion ou afficher le message d'erreur
@@ -41,6 +63,7 @@ if (isset($_COOKIE['jwt'])) {
         exit;
     }
 } else {
+
     // Le JWT n'est pas défini, l'utilisateur n'est pas connecté
     // Rediriger vers la page de connexion ou afficher le message d'erreur
     echo 'Veuillez vous connecter';

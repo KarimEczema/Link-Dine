@@ -1,19 +1,22 @@
 <?php
-include 'login-check.php';
 
 echo '<html>';
 echo '<head>';
 echo '<title>Vous</title>';
 
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs 
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
-echo '<body>';
+
+include 'login-check.php';
+
+// Ici, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+
 
 echo '</head>';
+echo '<body>';
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -73,6 +76,88 @@ try {
         </div>
     </div>
 </nav>
+
+
+
+<!--
+============================================
+     Choix du fond personnalisé
+============================================
+-->
+
+<!-- script pour reload la page au clic du bouton -->
+<script type="text/javascript">
+    var refresh = window.getElementById('refresh');
+    refresh.addEventListener('click', location.reload(), false);
+</script>
+
+
+<!-- Choix du fond par l'utilisateur via des boutons radio -->
+<nav class="Choix-fond">
+    <h1 style="margin-top : 5%">Choisir son fond</h1>
+    <form method="post" action="">
+        <p>Cliquez pour choisir le fond que vous préférez </p>
+
+        <div>
+            <input type="radio" id="blanc" name="drone" value="white" checked>
+            <label for="blanc">Fond blanc (par défaut)</label>
+        </div>
+
+        <div>
+            <input type="radio" id="bleu" name="drone" value="aqua">
+            <label for="bleu">Fond bleu</label>
+        </div>
+
+        <div>
+            <input type="radio" id="vert" name="drone" value="green">
+            <label for="vert">Fond vert</label>
+        </div>
+
+        <div>
+            <input type="radio" id="creme" name="drone" value="burlywood">
+            <label for="creme">Fond crème</label>
+        </div>
+
+        <div>
+            <input type="radio" id="rouge" name="drone" value="crimson">
+            <label for="rouge">Fond rouge</label>
+        </div>
+        <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
+    </form>
+</nav>
+
+
+<!-- Enregistrement des informations dans la bdd -->
+
+<?php
+try {
+    // Création du contact avec la BDD
+    $conn = new PDO($dsn);
+
+    // Si un formulaire a été récupéré et si le bouton a été pressé
+    if ($_POST) {
+        if (isset($_POST['choixFond']) && $_POST['choixFond'] == 'Fond') {
+            $drone = $_POST['drone'];
+            // On lance une requête SQL pour insérer une nouvelle ligne avec les données récupérées
+
+            $sql = "UPDATE users SET fond = '$drone' WHERE iduser = $iduser";
+            $stmt = $conn->prepare($sql);
+
+            // bind parameters and execute
+            //$stmt->bindParam(':drone', $_POST['fond']);
+            $stmt->execute();
+
+            //Message de confirmation pour l'utilisateur
+            echo "Choix enregistré!";
+
+        }
+    }
+} catch (PDOException $e) {
+    // Message d'erreur si le formulaire n'a pas pu être récupéré
+    echo $e->getMessage();
+}
+?>
+
 
 
 
