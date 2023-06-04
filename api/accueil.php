@@ -120,7 +120,7 @@ try {
 
             foreach ($amis as $ami) {
                 // get posts
-                $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
+                $stmt = $conn->prepare("SELECT users.nom as username, lieu as title, date, descriptionpost as description, photo, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
                 $stmt->execute([$ami]);
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -136,8 +136,9 @@ try {
                             <div class="scroll-page" id="eventperso">
                                 <div style="padding:2%; border:solid;">
 
-                                    <?php
-                                    echo "<div>";
+											<div><img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"></div>
+				
+											<?php
                                     if ($item['title'] !== NULL) {
                                         echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
 
