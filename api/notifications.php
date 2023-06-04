@@ -239,7 +239,10 @@ include 'navbar.php';
                                     </div>
                                 </div>
                             </div>
-                            <?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
+                            <?php
+                            if($row['tabimages'] !== NULL)
+                            {
+                                $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
                             <div class="carousel" id="test1">
                                 <?php
@@ -260,6 +263,8 @@ include 'navbar.php';
                                     ?>
                                 <?php endforeach; ?>
                             </div>
+                           <?php } ?>
+                            
 
 
                             <script>
