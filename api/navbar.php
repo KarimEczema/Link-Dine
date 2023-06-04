@@ -18,8 +18,8 @@
 		<?php if ($iduser == 1): ?>
 			<li id="admin" style="float:right"><a href="admin">Admin</a></li>
 		<?php else: ?>
-			<li id="auteur" style="float:right"><a href="auteur">Auteur</a></li>
+			<li id="auteur"><a href="auteur">Auteur</a></li>
 		<?php endif; ?>
-		<li id="deco"><a href="index">Deconnexion</a></li>
+		<li id="deco" style="float:right"><a href="index">Deconnexion</a></li>
 	</ul>
 </nav>
