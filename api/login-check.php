@@ -25,7 +25,7 @@ if (isset($_COOKIE['jwt'])) {
         // Décoder le JWT
         $decoded = JWT::decode($jwt, $secretKey);
 
-        // Récupère le nom d'utilisateur 
+        // Get the username from the decoded payload
         $iduser = $decoded->iduser;
 
         echo '<script>';
@@ -40,8 +40,11 @@ if (isset($_COOKIE['jwt'])) {
             $conn = new PDO($dsn);
             $stmt = $conn->query($sql);
 
+            // Get the color from the query result
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $color = $result['fond'];
+            
+            //echo 'The background color is: ' . $color;
             
             echo '<style>';
             echo '.bg { background-color: ' . $color . '; }';

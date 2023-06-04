@@ -113,26 +113,26 @@ try {
     </div>
 </nav>    <?php
     try {
-        //Connection à la BDD
+        // create a PostgreSQL database connection
         $conn = new PDO($dsn);
 
-        //Recuperation 
+        // query to check if username exists
         $sql = "SELECT amis FROM users WHERE iduser = ?";
         $stmt = $conn->prepare($sql);
 
-        //Execution de la requete SQL en remplaçant '?' par iduser
+        // bind parameters and execute
         $stmt->execute([$iduser]);
 
         $result = $stmt->fetch();
 
         if ($result && $result['amis'] !== null) {
-            $amis = explode(',', trim($result['amis'], '{}')); // Conversion en chaine de charactere
+            $amis = explode(',', trim($result['amis'], '{}')); // convert the array string into a PHP array
     
 
-            // Si l'utilisateur à des amis
+            // Check that the user has friends
             if (!empty($amis)) {
 
-                // Recuperation des posts des amis
+                // Retrieve the friends' posts
                 $params = implode(',', array_fill(0, count($amis), '?'));
                 $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
                 $stmt->execute($amis);
@@ -149,19 +149,18 @@ try {
                         <?php foreach ($friends as $friend) { ?>
                             <li>
                                 <a href="profil?id=<?php echo $friend['iduser']; ?>">
-                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>"
-                                        alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
+                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>" alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
                                 </a>
                             </li>
                         <?php }
             } else {
-                echo "Cet utilisateur n'a pas d'amis.";
+                echo "This user has no friends.";
             }
         } else {
-            echo "Cet utilisateur n'a pas d'amis.";
+            echo "This user has no friends.";
         }
     } catch (PDOException $e) {
-        // Message d'erreur
+        // report error message
         echo $e->getMessage();
     } 
     

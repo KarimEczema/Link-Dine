@@ -1,15 +1,11 @@
-<!-- Fonction permettant de générer le CV pour la page Vous lorsqu'il n'a pas déjà été généré -->
-
 <?php
-        //Envoi de la requête SQL pour récupérer les infos personnelles de l'utilisateur
+
         try {
             $conn = new PDO($dsn);
 
             $sql = "SELECT * FROM users WHERE iduser = $iduser";
             $stmt = $conn->query($sql);
             ?>
-
-            <!-- Affichage selon le html et css que l'on souhaite -->
 
             <nav style="background-color:grey; padding:2%">
 
@@ -35,8 +31,6 @@
                         </div>
                     </nav>
                 <?php endwhile; ?>
-
-                <!-- Récupération des informations des formations de l'utilisateur et affichage à l'aide d'une boucle pour que la taille du CV soit automatique -->
 
                 <?php
                 $sql = "SELECT * FROM formation WHERE iduser = $iduser";
@@ -69,8 +63,6 @@
                     </div>
                 <?php endwhile; ?>
 
-                <!-- De même pour la partie projets de l'utilisateur  -->
-
                 <h4 style="margin-top:5%">Projet(s)</h4>
 
                 <?php
@@ -93,7 +85,6 @@
                     </div>
                 <?php endwhile; ?>
 
-                <!-- Finalement, affichage du contact de l'utilisateur (e-mail) -->
 
                 <?php
                 $sql = "SELECT * FROM users WHERE iduser = $iduser";
@@ -108,8 +99,6 @@
 
             </nav>
             <?php
-
-            // Code premettant de garder en mémoire dans la BDD le fait que le CV ait déjà été généré
 
             try {
                 $conn = new PDO($dsn);
