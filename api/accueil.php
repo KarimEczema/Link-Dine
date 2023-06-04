@@ -149,12 +149,28 @@ try {
                                     <?php
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
-                                    
+                                    $idpost=$item['idpost'];
                                     ?>
 
+                                    <!-- script pour changer les variables à chaque post -->
+                                    <script>
+                                        // Récupérer le bouton de like par son ID
+                                        var boutonl = document.getElementById('boutonlike');
+
+                                        // Changer la valeur du bouton
+                                        boutonl.value = $idpost ;
+
+                                        // Récupérer le bouton de commentaire par son ID
+                                        var boutonc = document.getElementById('boutoncom');
+
+                                        // Changer la valeur du bouton
+                                        boutonc.value = $idpost ;
+                                    </script>
+
+
+                                    <!-- Partie like -->
                                     <form>
-                                        <!-- Partie like -->
-                                        <button type="submit" name="ajouterlike" value="<?php echo htmlspecialchars($item['idpost'])?>"  style = "margin-top : 10%; margin-left : 3%;">like</button>
+                                        <button type="submit" id="boutonlike" name="ajouterlike"   style = "margin-top : 10%; margin-left : 3%;">like</button>
                                     </form>
 
                                         <!-- Partie partage -->
@@ -177,7 +193,7 @@ try {
                                                 <form method="post" action="">
                                                     <h4>Contenu de votre commentaire :</h4>
                                                     <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                    <button type="submit" name="ajouterCom" value="<?php echo htmlspecialchars($item['idpost'])?>"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                    <button type="submit" id="boutoncom" name="ajouterCom"   style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                                     <button type="button" class="btn cancel" onclick="fermcommentaire()" style="background-color: antiquewhite">Fermer</button>
                                                 </form>
                                             </div>
@@ -191,7 +207,7 @@ try {
                                 try{
                                     if($_POST)
                                     {
-                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $item['idpost']) {
+                                        if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == 'Creercom') {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
 
