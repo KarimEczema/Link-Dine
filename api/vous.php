@@ -25,7 +25,18 @@ if (!isset($_SESSION['countCV'])) {
 
 ?>
 <script type="module" src="js/upload.js"></script>
-
+<script> function previewImage() {
+    var file = document.getElementById('image_uploads').files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            document.getElementById('preview').src = reader.result;
+            document.getElementById('preview').style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 
 
 <!--
