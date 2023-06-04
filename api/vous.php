@@ -140,7 +140,7 @@ try {
 
 
 <!-- Choix du fond par l'utilisateur via des boutons radio -->
-<nav class="Choix-fond">
+<nav class="Choix-fond" display="content">
     <h1 style="margin-top : 5%">Choisir son fond</h1>
     <form method="post" action="">
         <p>Cliquez pour choisir le fond que vous préférez </p>
