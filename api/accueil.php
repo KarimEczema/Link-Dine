@@ -247,6 +247,8 @@ try {
                                             <div class="descr-container">
                                                 <h4>Commentaires du post :</h4>
                                                 <?php
+
+												echo $com;
                                                 if ($com && $com['commentaires'] !== null) {
                                                     $tabcom = explode(',', trim($com['commentaires'], '{}')); // convert the array string into a PHP array
 
