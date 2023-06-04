@@ -6,6 +6,17 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 const supabase = createClient(supabaseUrl,supabaseAnonKey);
 
+function previewImage() {
+    var file = document.getElementById('image_uploads').files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            document.getElementById('preview').src = reader.result;
+            document.getElementById('preview').style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+}
 
 document.getElementById('image_uploads').addEventListener('change', function() {
     var file = this.files[0]; // get the uploaded file
@@ -47,6 +58,8 @@ document.getElementById('publish_button').addEventListener('click', async functi
             console.error('Upload error: ', error.message);
             alert('Error uploading file.');
         } else {
+            // Save the URL of the uploaded file in the hidden input
+            document.getElementById('image_url').value = 'Images/post/' + file.name;
             console.log('File uploaded: ', data);
             alert('File successfully uploaded.');
         }
@@ -54,52 +67,5 @@ document.getElementById('publish_button').addEventListener('click', async functi
         alert('Please choose a file to upload.');
     }
 });
-
-async function listFiles() {
-    try {
-        const { data, error } = await supabase
-            .storage
-            .from('Images')
-            .list('')
-        
-        if (error) throw error;
-        
-        console.log(data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-async function uploadFile(filePath, fileContent) {
-    try {
-        let { data, error } = await supabase
-            .storage
-            .from('Images')
-            .upload(filePath, fileContent);
-
-        if (error) throw error;
-
-        console.log("File uploaded:", data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-async function downloadFile(filePath) {
-    try {
-        const { data, error } = await supabase
-            .storage
-            .from('Images')
-            .download(filePath);
-
-        if (error) throw error;
-
-        // `data` contains the downloaded file as a Blob. 
-        // Here, we're just logging the Blob's size, but you could do other things with it.
-        console.log("Downloaded file size:", data.size);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
 
