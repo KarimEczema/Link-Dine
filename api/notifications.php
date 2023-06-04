@@ -96,30 +96,32 @@ include 'navbar.php';
                         <tbody>
                             <?php
                             foreach ($combined as $item) {
-                                ?>
-                                <div class="scroll-page" id="eventPerso">
-                                    <div style="padding:2%; border:solid;">
-                                        <?php
-                                        echo "<div>";
-                                        if ($item['title'] !== NULL) {
-                                            echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
-                                        }
-                                        echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>";
-                                        echo "<h6 style='font-style:italic'>Date de publication: " . htmlspecialchars($item['datepublication']) . "</h6>";
-                                        echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
-                                        echo "</div>";
-                                        ?>
-                                    </div>
-                                    <script>
-                                        function openForm(id) {
-                                            document.getElementById("form-" + id).style.display = "block";
-                                        }
 
-                                        function closeForm(id) {
-                                            document.getElementById("form-" + id).style.display = "none";
-                                        }
-                                    </script>
-                                    <?php
+                                if ($item['username'] == 'tous') { ?>
+                                    <div class="scroll-page" id="eventPerso">
+                                        <div style="padding:2%; border:solid;">
+                                            <?php
+                                            echo "<div>";
+                                            if ($item['title'] !== NULL) {
+                                                echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
+                                            }
+                                            echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>";
+                                            echo "<h6 style='font-style:italic'>Date de publication: " . htmlspecialchars($item['datepublication']) . "</h6>";
+                                            echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
+                                            echo "</div>";
+                                            ?>
+                                        </div>
+                                        <script>
+                                            function openForm(id) {
+                                                document.getElementById("form-" + id).style.display = "block";
+                                            }
+
+                                            function closeForm(id) {
+                                                document.getElementById("form-" + id).style.display = "none";
+                                            }
+                                        </script>
+                                        <?php
+                                }
                             }
                             ?>
                         </tbody>
@@ -233,7 +235,7 @@ include 'navbar.php';
         </div>
     </nav>
 
-        <!--
+    <!--
 =====================================================================================
         Partie Evénements organisés par des partenaires de l'ECE
 =====================================================================================
