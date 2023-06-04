@@ -24,7 +24,7 @@ echo '<body>';
 
 include 'navbar.php';
 include 'caroussel.php';
-
+include 'pub.php';
 
 ?>
 
