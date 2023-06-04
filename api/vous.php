@@ -47,18 +47,6 @@ if (!isset($_SESSION['countCV'])) {
 
 <!-- récupération des donnée dans la table users -->
 
-<?php
-
-$sql = "SELECT * FROM users WHERE iduser= $iduser";
-try {
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
-
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-?>
 
 <?php
 
