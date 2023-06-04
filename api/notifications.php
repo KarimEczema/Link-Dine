@@ -244,7 +244,7 @@ include 'navbar.php';
                             {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                            <div class="carousel" id="test1">
+                            <div class="carousel" id="test1" style="padding-bottom:3%">
                                 <?php
                                 $valueCar = 1;
                                 $tabimages = explode(',', $row['tabimages']);
