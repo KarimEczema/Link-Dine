@@ -28,7 +28,7 @@ include 'navbar.php';
 
 
 <?php
-
+session_start();
 $sql = "SELECT * FROM users WHERE iduser= $iduser";
 try {
     // Création du contact avec la BDD
@@ -65,8 +65,6 @@ try {
         </div>
     </div>
 </nav>
-
-<?php session_start(); ?>
 
 <!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 
