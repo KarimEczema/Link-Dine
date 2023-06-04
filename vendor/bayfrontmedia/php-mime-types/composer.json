@@ -1,0 +1,36 @@
+{
+  "name": "bayfrontmedia/php-mime-types",
+  "description": "Simple class used to detect the appropriate MIME type of a file based on it's extension.",
+  "homepage": "https://github.com/bayfrontmedia/php-mime-types",
+  "license" : "MIT",
+  "type": "library",
+  "keywords": [
+    "php",
+    "mime",
+    "type",
+    "file",
+    "extension"
+  ],
+  "authors": [
+    {
+      "name": "John Robinson",
+      "email": "john@bayfrontmedia.com",
+      "homepage": "https://www.bayfrontmedia.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bayfrontmedia/php-mime-types/issues"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
+  },
+  "require": {
+    "php": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bayfront\\MimeTypes\\": "src/"
+    }
+  }
+}

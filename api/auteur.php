@@ -14,6 +14,8 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/auteur.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1/dist/umd/supabase.min.js"></script>';
+echo '</head>';
 echo '<body>';
 
 include 'navbar.php';
@@ -98,12 +100,61 @@ catch(PDOException $e){
             </div>
         </div>
         <label for="start">Quand ?</label>
-        <input type="datetime-local" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
-        <label for="where"style = "margin-left : 10%;">Où ?</label>
+        <input type="date" id="date" name="date" value="2023-03-22" min="2015-01-01" max="2026-12-31" style = "text-align : left">
+        <label for="where"style = "text-align : right;">Où ?</label>
         <input type="text" id="lieu" name="lieu" style = "margin-left : 10%;">
+        <input type="hidden" id="image_url" name="image_url">
+        
     </form>
 </nav>
+<script type="module" src="js/upload.js"></script>
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
 </nav>
+
+
+
+<?php
+
+$dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
+
+try{
+    if($_POST)
+    {
+
+        $conn = new PDO($dsn);
+        // get the URL of the uploaded file from the hidden input
+        $photo = $_POST['image_url'];
+        
+    
+        //On définit certaines variables.
+        $ecriture = $_POST['write'];
+        $lieu = $_POST['lieu'];
+        $date = $_POST['date'];
+        $secu = $_POST['secu'];
+        
+
+        //On insère les données reçues
+        $sql = "INSERT INTO posts(descriptionpost, iduser, lieu, date, accessibilite, photo) VALUES(:write, :personne, :lieu, :date, :secu, :photo)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':write',$ecriture);
+        $stmt->bindParam(':personne',$iduser);
+        $stmt->bindParam(':lieu',$lieu);
+        $stmt->bindParam(':date',$date);
+        $stmt->bindParam(':secu',$secu);
+        $stmt->bindParam(':photo',$photo); 
+        $stmt->execute();
+
+        //Message de confirmation pour l'utilisateur
+        echo "Post publié !";
+    }
+}
+catch(PDOException $e){
+    echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+}
+?>
+
+<?php include 'foot.php'; ?>
+</body>
+</html>
