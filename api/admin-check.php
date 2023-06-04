@@ -40,7 +40,7 @@ if (isset($_COOKIE['jwt'])) {
         } else {
             // If user id is not equal to 1, redirect or show error message
             echo 'Error: User id is not admin';
-            header('Location: index.php');
+            header('Location: index');
             exit;
         }
         
@@ -48,14 +48,14 @@ if (isset($_COOKIE['jwt'])) {
         // JWT validation failed
         // Redirect to login page or show error message
         echo 'Error: ' . $e->getMessage();
-        header('Location: index.php');
+        header('Location: index');
         exit;
     }
 } else {
     // JWT is not set, user is not logged in
     // Redirect to login page or show error message
     echo 'not';
-    header('Location: index.php');
+    header('Location: index');
     exit;
 }
 
