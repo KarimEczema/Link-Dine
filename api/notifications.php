@@ -9,13 +9,12 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<link rel="stylesheet" type="text/css" href="css/notifications.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
-echo '<link rel="stylesheet" type="text/css" href="css/acuueil.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 include 'login-check.php';
 echo '</head>';
 echo '<body>';
 
 include 'navbar.php';
-include 'caroussel.php';
 ?>
 
 
@@ -194,7 +193,6 @@ include 'caroussel.php';
     <?php
 
     $sql = "SELECT * FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
-    $sql2 = "SELECT tabimages FROM evenement WHERE organisateur LIKE '%ECE' ORDER BY date DESC";
     try {
         // Création du contact avec la BDD
         $conn = new PDO($dsn);
@@ -228,11 +226,6 @@ include 'caroussel.php';
                                 <?php echo htmlspecialchars($row['description']); ?>
                             </h6>
 
-
-                            <?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
-                            <?php $row2['tabimages'] = trim($row2['tabimages'], '{}'); // remove the starting and ending curly braces
-                                $decoded_images = json_decode($row2['tabimages'], true); // decode the JSON string to an associative array ?>
-
                             <div style="border:solid;">
 
                                 <h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la
@@ -263,6 +256,35 @@ include 'caroussel.php';
                                             $valueCar++;
                                         }
                                         ?>
+                                        <div class="scroll-page" id="event">
+                                            <h5><b>
+                                                    <?php echo htmlspecialchars($row['nom']); ?>
+                                                </b>
+                                                <?php echo htmlspecialchars($row['organisateur']); ?>
+                                            </h5>
+                                            <h6>Date de l'événement:
+                                                <?php echo htmlspecialchars($row['date']); ?>
+                                            </h6><br>
+                                            <h6>Description de l'événement:
+                                                <?php echo htmlspecialchars($row['description']); ?>
+                                            </h6>
+
+                                            <?php
+                                            $sql2 = "SELECT tabimages FROM evenement WHERE id = ?";
+                                            $stmt2 = $conn->prepare($sql2);
+                                            $stmt2->execute([$row['id']]);
+
+                                            while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+                                                $row2['tabimages'] = trim($row2['tabimages'], '{}'); // remove the starting and ending curly braces
+                                                $decoded_images = json_decode($row2['tabimages'], true); // decode the JSON string to an associative array
+                                                ?>
+                                                <div style="border:solid;">
+                                                    <!-- Carousel code here -->
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
                                     <?php endforeach; ?>
                                 </div>
 
