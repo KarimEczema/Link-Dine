@@ -66,6 +66,7 @@ try {
     </div>
 </nav>
 
+<?php session_start(); ?>
 
 <!-- Ajout d'un compte : on cré un formulaire ou l'on demande le nom et l'email de la personne à créer que l'on récupère dans des variables nonmées -->
 
@@ -104,7 +105,7 @@ if($_POST){
         //Message de confirmation pour l'utilisateur
         echo "Utilisateur ajouté !";
         $stmt->closeCursor();
-        
+        session_destroy();
     }
 }
 }catch (PDOException $e){
@@ -129,7 +130,7 @@ $("#sendButton").click(function(){
         data: {username: username},
         success: function(response) {
             alert(response);
-            location.reload(); // Refresh the page
+            //location.reload(); // Refresh the page
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
