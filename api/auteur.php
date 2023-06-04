@@ -131,16 +131,31 @@ document.getElementById('publish_button').addEventListener('click', async functi
     var file = fileInput.files[0];
 
     if (file) {
+        if (file.size > 5000000) { // limiting to 5MB
+            alert("File is too large to upload. Please choose a file smaller than 5MB.");
+            return;
+        }
+
+        let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // allowed file extensions
+        if (!allowedExtensions.exec(file.name)) {
+            alert('Invalid file type. Only .jpg, .jpeg, .png files are allowed.');
+            return;
+        }
+
         const { data, error } = await supabase
             .storage
             .from('uploads')
             .upload(file.name, file);
 
-        if (data) {
-            console.log('File uploaded: ', data);
+        if (error) {
+            console.error('Upload error: ', error.message);
+            alert('Error uploading file.');
         } else {
-            console.log('Upload error: ', error.message);
+            console.log('File uploaded: ', data);
+            alert('File successfully uploaded.');
         }
+    } else {
+        alert('Please choose a file to upload.');
     }
 });
 </script>
