@@ -272,11 +272,11 @@ try {
     <form method="post" action="">
 
         <div style="background-color: grey; margin:2%">
-            <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%"> </h5>
+            <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%" required> </h5>
         </div>
         <div style="background-color: grey; margin:2%">
             <h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text" rows="10"
-                cols="50" style="margin: 3%;"></textarea>
+                cols="50" style="margin: 3%;" required></textarea>
         </div>
 
         <button type="submit" name="ajouterPjt" value="CreerPjt" style=" margin-top : 2%;">Publier</button>
