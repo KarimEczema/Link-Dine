@@ -150,6 +150,9 @@ try {
                                     echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
                                     echo "</div>";
                                     $idpost=$item['idpost'];
+                                    echo '<script>';
+                                    echo 'var idpost = "' . $idpost . '";';
+                                    echo '</script>';
                                     ?>
 
                                     <!-- script pour changer les variables à chaque post -->
@@ -158,13 +161,13 @@ try {
                                         var boutonl = document.getElementById('boutonlike');
 
                                         // Changer la valeur du bouton
-                                        boutonl.value = $idpost ;
+                                        boutonl.value = idpost ;
 
                                         // Récupérer le bouton de commentaire par son ID
                                         var boutonc = document.getElementById('boutoncom');
 
                                         // Changer la valeur du bouton
-                                        boutonc.value = $idpost ;
+                                        boutonc.value = idpost ;
                                     </script>
 
 
