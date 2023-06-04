@@ -151,12 +151,12 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="bleu" name="drone" value="aqua">
+            <input type="radio" id="bleu" name="drone" value="paleturquoise">
             <label for="bleu">Fond bleu</label>
         </div>
 
         <div>
-            <input type="radio" id="vert" name="drone" value="green">
+            <input type="radio" id="vert" name="drone" value="#71da88">
             <label for="vert">Fond vert</label>
         </div>
 
@@ -166,7 +166,7 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="rouge" name="drone" value="crimson">
+            <input type="radio" id="rouge" name="drone" value="#e05a5a">
             <label for="rouge">Fond rouge</label>
         </div>
         <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
