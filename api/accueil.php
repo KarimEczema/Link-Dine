@@ -175,9 +175,12 @@ try {
                                     <form>
                                         <!-- Partie like -->
                                         <input type="button" value="Like" onclick="like($iduser)">
-
+                                        <button type="submit" name="ajouterlike" value="Creerlike"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                         <!-- Partie partage -->
-                                        <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+                                        <!-- ShareThis BEGIN -->
+                                        <div class="sharethis-inline-share-buttons">
+
+                                        </div><!-- ShareThis END -->
 
                                         <!-- Partie Commentaire -->
                                         <h6>
@@ -186,12 +189,12 @@ try {
                                             </div>
                                         </h6>
                                         <div class="login-popup">
-                                            <div class="Description" id="form-<?php echo $row['idemploi'];?>">
+                                            <div class="Description" id="form-">
                                                 <div class="descr-container">
                                                     <form method="post" action="">
                                                         <h4>Contenu de votre commentaire :</h4>
                                                         <div class="col-sm-7"><textarea name="write" id="write" cols = "50" rows = "10" wrap="hard" required></textarea></div>
-                                                        <button type="radio" name="ajouterCom" value="CreerCom"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
+                                                        <button type="submit" name="ajouterCom" value="CreerCom"  style = "margin-top : 10%; margin-left : 3%;">Publier</button>
                                                         <button type="button" class="btn cancel" onclick="fermcommentaire($iduser)" style="background-color: antiquewhite">Fermer</button>
                                                     </form>
                                                 </div>
@@ -226,6 +229,21 @@ try {
                                             //Message de confirmation pour l'utilisateur
                                             echo "Commentaire publié !";
                                         }
+                                        else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == 'Creerlike') {
+                                            //On se connecte à la BDD
+                                            $conn = new PDO($dsn);
+
+                                            //On insère les données reçues
+                                            $sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->bindParam(':post', $ecriture);
+                                            $stmt->bindParam(':personne', $iduser);
+
+                                            $stmt->execute();
+
+                                            //Message de confirmation pour l'utilisateur
+                                            echo "Commentaire publié !";
+                                        }
                                     }
 
                                 }
@@ -244,12 +262,12 @@ try {
 
 
                                     function ouvrcommentaire(id) {
-                                        document.getElementById("form-"+id).style.display = "block";
+                                        document.getElementById("form-").style.display = "block";
                                     }
 
 
                                     function fermcommentaire(id) {
-                                        document.getElementById("form-"+id).style.display = "none";
+                                        document.getElementById("form-").style.display = "none";
                                     }
                                 </script>
 
