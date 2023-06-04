@@ -12,6 +12,10 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 
+?>
+<nav id = "bg">
+<?php
+
 include 'navbar.php';
 
 ?>
@@ -95,5 +99,6 @@ include 'navbar.php';
     </div> 
 </nav> 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

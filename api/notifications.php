@@ -18,7 +18,7 @@ include 'navbar.php';
 
 
 <body>
-
+<nav id = "bg">
     <?php include 'eventamis.php'; ?>
 
     <!--
@@ -333,6 +333,6 @@ try {
 
     <?php include 'foot.php' ?>
 
+</nav>
 </body>
-
 </html>

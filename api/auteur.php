@@ -18,6 +18,10 @@ echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1/dist/umd
 echo '</head>';
 echo '<body>';
 
+?>
+<nav id = "bg">
+<?php
+
 include 'navbar.php';
 ?>
 
@@ -156,5 +160,7 @@ catch(PDOException $e){
 ?>
 
 <?php include 'foot.php'; ?>
+
+</nav>
 </body>
 </html>

@@ -26,6 +26,8 @@ echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstr
 <link href="css/profil.css" rel="stylesheet" type="text/css"/>
 
 <body>
+
+<nav id = "bg">
 <!--
 ============================================
         Profil de l'ami séléctionné
@@ -136,5 +138,6 @@ $amis = $stmt->fetchAll();
 
 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

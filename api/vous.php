@@ -17,6 +17,10 @@ include 'login-check.php';
 
 echo '</head>';
 echo '<body>';
+?>
+<nav id = "bg">
+<?php
+
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -499,6 +503,6 @@ try {
 
 
 include 'foot.php'; ?>
+</nav>
 </body>
-
 </html>

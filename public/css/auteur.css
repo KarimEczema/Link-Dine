@@ -28,3 +28,8 @@ main#carousel {
   --position: 1; 
   pointer-events: none; 
 }
+
+
+input:checked {
+  display: contents;
+}
