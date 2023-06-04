@@ -170,7 +170,6 @@ try {
 										boutonc.value = idpost;
 									</script>
 
-									
 									<!-- Partie like -->
 									<form>
   									<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike" style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
@@ -178,26 +177,28 @@ try {
 
 									<script>
 									$(document).ready(function() {
-									$('.like-button').click(function(e) {
-										e.preventDefault();
-										
-										var buttonId = $(this).attr('id');
-										var idpost = buttonId.split('-')[1];
+										$('.like-button').click(function(e) {
+											e.preventDefault();
+											
+											var buttonId = $(this).attr('id');
+											var idpost = buttonId.split('-')[1];
+											var iduser = $(this).data('userid');
 
-										$.ajax({
-										url: 'like',
-										method: 'POST',
-										data: {
-											idpost: idpost
-										},
-										success: function(data) {
-											$('#' + buttonId).text('like (' + data + ')');
-										},
-										error: function(xhr, status, error) {
-											console.error(xhr);
-										}
+											$.ajax({
+												url: 'like.php',
+												method: 'POST',
+												data: {
+													idpost: idpost,
+													iduser: iduser
+												},
+												success: function(data) {
+													$('#' + buttonId).text('like (' + data + ')');
+												},
+												error: function(xhr, status, error) {
+													console.error(xhr);
+												}
+											});
 										});
-									});
 									});
 									</script>
 
