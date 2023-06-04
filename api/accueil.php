@@ -1,22 +1,32 @@
 <?php
 
+include 'login-check.php';
+
 echo '<html>';
 echo '<head>';
 echo '<title>Accueil</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo "Logged in as: " . $iduser;
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
-include 'login-check.php';
-echo '</head>';
-echo '<body>';
+?>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3533297835167860" crossorigin="anonymous"></script>
 
+</head>
+<?php
+echo '<body>';
+?>
+<nav class = "bg">
+<?php
 include 'navbar.php';
 include 'caroussel.php';
+include 'pub.php';
+
 ?>
 
 <!--
@@ -94,20 +104,27 @@ $decoded_images = json_decode($row['tabimages'], true); // decode the JSON strin
 
 <h1 style="padding:10% ">Evénements de mes amis</h1>
 <?php
-try {
-    // create a PostgreSQL database connection
-    $conn = new PDO($dsn);
+    $sql = "SELECT amis FROM users WHERE iduser = $iduser";
+    try {
+        // create a PostgreSQL database connection
+        $conn = new PDO($dsn);
+        $ami = $conn->prepare($sql);
 
-    // query to check if username exists
-    $sql = "SELECT amis FROM users WHERE iduser = ?";
-    $stmt = $conn->prepare($sql);
+        // bind parameters and execute
+        $ami->execute([$iduser]);
 
-    // bind parameters and execute
-    $stmt->execute([$iduser]);
+    } catch (PDOException $e) {
+        // report error message
+        echo $e->getMessage();
+    }
 
-    $amis = $stmt->fetch();
-
-
+    // Check that the user has friends
+    if ($ami!=NULL) {
+        while($ami = $stmt->fetch(PDO::FETCH_ASSOC)) :
+            
+                $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+        endwhile;
+        }
 
     if ($amis && $amis['amis'] !== null) {
         $amis = explode(',', trim($amis['amis'], '{}')); // convert the array string into a PHP array
@@ -179,11 +196,6 @@ try {
     } else {
         echo "This user has no friends.";
     }
-
-} catch (PDOException $e) {
-    // report error message
-    echo $e->getMessage();
-}
 ?>
 
 <!--
@@ -280,6 +292,6 @@ try {
 
 
 <?php include 'foot.php'; ?>
+</nav>
 </body>
-
 </html>

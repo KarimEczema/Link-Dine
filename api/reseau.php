@@ -4,35 +4,37 @@ echo '<html>';
 echo '<head>';
 echo '<title>Réseau</title>';
 
-
-// Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
-echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
-echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>';
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/reseau.css">';
 
-
 include 'login-check.php';
+
+// Ici, we're adding the links to Bootstrap CSS and jQuery via their CDNs
+
+
 echo '</head>';
 echo '<body>';
+?>
+<nav class = "bg">
+<?php
 
 include 'navbar.php';
 include 'caroussel.php';
-
 
 ?>
 
 
 <body>
 
-
     <!--
-======================================================
-        Partie Profil
-======================================================
--->
+    ======================================================
+            Partie Profil
+    ======================================================
+    -->
 
     <!-- récupération des donnée dans la table users -->
 
@@ -54,9 +56,11 @@ include 'caroussel.php';
 
     <nav class="profil">
         <div class="row">
-            <div class="col-sm-4" style="background-color : purple">Photo</div>
-            <div class="col-sm-8" style="background-color: red ; margin-left: 2%">
-                <div style="background-color: green; margin:2%">
+            <div class="col-sm-4" style="background-color : purple">
+                <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+            </div>
+            <div class="col-sm-8" style="background-color: grey">
+                <div style="background-color: #d6a3b7; margin:2%">
                     <h1>
                         <?php echo htmlspecialchars($row['username']); ?>
                     </h1>
@@ -64,7 +68,7 @@ include 'caroussel.php';
                         <?php echo htmlspecialchars($row['statut']); ?>
                     </h3>
                 </div>
-                <div style="background-color: blue; margin:2%">
+                <div style="background-color: #a7d4d4; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['bio']); ?>
                     </h3>
@@ -72,7 +76,6 @@ include 'caroussel.php';
             </div>
         </div>
     </nav>
-
     <?php
     try {
         // create a PostgreSQL database connection
@@ -141,6 +144,6 @@ include 'caroussel.php';
 
     <?php include 'foot.php'; ?>
 
+    </nav>
 </body>
-
 </html>

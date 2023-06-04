@@ -13,6 +13,10 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 
+?>
+<nav class = "bg">
+<?php
+
 include 'navbar.php';
 include 'caroussel.php';
 
@@ -136,5 +140,6 @@ $amis = $stmt->fetchAll();
 
 
 <?php include 'foot.php';?>
+</nav>
 </body>
 </html>

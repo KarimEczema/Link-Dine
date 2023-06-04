@@ -7,8 +7,9 @@ echo '<title>Vous</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
-echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
+
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 include 'login-check.php';
 
@@ -17,6 +18,9 @@ include 'login-check.php';
 
 echo '</head>';
 echo '<body>';
+?>
+<nav class = "bg">
+<?php
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -56,8 +60,7 @@ try {
 <nav class="profil">
     <div class="row">
         <div class="col-sm-4" style="background-color : purple">
-            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
-                width="200" height="200">
+            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </div>
         <div class="col-sm-8" style="background-color: grey">
             <div style="background-color: #d6a3b7; margin:2%">
@@ -104,12 +107,12 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="bleu" name="drone" value="aqua">
-            <label for="bleu">Fond bleu</label>
+            <input type="radio" id="bleu" name="drone" value="paleturquoise">
+            <label for="bleu">Fond turquoise</label>
         </div>
 
         <div>
-            <input type="radio" id="vert" name="drone" value="green">
+            <input type="radio" id="vert" name="drone" value="#71da88">
             <label for="vert">Fond vert</label>
         </div>
 
@@ -119,7 +122,7 @@ try {
         </div>
 
         <div>
-            <input type="radio" id="rouge" name="drone" value="crimson">
+            <input type="radio" id="rouge" name="drone" value="#e05a5a">
             <label for="rouge">Fond rouge</label>
         </div>
         <button type="submit" name="choixFond" id="refresh" value="Fond" style=" margin-top : 2%;">Sélectionner</button>
@@ -456,6 +459,7 @@ try {
 
 
 include 'foot.php'; ?>
-</body>
 
+</nav>
+</body>
 </html>
