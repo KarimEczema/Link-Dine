@@ -288,7 +288,7 @@ try {
                                                     $ecriture = $_POST['write'];
 
                                                     //On insère les données reçues
-                                                    $sql = "UPDATE commentaires SET commentaires = array_append(commentaires, :write) WHERE idpost=$idpost";
+                                                    $sql = "UPDATE commentaire SET commentaires = array_append(commentaires, :write) WHERE idpost=$idpost";
                                                     $stmt = $conn->prepare($sql);
                                                     $stmt->bindParam(':write', $ecriture);
 
@@ -299,8 +299,27 @@ try {
 
                                                     }
                                                 }
+
+                                            else{
+                                                //On se connecte à la BDD
+                                                $conn = new PDO($dsn);
+
+                                                //On définit certaines variables.
+                                                $ecriture = $_POST['write'];
+
+                                                //On insère les données reçues
+                                                $sql = "UPDATE commentaire SET commentaires = array_append(commentaires, :write) WHERE idpost=$idpost";
+                                                $stmt = $conn->prepare($sql);
+                                                $stmt->bindParam(':write', $ecriture);
+
+                                                $stmt->execute();
+
+                                                //Message de confirmation pour l'utilisateur
+                                                echo "Commentaire publié !";
+
                                             }
                                         }
+
                                         if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
                                             //On se connecte à la BDD
                                             $conn = new PDO($dsn);
@@ -317,7 +336,8 @@ try {
                                             echo "Vous aimez ce post";
                                         }
                                     }
-                                    catch(PDOException $e){
+                                }
+                                catch(PDOException $e){
                                     echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
                                 }
 
