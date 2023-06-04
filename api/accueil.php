@@ -185,7 +185,7 @@ try {
 											var iduser = $(this).data('userid');
 
 											$.ajax({
-												url: 'like.php',
+												url: 'like',
 												method: 'POST',
 												data: {
 													idpost: idpost,
