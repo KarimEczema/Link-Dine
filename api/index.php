@@ -34,11 +34,11 @@ try {
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
         
-        // Associé les paramètres et execté
+        // Associé les paramètres et executé
         $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
         $stmt->execute();
         
-        // if the user exists
+        // Si l'utilisateur existe 
         if($stmt->rowCount()){
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
