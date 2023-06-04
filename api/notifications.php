@@ -206,7 +206,7 @@ include 'navbar.php';
                 <tbody>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
-                        <div class="scroll-page" id="eventPerso">
+                        <div class="scroll-page" id="eventPerso" style="border:solid; padding-bottom:3px">
                             <h5><B>
                                     <?php echo htmlspecialchars($row['nom']); ?>
                                 </B>
