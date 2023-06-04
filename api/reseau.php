@@ -149,8 +149,7 @@ try {
                         <?php foreach ($friends as $friend) { ?>
                             <li>
                                 <a href="profil?id=<?php echo $friend['iduser']; ?>">
-                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>"
-                                        alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
+                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>" alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
                                 </a>
                             </li>
                         <?php }
