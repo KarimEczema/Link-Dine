@@ -94,7 +94,7 @@ catch(PDOException $e){
 <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
 <img id="preview" src="#" alt="Image Preview" style="display: none;">
 
-<script src="js/upload.js"></script>
+<script type="module" src="js/upload.js"></script>
 
 <nav class = "like" style =" background-color: bisque;">
    <h5> Que vous pourriez aimer :</h5><br>
