@@ -141,7 +141,7 @@ include 'navbar.php';
                             <?php
                             foreach ($combined as $item) {
                                 ?>
-                                <div class="scroll-page" id="eventperso">
+                                <div class="scroll-page" id="eventPerso">
                                     <div style="padding:2%; border:solid;">
                                         <?php
                                         echo "<div>";
