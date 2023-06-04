@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $iduser = $_POST['iduser'];
 
     // Insert the new like
-    $sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne)";
+    $sql = "INSERT INTO likes(idpost, iduser) VALUES(:post, :personne) ON CONFLICT (idpost, iduser) DO NOTHING";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':post', $idpost);
     $stmt->bindParam(':personne', $iduser);

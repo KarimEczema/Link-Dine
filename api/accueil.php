@@ -153,6 +153,9 @@ try {
 									echo '<script>';
 									echo 'var idpost = "' . $idpost . '";';
 									echo '</script>';
+									echo '<script>';
+									echo 'var iduser = "' . $iduser . '";';
+									echo '</script>';
 									?>
 
 									<!-- script pour changer les variables à chaque post -->
