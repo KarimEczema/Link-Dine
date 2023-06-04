@@ -86,7 +86,7 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4" style="background-color : purple">  
+        <div class="col-sm-4">  
         <form method="post" action="" enctype="multipart/form-data"> 
         <input type="hidden" id="image_url" name="image_url">
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
@@ -95,8 +95,8 @@ try {
         <button type="submit" id="publish_button">Changer de Photo</button>
     </form>
     </div>
-        <div class="col-sm-8" style="background-color: grey">
-            <div style="background-color: #d6a3b7; margin:2%">
+        <div class="col-sm-8">
+            <div style="margin:2%">
                 <h1>
                     <?php echo htmlspecialchars($row['username']); ?>
                 </h1>
@@ -104,7 +104,7 @@ try {
                     <?php echo htmlspecialchars($row['statut']); ?>
                 </h3>
             </div>
-            <div style="background-color: #a7d4d4; margin:2%">
+            <div style="margin:2%">
                 <h3>
                     <?php echo htmlspecialchars($row['bio']); ?>
                 </h3>
@@ -149,7 +149,7 @@ try {
                         <?php foreach ($friends as $friend) { ?>
                             <li>
                                 <a href="profil?id=<?php echo $friend['iduser']; ?>">
-                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>" alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
+                                    <img src="<?php echo htmlspecialchars($friend['pp']); ?>" alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="200" height="160">
                                 </a>
                             </li>
                         <?php }
