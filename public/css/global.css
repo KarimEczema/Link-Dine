@@ -46,7 +46,7 @@ ul#liste1 li a:hover {
 
 #ad
 {
-    float : right;
-    position: sticky;
     margin-top : 20%;
+    position: sticky;
+    right : 0;
 }
