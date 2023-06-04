@@ -18,7 +18,7 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 ?>
-<nav id = "bg">
+    <nav class = "bg">
 <?php
 
 include 'navbar.php';

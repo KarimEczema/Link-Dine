@@ -10,17 +10,13 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 include 'admin-check.php';
 echo '</head>';
 echo '<body>';
-
+?>
+    <nav class = "bg">
+<?php
 include 'navbar.php';
 ?>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<link href="css/admin.css" rel="stylesheet" type="text/css"/>
-</head>
 
-
-
-<body>
 
 <!--
 ======================================================
@@ -30,7 +26,6 @@ include 'navbar.php';
 
 <!-- récupération des donnée dans la table users -->
 
-<nav id = "bg">
 
 <?php
 
