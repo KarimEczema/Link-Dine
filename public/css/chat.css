@@ -102,7 +102,7 @@ ul#liste1 li a:hover {
 }
 
 #chat{
-    background-color: purple;
+    text-decoration: underline;
 }
 
 #buttonArea {

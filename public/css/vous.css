@@ -123,7 +123,7 @@ input:nth-of-type(5):checked~main#carousel {
 }
 
 #vous {
-  background-color: purple;
+  text-decoration: underline;
 }
 
 input:checked {

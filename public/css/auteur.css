@@ -10,7 +10,7 @@ body{
 }
 
 #auteur{
-  background-color: purple;
+  text-decoration: underline;
 }
 
 main#carousel { 
