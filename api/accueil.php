@@ -128,7 +128,7 @@ WHERE DATE(date) >= '2023-06-05'
 
 				foreach ($amis as $ami) {
 					// get posts
-					$stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
+					$stmt = $conn->prepare("SELECT idpost, users.nom as username, lieu as title, date, descriptionpost as description, photo, datepublication FROM posts INNER JOIN users ON posts.iduser = users.iduser WHERE posts.iduser = ? ORDER BY datepublication DESC");
 					$stmt->execute([$ami]);
 					$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				}
@@ -146,10 +146,16 @@ WHERE DATE(date) >= '2023-06-05'
 
 										<?php
 										echo "<div>";
+
 										if ($item['title'] !== NULL) {
 											echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
 
 										}
+										if ($item['photo'] !== NULL) {
+											?>
+											<img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"> <?php
+										}
+
 										echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
 										<h6 style="font-style:italic">Date de publication:
 											<?php echo htmlspecialchars($item['datepublication']) ?>
