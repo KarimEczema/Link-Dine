@@ -231,7 +231,7 @@ input:checked+div {
   width: 60px;
   height: 60px;
   left: 10px;
-  z-index: 3;
+  /*z-index: 3;*/
   /* Add a higher z-index to make the buttons appear above the image */
   margin: 0;
   position: absolute;
