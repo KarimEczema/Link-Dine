@@ -32,14 +32,18 @@ echo '<body>';
 
 
 
-	<h2> ECE'In est le novueau réseau social en vogue à visée des objectifs professionnels. Que
-		vous soyez étudiant/e
-		de licence, master ou doctorat, ou étudiant/e apprenti dans un entreprise, ou étudiant/e qui
-		cherche un stage dans une entreprise ou peut-être un/e enseignant/e ou employé de l’Ecole qui
-		cherche des partenaires pour votre projet de recherche ou autre, ce site web s'adresse à toutes et
-		à tous qui souhaitent prendre leur vie professionnelle au sérieux, trouver de nouvelles
-		opportunités pour développer leur carrière et se connecter avec d'autres personnes pour des buts
-		professionnels.</h2>
+	<div style="font-size: 24px;">
+		<b>ECE'In</b> est le nouveau réseau social en vogue axé sur les objectifs professionnels. Que vous soyez
+		<b>étudiant(e) de
+			licence, master ou doctorat, ou étudiant(e) apprenti(e) dans une entreprise, ou étudiant(e) en recherche de
+			stage dans une entreprise, ou peut-être enseignant(e) ou employé(e) de l'école</b> en quête de
+		<b>partenaires</b> pour
+		votre <b>projet</b> de recherche ou autre, ce site web s'adresse à toutes et tous ceux qui souhaitent prendre
+		leur <b>vie
+			professionnelle</b> au sérieux, trouver de nouvelles <b>opportunités</b> pour développer leur carrière et se
+		connecter avec
+		d'autres personnes dans un but professionnel.
+	</div>
 	<?php
 	include 'caroussel.php';
 	?>
