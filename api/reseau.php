@@ -89,8 +89,8 @@ echo '<body>';
                 <div class="col-sm-4">
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="image_url" name="image_url">
-                        <img src="<?php echo htmlspecialchars($row['pp']); ?>"
-                            alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                        <img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                            height="200">
                     </form>
                 </div>
                 <div class="col-sm-8">

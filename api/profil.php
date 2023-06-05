@@ -58,8 +58,8 @@ echo '<body>';
                         ?>
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="<?php echo htmlspecialchars($row['pp']); ?>"
-                                    alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                                <img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                                    height="200">
                             </div>
                             <div class="col-sm-8">
                                 <p><b>

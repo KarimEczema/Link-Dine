@@ -109,7 +109,7 @@ echo '<body>';
             <div class="col-sm-4" style="background-color : purple">
                 <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                     <input type="hidden" id="image_url" name="image_url">
-                    <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>"
+                    <label for="image_uploads"><img src="<?php echo $pp ?>"
                             alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
                     </label>
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
