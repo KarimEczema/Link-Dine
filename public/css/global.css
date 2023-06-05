@@ -188,31 +188,31 @@ footer {
 
 
 
-.carrou input:checked~input:before {
+input:checked~input:before {
   content: ">";
   box-sizing: content-box;
 }
 
-.carrou input:checked {
+input:checked {
   visibility: none;
 }
 
-.carrou input:checked~input {
+input:checked~input {
   right: 0;
   left: auto;
   right: 10px;
 }
 
-.carrou input:checked+div+input {
+input:checked+div+input {
   z-index: 4;
 }
 
-.carrou input+div {
+input+div {
   position: absolute;
   z-index: 1;
 }
 
-.carrou input:checked+div {
+input:checked+div {
   z-index: 2;
 }
 
