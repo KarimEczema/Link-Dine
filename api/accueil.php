@@ -183,6 +183,11 @@ WHERE DATE(date) >= '2023-06-05'
 											// Changer la valeur du bouton
 											boutonl.value = idpost;
 
+											// Récupérer le bouton de commentaire par son ID
+											var boutonc = document.getElementById('boutoncom');
+
+											// Changer la valeur du bouton
+											boutonc.value = idpost;
 										</script>
 
 										<!-- Partie like -->
@@ -253,9 +258,88 @@ WHERE DATE(date) >= '2023-06-05'
 
 										</div><!-- ShareThis END -->
 
+										<!-- Partie Commentaire -->
+										<h6>
+											<div class="open-btn">
+												<button class="open-button" onclick="ouvrcommentaire()">Commentaire</button>
+											</div>
+										</h6>
+
+										<div class="login-popup">
+											<div class="Description" id="form-">
+												<div class="descr-container">
+													<form method="post" action="">
+														<h4>Contenu de votre commentaire :</h4>
+														<div class="col-sm-7"><textarea name="write" id="write" cols="50" rows="10"
+																wrap="hard" required></textarea></div>
+														<button type="submit" id="boutoncom" name="ajouterCom"
+															style="margin-top : 10%; margin-left : 3%;">Publier</button>
+														<button type="button" class="btn cancel" onclick="fermcommentaire()"
+															style="background-color: antiquewhite">Fermer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+									<!-- Code php pour envoyer le commentaire -->
+									<?php
+									try {
+										if ($_POST) {
+											if (isset($_POST['ajouterCom']) && $_POST['ajouterCom'] == $idpost) {
+												//On se connecte à la BDD
+												$conn = new PDO($dsn);
+
+												//On définit certaines variables.
+												$ecriture = $_POST['write'];
+
+
+												//On insère les données reçues
+												$sql = "INSERT INTO commentaire(idpost, commentaire, iduser) VALUES(:post, :write, :personne)";
+												$stmt = $conn->prepare($sql);
+												$stmt->bindParam(':write', $ecriture);
+												$stmt->bindParam(':personne', $iduser);
+												$stmt->bindParam(':post', $idpost);
+												$stmt->execute();
+
+												//Message de confirmation pour l'utilisateur
+												echo "Commentaire publié !";
+											} else if (isset($_POST['ajouterlike']) && $_POST['ajouterlike'] == $idpost) {
+												//On se connecte à la BDD
+												$conn = new PDO($dsn);
+
+												//On insère les données reçues
+												$sql = "INSERT INTO like(idpost, iduser) VALUES(post, :personne)";
+												$stmt = $conn->prepare($sql);
+												$stmt->bindParam(':post', $idpost);
+												$stmt->bindParam(':personne', $iduser);
+
+												$stmt->execute();
+
+												//Message de confirmation pour l'utilisateur
+												echo "Vous aimez ce post";
+											}
+										}
+
+									} catch (PDOException $e) {
+										echo 'Impossible de traiter les données. Erreur : ' . $e->getMessage();
+									}
+									?>
+
 									<!--
-										Code Js pour like 
+										Code Js pour like et Commentaire
 								-->
+									<script>
+										function ouvrcommentaire() {
+											document.getElementById("form-").style.display = "block";
+										}
+
+
+										function fermcommentaire() {
+											document.getElementById("form-").style.display = "none";
+										}
+									</script>
 
 									<?php
 
