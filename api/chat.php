@@ -18,7 +18,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/chat.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 
 echo '</head>';
-echo '<body>';
+
 
 include 'navbar.php';
 ?>
