@@ -6,6 +6,8 @@ echo '<title>Accueil</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
+echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"> ';
+echo '<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js">';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
@@ -25,6 +27,20 @@ echo '<body>';
 			src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Video/ECE%20undefined.mp4?t=2023-06-05T13%3A21%3A46.734Z"
 			autoplay muted loop></video>
 	</div>
+
+	<script>const scroller = new LocomotiveScroll({
+			el: document.querySelector('[data-scroll-container]'),
+			smooth: true
+		}); </script>
+
+	<h2 class="scroll-container"> ECE'In est le novueau réseau social en vogue à visée des objectifs professionnels. Que
+		vous soyez étudiant/e
+		de licence, master ou doctorat, ou étudiant/e apprenti dans un entreprise, ou étudiant/e qui
+		cherche un stage dans une entreprise ou peut-être un/e enseignant/e ou employé de l’Ecole qui
+		cherche des partenaires pour votre projet de recherche ou autre, ce site web s'adresse à toutes et
+		à tous qui souhaitent prendre leur vie professionnelle au sérieux, trouver de nouvelles
+		opportunités pour développer leur carrière et se connecter avec d'autres personnes pour des buts
+		professionnels.</h2>
 	<?php
 	include 'caroussel.php';
 	?>

@@ -15,6 +15,19 @@
   background-color: #555;
 }
 
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+body.has-scroll-smooth {
+  overflow: hidden;
+}
+body.has-scroll-dragging {
+  user-select: none;
+}
+.has-scroll-smooth .scroll-container {
+  overflow: scroll;
+}
+
 
 .scrollbar {
   margin-left: 30px;
@@ -28,6 +41,19 @@
 
 .force-overflow {
   min-height: 450px;
+}
+
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+body.has-scroll-smooth {
+  overflow: hidden;
+}
+body.has-scroll-dragging {
+  user-select: none;
+}
+.has-scroll-smooth .scroll-container {
+  overflow: scroll;
 }
 
 body {
