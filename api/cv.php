@@ -108,7 +108,7 @@ try {
         $conn->exec($sql);
 
         // Display a success message or perform further actions
-        echo "Update successful!";
+        
     } catch (PDOException $e) {
         // Handle any database errors
         echo "Update failed: " . $e->getMessage();
