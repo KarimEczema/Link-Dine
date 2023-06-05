@@ -7,7 +7,7 @@ echo '<title>Auteur</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo "Logged in as: " . $iduser;
+
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>'; 
 echo '<link rel="stylesheet" type="text/css" href="css/auteur.css">';
@@ -15,6 +15,7 @@ echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
 
 include 'login-check.php';
+echo "Logged in as: " . $iduser;
 echo '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1/dist/umd/supabase.min.js"></script>';
 echo '</head>';
 echo '<body>';
@@ -110,9 +111,7 @@ include 'navbar.php';
         </form>
     </nav>
 
-    <nav class = "like" style =" background-color: bisque;">
-    <h5> Que vous pourriez aimer :</h5><br>
-    </nav>
+
     <?php include 'foot.php'; ?>
     </nav>
 </body>
