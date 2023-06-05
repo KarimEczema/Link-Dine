@@ -112,13 +112,15 @@ const recevoirMessage = async (user1, user2) => {
 
         $('#chatbox').empty();
         data.forEach(msg => {
-            $('#chatbox').append(`<p><b>${usernameLookup[msg.iduser]}:</b> ${msg.message}</p>`); // replaced iduser with username
+            let senderName = (msg.iduser == user1) ? "Vous" : usernameLookup[msg.iduser];
+            $('#chatbox').append(`<p><b>${senderName}:</b> ${msg.message}</p>`); 
         });
 
     } catch (error) {
         console.error('Error:', error.message);
     }
 };
+
 
 
 $(document).ready(async function () {
