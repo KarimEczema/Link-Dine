@@ -183,7 +183,7 @@ echo '<body>';
                                 <div class="open-btn">
                                     <button class="open-button"
                                         onclick="openForm(<?php echo $row['idevent'] ?>)"><strong>Description de
-                                            lévénement</strong></button>
+                                            l'événement</strong></button>
                                 </div>
                             </h6>
                             <div class="login-popup">

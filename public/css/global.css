@@ -1,3 +1,27 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* width of the entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 header{
 	/* Style pour le bandeau d'en-tête*/
 	color: white; 

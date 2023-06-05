@@ -22,6 +22,7 @@ echo '<body>';
 <nav class="bg">
     <?php
     include 'navbar.php';
+    
 
     if (!isset($_SESSION['countCV'])) {
         $_SESSION['countCV'] = 0;
