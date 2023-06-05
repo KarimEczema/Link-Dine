@@ -300,7 +300,7 @@ echo '<body>';
                                 </div>
                             </div>
                             <?php
-                            $carouselId = 1;
+
                             // Code qui génère les lignes, probablement une boucle while ou for
                             if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
