@@ -194,7 +194,7 @@ input:checked~input:before {
 }
 
 input:checked {
-  visibility: none;
+  display: none;
 }
 
 input:checked~input {
@@ -223,6 +223,7 @@ input:checked+div {
   margin: 2em auto;
   overflow: hidden;
   transform: translateZ(0px);
+  /* stops flickering incode pen*/
   box-shadow: 0 0 2px 1px #ccc;
 }
 
@@ -232,6 +233,7 @@ input:checked+div {
   height: 60px;
   left: 10px;
   z-index: 3;
+  /* Add a higher z-index to make the buttons appear above the image */
   margin: 0;
   position: absolute;
 }
@@ -250,6 +252,7 @@ input:checked+div {
   content: "<";
   z-index: 4;
   box-sizing: content-box;
+  /* Add a higher z-index to make the buttons appear above the image */
 }
 
 /* Scroll
@@ -265,54 +268,5 @@ input:checked+div {
 }
 
 #test1 input:checked+div~div {
-  transform: translate3d(100%, 0, 0);
-}
-
-
-.carousel {
-  position: relative;
-  width: 600px;
-  height: 350px;
-  margin: 2em auto;
-  overflow: hidden;
-  transform: translateZ(0px);
-  box-shadow: 0 0 2px 1px #ccc;
-}
-
-.carousel-radio {
-  top: 150px;
-  width: 60px;
-  height: 60px;
-  left: 10px;
-  z-index: 3;
-  margin: 0;
-  position: absolute;
-}
-
-.carousel-radio:before {
-  background: #888;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 25px;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border: 5px solid #fff;
-  position: absolute;
-  content: "<";
-  z-index: 4;
-}
-
-.carousel .carousel-radio+div {
-  transform: translate3d(-100%, 0, 0);
-  transition: transform .5s ease-in-out;
-}
-
-.carousel .carousel-radio:checked+div {
-  transform: translate3d(0, 0, 0);
-}
-
-.carousel .carousel-radio:checked+div~div {
   transform: translate3d(100%, 0, 0);
 }
