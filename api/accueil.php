@@ -369,7 +369,7 @@ WHERE DATE(date) >= '2023-06-05'
 								?>
 								<h6 style="font-style:italic">Date de publication:
 									<?php echo htmlspecialchars($item['datepublication']); ?>
-								</h6>;
+								</h6>
 
 								<?php
 								if ($item['description'] !== NULL) {
