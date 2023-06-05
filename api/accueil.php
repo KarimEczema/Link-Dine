@@ -209,9 +209,7 @@ WHERE DATE(date) >= '2023-06-05'
 										<!-- Partie like -->
 										<form>
 											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
-												style="margin-top: 10%; margin-left: 3%;" class="like-button">
-												<i class="fas fa-heart">like</i> <!-- Heart icon -->
-											</button>
+												style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
 										</form>
 
 										<script>
