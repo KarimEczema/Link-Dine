@@ -128,5 +128,6 @@ input:nth-of-type(5):checked~main#carousel {
 }
 
 .radioBut input:checked {
+  content: "";
   visibility: visible;
 }
