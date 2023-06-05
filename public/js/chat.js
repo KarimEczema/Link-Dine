@@ -46,7 +46,11 @@ const RecupUtilisateurs = async (currentUserId) => {
         }
 
         const currentUserData = await response.json();
-        const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
+
+        // add current user to usernameLookup
+        usernameLookup[currentUserId] = currentUserData[0]?.username || 'Unknown user';
+    
+        const amis = currentUserData[0]?.amis || [];
 
         if (amis.length === 0) {
             console.log("The user has no friends.");
