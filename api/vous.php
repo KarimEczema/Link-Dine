@@ -389,7 +389,7 @@ echo '<body>';
                     </B>
                     <br>
                     <br>
-                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
+                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; " >
                         <?php echo htmlspecialchars($row['description']); ?>
                     </div>
 

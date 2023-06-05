@@ -223,7 +223,6 @@ input:checked+div {
   margin: 2em auto;
   overflow: hidden;
   transform: translateZ(0px);
-  /* stops flickering incode pen*/
   box-shadow: 0 0 2px 1px #ccc;
 }
 
@@ -233,7 +232,6 @@ input:checked+div {
   height: 60px;
   left: 10px;
   z-index: 3;
-  /* Add a higher z-index to make the buttons appear above the image */
   margin: 0;
   position: absolute;
 }
@@ -252,7 +250,6 @@ input:checked+div {
   content: "<";
   z-index: 4;
   box-sizing: content-box;
-  /* Add a higher z-index to make the buttons appear above the image */
 }
 
 /* Scroll
@@ -279,7 +276,6 @@ input:checked+div {
   margin: 2em auto;
   overflow: hidden;
   transform: translateZ(0px);
-  /* stops flickering in code pen */
   box-shadow: 0 0 2px 1px #ccc;
 }
 
@@ -289,7 +285,6 @@ input:checked+div {
   height: 60px;
   left: 10px;
   z-index: 3;
-  /* Add a higher z-index to make the buttons appear above the image */
   margin: 0;
   position: absolute;
 }
@@ -307,7 +302,6 @@ input:checked+div {
   position: absolute;
   content: "<";
   z-index: 4;
-  /* Add a higher z-index to make the buttons appear above the image */
 }
 
 .carousel .carousel-radio+div {
