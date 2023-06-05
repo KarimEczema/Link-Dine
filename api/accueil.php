@@ -151,7 +151,7 @@ WHERE DATE(date) >= '2023-06-05'
 											echo "<h2>" . htmlspecialchars($item['title']) . "</h2>";
 
 										}
-										if ($item['photo'] !== NULL) {
+										if (!empty($item['photo'])) {
 											?>
 											<img src="<?php echo trim($item['photo']); ?>" style="height : 350px; width : 600px"> <?php
 										}
