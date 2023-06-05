@@ -128,5 +128,5 @@ input:nth-of-type(5):checked~main#carousel {
 }
 
 input:checked {
-  background-color: white; /* Replace "red" with your desired color */
+  display: all;
 }
