@@ -44,17 +44,17 @@ if (!response.ok) {
 }
 
 const currentUserData = await response.json();
-const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
+const amis = currentUserData[0]?.amis || []; 
 
 if (amis.length === 0) {
     console.log("The user has no friends.");
     return [];
 }
 
-// Create a comma-separated string of friend IDs
+
 const amisIdString = amis.join(',');
 
-// Now fetch the friends data based on the amis array
+
 const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?iduser=in.(${amisIdString})`, {
     method: 'GET',
     headers: {
@@ -101,13 +101,12 @@ const recevoirMessage = async (user1, user2) => {
 
         data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
     
-        // Get a list of all unique user IDs in the data
+
         const userIds = Array.from(new Set(data.map(msg => msg.iduser)));
     
-        // Fetch the user data for all users
-        const userData = await Promise.all(userIds.map(id => fetchUserData(id)));  // Assuming `fetchUserData` is a function that fetches user data based on user ID
-    
-        // Create a map from user ID to user name
+
+        const userData = await Promise.all(userIds.map(id => fetchUserData(id)));  
+
         const userNameMap = Object.fromEntries(userData.map(user => [user.iduser, user.username]));
     
         // Sort the data based on the 'time' field in descending order (newest first)
@@ -118,7 +117,10 @@ const recevoirMessage = async (user1, user2) => {
             const userName = userNameMap[msg.iduser];  // Get the user name from the map
             $('#chatbox').append(`<p><b>${userName}:</b> ${msg.message}</p>`);
         });
-    };
+    } catch (error) {
+        console.error('Failed to fetch messages:', error);
+    }
+}; 
 $(document).ready(async function () {
     const amisData = await RecupUtilisateurs(iduser); 
     amisData.forEach((friend) => {
