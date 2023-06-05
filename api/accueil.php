@@ -10,6 +10,7 @@ echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scrol
 echo '<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js">';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
 echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
 echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />';
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
