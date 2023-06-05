@@ -128,5 +128,5 @@ input:nth-of-type(5):checked~main#carousel {
 }
 
 input:checked {
-  display: all;
+  background-color: black;
 }
