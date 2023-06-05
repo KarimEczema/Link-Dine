@@ -7,8 +7,9 @@ echo '<title>Vous</title>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> ';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
-echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
+
 echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/vous.css">';
 
 include 'login-check.php';
 
@@ -18,9 +19,8 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 ?>
-    <nav class = "bg">
+<nav class = "bg">
 <?php
-
 include 'navbar.php';
 
 if (!isset($_SESSION['countCV'])) {
@@ -60,21 +60,20 @@ if (!isset($_SESSION['countCV'])) {
 try {
 
     if ($_POST) {
-            $image_url = $_POST['image_url'];
+        $image_url = $_POST['image_url'];
         
     
-            // Create the connection with the database
-            $conn = new PDO($dsn);
-        
-            // Update the user's profile picture
-            $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':photo', $image_url);
-            $stmt->execute();
-        }
+        // Create the connection with the database
+        $conn = new PDO($dsn);
+    
+        // Update the user's profile picture
+        $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':photo', $image_url);
+        $stmt->execute();
     }
 
-catch (PDOException $e) {
+} catch (PDOException $e) {
     echo $e->getMessage();
 }
 ?>
@@ -98,23 +97,17 @@ try {
 
 <nav class="profil">
     <div class="row">
-        <div class="col-sm-4">  
+        <div class="col-sm-4" style="background-color : purple">  
         <form method="post" action="" enctype="multipart/form-data"> 
         <input type="hidden" id="image_url" name="image_url">
-        <?php if($row['pp'] !== null) {?>
         <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
         </label>
-        <?php } 
-        else { ?>
-            <label for="image_uploads"><img src="" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
-        <?php }
-        ?>
         <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" onchange="previewImage();" style="display:none">
         <button type="submit" id="publish_button">Changer de Photo</button>
     </form>
     </div>
-        <div class="col-sm-8" >
-            <div style="margin:2%">
+        <div class="col-sm-8" style="background-color: grey">
+            <div style="background-color: #d6a3b7; margin:2%">
                 <h1>
                     <?php echo htmlspecialchars($row['username']); ?>
                 </h1>
@@ -122,7 +115,7 @@ try {
                     <?php echo htmlspecialchars($row['statut']); ?>
                 </h3>
             </div>
-            <div style="margin:2%">
+            <div style="background-color: #a7d4d4; margin:2%">
                 <h3>
                     <?php echo htmlspecialchars($row['bio']); ?>
                 </h3>
@@ -145,6 +138,7 @@ try {
     refresh.addEventListener('click', location.reload(), false);
 </script>
 
+
 <!-- Choix du fond par l'utilisateur via des boutons radio -->
 <nav class="Choix-fond">
     <h1 style="margin-top : 5%">Choisir son fond</h1>
@@ -158,7 +152,7 @@ try {
 
         <div>
             <input type="radio" id="bleu" name="drone" value="paleturquoise">
-            <label for="bleu">Fond bleu</label>
+            <label for="bleu">Fond turquoise</label>
         </div>
 
         <div>
@@ -509,6 +503,7 @@ try {
 
 
 include 'foot.php'; ?>
+
 </nav>
 </body>
 </html>
