@@ -60,12 +60,6 @@ include 'navbar.php';
 </nav>
 <script type="module" src="js/upload.js"></script>
 
-<nav class = "like" style =" background-color: bisque;">
-   <h5> Que vous pourriez aimer :</h5><br>
-</nav>
-
-
-
 <?php
 
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
