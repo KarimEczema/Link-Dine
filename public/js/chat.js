@@ -33,7 +33,7 @@ const envoyerMessage = async (iduser, message, sentTo) => {
 
 const RecupUtilisateurs = async (currentUserId) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}&select=username`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const RecupUtilisateurs = async (currentUserId) => {
         }
 
         const currentUserData = await response.json();
-
+        console.log(currentUserData); 
         // add current user to usernameLookup
         usernameLookup[currentUserId] = currentUserData[0]?.username || 'Unknown user';
     
