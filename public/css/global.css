@@ -74,8 +74,6 @@ header {
 
 .navigation {
   position: fixed;
-  top: 0;
-  width: 100%;
   z-index: 1;
   /* Style du bandeau de navigation */
   background: #E7F2FF;
@@ -95,7 +93,7 @@ header {
 
 .navigation.scrolled {
   background: #E7F2FF;
-  box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.5);
+  /*box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.5);*/
   /* Ajouter d'autres styles pour l'effet de transition */
 }
 
