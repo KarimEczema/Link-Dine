@@ -198,22 +198,29 @@ echo '<body>';
                                 </div>
                             </div>
                             <?php
+                            $carouselId = 1;
+                            // Code qui génère les lignes, probablement une boucle while ou for
                             if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                                <div class="carousel" id="test1" style="padding-bottom:3%">
+                                <div class="carousel carousel<?php echo $carouselId; ?>" style="padding-bottom:3%">
                                     <?php
                                     $valueCar = 1;
                                     $tabimages = explode(',', $row['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image): ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
-                                        <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                                        <input type="radio" class="carousel-radio" name="item<?php echo $carouselId; ?>"
+                                            value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
+                                        <div class="carousel-image"><img src="<?php echo trim($image); ?>"
+                                                style="height : 350px; width : 600px"></div>
                                         <?php $valueCar++;
                                         ?>
                                     <?php endforeach; ?>
                                 </div>
-                            <?php } ?>
+                                <?php
+                                $carouselId++;
+                                // Fin du code qui génère les lignes
+                            } ?>
 
                             <script>
                                 function openForm(id) {
@@ -293,22 +300,29 @@ echo '<body>';
                                 </div>
                             </div>
                             <?php
+                            $carouselId = 1;
+                            // Code qui génère les lignes, probablement une boucle while ou for
                             if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                                <div class="carousel" id="test1" style="padding-bottom:3%">
+                                <div class="carousel carousel<?php echo $carouselId; ?>" style="padding-bottom:3%">
                                     <?php
                                     $valueCar = 1;
                                     $tabimages = explode(',', $row['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image): ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
-                                        <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
+                                        <input type="radio" class="carousel-radio" name="item<?php echo $carouselId; ?>"
+                                            value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
+                                        <div class="carousel-image"><img src="<?php echo trim($image); ?>"
+                                                style="height : 350px; width : 600px"></div>
                                         <?php $valueCar++;
                                         ?>
                                     <?php endforeach; ?>
                                 </div>
-                            <?php } ?>
+                                <?php
+                                $carouselId++;
+                                // Fin du code qui génère les lignes
+                            } ?>
 
                             <script>
                                 function openForm(id) {
