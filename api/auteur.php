@@ -24,9 +24,6 @@ echo '<body>';
 include 'navbar.php';
 ?>
 
-   
-
-
 <nav class = "post" style =" background-color: cyan;">
     <form method="post" action="" enctype="multipart/form-data">
         <label for="ameliorer">Creer un post</label><br>

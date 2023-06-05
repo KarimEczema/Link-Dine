@@ -55,12 +55,14 @@ document.querySelector('form').addEventListener('submit', async function (event)
         const { data, error } = await supabase
             .storage
             .from('Images') // replace with your bucket name
-            .upload('post/' + sanitizedFileName, file);
+            .upload('post/' + sanitizedFileName, file, {upsert: true});
 
 
         if (error) {
             console.error('Upload error: ', error.message);
-            alert('Error uploading file.');
+            var storageBaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/';
+            var fullUrl = storageBaseUrl + 'Images/post/' + sanitizedFileName;
+            document.getElementById('image_url').value = fullUrl;
         } else {
             // Construct the full URL of the uploaded file
             var storageBaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/';
