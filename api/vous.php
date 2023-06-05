@@ -100,6 +100,10 @@ echo '<body>';
     <!-- affichage des données de la bdd avec php -->
     <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
+    <?php
+    $pp = isset($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase';
+    ?>
+
     <nav class="profil">
         <div class="row">
             <div class="col-sm-4" style="background-color : purple">
@@ -388,7 +392,7 @@ echo '<body>';
                     </B>
                     <br>
                     <br>
-                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; " >
+                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
                         <?php echo htmlspecialchars($row['description']); ?>
                     </div>
 

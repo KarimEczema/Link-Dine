@@ -53,6 +53,9 @@ echo '<body>';
             <table>
                 <tbody>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                        <?php
+                        $pp = isset($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase';
+                        ?>
                         <div class="row">
                             <div class="col-sm-3">
                                 <img src="<?php echo htmlspecialchars($row['pp']); ?>"
