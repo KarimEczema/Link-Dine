@@ -30,8 +30,7 @@ echo '<body>';
     }
 
     ?>
-    <script type="module" src="js/upload.js"></script>
-    <script> function previewImage() {
+        <script> function previewImage() {
             var file = document.getElementById('image_uploads').files[0];
             if (file) {
                 var reader = new FileReader();
@@ -43,6 +42,8 @@ echo '<body>';
             }
         }
     </script>
+    <script type="module" src="js/upload.js"></script>
+
 
 
     <!--

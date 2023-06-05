@@ -118,6 +118,5 @@ try {
     echo 'An error occurred: ' . $e->getMessage();
 }
 
-include 'foot.php';
 
 ?>

@@ -13,8 +13,10 @@ body{
 
 #HebdoEvent{
 	margin:10% 0 2% 0;
-	border: 3px solid black;
+	border: 2px solid rgb(59, 59, 59);
 	padding : 3px;
+	box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
+	margin-top: 4rem;
 }
 
 #Event{
