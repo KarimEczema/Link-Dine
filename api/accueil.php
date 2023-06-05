@@ -159,7 +159,7 @@ WHERE DATE(date) >= '2023-06-05'
 										echo "<p>Posté par: " . htmlspecialchars($item['username']) . "</p>"; ?>
 										<h6 style="font-style:italic">Date de publication:
 											<?php echo htmlspecialchars($item['datepublication']) ?>
-										</h6>;
+										</h6>
 
 										<?php
 										echo "<h6>" . htmlspecialchars($item['description']) . "</h6>";
