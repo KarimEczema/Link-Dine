@@ -80,11 +80,11 @@ WHERE DATE(date) >= '2023-06-05'
 			?>
 			<?php foreach ($tabimages as $image):
 				if ($valueCar == 1) { ?>
-					<input type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
+					<input class=.carrou type="radio" name="item" value="<?php echo $valueCar; ?>" checked>
 					<div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
 					<?php $valueCar++;
 				} else { ?>
-					<input type="radio" name="item" value="<?php echo $valueCar; ?>">
+					<input class=.carrou type="radio" name="item" value="<?php echo $valueCar; ?>">
 					<div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
 					<?php
 					$valueCar++;
