@@ -92,7 +92,6 @@ echo '<body>';
                         </label>
                         <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
                             onchange="previewImage();" style="display:none">
-                        <button type="submit" id="publish_button">Changer de Photo</button>
                     </form>
                 </div>
                 <div class="col-sm-8">
