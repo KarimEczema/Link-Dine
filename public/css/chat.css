@@ -103,6 +103,7 @@ ul#liste1 li a:hover {
 
 #chat{
     text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 #buttonArea {

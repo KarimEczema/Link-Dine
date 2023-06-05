@@ -124,6 +124,7 @@ input:nth-of-type(5):checked~main#carousel {
 
 #vous {
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 input:checked {

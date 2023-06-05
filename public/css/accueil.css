@@ -28,6 +28,7 @@ body{
 
 #accueil{
 	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 
 .video-container {
