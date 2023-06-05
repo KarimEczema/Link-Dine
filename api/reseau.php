@@ -87,11 +87,7 @@ echo '<body>';
                 <div class="col-sm-4">
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" id="image_url" name="image_url">
-                        <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>"
-                                alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
-                        </label>
-                        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
-                            onchange="previewImage();" style="display:none">
+                        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
                     </form>
                 </div>
                 <div class="col-sm-8">
