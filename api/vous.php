@@ -365,7 +365,7 @@ echo '<body>';
 
 
         <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-            <input type="radio" name="position" />
+            <input type="radio" name="position">
         <?php endwhile; ?>
 
         <?php $sql = "SELECT * FROM projet WHERE iduser= $iduser";
