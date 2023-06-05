@@ -210,7 +210,7 @@ WHERE DATE(date) >= '2023-06-05'
 										<form>
 											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
 												style="margin-top: 10%; margin-left: 3%;" class="like-button">
-												<i class="fas fa-heart"></i> <!-- Heart icon -->
+												<i class="fas fa-heart">like</i> <!-- Heart icon -->
 											</button>
 										</form>
 
