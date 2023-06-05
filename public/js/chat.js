@@ -33,13 +33,14 @@ const envoyerMessage = async (iduser, message, sentTo) => {
 
 const RecupUtilisateurs = async (currentUserId) => {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}&select=username`, {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}&select=username,amis`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'apikey': supabaseAnonKey,
             },
         });
+        
 
         if (!response.ok) {
             throw new Error('Failed to fetch user data');
