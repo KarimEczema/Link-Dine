@@ -127,3 +127,6 @@ input:nth-of-type(5):checked~main#carousel {
   text-underline-offset: 2px;
 }
 
+input:checked {
+
+}
