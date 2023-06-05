@@ -190,6 +190,7 @@ footer {
 
 input:checked~input:before {
   content: ">";
+  box-sizing: content-box;
 }
 
 input:checked {
@@ -231,7 +232,7 @@ input:checked+div {
   width: 60px;
   height: 60px;
   left: 10px;
-  /*z-index: 3;*/
+  z-index: 3;
   /* Add a higher z-index to make the buttons appear above the image */
   margin: 0;
   position: absolute;
@@ -249,7 +250,8 @@ input:checked+div {
   border: 5px solid #fff;
   position: absolute;
   content: "<";
-  /* z-index: 4;*/
+  z-index: 4;
+  box-sizing: content-box;
   /* Add a higher z-index to make the buttons appear above the image */
 }
 
