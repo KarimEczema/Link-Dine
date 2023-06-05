@@ -207,7 +207,7 @@ echo '<body>';
                                     $tabimages = explode(',', $row['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image): ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>">
+                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
                                         <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
                                         <?php $valueCar++;
                                         ?>
@@ -302,7 +302,7 @@ echo '<body>';
                                     $tabimages = explode(',', $row['tabimages']);
                                     ?>
                                     <?php foreach ($tabimages as $image): ?>
-                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>">
+                                        <input type="radio" name="item" value="<?php echo $valueCar; ?>" <?php echo ($valueCar === 1) ? 'checked' : '' ?>>
                                         <div><img src="<?php echo trim($image); ?>" style="height : 350px; width : 600px"></div>
                                         <?php $valueCar++;
                                         ?>
