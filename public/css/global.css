@@ -191,10 +191,10 @@ footer {
 input:checked~input:before {
   content: ">";
 }
-/*
+
 input:checked {
   display: none;
-}*/
+}
 
 input:checked~input {
   right: 0;
