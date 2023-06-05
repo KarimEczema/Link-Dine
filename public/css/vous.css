@@ -127,6 +127,8 @@ input:nth-of-type(5):checked~main#carousel {
   text-underline-offset: 2px;
 }
 
-input:checked {
+
+.radioBut input:checked {
   display: content;
+  z-index: 4;
 }
