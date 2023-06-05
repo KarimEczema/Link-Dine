@@ -61,7 +61,7 @@ WHERE DATE(date) >= '2023-06-05'
 	$decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
 	<?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
 
-	<div id="eventsemaine">
+	<div class="eventsemaine">
 
 		<h3 style="text-align: center; margin:3%; text-decoration:underline;">Evénement de la semaine :</h3>
 		<h2 style="text-align: center; margin:1%">
@@ -89,7 +89,7 @@ WHERE DATE(date) >= '2023-06-05'
 					<?php
 					$valueCar++;
 				}
-				?>
+			?>
 			<?php endforeach; ?>
 		</div>
 
