@@ -1,6 +1,8 @@
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw';
 
+let usernameLookup = {};
+
 
 const envoyerMessage = async (iduser, message, sentTo) => {
     let payload = { iduser, message };
@@ -113,11 +115,12 @@ const recevoirMessage = async (user1, user2) => {
     }
 };
 
+
 $(document).ready(async function () {
     const amisData = await RecupUtilisateurs(iduser);
 
     // Create a lookup object to map user ids to usernames
-    let usernameLookup = {};
+    usernameLookup = {};
     amisData.forEach((friend) => {
         usernameLookup[friend.iduser] = friend.username; // Add entry to the lookup
 
