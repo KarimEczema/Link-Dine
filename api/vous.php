@@ -150,27 +150,27 @@ echo '<body>';
             <p>Cliquez pour choisir le fond que vous préférez </p>
 
             <div>
-                <input type="radio" id="blanc" name="drone" value="white" checked>
+                <input class = radioBut type="radio" id="blanc" name="drone" value="white" checked>
                 <label for="blanc">Fond blanc (par défaut)</label>
             </div>
 
             <div>
-                <input type="radio" id="bleu" name="drone" value="paleturquoise">
+                <input class = radioBut type="radio" id="bleu" name="drone" value="paleturquoise">
                 <label for="bleu">Fond turquoise</label>
             </div>
 
             <div>
-                <input type="radio" id="vert" name="drone" value="#71da88">
+                <input class = radioBut type="radio" id="vert" name="drone" value="#71da88">
                 <label for="vert">Fond vert</label>
             </div>
 
             <div>
-                <input type="radio" id="creme" name="drone" value="burlywood">
+                <input class = radioBut type="radio" id="creme" name="drone" value="burlywood">
                 <label for="creme">Fond crème</label>
             </div>
 
             <div>
-                <input type="radio" id="rouge" name="drone" value="#e05a5a">
+                <input class = radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
                 <label for="rouge">Fond rouge</label>
             </div>
             <button type="submit" name="choixFond" id="refresh" value="Fond"
