@@ -192,7 +192,7 @@ WHERE DATE(date) >= '2023-06-05'
 
 										<script>
 											$(document).ready(function () {
-												// Get the initial like count for each post
+												
 												$('.like-button').each(function () {
 													var buttonId = $(this).attr('id');
 													var idpost = buttonId.split('-')[1];

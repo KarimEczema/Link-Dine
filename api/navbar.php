@@ -2,7 +2,7 @@
 
 	<div class="nav-left">
 	<a href="acceuil"><img
-            src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LogECE.png?t=2023-06-05T16%3A49%3A58.325Z"
+            src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LOGO.png?t=2023-06-05T17%3A06%3A28.235Z"
             ></a>
         </div>
 	<ul id="liste1">
