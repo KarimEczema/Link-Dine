@@ -129,6 +129,6 @@ input:nth-of-type(5):checked~main#carousel {
 
 
 .radioBut input:checked {
-  display: content;
+  opacity: 1;
   z-index: 4;
 }
