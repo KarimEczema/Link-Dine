@@ -194,7 +194,7 @@ input:checked~input:before {
 }
 
 input:checked {
-  display: none;
+  visibility: none;
 }
 
 input:checked~input {
