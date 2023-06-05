@@ -22,7 +22,7 @@ echo '<body>';
 <nav class="bg">
     <?php
     include 'navbar.php';
-    
+
 
     if (!isset($_SESSION['countCV'])) {
         $_SESSION['countCV'] = 0;
@@ -31,7 +31,7 @@ echo '<body>';
     }
 
     ?>
-        <script> function previewImage() {
+    <script> function previewImage() {
             var file = document.getElementById('image_uploads').files[0];
             if (file) {
                 var reader = new FileReader();
@@ -62,17 +62,21 @@ echo '<body>';
     try {
 
         if ($_POST) {
-            $image_url = $_POST['image_url'];
+
+            if (isset($_POST['photo']) && $_POST['photo'] == 'updatephoto') {
+                $image_url = $_POST['image_url'];
 
 
-            // Create the connection with the database
-            $conn = new PDO($dsn);
+                // Create the connection with the database
+                $conn = new PDO($dsn);
 
-            // Update the user's profile picture
-            $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':photo', $image_url);
-            $stmt->execute();
+                // Update the user's profile picture
+                $sql = "UPDATE users SET pp = :photo WHERE iduser = $iduser";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':photo', $image_url);
+                $stmt->execute();
+            }
+
         }
 
     } catch (PDOException $e) {
@@ -100,7 +104,7 @@ echo '<body>';
     <nav class="profil">
         <div class="row">
             <div class="col-sm-4" style="background-color : purple">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                     <input type="hidden" id="image_url" name="image_url">
                     <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>"
                             alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
@@ -146,31 +150,31 @@ echo '<body>';
     <!-- Choix du fond par l'utilisateur via des boutons radio -->
     <nav class="Choix-fond">
         <h1 style="margin-top : 5%">Choisir son fond</h1>
-        <form method="post" action="">
+        <form method="post" action="" name="choixFond" value="Fond">
             <p>Cliquez pour choisir le fond que vous préférez </p>
 
             <div>
-                <input class = radioBut type="radio" id="blanc" name="drone" value="white" checked>
+                <input class=radioBut type="radio" id="blanc" name="drone" value="white" checked>
                 <label for="blanc">Fond blanc (par défaut)</label>
             </div>
 
             <div>
-                <input class = radioBut type="radio" id="bleu" name="drone" value="paleturquoise">
+                <input class=radioBut type="radio" id="bleu" name="drone" value="paleturquoise">
                 <label for="bleu">Fond turquoise</label>
             </div>
 
             <div>
-                <input class = radioBut type="radio" id="vert" name="drone" value="#71da88">
+                <input class=radioBut type="radio" id="vert" name="drone" value="#71da88">
                 <label for="vert">Fond vert</label>
             </div>
 
             <div>
-                <input class = radioBut type="radio" id="creme" name="drone" value="burlywood">
+                <input class=radioBut type="radio" id="creme" name="drone" value="burlywood">
                 <label for="creme">Fond crème</label>
             </div>
 
             <div>
-                <input class = radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
+                <input class=radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
                 <label for="rouge">Fond rouge</label>
             </div>
             <button type="submit" name="choixFond" id="refresh" value="Fond"

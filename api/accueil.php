@@ -57,8 +57,8 @@ WHERE DATE(date) >= '2023-06-05'
 	}
 	?>
 
-	<?php $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
-	$decoded_images = json_decode($row['tabimages'], true); // decode the JSON string to an associative array ?>
+	<?php $row['tabimages'] = trim($row['tabimages'], '{}');
+	$decoded_images = json_decode($row['tabimages'], true); ?>
 	<?php $row2 = $stmt2->fetch(PDO::FETCH_ASSOC) ?>
 
 	<div class="eventsemaine">
