@@ -146,9 +146,13 @@ echo '<body>';
                     <div id="carrousel">
                         <ul id="listc" style="list-style-type : none;">
                             <?php foreach ($friends as $friend) { ?>
+
+                                <?php
+                                $pp = !empty($friend['pp']) ? htmlspecialchars($friend['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+                                ?>
                                 <li>
                                     <a href="profil?id=<?php echo $friend['iduser']; ?>">
-                                        <img src="<?php echo htmlspecialchars($friend['pp']); ?>"
+                                        <img src="<?php echo htmlspecialchars($pp); ?>"
                                             alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
                                     </a>
                                 </li>
