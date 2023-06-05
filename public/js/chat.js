@@ -3,85 +3,85 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 
 const envoyerMessage = async (iduser, message, sentTo) => {
-let payload = { iduser, message };
+    let payload = { iduser, message };
 
-if (sentTo) {
-payload.sentTo = sentTo;
-}
+    if (sentTo) {
+        payload.sentTo = sentTo;
+    }
 
-try {
-const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseAnonKey,
-    },
-    body: JSON.stringify(payload),
-});
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+            body: JSON.stringify(payload),
+        });
 
-if (!response.ok) {
-    throw new Error('Failed to send message');
-}
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
 
-console.log('Message sent successfully');
-} catch (error) {
-console.error('Error:', error.message);
-}
+        console.log('Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
 };
 
 const RecupUtilisateurs = async (currentUserId) => {
-try {
-const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}`, {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseAnonKey,
-    },
-});
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/users?iduser=eq.${currentUserId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
 
-if (!response.ok) {
-    throw new Error('Failed to fetch user data');
-}
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
 
-const currentUserData = await response.json();
-const amis = currentUserData[0]?.amis || []; 
+        const currentUserData = await response.json();
+        const amis = currentUserData[0]?.amis || [];  // Extract the friends list, or set it to an empty array if it doesn't exist
 
-if (amis.length === 0) {
-    console.log("The user has no friends.");
-    return [];
-}
+        if (amis.length === 0) {
+            console.log("The user has no friends.");
+            return [];
+        }
 
+        // Create a comma-separated string of friend IDs
+        const amisIdString = amis.join(',');
 
-const amisIdString = amis.join(',');
+        // Now fetch the friends data based on the amis array
+        const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?iduser=in.(${amisIdString})`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': supabaseAnonKey,
+            },
+        });
 
+        if (!amisResponse.ok) {
+            throw new Error('Failed to fetch friends data');
+        }
 
-const amisResponse = await fetch(`${supabaseUrl}/rest/v1/users?iduser=in.(${amisIdString})`, {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseAnonKey,
-    },
-});
+        const amisData = await amisResponse.json();
 
-if (!amisResponse.ok) {
-    throw new Error('Failed to fetch friends data');
-}
+        console.log("Amis data: ", amisData);
 
-const amisData = await amisResponse.json();
+        return amisData;
 
-console.log("Amis data: ", amisData);
-
-return amisData;
-
-} catch (error) {
-console.error('Failed to fetch user or friends data', error);
-}
+    } catch (error) {
+        console.error('Failed to fetch user or friends data', error);
+    }
 };
 
 
 const recevoirMessage = async (user1, user2) => {
     let url = `${supabaseUrl}/rest/v1/messages?`;
-    if(user1 && user2) {
+    if (user1 && user2) {
         url += `or=(sentTo.eq.${user1},sentTo.eq.${user2})`;
     }
     try {
@@ -100,30 +100,27 @@ const recevoirMessage = async (user1, user2) => {
         let data = await response.json();
 
         data = data.filter(msg => (parseInt(msg.sentTo) == user2 && parseInt(msg.iduser) == user1) || (parseInt(msg.sentTo) == user1 && parseInt(msg.iduser) == user2));
-    
 
-        const userIds = Array.from(new Set(data.map(msg => msg.iduser)));
-    
-
-        const userData = await Promise.all(userIds.map(id => fetchUserData(id)));  
-
-        const userNameMap = Object.fromEntries(userData.map(user => [user.iduser, user.username]));
-    
-        // Sort the data based on the 'time' field in descending order (newest first)
         data.sort((a, b) => new Date(b.time) - new Date(a.time));
-    
+
         $('#chatbox').empty();
         data.forEach(msg => {
-            const userName = userNameMap[msg.iduser];  // Get the user name from the map
-            $('#chatbox').append(`<p><b>${userName}:</b> ${msg.message}</p>`);
+            $('#chatbox').append(`<p><b>${usernameLookup[msg.iduser]}:</b> ${msg.message}</p>`); // replaced iduser with username
         });
+
     } catch (error) {
-        console.error('Failed to fetch messages:', error);
+        console.error('Error:', error.message);
     }
-}; 
+};
+
 $(document).ready(async function () {
-    const amisData = await RecupUtilisateurs(iduser); 
+    const amisData = await RecupUtilisateurs(iduser);
+
+    // Create a lookup object to map user ids to usernames
+    let usernameLookup = {};
     amisData.forEach((friend) => {
+        usernameLookup[friend.iduser] = friend.username; // Add entry to the lookup
+
         let userButton = $(`<button class='usernameButton' data-id='${friend.iduser}'>${friend.username}</button>`);
         userButton.click(function () {
             $('.usernameButton').removeClass('active');
@@ -133,7 +130,6 @@ $(document).ready(async function () {
         $('#userSelect').append(userButton);
     });
 
-  
     $('#userInput').keypress(async function (e) {
         if (e.which == 13) { // Enter key pressed
             const message = $(this).val().trim();
@@ -162,50 +158,50 @@ $(document).ready(async function () {
             recevoirMessage(iduser, activeUserId);
         }
     }, 500);
-    
-    $('#messageButton').click(function() {
+
+    $('#messageButton').click(function () {
         $('#chatbox').css('display', 'block'); // Show chatbox
         $('#camera').css('display', 'none');   // Hide camera div
         $(this).addClass('active');
         $('#cameraButton').removeClass('active');
     });
 
-   
-    
-    $('#videoCallButton').click(function() {
-const selectedUserId = $('.usernameButton.active').data('id'); 
 
-if(!selectedUserId) { 
-alert('Please select a user to start a video call!');
-return;
-}
 
-$('#chatbox').css('display', 'none');   
-$('#videoCall').css('display', 'block');  
-$('#camera').css('display', 'none');   
-$(this).addClass('active');
-$('#messageButton').removeClass('active');
-$('#cameraButton').removeClass('active');
+    $('#videoCallButton').click(function () {
+        const selectedUserId = $('.usernameButton.active').data('id');
 
-const domain = 'meet.jit.si';
+        if (!selectedUserId) {
+            alert('Please select a user to start a video call!');
+            return;
+        }
 
-let roomName;
+        $('#chatbox').css('display', 'none');
+        $('#videoCall').css('display', 'block');
+        $('#camera').css('display', 'none');
+        $(this).addClass('active');
+        $('#messageButton').removeClass('active');
+        $('#cameraButton').removeClass('active');
 
-if (iduser < selectedUserId) {
-roomName = `${iduser}-${selectedUserId}`;
-} else {
-roomName = `${selectedUserId}-${iduser}`;
-}
+        const domain = 'meet.jit.si';
 
-const options = {
-roomName: roomName, 
-width: '100%',
-height: '100%',
-parentNode: document.querySelector('#videoCall')
-};
+        let roomName;
 
-let api = new JitsiMeetExternalAPI(domain, options);
-});
+        if (iduser < selectedUserId) {
+            roomName = `${iduser}-${selectedUserId}`;
+        } else {
+            roomName = `${selectedUserId}-${iduser}`;
+        }
+
+        const options = {
+            roomName: roomName,
+            width: '100%',
+            height: '100%',
+            parentNode: document.querySelector('#videoCall')
+        };
+
+        let api = new JitsiMeetExternalAPI(domain, options);
+    });
 
 
 
@@ -229,7 +225,7 @@ let api = new JitsiMeetExternalAPI(domain, options);
                     return;
                 }
 
-          
+
             }
 
             $(this).val(''); // Clear the input field
