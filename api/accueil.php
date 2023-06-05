@@ -13,8 +13,9 @@ echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min
 echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
 echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />';
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
-echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+
 include 'login-check.php';
 echo '</head>';
 echo '<body>';
@@ -30,9 +31,9 @@ echo '<body>';
 			autoplay muted loop></video>
 	</div>
 
+	<br>
 
-
-	<div style="font-size: 24px;">
+	<div style="font-size: 24px; margin-top: 4rem;">
 		<b>ECE'In</b> est le nouveau réseau social en vogue axé sur les objectifs professionnels. Que vous soyez
 		<b>étudiant(e) de
 			licence, master ou doctorat, ou étudiant(e) apprenti(e) dans une entreprise, ou étudiant(e) en recherche de
