@@ -101,7 +101,7 @@ echo '<body>';
     <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
     <?php
-    $pp = isset($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase';
+    $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase';
     ?>
 
     <nav class="profil">
