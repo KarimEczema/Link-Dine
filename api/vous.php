@@ -140,11 +140,7 @@ echo '<body>';
 ============================================
 -->
 
-    <!-- script pour reload la page au clic du bouton -->
-    <script type="text/javascript">
-        var refresh = window.getElementById('refresh');
-        refresh.addEventListener('click', location.reload(), false);
-    </script>
+
 
 
     <!-- Choix du fond par l'utilisateur via des boutons radio -->
