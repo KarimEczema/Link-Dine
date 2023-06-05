@@ -327,20 +327,6 @@ WHERE DATE(date) >= '2023-06-05'
 									}
 									?>
 
-									<!--
-										Code Js pour like et Commentaire
-								-->
-									<script>
-										function ouvrcommentaire() {
-											document.getElementById("form-").style.display = "block";
-										}
-
-
-										function fermcommentaire() {
-											document.getElementById("form-").style.display = "none";
-										}
-									</script>
-
 									<?php
 
 							}
