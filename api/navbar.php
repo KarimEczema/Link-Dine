@@ -1,10 +1,9 @@
 <nav class="navigation">
 
 	<div class="nav-left">
-	<a href="acceuil"><img
-            src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LOGO.png?t=2023-06-05T17%3A06%3A28.235Z"
-            ></a>
-        </div>
+		<a href="accueil"><img
+				src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LOGO.png?t=2023-06-05T17%3A06%3A28.235Z"></a>
+	</div>
 	<ul id="liste1">
 		<li id="accueil"><a href="accueil">Accueil</a></li>
 		<li id="reseau"><a href="reseau">Mon réseau</a></li>
