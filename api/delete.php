@@ -8,13 +8,13 @@ $password = "Y4vuPQm2xyTl";
 
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 
-try{
+try {
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
 
     // if request is received
-    if($_POST){
-        if(isset($_POST['username'])) {
+    if ($_POST) {
+        if (isset($_POST['username'])) {
             // query to delete user
             $sql = "DELETE FROM users WHERE username = :username";
             $stmt = $conn->prepare($sql);
@@ -26,7 +26,7 @@ try{
             echo "Utilisateur supprimé !";
         }
     }
-}catch (PDOException $e){
+} catch (PDOException $e) {
     // report error message
     echo $e->getMessage();
 }

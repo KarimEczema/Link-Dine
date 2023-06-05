@@ -1,15 +1,15 @@
-body{
+body {
 	/* Style pour le corps général*/
-	margin-left : 25%;
-	margin-right : 25%;
-	text-align : center;
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
 }
 
-.profil{
+.profil {
 	/* Style pour la partie profil en haut de page */
-	margin-top : 80px;
+	margin-top: 80px;
 }
 
-#reseau{
+#reseau {
 	background-color: purple;
 }

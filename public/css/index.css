@@ -18,9 +18,11 @@ body {
     0% {
         background-position: 100% 0%;
     }
+
     50% {
         background-position: 0% 100%;
     }
+
     100% {
         background-position: 100% 0%;
     }
@@ -34,7 +36,8 @@ form {
     text-align: center;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
     margin: 10px 0;
     padding: 10px;
     width: 200px;

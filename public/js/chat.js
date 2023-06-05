@@ -40,17 +40,17 @@ const RecupUtilisateurs = async (currentUserId) => {
                 'apikey': supabaseAnonKey,
             },
         });
-        
+
 
         if (!response.ok) {
             throw new Error('Failed to fetch user data');
         }
 
         const currentUserData = await response.json();
-        console.log(currentUserData); 
+        console.log(currentUserData);
         // add current user to usernameLookup
         usernameLookup[currentUserId] = currentUserData[0]?.username || 'Unknown user';
-    
+
         const amis = currentUserData[0]?.amis || [];
 
         if (amis.length === 0) {
@@ -113,7 +113,7 @@ const recevoirMessage = async (user1, user2) => {
         $('#chatbox').empty();
         data.forEach(msg => {
             let senderName = (msg.iduser == user1) ? "Vous" : usernameLookup[msg.iduser];
-            $('#chatbox').append(`<p><b>${senderName}:</b> ${msg.message}</p>`); 
+            $('#chatbox').append(`<p><b>${senderName}:</b> ${msg.message}</p>`);
         });
 
     } catch (error) {

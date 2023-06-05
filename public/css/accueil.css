@@ -1,33 +1,26 @@
-body{
-	/* Style pour le corps général*/
-	margin-left : 25%;
-	margin-right : 25%;
-	text-align : center;
+.section {
+	/* Style du corps de section */
+	color: black;
+	margin-top: 50px;
 }
 
-.section{
-    /* Style du corps de section */
-    color: black;
-    margin-top: 50px;
-}
-
-#HebdoEvent{
-	margin:10% 0 2% 0;
+#HebdoEvent {
+	margin: 10% 0 2% 0;
 	border: 3px solid black;
-	padding : 3px;
+	padding: 3px;
 }
 
-#Event{
-	margin:10% 0 2% 0;
+#Event {
+	margin: 10% 0 2% 0;
 	border: 3px solid black;
-	padding : 3px;
+	padding: 3px;
 }
 
-.post{
+.post {
 	margin-top: 5%;
 }
 
-#accueil{
+#accueil {
 	background-color: purple;
 }
 
@@ -35,14 +28,16 @@ body{
 	position: relative;
 	width: 100%;
 	height: 0;
-	padding-bottom: 56.25%; /* Aspect ratio 16:9 (modify as needed) */
-	margin-top: 20px; /* Adjust as needed */
-  }
-  
-  .video-container video {
+	padding-bottom: 56.25%;
+	/* Aspect ratio 16:9 (modify as needed) */
+	margin-top: 20px;
+	/* Adjust as needed */
+}
+
+.video-container video {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-  }
+}

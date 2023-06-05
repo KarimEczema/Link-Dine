@@ -22,14 +22,14 @@ $secretKey = new Key('fZabvRw78VA746', 'HS256');
 if (isset($_COOKIE['jwt'])) {
     // Get the JWT from the cookie
     $jwt = $_COOKIE['jwt'];
-    
+
     try {
         // Decode the JWT
         $decoded = JWT::decode($jwt, $secretKey);
-        
+
         // Get the username from the decoded payload
         $iduser = $decoded->iduser;
-        
+
         // Check if the user id is equal to 1
         if ($iduser == 1) {
             echo "Logged as admin . $iduser";
@@ -43,7 +43,7 @@ if (isset($_COOKIE['jwt'])) {
             echo '<meta http-equiv="refresh" content="0; url=index" />';
             exit;
         }
-        
+
     } catch (Exception $e) {
         // JWT validation failed
         // Redirect to login page or show error message

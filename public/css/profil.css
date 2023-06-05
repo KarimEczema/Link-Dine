@@ -1,11 +1,11 @@
-body{
+body {
 	/* Style pour le corps général*/
-	margin-left : 25%;
-	margin-right : 25%;
-	text-align : center;
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
 }
 
-#amis{
-	margin-top : 10px;
+#amis {
+	margin-top: 10px;
 	background-color: #89afec;
 }

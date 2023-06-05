@@ -5,7 +5,7 @@
     height: calc(100vh - 70px);
     border-radius: 10px;
     padding: 20px;
-    background: #4444fc;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
 }
@@ -50,7 +50,7 @@
     top: 0;
 }
 
-#chat{
+#chat {
     background-color: purple;
 }
 
@@ -61,9 +61,11 @@
     background-color: #222274;
 }
 
-#messageButton.active, #cameraButton.active {
+#messageButton.active,
+#cameraButton.active {
     background-color: #5353bd;
 }
+
 #videocall {
     max-width: 60%;
     width: 100%;

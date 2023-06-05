@@ -15,123 +15,132 @@ include 'login-check.php';
 echo '</head>';
 echo '<body>';
 ?>
-    <nav class = "bg">
-<?php
+<nav class="bg">
+    <?php
 
-include 'navbar.php';
-include 'caroussel.php';
+    include 'navbar.php';
+    include 'caroussel.php';
 
-?>
-<!--
+    ?>
+    <!--
 ============================================
         Profil de l'ami séléctionné
 ============================================
 -->
 
-<!-- recupération en php des informations de la BDD -->
-<?php
-$expl = $_GET["id"];
+    <!-- recupération en php des informations de la BDD -->
+    <?php
+    $expl = $_GET["id"];
 
-$sql = "SELECT * FROM users WHERE iduser = $expl";
-try{
-    // Création du contact avec la BDD
-    $conn = new PDO($dsn);
-    $stmt = $conn->query($sql);
+    $sql = "SELECT * FROM users WHERE iduser = $expl";
+    try {
+        // Création du contact avec la BDD
+        $conn = new PDO($dsn);
+        $stmt = $conn->query($sql);
 
-}catch (PDOException $e){
-    echo $e->getMessage();
-}
-
-
-?>
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
 
 
+    ?>
 
 
-	<nav class = "profil" style = "border : solid; color: black; padding:7px">
+
+
+    <nav class="profil" style="border : solid; color: black; padding:7px">
         <div class="container-fluid">
             <table>
                 <tbody>
-                <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="<?php echo htmlspecialchars($row['pp']); ?>"
+                                    alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                            </div>
+                            <div class="col-sm-8">
+                                <p><b>
+                                        <?php echo htmlspecialchars($row['nom']); ?>
+                                    </b>
+                                    <?php echo htmlspecialchars($row['statut']); ?>
+                                </p>
+                                <h6>Description : </h6>
+                                <p>
+                                    <?php echo htmlspecialchars($row['bio']); ?>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-sm-8">
-                            <p><b>  <?php echo htmlspecialchars($row['nom']); ?></b> <?php echo htmlspecialchars($row['statut']); ?> </p>
-                            <h6>Description : </h6>
-                            <p><?php echo htmlspecialchars($row['bio']); ?></p>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
-		</div>
+        </div>
     </nav>
 
 
-<!--
+    <!--
 ============================================
      liste des amis non encore ajoutés
 ============================================
 -->
 
 
-<?php
-try {
-// create a PostgreSQL database connection
-$conn = new PDO($dsn);
+    <?php
+    try {
+        // create a PostgreSQL database connection
+        $conn = new PDO($dsn);
 
-// query to check if username exists
-$sql = "SELECT amis FROM users WHERE iduser = ?";
-$stmt = $conn->prepare($sql);
+        // query to check if username exists
+        $sql = "SELECT amis FROM users WHERE iduser = ?";
+        $stmt = $conn->prepare($sql);
 
-// bind parameters and execute
-$stmt->execute([$expl]);
+        // bind parameters and execute
+        $stmt->execute([$expl]);
 
-$ami = $stmt->fetch();
+        $ami = $stmt->fetch();
 
-// Check that the user has friends
-if ($ami) {
-$ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+        // Check that the user has friends
+        if ($ami) {
+            $ami = explode(',', trim($ami['amis'], '{}')); // convert the array string into a PHP array
+    
+            // Retrieve the friends' posts
+            $params = implode(',', array_fill(0, count($ami), '?'));
+            $stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
+            $stmt->execute($ami);
+            $amis = $stmt->fetchAll();
 
-// Retrieve the friends' posts
-$params = implode(',', array_fill(0, count($ami), '?'));
-$stmt = $conn->prepare("SELECT * FROM users WHERE iduser IN ($params)");
-$stmt->execute($ami);
-$amis = $stmt->fetchAll();
+            ?>
 
-?>
+            <div id="friends" style="margin-top : 10%;">
+                <h5 style="text-align : center; color:#446AA9"> Liste d'amis</h5>
+            </div>
 
-    <div id = "friends" style = "margin-top : 10%;">
-        <h5 style = "text-align : center; color:#446AA9"> Liste d'amis</h5>
-    </div>
-
-<div id="carrousel">
-    <ul id = "listc" style ="list-style-type : none;">
-        <?php  foreach ($amis as $mesamis){ ?>
-            <li>
-                <a href="profil?id=<?php echo $mesamis['iduser'] ; ?>">
-                    <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>" alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
-                </a>
-            </li>
-        <?php }
+            <div id="carrousel">
+                <ul id="listc" style="list-style-type : none;">
+                    <?php foreach ($amis as $mesamis) { ?>
+                        <li>
+                            <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
+                                <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
+                                    alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
+                            </a>
+                        </li>
+                    <?php }
         } else {
             echo "This user has no friends.";
         }
-        }catch (PDOException $e) {
-            // report error message
-            echo $e->getMessage();
-        }?>
-    </ul>
-</div>
-<div id="buttons">
-    <input type="button" value="<" class="prev">
-    <input type="button" value=">" class="next">
-</div>
+    } catch (PDOException $e) {
+        // report error message
+        echo $e->getMessage();
+    } ?>
+        </ul>
+    </div>
+    <div id="buttons">
+        <input type="button" value="<" class="prev">
+        <input type="button" value=">" class="next">
+    </div>
 
 
-<?php include 'foot.php';?>
+    <?php include 'foot.php'; ?>
 </nav>
 </body>
+
 </html>

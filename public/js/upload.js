@@ -4,13 +4,13 @@ import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 const supabaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co'
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtcWdpeXlnd2pubmZ5cnRqa25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUzNzM1NzcsImV4cCI6MjAwMDk0OTU3N30.sQgvRElC6O5e4uE8OVZqLXBiQYQa83mSkTy4s4L0aDw'
 
-const supabase = createClient(supabaseUrl,supabaseAnonKey);
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 function previewImage() {
     var file = document.getElementById('image_uploads').files[0];
     if (file) {
         var reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             document.getElementById('preview').src = reader.result;
             document.getElementById('preview').style.display = 'block';
         }
@@ -18,13 +18,13 @@ function previewImage() {
     }
 }
 
-document.getElementById('image_uploads').addEventListener('change', function() {
+document.getElementById('image_uploads').addEventListener('change', function () {
     var file = this.files[0]; // get the uploaded file
 
     // check if a file is selected
     if (file) {
         var reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             // when the file is read, set the src of the image
             document.getElementById('preview').src = reader.result;
             document.getElementById('preview').style.display = 'block';
@@ -33,7 +33,7 @@ document.getElementById('image_uploads').addEventListener('change', function() {
     }
 });
 
-document.querySelector('form').addEventListener('submit', async function(event) {
+document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     var fileInput = document.getElementById('image_uploads');
@@ -53,9 +53,9 @@ document.querySelector('form').addEventListener('submit', async function(event) 
 
         let sanitizedFileName = sanitizeFilename(file.name);
         const { data, error } = await supabase
-        .storage
-        .from('Images') // replace with your bucket name
-        .upload('post/' + sanitizedFileName, file);
+            .storage
+            .from('Images') // replace with your bucket name
+            .upload('post/' + sanitizedFileName, file);
 
 
         if (error) {
@@ -65,7 +65,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
             // Construct the full URL of the uploaded file
             var storageBaseUrl = 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/';
             var fullUrl = storageBaseUrl + 'Images/post/' + sanitizedFileName;
-            
+
             // Save the full URL of the uploaded file in the hidden input
             document.getElementById('image_url').value = fullUrl;
             console.log('File uploaded: ', data);

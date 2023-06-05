@@ -5,24 +5,24 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 
 const sendMessage = async (username, message) => {
-    try {
-      const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': supabaseAnonKey,
-        },
-        body: JSON.stringify({ username, message }),
-      });
-  
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(`Failed to send message: ${response.status}, ${errorMessage}`);
-      }
-  
-      console.log('Message sent successfully');
-    } catch (error) {
-      console.error('Error:', error.message);
+  try {
+    const response = await fetch(`${supabaseUrl}/rest/v1/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': supabaseAnonKey,
+      },
+      body: JSON.stringify({ username, message }),
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(`Failed to send message: ${response.status}, ${errorMessage}`);
     }
-  };
-  sendMessage('john', 'Hello, world!');
+
+    console.log('Message sent successfully');
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
+sendMessage('john', 'Hello, world!');

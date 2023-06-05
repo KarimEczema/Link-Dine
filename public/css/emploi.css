@@ -1,21 +1,21 @@
-body{
+body {
     /* Style pour le corps général*/
-    margin-left : 25%;
-    margin-right : 25%;
-    text-align : center;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
 }
 
-.section{
+.section {
     /* Style du corps de section */
     color: black;
     margin-top: 50px;
 }
 
-#Emplois{
-    text-align : center;
+#Emplois {
+    text-align: center;
     border: 3px solid black;
     border-radius: 5%;
-    padding : 3px;
+    padding: 3px;
 }
 
 .scroll-container {
@@ -36,8 +36,8 @@ body{
     margin-top: 10px;
 }
 
-#formation{
-    background-color: mintcream ;
+#formation {
+    background-color: mintcream;
 }
 
 .login-popup {
@@ -47,23 +47,25 @@ body{
 }
 
 .Description {
-display: none;
-position: fixed;
-left: 45%;
-top: 5%;
-transform: translate(-45%, 5%);
-border: 2px solid #666;
-z-index: 9;
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid #666;
+    z-index: 9;
 }
+
 .descr-container {
-padding: 20px;
-background-color: #f8f5f5;
-}      
+    padding: 20px;
+    background-color: #f8f5f5;
+}
 
 .form-container .btn:hover,
-    .open-button:hover {
+.open-button:hover {
     opacity: 1;
-    }
-#emploisnav{
+}
+
+#emploisnav {
     background-color: purple;
 }

@@ -21,32 +21,32 @@ $message_erreur = ""; // Initialisation du message d'erreur
 try {
     // Connection à la base de données ProstgreSQL
     $conn = new PDO($dsn);
-    
+
     // Si le form est remplis
-    if($_POST){  
+    if ($_POST) {
 
         $email = $_POST['email'];
 
         // Si l'email n'est pas dans le bon format
-        
-        
+
+
         // Si le nom d'utilisateur existe dans la base de données
         $sql = "SELECT * FROM users WHERE username = :NomUtilisateur";
         $stmt = $conn->prepare($sql);
-        
+
         // Associé les paramètres et execté
         $stmt->bindParam(':NomUtilisateur', $_POST['NomUtilisateur']);
         $stmt->execute();
-        
+
         // if the user exists
-        if($stmt->rowCount()){
+        if ($stmt->rowCount()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+
             if (!preg_match("/^[a-zA-Z0-9._%+-]+@edu.ece.fr$/", $email)) {
                 $message_erreur = "L'adresse mail doit être sous la forme '...........@edu.ece.fr'";
             }
             // Si l'email rentré correspond à l'email associé à l'utilisateur
-            else if($email === $user['email']){
+            else if ($email === $user['email']) {
                 // Generation du token JWT
                 // Clef secrete
                 $secretKey = 'fZabvRw78VA746';
@@ -57,48 +57,48 @@ try {
                 $alg = 'HS256'; // Algorithme utilisé
 
                 $jwt = JWT::encode($payload, $secretKey, $alg);
-                
+
                 // Création du cookie avec le token
-                setcookie('jwt', $jwt, time()+3600); 
-                
+                setcookie('jwt', $jwt, time() + 3600);
+
                 echo '<meta http-equiv="refresh" content="0; url=accueil" />';
                 exit;
-            }
-            else {
+            } else {
                 $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
             }
-        }
-        else{
+        } else {
             $message_erreur = "Combinaison Nom d'Utilisateur et Email erroné";
         }
     }
-}
-catch (PDOException $e){
+} catch (PDOException $e) {
     // Message d'erreur
     $message_erreur = $e->getMessage();
 }
 ?>
 <!-- Inclusion du css -->
-<link href="css/index.css" rel="stylesheet" type="text/css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 
-<!-- Si le message d'erreur existe -->
-<?php if($message_erreur): ?>
-  <div class="message-erreur"><?php echo $message_erreur; ?></div>
-<?php endif; ?>
+    <!-- Si le message d'erreur existe -->
+    <?php if ($message_erreur): ?>
+        <div class="message-erreur">
+            <?php echo $message_erreur; ?>
+        </div>
+    <?php endif; ?>
 
-<!-- Box de saisie -->
-<form method="post" action="">
-  Nom d'utilisateur:<br>
-  <input type="text" name="NomUtilisateur">
-  <br>
-  Adresse mail:<br>
-  <input type="text" name="email">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+    <!-- Box de saisie -->
+    <form method="post" action="">
+        Nom d'utilisateur:<br>
+        <input type="text" name="NomUtilisateur">
+        <br>
+        Adresse mail:<br>
+        <input type="text" name="email">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
+
 </html>

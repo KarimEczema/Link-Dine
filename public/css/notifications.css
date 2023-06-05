@@ -1,45 +1,44 @@
-body{
+body {
     /* Style pour le corps général*/
-    margin-left : 25%;
-    margin-right : 25%;
-    text-align : center;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
 }
 
-.section{
+.section {
     /* Style du corps de section */
     color: black;
     margin-top: 50px;
 }
 
-#Semaine, #Amis{
-    text-align : center;
+#Semaine,
+#Amis {
+    text-align: center;
     border: 3px solid black;
     border-radius: 5%;
-    padding : 3px;
+    padding: 3px;
 }
 
-#Amis{
+#Amis {
     color: green;
 }
 
-#Semaine{
-    color:red;
+#Semaine {
+    color: red;
 }
 
-#notif-1{
-    background-color: mintcream ;
+#notif-1 {
+    background-color: mintcream;
 }
 
-#notif-2{
-    background-color: lightcyan ;
+#notif-2 {
+    background-color: lightcyan;
 }
 
-#notif-3{
-    background-color: lavenderblush ;
+#notif-3 {
+    background-color: lavenderblush;
 }
 
-#notifs{
-	background-color: purple;
+#notifs {
+    background-color: purple;
 }
-
-

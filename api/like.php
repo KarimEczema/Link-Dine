@@ -2,7 +2,7 @@
 $dsn = "pgsql:host=db.bmqgiyygwjnnfyrtjkno.supabase.co;port=5432;dbname=postgres;user=postgres;password=Au5SebXYkT3DUnW4";
 $conn = new PDO($dsn);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the post ID and user ID
     $idpost = $_POST['idpost'];
     $iduser = $_POST['iduser'];

@@ -1,32 +1,32 @@
-body{
+body {
   /* Style pour le corps général*/
-  margin-left : 25%;
-  margin-right : 25%;
-  text-align : center;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
 }
 
-.post{
+.post {
   margin-top: 5%;
 }
 
-#auteur{
+#auteur {
   background-color: purple;
 }
 
-main#carousel { 
+main#carousel {
 
-  width: 100%; 
-  height: 500px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  overflow: hidden; 
-  transform-style: preserve-3d; 
-  perspective: 600px; 
-  --items: 5; 
-  --middle: 3; 
-  --position: 1; 
-  pointer-events: none; 
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  --items: 5;
+  --middle: 3;
+  --position: 1;
+  pointer-events: none;
 }
 
 

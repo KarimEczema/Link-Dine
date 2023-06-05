@@ -3,7 +3,7 @@
 echo '<html>';
 echo '<head>';
 echo '<title>Messagerie</title>';
-echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'; 
+echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">';
 echo '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">';
 
@@ -26,7 +26,9 @@ include 'navbar.php';
 <body>
 
     <div class="video-container">
-        <video src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Video/ECE%20undefined.mp4?t=2023-06-05T13%3A21%3A46.734Z" autoplay muted loop></video>
+        <video
+            src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Video/ECE%20undefined.mp4?t=2023-06-05T13%3A21%3A46.734Z"
+            autoplay muted loop></video>
     </div>
 
     <div id="chatbox">

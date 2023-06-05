@@ -1,13 +1,17 @@
 <header>
-		<div class="container-fluid">
-			<div class="row">
-				 <div class="col-sm-8"><h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3></div>
-				 <div class="col-sm" ><img src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LogECE.png" width="121" height="49.5"></div>
-			</div>		
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-8">
+				<h3>ECE-in : Social Media Professionnel de l'ECE Paris</h3>
+			</div>
+			<div class="col-sm"><img
+					src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LogECE.png"
+					width="121" height="49.5"></div>
 		</div>
+	</div>
 </header>
-	
-<nav class = "navigation">
+
+<nav class="navigation">
 	<ul id="liste1">
 		<li id="accueil"><a href="accueil">Accueil</a></li>
 		<li id="reseau"><a href="reseau">Mon réseau</a></li>
