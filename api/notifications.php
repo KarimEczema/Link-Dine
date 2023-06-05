@@ -203,7 +203,7 @@ echo '<body>';
                             if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                                <div class="carousel carousel<?php echo $carouselId; ?>" id=test1 style="padding-bottom:3%">
+                                <div class="carousel carousel<?php echo $carouselId; ?>" style="padding-bottom:3%">
                                     <?php
                                     $valueCar = 1;
                                     $tabimages = explode(',', $row['tabimages']);
@@ -305,7 +305,7 @@ echo '<body>';
                             if ($row['tabimages'] !== NULL) {
                                 $row['tabimages'] = trim($row['tabimages'], '{}'); // remove the starting and ending curly braces
                                 $decoded_images = json_decode($row['tabimages'], true); ?>
-                                <div class="carousel carousel<?php echo $carouselId; ?>" id=test1 style="padding-bottom:3%">
+                                <div class="carousel carousel<?php echo $carouselId; ?>" style="padding-bottom:3%">
                                     <?php
                                     $valueCar = 1;
                                     $tabimages = explode(',', $row['tabimages']);
