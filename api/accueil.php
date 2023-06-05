@@ -19,6 +19,13 @@ echo '<body>';
 <nav class="bg">
 	<?php
 	include 'navbar.php';
+	?>
+		<div class="video-container">
+			<video
+				src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Video/ECE%20undefined.mp4?t=2023-06-05T13%3A21%3A46.734Z"
+				autoplay muted loop></video>
+		</div>
+	<?php
 	include 'caroussel.php';
 	?>
 
