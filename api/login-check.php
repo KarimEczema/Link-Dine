@@ -65,6 +65,7 @@ if (isset($_COOKIE['jwt'])) {
                     margin: 0;
                     padding: 0;
                     overflow: hidden;
+                    z-index: 0; 
                 }
             
                 body::before, body::after {
