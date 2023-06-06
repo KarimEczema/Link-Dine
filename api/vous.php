@@ -154,33 +154,28 @@ echo '<body>';
             <p>Cliquez pour choisir le fond que vous préférez </p>
 
             <div>
-                <input class=radioBut type="radio" id="blanc" name="drone" value="white" checked>
-                <label for="blanc">Fond blanc (par défaut)</label>
+                <input class=radioBut type="radio" id="blanc" name="drone" value="pomme" checked>
+                <label for="blanc">Pomme</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="bleu" name="drone" value="paleturquoise">
-                <label for="bleu">Fond turquoise</label>
+                <input class=radioBut type="radio" id="bleu" name="drone" value="citron">
+                <label for="bleu">Citron</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="vert" name="drone" value="#71da88">
-                <label for="vert">Fond vert</label>
+                <input class=radioBut type="radio" id="vert" name="drone" value="banane">
+                <label for="vert">Banane</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="creme" name="drone" value="burlywood">
-                <label for="creme">Fond crème</label>
+                <input class=radioBut type="radio" id="creme" name="drone" value="fraise">
+                <label for="creme">Fraise</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
-                <label for="rouge">Fond rouge</label>
-            </div>
-
-            <div>
-                <input class=radioBut type="radio" id="mystère" name="drone" value="69420">
-                <label for="rouge">Fond mystère</label>
+                <input class=radioBut type="radio" id="rouge" name="drone" value="myrtille">
+                <label for="rouge">Myrtille</label>
             </div>
             <button type="submit" name="choixFond" id="refresh" value="Fond"
                 style=" margin-top : 2%;">Sélectionner</button>
