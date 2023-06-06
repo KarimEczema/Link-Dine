@@ -16,7 +16,7 @@ try {
             <nav class="profil">
                 <div class="row">
                     <div class="col-sm-4"
-                        style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">Photo<img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                        style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;"><img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
                                     height="200">
                     </div>
                     <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
