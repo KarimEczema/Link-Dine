@@ -67,7 +67,9 @@ try {
                         foreach ($combined as $item) {
                             ?>
                             <div class="scroll-page" id="eventperso">
-                                <div style="padding:2%; border:solid;">
+                                <div style="padding:2%; border: 1px solid #CACACA;background-color: #E5F0FF;
+  /*border: 2px solid #666;*/
+  border-radius: 10px;">
 
                                     <?php
                                     echo "<div>";
@@ -99,7 +101,7 @@ try {
                                     }
                                 </script>
 
-                            <?php
+                                <?php
 
                         }
                         ?>
