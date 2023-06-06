@@ -42,7 +42,7 @@ footer{
     border-radius: 8px;
     border: none;
     box-sizing: border-box;
-    background: #9e9ef0;
+    background: #7878f8;
     color: #f1f1f1;
 }
 
@@ -68,7 +68,7 @@ footer{
     margin-top: 100px;
     overflow-y: auto;
     padding: 30px;
-    background: #2A2A7B;
+    background: #5555b1;
     position: fixed;
     right: 0;
     top: 0;
@@ -83,7 +83,7 @@ footer{
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    background-color: #474768;
+    
 }
 
 #messageButton.active, #cameraButton.active {
