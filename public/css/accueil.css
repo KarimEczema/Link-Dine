@@ -1,63 +1,44 @@
 body {
-	/* Style pour le corps général*/
-	margin-left: 25%;
-	margin-right: 25%;
-	text-align: center;
+	background-color: #E7F2FF;
+	color: #676767;
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
 }
-
-.section {
-	/* Style du corps de section */
-	color: black;
-	margin-top: 50px;
+.bg {
+	background-color: #E7F2FF;
 }
-
-#Event {
-	margin: 10% 0 2% 0;
-	border: 3px solid black;
-	padding: 3px;
-}
-
-.eventsemaine {
-	border: 2px solid rgb(59, 59, 59);
-	box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
-	margin-top: 4rem;
-}
-
-.post {
-	margin-top: 5%;
-}
-
-#accueil {
-	text-decoration: underline;
-	text-underline-offset: 2px;
-}
-
 .video-container {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	/* Aspect ratio 16:9 (modify as needed) */
-	margin-top: 4rem;
-	/* Adjust as needed */
+	max-width: 100%;
 }
-
 .video-container video {
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
-	height: 100%;
 }
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: transducer, sans-serif;
-	font-style: normal;
-          font-weight: 500;
+h1, h2, h3 {
+	color: #676767;
+}
+.eventsemaine {
+	border: 1px solid #676767;
+	box-shadow: 3px 3px 5px #676767;
+	margin: 2em 0;
+	padding: 1em;
+}
+.scroll-container {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+.scroll-page {
+	display: inline-block;
+	width: 100%;
+	min-width: 300px;
+	border: 1px solid #676767;
+	margin: 0.5em;
+	box-shadow: 3px 3px 5px #676767;
+}
+.like-button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
 }
