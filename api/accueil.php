@@ -203,13 +203,6 @@ WHERE DATE(date) >= '2023-06-05'
 											</button>
 										</form>
 
-										<form>
-											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
-												style="margin-top: 10%; margin-left: 3%;" class="like-button">
-												<!-- Heart icon -->
-											</button>
-										</form>
-
 										<script>
 											$(document).ready(function () {
 
