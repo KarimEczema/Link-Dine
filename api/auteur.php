@@ -22,7 +22,10 @@ echo '<body>';
     include 'navbar.php';
     ?>
 
-    <nav class="post" style=" background-color: cyan;">
+    <nav class="post" style=" background: #ECF4FF;
+border: 1px solid #CACACA;
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25), inset 0px 0px 20px rgba(0, 0, 0, 0.2);
+border-radius: 20px;">
         <form method="post" action="" enctype="multipart/form-data">
             <label for="ameliorer">Creer un post</label><br>
             <div class="container-fluid">
