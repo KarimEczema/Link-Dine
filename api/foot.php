@@ -15,12 +15,12 @@
             </div>
             <div class="col-sm-6">
                 <p>Nous contacter</p>
-                <a href="mailto:adrienne.vidon@edu.ece.fr"><i class="fa fa-envelope"></i></a>
-                <a href="https://www.facebook.com/ECE.Paris/" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/eceparis/" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="https://twitter.com/ECEParis" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/school/ece-paris/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="https://www.ece.fr/" target="_blank"><i class="fa fa-globe"></i></a>
+                <a href="mailto:adrienne.vidon@edu.ece.fr"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/ECE.Paris/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/eceparis/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/ECEParis" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/school/ece-paris/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.ece.fr/" target="_blank"><i class="fas fa-globe"></i></a>
             </div>
             <div class="col-sm-12">
                 <nav class="footer-navigation">
