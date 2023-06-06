@@ -4,9 +4,7 @@ body {
 	font-family: Arial, sans-serif;
 	line-height: 1.6;
 }
-.bg {
-	background-color: #E7F2FF;
-}
+
 .video-container {
 	max-width: 100%;
 }
@@ -19,8 +17,6 @@ h1, h2, h3 {
 .eventsemaine {
 	border: 1px solid #676767;
 	box-shadow: 3px 3px 5px #676767;
-	margin: 2em 0;
-	padding: 1em;
 }
 .scroll-container {
 	overflow-x: auto;
