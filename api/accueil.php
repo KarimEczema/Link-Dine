@@ -203,6 +203,13 @@ WHERE DATE(date) >= '2023-06-05'
 											</button>
 										</form>
 
+										<form>
+											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
+												style="margin-top: 10%; margin-left: 3%;" class="like-button">
+												<!-- Heart icon -->
+											</button>
+										</form>
+
 										<script>
 											$(document).ready(function () {
 
@@ -217,7 +224,7 @@ WHERE DATE(date) >= '2023-06-05'
 															idpost: idpost
 														},
 														success: function (data) {
-															$('#' + buttonId).text('<i class="fas fa-heart"></i> ' + data);
+															$('#' + buttonId).html('<i class="fas fa-heart" style="color:red;"></i> ' + data); // use html instead of text to render the heart icon
 														},
 														error: function (xhr, status, error) {
 															console.error(xhr);
@@ -243,7 +250,7 @@ WHERE DATE(date) >= '2023-06-05'
 															iduser: iduser
 														},
 														success: function (data) {
-															$('#' + buttonId).text('like (' + data + ')');
+															$('#' + buttonId).html('<i class="fas fa-heart" style="color:red;"></i> ' + data); // use html instead of text to render the heart icon
 														},
 														error: function (xhr, status, error) {
 															console.error(xhr);
