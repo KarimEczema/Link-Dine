@@ -165,6 +165,9 @@ footer {
 
 
 .footer-navigation {
+
+  position:absolute;
+  bottom:0;
   /* Style du bandeau de navigation */
   background: #E7F2FF;
   
