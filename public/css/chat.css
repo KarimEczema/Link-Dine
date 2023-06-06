@@ -16,39 +16,12 @@ header{
     font-size: 1.3em;
 }
 
-.navigation{
-    margin-top: 20px;
-}
 
 footer{
     color: #333;
     margin-top: 40px;
 }
 
-ul#liste1 {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #424242;
-}
-
-ul#liste1 li {
-    float: left;
-	border-right: 2px solid #999;
-}
-
-ul#liste1 li a {
-    display: block;
-    color: #f1f1f1;
-    text-align: center;
-    padding: 16px 20px;
-    text-decoration: none;
-}
-
-ul#liste1 li a:hover {
-    background-color: #1A1A1A;
-}
 
 #chatbox {
     width: 100%;
@@ -56,7 +29,7 @@ ul#liste1 li a:hover {
     height: calc(100vh - 100px);
     border-radius: 15px;
     padding: 30px;
-    background: #5A5ADF;
+    background: #9d9df0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
 }
@@ -69,7 +42,7 @@ ul#liste1 li a:hover {
     border-radius: 8px;
     border: none;
     box-sizing: border-box;
-    background: #5B5BD1;
+    background: #9e9ef0;
     color: #f1f1f1;
 }
 
@@ -110,7 +83,7 @@ ul#liste1 li a:hover {
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    background-color: #2A2A7B;
+    background-color: #474768;
 }
 
 #messageButton.active, #cameraButton.active {
@@ -123,7 +96,7 @@ ul#liste1 li a:hover {
     margin-top: 100px;
     border-radius: 15px;
     padding: 30px;
-    background: #5A5ADF;
+    background: #8383c7;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
 }
