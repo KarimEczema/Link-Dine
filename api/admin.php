@@ -42,11 +42,13 @@ echo '<body>';
     <!-- affichage des données de la bdd avec php -->
     <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
+    <?php
+    $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+    ?>
     <nav class="profil" style="margin-top:5% ">
         <div class="row">
             <div class="col-sm-4" style="background-color : purple">
-                <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil"
-                    width="200" height="200">
+                <img src="<?php $pp; ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
             </div>
             <div class="col-sm-8" style="background-color: grey">
                 <div style="background-color: #d6a3b7; margin:2%">

@@ -1,55 +1,113 @@
 body {
-	/* Style pour le corps général*/
-	margin-left: 25%;
-	margin-right: 25%;
-	text-align: center;
+  /* Style pour le corps général*/
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+}
+
+/* Texte défilant */
+.messagedefilant {
+  display: block;
+  margin: 40px auto;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+  max-width: 640px;
+  height: 60px;
+}
+
+.messagedefilant div {
+  position: absolute;
+  min-width: 100%; /* au minimum la largeur du conteneur */
+}
+
+.messagedefilant div span,
+.messagedefilant div:after {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  white-space: nowrap;
+  top: 0;
+}
+
+.messagedefilant div span {
+  animation: defilement 10s infinite linear;
+  background: #cde;
+}
+
+.messagedefilant div:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-text);
+  animation: defilement2 10s infinite linear;
+  background: #edc;
+}
+
+@keyframes defilement {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -100%;
+  }
+}
+
+@keyframes defilement2 {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
 }
 
 .section {
-	/* Style du corps de section */
-	color: black;
-	margin-top: 50px;
+  /* Style du corps de section */
+  color: black;
+  margin-top: 50px;
 }
 
 #Event {
-	margin: 10% 0 2% 0;
-	
-	padding: 3px;
+  margin: 10% 0 2% 0;
+
+  padding: 3px;
 }
 
 .eventsemaine {
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25), inset 0px 0px 20px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
-	margin-top: 4rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25),
+    inset 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-top: 4rem;
 }
 
 .post {
-	margin-top: 5%;
+  margin-top: 5%;
 }
 
 #accueil {
-	text-decoration: underline;
-	text-underline-offset: 8px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 
 .video-container {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	/* Aspect ratio 16:9 (modify as needed) */
-	margin-top: 4rem;
-	/* Adjust as needed */
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* Aspect ratio 16:9 (modify as needed) */
+  margin-top: 4rem;
+  /* Adjust as needed */
 }
 
 .video-container video {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-
 
 h1,
 h2,
@@ -57,7 +115,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: transducer, sans-serif;
-	font-style: normal;
-          font-weight: 500;
+  font-family: transducer, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
