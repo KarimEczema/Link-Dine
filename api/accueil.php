@@ -161,7 +161,7 @@ WHERE DATE(date) >= '2023-06-05'
 							foreach ($posts as $item) {
 								?>
 								<div class="scroll-page" id="eventperso">
-									<div style="padding:2%; border:solid;">
+									<div style="padding:2%; border: 2px solid rgb(107, 107, 107);">
 
 										<?php
 										echo "<div>";
