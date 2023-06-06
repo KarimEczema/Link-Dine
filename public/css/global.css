@@ -60,7 +60,9 @@ body {
   /* Style pour le corps général*/
   margin-left: 25%;
   margin-right: 25%;
-
+  font-family: transducer, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 
 
