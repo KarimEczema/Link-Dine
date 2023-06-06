@@ -118,8 +118,8 @@ echo '<body>';
                     <button type="submit" id="publish_button">Changer de Photo</button>
                 </form>
             </div>
-            <div class="col-sm-8" style="background: #ECEEF3; border-radius: 50px;">
-                <div style="background-color: #d6a3b7; margin:2%">
+            <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h1>
                         <?php echo htmlspecialchars($row['username']); ?>
                     </h1>
