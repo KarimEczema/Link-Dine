@@ -47,7 +47,7 @@ if (isset($_COOKIE['jwt'])) {
             //echo 'The background color is: ' . $color;
 
             echo '<style>';
-
+            echo $color;
             if ($color === 69420) {
                 echo '.bg {
             background: red; /* For browsers that do not support gradients */
