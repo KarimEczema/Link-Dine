@@ -48,6 +48,7 @@ echo '<body>';
         try {
 
             if ($_POST) {
+                if (isset($_POST['photo']) && $_POST['photo'] == 'updatephoto') {
                 $image_url = $_POST['image_url'];
 
 
@@ -59,6 +60,7 @@ echo '<body>';
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':photo', $image_url);
                 $stmt->execute();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -87,7 +89,7 @@ echo '<body>';
         <nav class="profil">
             <div class="row">
                 <div class="col-sm-4">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                         <input type="hidden" id="image_url" name="image_url">
                         <img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
                             height="200">

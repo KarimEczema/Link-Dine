@@ -30,6 +30,7 @@ echo '<body>';
 
     <!-- recupération en php des informations de la BDD -->
     <?php
+    
     $expl = $_GET["id"];
 
     $sql = "SELECT * FROM users WHERE iduser = $expl";
