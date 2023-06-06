@@ -310,3 +310,36 @@ footer {
   margin-top: 50px;
 }
 
+.footer-navigation {
+  /* Style du bandeau de navigation */
+  background: #E7F2FF;
+
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin-top: 20px;
+  bottom: 0;
+}
+
+.footer-navigation .container-fluid .row .col-sm-12,
+.footer-navigation .container-fluid .row .col-sm-6 {
+  padding: 2px;
+}
+
+.footer-navigation .container-fluid .row .col-sm-12 p,
+.footer-navigation .container-fluid .row .col-sm-6 p {
+  margin-top:10%;
+}
+
+.footer-navigation .container-fluid .row .col-sm-6:nth-child(2) p {
+  text-align : center;
+}
+
+.footer-navigation .container-fluid .row .col-sm-12 nav {
+  text-align: center;
+}
+
+.footer-navigation .container-fluid .row .col-sm-6 a i {
+  font-size: 24px;
+  color: #000;
+  margin-right: 10px;
+}
