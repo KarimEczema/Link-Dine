@@ -32,7 +32,7 @@ if (isset($_COOKIE['jwt'])) {
 
         // Check if the user id is equal to 1
         if ($iduser == 1) {
-            echo "Logged as admin . $iduser";
+            echo "Logged as admin";
             echo '<script>';
             echo 'var idUser = "' . $iduser . '";';
             echo '</script>';

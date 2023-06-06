@@ -4,65 +4,11 @@ body {
   margin-right: 25%;
   text-align: center;
 }
-
-/* Texte défilant */
-.messagedefilant {
-  display: block;
-  margin: 40px auto;
-  padding: 0;
-  overflow: hidden;
-  position: relative;
-  width: 50%;
-  max-width: 640px;
-  height: 60px;
+.texte3D {
+  text-shadow: 1px 1px 1px #999, 2px 2px 1px #888, 3px 3px 1px #777,
+    4px 4px 1px #666, 5px 5px 1px #555;
+  color: #fff;
 }
-
-.messagedefilant div {
-  position: absolute;
-  min-width: 100%; /* au minimum la largeur du conteneur */
-}
-
-.messagedefilant div span,
-.messagedefilant div:after {
-  position: relative;
-  display: inline-block;
-  font-size: 2rem;
-  white-space: nowrap;
-  top: 0;
-}
-
-.messagedefilant div span {
-  animation: defilement 10s infinite linear;
-  background: #cde;
-}
-
-.messagedefilant div:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: attr(data-text);
-  animation: defilement2 10s infinite linear;
-  background: #edc;
-}
-
-@keyframes defilement {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: -100%;
-  }
-}
-
-@keyframes defilement2 {
-  0% {
-    margin-left: 100%;
-  }
-  100% {
-    margin-left: 0%;
-  }
-}
-
 .section {
   /* Style du corps de section */
   color: black;

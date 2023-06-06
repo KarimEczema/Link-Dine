@@ -73,10 +73,10 @@ echo '<body>';
     <nav class="Ajout-compte">
         <h1 style="margin-top : 5% ">Ajouter un utilisateur</h1>
         <form id="ajout" method="post" action="">
-            <div style=background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+            <div style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                 <h5>Pseudo : <input type="text" name="nom" style="margin : 5%" required> </h5>
             </div>
-            <div style=background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+            <div style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                 <h5>Email : <input type="text" name="email" style="margin : 5%" required> </h5>
             </div>
 
@@ -149,7 +149,7 @@ echo '<body>';
     <select id="userSelect" placeholder="Sélectionner l'utilisateur à supprimer">
         <!-- User options will be dynamically inserted here -->
     </select><br><br><br>
-    <button id="sendButton" style="margin-top: 3% width:6% height:2%">Supprimer l'utilisateur</button>
+    <button id="sendButton" style="margin-top: 3%; width:6%; height:2%;">Supprimer l'utilisateur</button>
     <br>
 
     <!-- Défini la fonction ajax comme une fonction existante et permet la suppression -->
