@@ -13,7 +13,7 @@ body {
 
 #Emplois {
     text-align: center;
-    border: 3px solid black;
+    border: 1.5px solid rgb(102, 133, 107);
     border-radius: 5%;
     padding: 3px;
 }
