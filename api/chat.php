@@ -39,7 +39,7 @@ include 'navbar.php';
     <div id="videoCall" style="display: none; width: 100%; height: 100%;">
     </div>
 
-    <input type="text" id="userInput" placeholder="Ecrivez ici..." />
+    <input type="text" id="userInput" placeholder="Ecrivez ici..." style="color: white;" />
 
     <script src="js/chat.js"></script>
 

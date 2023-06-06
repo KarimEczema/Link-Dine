@@ -44,6 +44,7 @@ footer{
     box-sizing: border-box;
     background: #7878f8;
     color: #f1f1f1;
+    
 }
 
 .usernameButton {
@@ -73,6 +74,8 @@ footer{
     right: 0;
     top: 0;
     overflow-x: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 #chat{
