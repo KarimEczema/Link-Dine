@@ -123,6 +123,7 @@ header {
   position: relative;
   overflow: hidden;
   transition: color 0.3s ease;
+  top:6px;
 }
 
 .navigation ul li a::after {
