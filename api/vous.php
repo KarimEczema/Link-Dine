@@ -106,7 +106,8 @@ echo '<body>';
 
     <nav class="profil">
         <div class="row">
-            <div class="col-sm-4" style="background-color : purple">
+            <div class="col-sm-4"
+                style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                 <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                     <input type="hidden" id="image_url" name="image_url">
                     <label for="image_uploads"><img src="<?php echo $pp ?>"
@@ -117,7 +118,7 @@ echo '<body>';
                     <button type="submit" id="publish_button">Changer de Photo</button>
                 </form>
             </div>
-            <div class="col-sm-8" style="background-color: grey">
+            <div class="col-sm-8" style="background: #ECEEF3; border-radius: 50px;">
                 <div style="background-color: #d6a3b7; margin:2%">
                     <h1>
                         <?php echo htmlspecialchars($row['username']); ?>
@@ -126,7 +127,7 @@ echo '<body>';
                         <?php echo htmlspecialchars($row['statut']); ?>
                     </h3>
                 </div>
-                <div style="background-color: #a7d4d4; margin:2%">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['bio']); ?>
                     </h3>

@@ -18,8 +18,9 @@ body {
 }
 
 .eventsemaine {
-	border: 2px solid rgb(59, 59, 59);
+	border: 1px solid rgb(59, 59, 59);
 	box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
 	margin-top: 4rem;
 }
 
