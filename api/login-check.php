@@ -47,7 +47,28 @@ if (isset($_COOKIE['jwt'])) {
             //echo 'The background color is: ' . $color;
 
             echo '<style>';
-            echo '.bg { background-color: ' . $color . '; }';
+
+            if ($color === 69420) {
+                echo '.bg {
+            background: red; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+            background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+            background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+            background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 5s ease-in-out infinite;
+                }
+
+                @keyframes rainbow {
+                    0%{background-position:0%}
+                    100%{background-position:100%}
+                }
+            ';
+            } else {
+                echo '.bg { background-color: #' . $color . '; }';
+            }
+
             echo '</style>';
 
         } catch (PDOException $e) {

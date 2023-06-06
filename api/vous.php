@@ -177,6 +177,11 @@ echo '<body>';
                 <input class=radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
                 <label for="rouge">Fond rouge</label>
             </div>
+
+            <div>
+                <input class=radioBut type="radio" id="mystère" name="drone" value="69420">
+                <label for="rouge">Fond mystère</label>
+            </div>
             <button type="submit" name="choixFond" id="refresh" value="Fond"
                 style=" margin-top : 2%;">Sélectionner</button>
         </form>
