@@ -177,6 +177,7 @@ footer {
 
 #eventPerso {
   background-color: #E5F0FF;
+  border-radius: 10px;;
 }
 
 .form-container .btn:hover,
@@ -316,9 +317,7 @@ input:checked+div {
 }
 
 .footer-navigation .container-fluid .row .col-sm-6 {
-  border: solid;
-  color: black;
-  padding: 2px;
+ padding: 2px;
 }
 
 .footer-navigation .container-fluid .row .col-sm-6 p {
