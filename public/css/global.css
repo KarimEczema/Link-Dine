@@ -85,6 +85,7 @@ header {
   padding: 5px 15px; /* Augmenter la hauteur ici */
   margin-top: 20px; /* Abaisser la nav bar ici */
   top: 0;
+  text-align:center;
 }
 
 .nav-left {
