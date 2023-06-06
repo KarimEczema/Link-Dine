@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@supabase/supabase-js": "^2.24.0"
+    "@supabase/supabase-js": "^2.24.0",
+    "locomotive-scroll": "^4.1.4"
   }
 }

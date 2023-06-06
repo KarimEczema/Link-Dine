@@ -11,7 +11,7 @@ body{
 
 #auteur{
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 8px;
 }
 
 main#carousel { 
@@ -89,6 +89,7 @@ header {
   position: relative;
   overflow: hidden;
   transition: color 0.3s ease;
+  top:6px;
 }
 
 .navigation ul li a::after {
@@ -163,3 +164,39 @@ footer {
 }
 
 
+ .footer-navigation ul li a { 
+   text-decoration: none; 
+   color: #515151; 
+   position: relative; 
+   overflow: hidden; 
+   transition: color 0.3s ease; 
+   top: 6px; 
+ } 
+  
+ .footer-navigation ul li a::after { 
+   content: ""; 
+   position: absolute; 
+   margin-top: 2px; 
+   width: 0; 
+   height: 1px; 
+   bottom: 0; 
+   left: 0; 
+   background-color: #515151; 
+   transition: width 0.3s ease; 
+ } 
+  
+ .footer-navigation ul li a:hover { 
+   color: #303030; 
+ } 
+  
+ .footer-navigation ul li a:hover::after { 
+   width: 100%; 
+ } 
+  
+ .footer-navigation .col-sm-6 a { 
+   margin-right: 20px; 
+ } 
+  
+ .footer-navigation .col-sm-6 a:last-child { 
+   margin-right: 0; 
+ } 

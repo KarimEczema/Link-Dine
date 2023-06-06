@@ -9,3 +9,7 @@ body {
 	margin-top: 10px;
 	background-color: #89afec;
 }
+#profil {
+	text-decoration: underline;
+	text-underline-offset: 8px;
+}

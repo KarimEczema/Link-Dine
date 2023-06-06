@@ -19,3 +19,5 @@
 		<li id="deco" style="float:right"><a href="index">Deconnexion</a></li>
 	</ul>
 </nav>
+
+<?php echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />'; ?>

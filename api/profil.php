@@ -48,15 +48,18 @@ echo '<body>';
 
 
 
-    <nav class="profil" style="border : solid; color: black; padding:7px">
+    <nav class="profil" style="margin-top:2rem; border : 1px solid #CACACA; color: black; padding:7px">
         <div class="container-fluid">
             <table>
                 <tbody>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                        <?php
+                        $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+                        ?>
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="<?php echo htmlspecialchars($row['pp']); ?>"
-                                    alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                                <img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                                    height="200">
                             </div>
                             <div class="col-sm-8">
                                 <p><b>
@@ -117,8 +120,11 @@ echo '<body>';
             <div id="carrousel">
                 <ul id="listc" style="list-style-type : none;">
                     <?php foreach ($amis as $mesamis) { ?>
+                        <?php
+                        $pp = !empty($mesamis['pp']) ? htmlspecialchars($mesamis['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+                        ?>
                         <li>
-                            <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
+                            <a href="profil?id=<?php echo $pp; ?>">
                                 <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
                                     alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
                             </a>

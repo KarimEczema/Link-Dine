@@ -85,13 +85,16 @@ echo '<body>';
 
         <!-- affichage des données de la bdd avec php -->
         <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
-
+        <?php
+        $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+        ?>
         <nav class="profil">
             <div class="row">
                 <div class="col-sm-4">
                     <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                         <input type="hidden" id="image_url" name="image_url">
-                        <img src="<?php echo htmlspecialchars($row['pp']); ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
+                        <img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                            height="200">
                     </form>
                 </div>
                 <div class="col-sm-8">
@@ -147,9 +150,13 @@ echo '<body>';
                     <div id="carrousel">
                         <ul id="listc" style="list-style-type : none;">
                             <?php foreach ($friends as $friend) { ?>
+
+                                <?php
+                                $pp = !empty($friend['pp']) ? htmlspecialchars($friend['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+                                ?>
                                 <li>
                                     <a href="profil?id=<?php echo $friend['iduser']; ?>">
-                                        <img src="<?php echo htmlspecialchars($friend['pp']); ?>"
+                                        <img src="<?php echo htmlspecialchars($pp); ?>"
                                             alt="<?php echo htmlspecialchars($friend['nom']); ?>" width="120" height="100">
                                     </a>
                                 </li>

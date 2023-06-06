@@ -8,15 +8,19 @@ echo '<title>Accueil</title>';
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
 echo '<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=647c5fc840353a0019caf23d&product=sop" async="async"></script>';
+echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />';
 echo '<link rel="stylesheet" type="text/css" href="css/accueil.css">';
-echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
 echo '<link rel="stylesheet" type="text/css" href="css/carrousel.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/global.css">';
+
 include 'login-check.php';
 echo '</head>';
 echo '<body>';
 ?>
 <nav class="bg">
+
 	<?php
 	include 'navbar.php';
 	?>
@@ -24,6 +28,21 @@ echo '<body>';
 		<video
 			src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Video/ECE%20undefined.mp4?t=2023-06-05T13%3A21%3A46.734Z"
 			autoplay muted loop></video>
+	</div>
+
+	<br>
+
+	<div class="text3D" style=" font-size: 18px; margin-top: 4rem;">
+		<b>ECE'In</b> est le nouveau réseau social en vogue axé sur les objectifs professionnels. Que vous soyez
+		<b>étudiant(e) de
+			licence, master ou doctorat, ou étudiant(e) apprenti(e) dans une entreprise, ou étudiant(e) en recherche de
+			stage dans une entreprise, ou peut-être enseignant(e) ou employé(e) de l'école</b> en quête de
+		<b>partenaires</b> pour
+		votre <b>projet</b> de recherche ou autre, ce site web s'adresse à toutes et tous ceux qui souhaitent prendre
+		leur <b>vie
+			professionnelle</b> au sérieux, trouver de nouvelles <b>opportunités</b> pour développer leur carrière et se
+		connecter avec
+		d'autres personnes dans un but professionnel.
 	</div>
 	<?php
 	include 'caroussel.php';
@@ -142,7 +161,9 @@ WHERE DATE(date) >= '2023-06-05'
 							foreach ($posts as $item) {
 								?>
 								<div class="scroll-page" id="eventperso">
-									<div style="padding:2%; border:solid;">
+									<div style="padding:2%; border: 1px solid #CACACA;background-color: #E5F0FF;
+  /*border: 2px solid #666;*/
+  border-radius: 10px;">
 
 										<?php
 										echo "<div>";
@@ -176,20 +197,12 @@ WHERE DATE(date) >= '2023-06-05'
 						
 										?>
 
-										<!-- script pour changer les variables à chaque post -->
-										<script>
-											// Récupérer le bouton de like par son ID
-											var boutonl = document.getElementById('boutonlike');
-
-											// Changer la valeur du bouton
-											boutonl.value = idpost;
-
-										</script>
-
 										<!-- Partie like -->
 										<form>
 											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
-												style="margin-top:10%; margin-left:3%;" class="like-button">like</button>
+												style="margin-top: 2%; margin-left: 3%;" class="like-button">
+												<!-- Heart icon -->
+											</button>
 										</form>
 
 										<script>
@@ -206,7 +219,7 @@ WHERE DATE(date) >= '2023-06-05'
 															idpost: idpost
 														},
 														success: function (data) {
-															$('#' + buttonId).text('like (' + data + ')');
+															$('#' + buttonId).html('<i class="fas fa-heart" style="color:red;"></i> ' + data); // use html instead of text to render the heart icon
 														},
 														error: function (xhr, status, error) {
 															console.error(xhr);
@@ -232,7 +245,7 @@ WHERE DATE(date) >= '2023-06-05'
 															iduser: iduser
 														},
 														success: function (data) {
-															$('#' + buttonId).text('like (' + data + ')');
+															$('#' + buttonId).html('<i class="fas fa-heart" style="color:red;"></i> ' + data); // use html instead of text to render the heart icon
 														},
 														error: function (xhr, status, error) {
 															console.error(xhr);
@@ -361,7 +374,7 @@ WHERE DATE(date) >= '2023-06-05'
 					foreach ($combined as $item) {
 						?>
 						<div class="scroll-page" id="eventperso">
-							<div style="padding:2%; border:solid;">
+							<div style="padding:2%;">
 
 								<?php
 								echo "<div>";
@@ -398,6 +411,8 @@ WHERE DATE(date) >= '2023-06-05'
 
 
 	<?php include 'foot.php'; ?>
+
+
 </nav>
 </body>
 

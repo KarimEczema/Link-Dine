@@ -100,12 +100,17 @@ echo '<body>';
     <!-- affichage des données de la bdd avec php -->
     <?php $row = $stmt->fetch(PDO::FETCH_ASSOC) ?>
 
+    <?php
+    $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+    ?>
+
     <nav class="profil">
         <div class="row">
-            <div class="col-sm-4" style="background-color : purple">
+            <div class="col-sm-4"
+                style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                 <form method="post" action="" enctype="multipart/form-data" name="photo" value="updatephoto">
                     <input type="hidden" id="image_url" name="image_url">
-                    <label for="image_uploads"><img src="<?php echo htmlspecialchars($row['pp']); ?>"
+                    <label for="image_uploads"><img src="<?php echo $pp ?>"
                             alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
                     </label>
                     <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
@@ -113,8 +118,8 @@ echo '<body>';
                     <button type="submit" id="publish_button">Changer de Photo</button>
                 </form>
             </div>
-            <div class="col-sm-8" style="background-color: grey">
-                <div style="background-color: #d6a3b7; margin:2%">
+            <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h1>
                         <?php echo htmlspecialchars($row['username']); ?>
                     </h1>
@@ -122,7 +127,7 @@ echo '<body>';
                         <?php echo htmlspecialchars($row['statut']); ?>
                     </h3>
                 </div>
-                <div style="background-color: #a7d4d4; margin:2%">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['bio']); ?>
                     </h3>
@@ -149,28 +154,28 @@ echo '<body>';
             <p>Cliquez pour choisir le fond que vous préférez </p>
 
             <div>
-                <input class=radioBut type="radio" id="blanc" name="drone" value="white" checked>
-                <label for="blanc">Fond blanc (par défaut)</label>
+                <input class=radioBut type="radio" id="blanc" name="drone" value="pomme" checked>
+                <label for="blanc">Pomme</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="bleu" name="drone" value="paleturquoise">
-                <label for="bleu">Fond turquoise</label>
+                <input class=radioBut type="radio" id="bleu" name="drone" value="citron">
+                <label for="bleu">Citron</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="vert" name="drone" value="#71da88">
-                <label for="vert">Fond vert</label>
+                <input class=radioBut type="radio" id="vert" name="drone" value="banane">
+                <label for="vert">Banane</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="creme" name="drone" value="burlywood">
-                <label for="creme">Fond crème</label>
+                <input class=radioBut type="radio" id="creme" name="drone" value="fraise">
+                <label for="creme">Fraise</label>
             </div>
 
             <div>
-                <input class=radioBut type="radio" id="rouge" name="drone" value="#e05a5a">
-                <label for="rouge">Fond rouge</label>
+                <input class=radioBut type="radio" id="rouge" name="drone" value="myrtille">
+                <label for="rouge">Myrtille</label>
             </div>
             <button type="submit" name="choixFond" id="refresh" value="Fond"
                 style=" margin-top : 2%;">Sélectionner</button>
@@ -246,11 +251,12 @@ echo '<body>';
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <div class="scroll-page" id="notif-1">
                         <div class="row">
-                            <div class="col-sm-4" style="background-color:#d6a3b7">
+                            <div class="col-sm-4"
+                                style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                                 <?php echo htmlspecialchars($row['datedebut']); ?>/
                                 <?php echo htmlspecialchars($row['datefin']); ?>
                             </div>
-                            <div class="col-sm-8" style="background-color:#a7d4d4">
+                            <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                                 <h3><B>
                                         <?php echo htmlspecialchars($row['nom']); ?>
                                     </B></h3>
@@ -274,7 +280,8 @@ echo '<body>';
         <h1 style="margin-top : 5% ">Ajouter une formation</h1>
         <form method="post" action="">
             <div class="row">
-                <div class="col-sm-4" style="background-color : purple">
+                <div class="col-sm-4"
+                    style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                     <h5 style="margin-top:15%">Date de début :</h5>
                     <input type="date" name="datedebut" value="2023-01-01" min="1960-01-01" max="2023-12-31"
                         style="margin : 15%">
@@ -283,11 +290,11 @@ echo '<body>';
                     <input type="date" name="datefin" value="2023-06-06" min="1960-01-01" max="2040-12-31"
                         style="margin : 15% ">
                 </div>
-                <div class="col-sm-8" style="background-color: grey">
-                    <div style="background-color: grey; margin:2%">
+                <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+                    <div style=" margin:2%">
                         <h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%" required> </h5>
                     </div>
-                    <div style="background-color: grey; margin:2%">
+                    <div style=" margin:2%">
                         <h5 style="margin:2%">Description de la formation : <textarea name="institution"
                                 id="Formation-text" rows="10" cols="50" style="margin: 3%;" required></textarea> </h5>
                     </div>
@@ -388,7 +395,7 @@ echo '<body>';
                     </B>
                     <br>
                     <br>
-                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; " >
+                    <div style="padding: 2%; background-color:beige; margin-left: 2%; margin-right: 2%; ">
                         <?php echo htmlspecialchars($row['description']); ?>
                     </div>
 
@@ -407,10 +414,12 @@ echo '<body>';
         <h1 style="margin-top : 5% "> Ajouter un projet</h1>
         <form method="post" action="">
 
-            <div style="background-color: grey; margin:2%">
+            <div style="background: #C9DDFB;
+border-radius: 20px; margin:2%">
                 <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%" required> </h5>
             </div>
-            <div style="background-color: grey; margin:2%">
+            <div style="background: #C9DDFB;
+border-radius: 20px; margin:2%">
                 <h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text"
                     rows="10" cols="50" style="margin: 3%;" required></textarea>
             </div>

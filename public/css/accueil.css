@@ -1,55 +1,59 @@
 body {
-	/* Style pour le corps général*/
-	margin-left: 25%;
-	margin-right: 25%;
-	text-align: center;
+  /* Style pour le corps général*/
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
 }
-
+.texte3D {
+  text-shadow: 1px 1px 1px #999, 2px 2px 1px #888, 3px 3px 1px #777,
+    4px 4px 1px #666, 5px 5px 1px #555;
+  color: #fff;
+}
 .section {
-	/* Style du corps de section */
-	color: black;
-	margin-top: 50px;
+  /* Style du corps de section */
+  color: black;
+  margin-top: 50px;
 }
 
 #Event {
-	margin: 10% 0 2% 0;
-	border: 3px solid black;
-	padding: 3px;
+  margin: 10% 0 2% 0;
+
+  padding: 3px;
 }
 
 .eventsemaine {
-	border: 2px solid rgb(59, 59, 59);
-	box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
-	margin-top: 4rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25),
+    inset 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-top: 4rem;
 }
 
 .post {
-	margin-top: 5%;
+  margin-top: 5%;
 }
 
 #accueil {
-	text-decoration: underline;
-	text-underline-offset: 2px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 
 .video-container {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	/* Aspect ratio 16:9 (modify as needed) */
-	margin-top: 4rem;
-	/* Adjust as needed */
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* Aspect ratio 16:9 (modify as needed) */
+  margin-top: 4rem;
+  /* Adjust as needed */
 }
 
 .video-container video {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-
 
 h1,
 h2,
@@ -57,7 +61,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: transducer, sans-serif;
-	font-style: normal;
-          font-weight: 500;
+  font-family: transducer, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }

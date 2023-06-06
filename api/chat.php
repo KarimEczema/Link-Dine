@@ -31,15 +31,18 @@ include 'navbar.php';
     </div>
     <div id="userSelect">
         <div id="buttonArea" style="position: fixed; bottom: 0;">
+
             <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
             <button id="videoCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
+            <button id="endCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
+
         </div>
     </div>
 
     <div id="videoCall" style="display: none; width: 100%; height: 100%;">
     </div>
 
-    <input type="text" id="userInput" placeholder="Ecrivez ici..." />
+    <input type="text" id="userInput" placeholder="Ecrivez ici..." style="color: white;" />
 
     <script src="js/chat.js"></script>
 
