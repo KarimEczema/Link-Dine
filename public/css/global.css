@@ -308,7 +308,7 @@ input:checked+div {
 .footer-navigation {
   /* Style du bandeau de navigation */
   background: #E7F2FF;
-  box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
+  
   border-radius: 10px;
   display: flex;
   justify-content: space-between;

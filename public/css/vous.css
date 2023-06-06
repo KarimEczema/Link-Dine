@@ -313,33 +313,65 @@ footer {
 .footer-navigation {
   /* Style du bandeau de navigation */
   background: #E7F2FF;
-
+  
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px 15px;
   margin-top: 20px;
+  top: 0;
+  text-align:center;
+}
+
+.footer-navigation .nav-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.footer-navigation ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.footer-navigation ul li {
+  margin-right: 15px;
+}
+
+.footer-navigation ul li:last-child {
+  margin-right: 0;
+}
+
+.footer-navigation ul li a {
+  text-decoration: none;
+  color: #515151;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  top:6px;
+}
+
+.footer-navigation ul li a::after {
+  content: "";
+  position: absolute;
+  margin-top: 2px;
+  width: 0;
+  height: 1px;
   bottom: 0;
+  left: 0;
+  background-color: #515151;
+  transition: width 0.3s ease;
 }
 
-.footer-navigation .container-fluid .row .col-sm-12,
-.footer-navigation .container-fluid .row .col-sm-6 {
-  padding: 2px;
+.footer-navigation ul li a:hover {
+  color: #303030;
 }
 
-.footer-navigation .container-fluid .row .col-sm-12 p,
-.footer-navigation .container-fluid .row .col-sm-6 p {
-  margin-top:10%;
-}
-
-.footer-navigation .container-fluid .row .col-sm-6:nth-child(2) p {
-  text-align : center;
-}
-
-.footer-navigation .container-fluid .row .col-sm-12 nav {
-  text-align: center;
-}
-
-.footer-navigation .container-fluid .row .col-sm-6 a i {
-  font-size: 24px;
-  color: #000;
-  margin-right: 10px;
+.footer-navigation ul li a:hover::after {
+  width: 100%;
 }
