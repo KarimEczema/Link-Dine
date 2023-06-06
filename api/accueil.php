@@ -379,7 +379,7 @@ WHERE DATE(date) >= '2023-06-05'
 					foreach ($combined as $item) {
 						?>
 						<div class="scroll-page" id="eventperso">
-							<div style="padding:2%; border:solid;">
+							<div style="padding:2%;">
 
 								<?php
 								echo "<div>";
