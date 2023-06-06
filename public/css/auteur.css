@@ -163,3 +163,39 @@ footer {
 }
 
 
+.footer-navigation {
+  /* Style du bandeau de navigation */
+  background: #E7F2FF;
+  
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  margin-top: 20px;
+  top: 0;
+  text-align:center;
+}
+
+.footer-navigation .nav-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.footer-navigation ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.footer-navigation ul li {
+  margin-right: 15px;
+}
+
+.footer-navigation ul li:last-child {
+  margin-right: 0;
+}
