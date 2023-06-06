@@ -19,9 +19,3 @@
 		<li id="deco" style="float:right"><a href="index">Deconnexion</a></li>
 	</ul>
 </nav>
-
-<script> window.addEventListener("scroll", function () {
-		var navbar = document.querySelector(".navigation");
-		navbar.classList.toggle("scrolled", window.scrollY > 0);
-	});
-</script>
