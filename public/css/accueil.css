@@ -27,6 +27,8 @@ h1, h2, h3 {
 	width: 100%;
 	min-width: 300px;
 	border: 1px solid #676767;
+	top: 1rem;
+	border-radius: 10px;
 	margin: 0.5em;
 	box-shadow: 3px 3px 5px #676767;
 }
