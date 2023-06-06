@@ -10,10 +10,14 @@ try {
     <nav style="background: #E6F0FF;border-radius: 20px; padding:2%">
 
         <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php
+                        $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
+                ?>
             <nav class="profil">
                 <div class="row">
                     <div class="col-sm-4"
-                        style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">Photo
+                        style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">Photo<img src="<?php echo $pp ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200"
+                                    height="200">
                     </div>
                     <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                         <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
