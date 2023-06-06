@@ -274,7 +274,9 @@ echo '<body>';
                 <tbody>
                     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
 
-                        <div class="scroll-page" id="eventPerso" style="border:solid; padding-bottom:3px">
+                        <div class="scroll-page" id="eventPerso" style="padding:2%; border: 1px solid #CACACA;background-color: #E5F0FF;
+  /*border: 2px solid #666;*/
+  border-radius: 10px;">
                             <h5>
                                 <br><B>
                                     <?php echo htmlspecialchars($row['nom']); ?>

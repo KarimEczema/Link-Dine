@@ -376,3 +376,11 @@ footer {
 .footer-navigation ul li a:hover::after {
   width: 100%;
 }
+
+.footer-navigation .col-sm-6 a {
+  margin-right: 20px;
+}
+
+.footer-navigation .col-sm-6 a:last-child {
+  margin-right: 0;
+}
