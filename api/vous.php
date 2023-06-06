@@ -251,11 +251,12 @@ echo '<body>';
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <div class="scroll-page" id="notif-1">
                         <div class="row">
-                            <div class="col-sm-4" style="background-color:#d6a3b7">
+                            <div class="col-sm-4"
+                                style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                                 <?php echo htmlspecialchars($row['datedebut']); ?>/
                                 <?php echo htmlspecialchars($row['datefin']); ?>
                             </div>
-                            <div class="col-sm-8" style="background-color:#a7d4d4">
+                            <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                                 <h3><B>
                                         <?php echo htmlspecialchars($row['nom']); ?>
                                     </B></h3>
