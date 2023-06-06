@@ -280,7 +280,8 @@ echo '<body>';
         <h1 style="margin-top : 5% ">Ajouter une formation</h1>
         <form method="post" action="">
             <div class="row">
-                <div class="col-sm-4" style="background-color : purple">
+                <div class="col-sm-4"
+                    style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                     <h5 style="margin-top:15%">Date de début :</h5>
                     <input type="date" name="datedebut" value="2023-01-01" min="1960-01-01" max="2023-12-31"
                         style="margin : 15%">
@@ -289,7 +290,7 @@ echo '<body>';
                     <input type="date" name="datefin" value="2023-06-06" min="1960-01-01" max="2040-12-31"
                         style="margin : 15% ">
                 </div>
-                <div class="col-sm-8" style="background-color: grey">
+                <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                     <div style="background-color: grey; margin:2%">
                         <h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%" required> </h5>
                     </div>
