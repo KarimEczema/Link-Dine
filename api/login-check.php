@@ -50,11 +50,11 @@ if (isset($_COOKIE['jwt'])) {
             echo $color;
 
             $fruit_gradients = array(
-                'pomme' => 'background: linear-gradient(45deg, #004225, #00602b, #2b8e36, #61bb41, #9ce848, #d6ff4d, #ffca2b, #ff963a, #ff6249, #ff2f58);',
-                'citron' => 'background: linear-gradient(45deg, #73a942, #99c26d, #bee598, #e4ffc4, #f6ff91, #f9ff5e, #fcff2b, #ffff00);',
-                'banane' => 'background: linear-gradient(45deg, #567d46, #8ca65c, #c1cf73, #f6f88a, #f8f466, #faf742, #fcf91e, #ffff00);',
-                'fraise' => 'background: linear-gradient(45deg, #ffffff, #ffcccc, #ff9999, #ff6666, #ff3333, #ff0000);',
-                'myrtille' => 'background: linear-gradient(45deg, #89c975, #9fd391, #b4deae, #cae9cb, #e0f4e7, #d9edf5, #d2e6ff, #b7d0ff, #9cbaff, #809eff, #6673ff, #4c48ff);'
+                'pomme' => 'background-image: linear-gradient(45deg, #004225, #00602b, #2b8e36, #61bb41, #9ce848, #d6ff4d, #ffca2b, #ff963a, #ff6249, #ff2f58);',
+                'citron' => 'background-image: linear-gradient(45deg, #73a942, #99c26d, #bee598, #e4ffc4, #f6ff91, #f9ff5e, #fcff2b, #ffff00);',
+                'banane' => 'background-image: linear-gradient(45deg, #567d46, #8ca65c, #c1cf73, #f6f88a, #f8f466, #faf742, #fcf91e, #ffff00);',
+                'fraise' => 'background-image: linear-gradient(45deg, #ffffff, #ffcccc, #ff9999, #ff6666, #ff3333, #ff0000);',
+                'myrtille' => 'background-image: linear-gradient(45deg, #89c975, #9fd391, #b4deae, #cae9cb, #e0f4e7, #d9edf5, #d2e6ff, #b7d0ff, #9cbaff, #809eff, #6673ff, #4c48ff);'
             );
 
             if (array_key_exists($color, $fruit_gradients)) {
@@ -64,6 +64,7 @@ if (isset($_COOKIE['jwt'])) {
                     position: relative;
                     margin: 0;
                     padding: 0;
+                    overflow: hidden;
                 }
             
                 body::before, body::after {
@@ -71,18 +72,33 @@ if (isset($_COOKIE['jwt'])) {
                     position: fixed;
                     top: 0;
                     bottom: 0;
-                    width: 25%;
+                    width: 100%;
                     z-index: -1;
+                    background-size: 200% 200%;
+                    animation: Gradient 15s ease infinite;
+                    {$fruit_gradients[$color]}
                 }
             
                 body::before {
                     left: 0;
-                    {$fruit_gradients[$color]}
                 }
             
                 body::after {
                     right: 0;
-                    {$fruit_gradients[$color]}
+                }
+            
+                @keyframes Gradient {
+                    0% {
+                        background-position: 100% 0%;
+                    }
+            
+                    50% {
+                        background-position: 0% 100%;
+                    }
+            
+                    100% {
+                        background-position: 100% 0%;
+                    }
                 }
                 </style>
                 ";
