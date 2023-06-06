@@ -75,8 +75,6 @@ header {
 
 
 .navigation {
-  position: fixed;
-  z-index: 1;
   /* Style du bandeau de navigation */
   background: #E7F2FF;
   box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
@@ -86,24 +84,13 @@ header {
   align-items: center;
   padding: 5px 15px; /* Augmenter la hauteur ici */
   margin-top: 20px; /* Abaisser la nav bar ici */
-  width: 50%;
-}
-
-.main-content {
-  margin-top: 0px; /* Ajuster la valeur en fonction de la hauteur de votre navbar */
-}
-
-
-.navigation.scrolled {
-  background: #E7F2FF;
-  /*box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.5);*/
-  /* Ajouter d'autres styles pour l'effet de transition */
 }
 
 .nav-left {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-left: 10px;
   
 }
@@ -155,7 +142,6 @@ header {
 .navigation ul li a:hover::after {
   width: 100%;
 }
-
 
 footer {
   /* Style du footer */
