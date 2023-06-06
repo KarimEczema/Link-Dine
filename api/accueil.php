@@ -199,7 +199,7 @@ WHERE DATE(date) >= '2023-06-05'
 										<form>
 											<button type="submit" id="like-<?php echo $idpost; ?>" name="ajouterlike"
 												style="margin-top: 10%; margin-left: 3%;" class="like-button">
-												<i class="fas fa-heart"></i> <!-- Heart icon -->
+												<!-- Heart icon -->
 											</button>
 										</form>
 
@@ -217,7 +217,7 @@ WHERE DATE(date) >= '2023-06-05'
 															idpost: idpost
 														},
 														success: function (data) {
-															$('#' + buttonId).text('like (' + data + ')');
+															$('#' + buttonId).text('<i class="fas fa-heart"></i> ' + data);
 														},
 														error: function (xhr, status, error) {
 															console.error(xhr);
