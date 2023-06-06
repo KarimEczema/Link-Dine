@@ -37,7 +37,7 @@ footer{
 #userInput {
     position: fixed;
     bottom: 0;
-    width: 8%;
+    width: 35%;
     padding: 15px;
     border-radius: 8px;
     border: none;
@@ -63,7 +63,7 @@ footer{
 }
 
 #userSelect {
-    width: 35%;
+    width: 8%;
     height: calc(100vh - 100px);
     margin-top: 100px;
     overflow-y: auto;
