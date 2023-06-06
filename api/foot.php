@@ -15,12 +15,12 @@
             </div>
             <div class="col-sm-6">
                 <p>Nous contacter</p>
-                <a href="mailto:adrienne.vidon@edu.ece.fr"> Mail </a>
-                <a href="https://www.facebook.com/ECE.Paris/" target="_blank"> Facebook </a>
-                <a href="https://www.instagram.com/eceparis/" target="_blank"> Instagram </a>
-                <a href="https://twitter.com/ECEParis" target="_blank"> Twitter </a>
-                <a href="https://www.linkedin.com/school/ece-paris/" target="_blank"> LinkedIn </a>
-                <a href="https://www.ece.fr/" target="_blank"> Website </a>
+                <a href="mailto:adrienne.vidon@edu.ece.fr"><i class="fa fa-envelope"></i></a>
+                <a href="https://www.facebook.com/ECE.Paris/" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/eceparis/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/ECEParis" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/school/ece-paris/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.ece.fr/" target="_blank"><i class="fa fa-globe"></i></a>
             </div>
             <div class="col-sm-12">
                 <nav class="navigation">

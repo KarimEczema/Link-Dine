@@ -333,3 +333,9 @@ input:checked+div {
 .footer-navigation .container-fluid .row .col-sm-12 nav {
   text-align: center;
 }
+
+.footer-navigation .container-fluid .row .col-sm-6 a i {
+  font-size: 24px;
+  color: #000;
+  margin-right: 10px;
+}
