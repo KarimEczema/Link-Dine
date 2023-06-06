@@ -291,10 +291,10 @@ echo '<body>';
                         style="margin : 15% ">
                 </div>
                 <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
-                    <div style="background-color: grey; margin:2%">
+                    <div style=" margin:2%">
                         <h5>Titre de la formation : <input type="text" name="nom" style="margin : 5%" required> </h5>
                     </div>
-                    <div style="background-color: grey; margin:2%">
+                    <div style=" margin:2%">
                         <h5 style="margin:2%">Description de la formation : <textarea name="institution"
                                 id="Formation-text" rows="10" cols="50" style="margin: 3%;" required></textarea> </h5>
                     </div>
