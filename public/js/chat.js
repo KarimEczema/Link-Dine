@@ -176,7 +176,7 @@ $(document).ready(async function () {
         $('#cameraButton').removeClass('active');
     });
 
-
+    let api = null;
 
     $('#videoCallButton').click(function () {
         const selectedUserId = $('.usernameButton.active').data('id');
@@ -210,10 +210,15 @@ $(document).ready(async function () {
             parentNode: document.querySelector('#videoCall')
         };
 
-        let api = new JitsiMeetExternalAPI(domain, options);
+     api = new JitsiMeetExternalAPI(domain, options);
     });
 
-
+    $('#endCallButton').click(function() {
+        if (api) {
+            api.dispose();
+            api = null;  // Assurez-vous de réinitialiser api à null
+        }
+    });
 
 
     $('#generalChatButton').click(function () {
