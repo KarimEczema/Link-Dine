@@ -48,7 +48,7 @@ echo '<body>';
 
 
 
-    <nav class="profil" style="border : solid; color: black; padding:7px">
+    <nav class="profil" style="margin-top:2rem; border : 1px solid #CACACA; color: black; padding:7px">
         <div class="container-fluid">
             <table>
                 <tbody>
