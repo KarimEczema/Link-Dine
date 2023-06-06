@@ -34,8 +34,7 @@ include 'navbar.php';
             <div id="buttonArea" style="position: fixed; bottom: 0;">
                 <button id="messageButton" class="btn btn-primary"><i class="fas fa-comment-dots"></i></button>
                 <button id="videoCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
-                <button id="endCallButton" class="btn btn-primary"><i class="fas fa-phone-slash"></i></button>
-                <!-- Bouton de fin d'appel -->
+                <button id="endCallButton" class="btn btn-primary"><i class="fas fa-video"></i></button>
             </div>
         </div>
     </div>
