@@ -147,6 +147,7 @@ footer {
   /* Style du footer */
   color: black;
   margin-top: 20px;
+  flex-shrink: 0;
 }
 
 
