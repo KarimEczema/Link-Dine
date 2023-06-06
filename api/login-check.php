@@ -74,7 +74,7 @@ if (isset($_COOKIE['jwt'])) {
                     top: 0;
                     bottom: 0;
                     width: 100%;
-                    z-index: -1;
+                    z-index: -4;
                     background-size: 200% 200%;
                     animation: Gradient 15s ease infinite;
                     {$fruit_gradients[$color]}
