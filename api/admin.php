@@ -45,13 +45,13 @@ echo '<body>';
     <?php
     $pp = !empty($row['pp']) ? htmlspecialchars($row['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
     ?>
-    <nav class="profil" style="margin-top:5% ">
+    <nav class="profil" style="margin-top:2rem; border : 1px solid #CACACA; color: black; padding:7px">
         <div class="row">
             <div class="col-sm-4" style="background-color : purple">
                 <img src="<?php $pp; ?>" alt="Cet utilisateur n'a pas de photo de profil" width="200" height="200">
             </div>
-            <div class="col-sm-8" style="background-color: grey">
-                <div style="background-color: #d6a3b7; margin:2%">
+            <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['username']); ?>
                     </h3>
@@ -59,7 +59,7 @@ echo '<body>';
                         <?php echo htmlspecialchars($row['statut']); ?>
                     </h5>
                 </div>
-                <div style="background-color: #a7d4d4; margin:2%">
+                <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                     <h3>
                         <?php echo htmlspecialchars($row['bio']); ?>
                     </h3>
@@ -73,10 +73,10 @@ echo '<body>';
     <nav class="Ajout-compte">
         <h1 style="margin-top : 5% ">Ajouter un utilisateur</h1>
         <form id="ajout" method="post" action="">
-            <div style="background-color: grey; margin-top:2%">
+            <div style=background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                 <h5>Pseudo : <input type="text" name="nom" style="margin : 5%" required> </h5>
             </div>
-            <div style="background-color: grey; margin:2%">
+            <div style=background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
                 <h5>Email : <input type="text" name="email" style="margin : 5%" required> </h5>
             </div>
 
