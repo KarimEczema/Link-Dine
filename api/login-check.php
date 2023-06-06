@@ -60,7 +60,7 @@ if (isset($_COOKIE['jwt'])) {
             if (array_key_exists($color, $fruit_gradients)) {
                 echo "
                 <style>
-                body {
+                .bg {
                     position: relative;
                     margin: 0;
                     padding: 0;
@@ -69,23 +69,23 @@ if (isset($_COOKIE['jwt'])) {
                     background:white;
                 }
             
-                body::before, body::after {
+                .bg::before, .bg::after {
                     content: \"\";
                     position: fixed;
                     top: 0;
                     bottom: 0;
-                    width: 100%;
+                    width: 25%;
                     z-index: -4;
                     background-size: 200% 200%;
                     animation: Gradient 15s ease infinite;
                     {$fruit_gradients[$color]}
                 }
             
-                body::before {
+                .bg::before {
                     left: 0;
                 }
             
-                body::after {
+                .bg::after {
                     right: 0;
                 }
             
@@ -105,8 +105,11 @@ if (isset($_COOKIE['jwt'])) {
                 </style>
                 ";
             } else {
-                echo "<style>body { background: white; }</style>"; // default background color if fruit name is not recognized
+                echo "<style>.bg { background: white; }</style>"; // default background color if fruit name is not recognized
             }
+
+            echo '</style>';
+
 
 
             echo '</style>';
