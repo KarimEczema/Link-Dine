@@ -27,7 +27,7 @@
                 <a href="https://www.ece.fr/" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
             </div>
             <div class="col-sm-12">
-                <nav class="navigation">
+                <nav class="footer-navigation">
                     <div class="nav-left">
                         <a href="accueil"><img
                                 src="https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/Image/LOGO.png?t=2023-06-05T17%3A06%3A28.235Z"></a>
