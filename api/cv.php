@@ -7,14 +7,16 @@ try {
     $stmt = $conn->query($sql);
     ?>
 
-    <nav style="background-color:grey; padding:2%">
+    <nav style="background: #E6F0FF;border-radius: 20px; padding:2%">
 
         <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
             <nav class="profil">
                 <div class="row">
-                    <div class="col-sm-4" style="background-color : aliceblue">Photo</div>
-                    <div class="col-sm-8" style="background-color: grey">
-                        <div style="background-color: #d6a3b7; margin:2%">
+                    <div class="col-sm-4"
+                        style="background-color : #B4D2FF; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">Photo
+                    </div>
+                    <div class="col-sm-8" style="background: #C9DDFB;border-radius: 0px 20px 20px 0px;">
+                        <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                             <h1>
                                 <?php echo htmlspecialchars($row['username']); ?>
                             </h1>
@@ -22,7 +24,7 @@ try {
                                 <?php echo htmlspecialchars($row['statut']); ?>
                             </h3>
                         </div>
-                        <div style="background-color: #a7d4d4; margin:2%">
+                        <div style="background: #ECEEF3; border-radius: 50px; margin:2%">
                             <h3>
                                 <?php echo htmlspecialchars($row['bio']); ?>
                             </h3>
@@ -108,7 +110,7 @@ try {
         $conn->exec($sql);
 
         // Display a success message or perform further actions
-        
+
     } catch (PDOException $e) {
         // Handle any database errors
         echo "Update failed: " . $e->getMessage();

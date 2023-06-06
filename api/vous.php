@@ -414,10 +414,12 @@ echo '<body>';
         <h1 style="margin-top : 5% "> Ajouter un projet</h1>
         <form method="post" action="">
 
-            <div style="background-color: grey; margin:2%">
+            <div style="background: #C9DDFB;
+border-radius: 20px; margin:2%">
                 <h5>Nom du projet : <input type="text" name="nompjt" style="margin : 5%" required> </h5>
             </div>
-            <div style="background-color: grey; margin:2%">
+            <div style="background: #C9DDFB;
+border-radius: 20px; margin:2%">
                 <h5 style="margin:2%"> Description du projet : </h5><textarea name="description" id="Projet-text"
                     rows="10" cols="50" style="margin: 3%;" required></textarea>
             </div>
