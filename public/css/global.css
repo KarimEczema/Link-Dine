@@ -316,7 +316,6 @@ input:checked+div {
 
 .footer-navigation .container-fluid .row .col-sm-12,
 .footer-navigation .container-fluid .row .col-sm-6 {
-  border: solid;
   padding: 2px;
 }
 
