@@ -300,3 +300,30 @@ input:checked+div {
 #test1 input:checked+div~div {
   transform: translate3d(100%, 0, 0);
 }
+
+.footer-navigation {
+  /* Style du bandeau de navigation */
+  background: #E7F2FF;
+  box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  margin-top: 20px;
+  bottom: 0;
+}
+
+.footer-navigation .container-fluid .row .col-sm-6 {
+  border: solid;
+  color: black;
+  padding: 2px;
+}
+
+.footer-navigation .container-fluid .row .col-sm-6 p {
+  margin-top:10%;
+}
+
+.footer-navigation .container-fluid .row .col-sm-6:nth-child(2) p {
+  text-align : center;
+}
