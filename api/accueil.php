@@ -6,8 +6,6 @@ echo '<title>Accueil</title>';
 
 // Here, we're adding the links to Bootstrap CSS and jQuery via their CDNs
 echo '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>';
-echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"> ';
-echo '<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js">';
 echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
@@ -196,16 +194,6 @@ WHERE DATE(date) >= '2023-06-05'
 										// Now you can use $likeCount in your HTML to display the number of likes for the post
 						
 										?>
-
-										<!-- script pour changer les variables à chaque post -->
-										<script>
-											// Récupérer le bouton de like par son ID
-											var boutonl = document.getElementById('boutonlike');
-
-											// Changer la valeur du bouton
-											boutonl.value = idpost;
-
-										</script>
 
 										<!-- Partie like -->
 										<form>
