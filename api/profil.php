@@ -30,7 +30,7 @@ echo '<body>';
 
     <!-- recupération en php des informations de la BDD -->
     <?php
-    
+
     $expl = $_GET["id"];
 
     $sql = "SELECT * FROM users WHERE iduser = $expl";
@@ -125,7 +125,7 @@ echo '<body>';
                         $pp = !empty($mesamis['pp']) ? htmlspecialchars($mesamis['pp']) : 'https://bmqgiyygwjnnfyrtjkno.supabase.co/storage/v1/object/public/Images/ppdebase.png?t=2023-06-05T22%3A42%3A42.335Z';
                         ?>
                         <li>
-                            <a href="profil?id=<?php echo $pp; ?>">
+                            <a href="profil?id=<?php echo $mesamis['iduser']; ?>">
                                 <img src="<?php echo htmlspecialchars($mesamis['pp']); ?>"
                                     alt="<?php echo htmlspecialchars($mesamis['nom']); ?>" width="120" height="100">
                             </a>
