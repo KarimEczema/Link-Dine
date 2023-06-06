@@ -32,7 +32,7 @@ echo '<body>';
 
 	<br>
 
-	<div style="font-size: 24px; margin-top: 4rem;">
+	<div style="font-size: 18px; margin-top: 4rem;">
 		<b>ECE'In</b> est le nouveau réseau social en vogue axé sur les objectifs professionnels. Que vous soyez
 		<b>étudiant(e) de
 			licence, master ou doctorat, ou étudiant(e) apprenti(e) dans une entreprise, ou étudiant(e) en recherche de
